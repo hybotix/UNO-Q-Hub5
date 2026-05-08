@@ -1,0 +1,436 @@
+(kicad_sch
+  (version 20231120)
+  (generator "eeschema")
+  (generator_version "9.0")
+  (paper "A4")
+  (title_block
+    (title "UNO Q HUB75 Shield — Power Distribution")
+    (date "2026-05-08")
+    (rev "0.2")
+    (company "Hybrid RobotiX")
+    (comment 1 "IPC-2221B / IPC-2152 compliant power design")
+    (comment 2 "3.3V logic rail: AMS1117-3.3 LDO from +5V_EXT")
+    (comment 3 "HUB75 panel power: +5V_EXT direct — NOT through LDO")
+    (comment 4 "AGND/DGND star point at ES8388 U5")
+  )
+
+  (lib_symbols
+
+    ;; ── AMS1117-3.3 LDO ─────────────────────────────────────────────────────
+    ;; VIN top-right, VOUT top-left, GND bottom-center (IEEE 315: power top, GND bottom)
+    (symbol "AMS1117-3.3"
+      (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+      (property "Reference" "U4" (at 0 8 0)
+        (effects (font (size 1.27 1.27))))
+      (property "Value" "AMS1117-3.3" (at 0 6 0)
+        (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-223-3_TabPin2" (at 0 4 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (property "Datasheet" "https://www.advanced-monolithic.com/pdf/ds1117.pdf" (at 0 2 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (property "MPN" "AMS1117-3.3" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (symbol "AMS1117-3.3_0_0"
+        (rectangle (start -5 -4) (end 5 4)
+          (stroke (width 0.254) (type default)) (fill (type background)))
+        ;; IN: right side (power in from +5V_EXT)
+        (pin power_in at 8 2 180 (length 3)
+          (name "IN" (effects (font (size 1.016 1.016))))
+          (number "3" (effects (font (size 1.016 1.016)))))
+        ;; OUT: left side (power out to +3V3)
+        (pin power_out at -8 2 0 (length 3)
+          (name "OUT" (effects (font (size 1.016 1.016))))
+          (number "2" (effects (font (size 1.016 1.016)))))
+        ;; GND: bottom (IEEE 315 — ground at bottom)
+        (pin power_in at 0 -7 90 (length 3)
+          (name "GND" (effects (font (size 1.016 1.016))))
+          (number "1" (effects (font (size 1.016 1.016)))))
+      )
+    )
+
+    ;; ── Capacitor ───────────────────────────────────────────────────────────
+    (symbol "C"
+      (pin_names (offset 0.254) hide) (in_bom yes) (on_board yes)
+      (property "Reference" "C" (at 1.016 0.508 0)
+        (effects (font (size 1.27 1.27)) (justify left)))
+      (property "Value" "C" (at 1.016 -1.016 0)
+        (effects (font (size 1.27 1.27)) (justify left)))
+      (property "Footprint" "" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (symbol "C_0_1"
+        (polyline (pts (xy -1.524 -0.508) (xy 1.524 -0.508))
+          (stroke (width 0.3302) (type default)) (fill (type none)))
+        (polyline (pts (xy -1.524 0.508) (xy 1.524 0.508))
+          (stroke (width 0.3302) (type default)) (fill (type none)))
+      )
+      (symbol "C_1_1"
+        (pin passive at 0 2.032 270 (length 1.524)
+          (name "~{}" (effects (font (size 1.016 1.016))))
+          (number "1" (effects (font (size 1.016 1.016)))))
+        (pin passive at 0 -2.032 90 (length 1.524)
+          (name "~{}" (effects (font (size 1.016 1.016))))
+          (number "2" (effects (font (size 1.016 1.016)))))
+      )
+    )
+
+    ;; ── Ferrite bead (power filtering) ─────────────────────────────────────
+    (symbol "FERRITE_BEAD"
+      (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+      (property "Reference" "FB" (at 0 4 0)
+        (effects (font (size 1.27 1.27))))
+      (property "Value" "600R@100MHz" (at 0 -4 0)
+        (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Inductor_SMD:L_0402_1005Metric" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (symbol "FERRITE_BEAD_0_0"
+        (arc (start -2.032 0) (mid 0 1.524) (end 2.032 0)
+          (stroke (width 0.254) (type default)) (fill (type none)))
+        (arc (start -2.032 0) (mid 0 -1.524) (end 2.032 0)
+          (stroke (width 0.254) (type default)) (fill (type none)))
+      )
+      (symbol "FERRITE_BEAD_1_1"
+        (pin passive at 0 3.556 270 (length 1.524)
+          (name "~{}" (effects (font (size 1.016 1.016))))
+          (number "1" (effects (font (size 1.016 1.016)))))
+        (pin passive at 0 -3.556 90 (length 1.524)
+          (name "~{}" (effects (font (size 1.016 1.016))))
+          (number "2" (effects (font (size 1.016 1.016)))))
+      )
+    )
+
+    ;; ── Resistor ────────────────────────────────────────────────────────────
+    (symbol "R"
+      (pin_names (offset 0) hide) (in_bom yes) (on_board yes)
+      (property "Reference" "R" (at 2.032 0 90)
+        (effects (font (size 1.27 1.27))))
+      (property "Value" "R" (at 0 0 90)
+        (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (symbol "R_0_1"
+        (rectangle (start -1.016 -2.032) (end 1.016 2.032)
+          (stroke (width 0.254) (type default)) (fill (type none)))
+      )
+      (symbol "R_1_1"
+        (pin passive at 0 3.556 270 (length 1.524)
+          (name "~{}" (effects (font (size 1.016 1.016))))
+          (number "1" (effects (font (size 1.016 1.016)))))
+        (pin passive at 0 -3.556 90 (length 1.524)
+          (name "~{}" (effects (font (size 1.016 1.016))))
+          (number "2" (effects (font (size 1.016 1.016)))))
+      )
+    )
+
+    ;; ── LED indicator ───────────────────────────────────────────────────────
+    (symbol "LED"
+      (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
+      (property "Reference" "D" (at 0 3.81 0)
+        (effects (font (size 1.27 1.27))))
+      (property "Value" "LED" (at 0 -3.81 0)
+        (effects (font (size 1.27 1.27))))
+      (property "Footprint" "LED_SMD:LED_0402_1005Metric" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (symbol "LED_0_1"
+        (polyline (pts (xy -1.016 -1.016) (xy -1.016 1.016))
+          (stroke (width 0.254) (type default)) (fill (type none)))
+        (polyline (pts (xy -1.016 0) (xy 1.016 0))
+          (stroke (width 0.254) (type default)) (fill (type none)))
+        (polyline (pts (xy 1.016 -1.016) (xy -1.016 0) (xy 1.016 1.016) (xy 1.016 -1.016))
+          (stroke (width 0.254) (type default)) (fill (type none)))
+        (polyline (pts (xy 0.508 1.27) (xy 1.27 2.032) (xy 1.778 2.032))
+          (stroke (width 0.254) (type default)) (fill (type none)))
+        (polyline (pts (xy 1.27 0.762) (xy 2.032 1.524) (xy 2.54 1.524))
+          (stroke (width 0.254) (type default)) (fill (type none)))
+      )
+      (symbol "LED_1_1"
+        (pin passive at -3.556 0 0 (length 2.54)
+          (name "K" (effects (font (size 1.016 1.016))))
+          (number "1" (effects (font (size 1.016 1.016)))))
+        (pin passive at 3.556 0 180 (length 2.54)
+          (name "A" (effects (font (size 1.016 1.016))))
+          (number "2" (effects (font (size 1.016 1.016)))))
+      )
+    )
+
+    ;; ── Barrel jack (5.5/2.1mm) ─────────────────────────────────────────────
+    (symbol "BARREL_JACK_5V"
+      (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+      (property "Reference" "J4" (at 0 8 0)
+        (effects (font (size 1.27 1.27))))
+      (property "Value" "+5V_EXT INPUT" (at 0 6 0)
+        (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Connector_BarrelJack:BarrelJack_CUI_PJ-102AH_Horizontal" (at 0 4 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (symbol "BARREL_JACK_5V_0_0"
+        (rectangle (start -5 -4) (end 5 4)
+          (stroke (width 0.254) (type default)) (fill (type background)))
+        ;; Center pin = +5V (hot), Shield = GND
+        (pin power_in at -8 2 0 (length 3)
+          (name "+5V_CTR" (effects (font (size 1.016 1.016))))
+          (number "1" (effects (font (size 1.016 1.016)))))
+        (pin power_in at -8 -2 0 (length 3)
+          (name "GND_SHLD" (effects (font (size 1.016 1.016))))
+          (number "2" (effects (font (size 1.016 1.016)))))
+        (pin passive at 8 0 180 (length 3)
+          (name "GND_SW" (effects (font (size 1.016 1.016))))
+          (number "3" (effects (font (size 1.016 1.016)))))
+      )
+    )
+
+    ;; ── PWR_FLAG (required on every power net for ERC) ──────────────────────
+    (symbol "PWR_FLAG"
+      (pin_names (offset 0) hide) (in_bom no) (on_board no)
+      (property "Reference" "#PWR" (at 0 8 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (property "Value" "PWR_FLAG" (at 0 6 0)
+        (effects (font (size 1.27 1.27))))
+      (symbol "PWR_FLAG_0_0"
+        (pin power_out at 0 0 90 (length 0)
+          (name "PWR" (effects (font (size 1.016 1.016))))
+          (number "1" (effects (font (size 1.016 1.016)))))
+      )
+      (symbol "PWR_FLAG_0_1"
+        (polyline (pts (xy 0 0) (xy 0 1.27) (xy -1.27 2.032) (xy 0 2.794)
+                        (xy 1.27 2.032) (xy 0 1.27))
+          (stroke (width 0.254) (type default)) (fill (type filled)))
+      )
+    )
+
+    ;; ── Net Tie (AGND/DGND star point) ──────────────────────────────────────
+    (symbol "NET_TIE_2"
+      (pin_names (offset 1.016)) (in_bom no) (on_board yes)
+      (property "Reference" "NT" (at 0 4 0)
+        (effects (font (size 1.27 1.27))))
+      (property "Value" "NetTie-2" (at 0 -4 0)
+        (effects (font (size 1.27 1.27))))
+      (property "Footprint" "NetTie:NetTie-2_Pad1.0mm_Drill0.8mm" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (symbol "NET_TIE_2_0_0"
+        (polyline (pts (xy -2 0) (xy 2 0))
+          (stroke (width 0.508) (type default)) (fill (type none)))
+        (circle (center -2 0) (radius 0.508)
+          (stroke (width 0.254) (type default)) (fill (type filled)))
+        (circle (center 2 0) (radius 0.508)
+          (stroke (width 0.254) (type default)) (fill (type filled)))
+      )
+      (symbol "NET_TIE_2_1_1"
+        (pin passive at -5 0 0 (length 3)
+          (name "P1" (effects (font (size 1.016 1.016))))
+          (number "1" (effects (font (size 1.016 1.016)))))
+        (pin passive at 5 0 180 (length 3)
+          (name "P2" (effects (font (size 1.016 1.016))))
+          (number "2" (effects (font (size 1.016 1.016)))))
+      )
+    )
+  )
+
+  ;;
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;; POWER ENTRY — +5V_EXT barrel jack
+  ;; IPC-2221B: Power entry point clearly identified, fused where required.
+  ;; This design relies on upstream supply limiting; no onboard fuse.
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;;
+  (symbol (lib_id "BARREL_JACK_5V") (at 30 30 0) (unit 1)
+    (property "Reference" "J4" (at 30 20 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "+5V_EXT INPUT" (at 30 18 0)
+      (effects (font (size 1.27 1.27)))))
+
+  ;; PWR_FLAG on +5V_EXT (ERC: marks this net as a power source)
+  (symbol (lib_id "PWR_FLAG") (at 50 26 0) (unit 1)
+    (property "Reference" "#PWR01" (at 50 22 0)
+      (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "PWR_FLAG" (at 50 20 0)
+      (effects (font (size 1.27 1.27)))))
+
+  ;; Input bulk capacitor — close to barrel jack
+  ;; IPC-2152: 100µF handles inrush; 100nF for HF decoupling
+  (symbol (lib_id "C") (at 65 30 0) (unit 1)
+    (property "Reference" "C1" (at 67 29 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "100µF 10V" (at 67 31 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_1206_3216Metric" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "UMT1A101MDD" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  (symbol (lib_id "C") (at 75 30 0) (unit 1)
+    (property "Reference" "C2" (at 77 29 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "100nF 10V X7R" (at 77 31 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "GRM155R71A104KA01D" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  ;;
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;; 3.3V LDO — AMS1117-3.3
+  ;; IPC-2221B §6.3: Voltage regulators placed close to load.
+  ;; IN from +5V_EXT (after bulk caps). OUT to +3V3 rail.
+  ;; Max load: ESP32-S3 (~300mA) + ES8388 (~30mA) + level shifters (~20mA)
+  ;; AMS1117 rated 800mA — adequate with margin.
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;;
+  (symbol (lib_id "AMS1117-3.3") (at 100 30 0) (unit 1)
+    (property "Reference" "U4" (at 100 22 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "AMS1117-3.3" (at 100 20 0)
+      (effects (font (size 1.27 1.27)))))
+
+  ;; LDO input bypass — within 2mm of VIN pin on PCB
+  (symbol (lib_id "C") (at 88 30 0) (unit 1)
+    (property "Reference" "C3" (at 90 29 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "10µF 10V X5R" (at 90 31 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "GRM21BR61A106KE18L" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  ;; LDO output bypass — within 2mm of VOUT pin on PCB
+  ;; AMS1117 requires min 10µF for stability
+  (symbol (lib_id "C") (at 115 30 0) (unit 1)
+    (property "Reference" "C4" (at 117 29 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "10µF 10V X5R" (at 117 31 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "GRM21BR61A106KE18L" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  (symbol (lib_id "C") (at 125 30 0) (unit 1)
+    (property "Reference" "C5" (at 127 29 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "100nF 10V X7R" (at 127 31 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "GRM155R71A104KA01D" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  ;; PWR_FLAG on +3V3 (ERC: marks regulated output as power source)
+  (symbol (lib_id "PWR_FLAG") (at 135 26 0) (unit 1)
+    (property "Reference" "#PWR02" (at 135 22 0)
+      (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "PWR_FLAG" (at 135 20 0)
+      (effects (font (size 1.27 1.27)))))
+
+  ;;
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;; POWER INDICATOR LEDs
+  ;; Separate indicator for +5V_EXT and +3V3 — immediate visual feedback
+  ;; that both rails are live before probing.
+  ;; R = (V - Vf) / If = (5 - 2.0) / 0.005 = 600Ω → use 620Ω standard
+  ;; R = (3.3 - 2.0) / 0.005 = 260Ω → use 270Ω standard
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;;
+  (symbol (lib_id "R") (at 60 55 0) (unit 1)
+    (property "Reference" "R1" (at 62 55 90)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "620Ω 1% 0402" (at 60 55 90)
+      (effects (font (size 1.27 1.27))))
+    (property "MPN" "RC0402FR-07620RL" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  (symbol (lib_id "LED") (at 70 55 0) (unit 1)
+    (property "Reference" "D1" (at 70 51 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "GREEN 0402" (at 70 58 0)
+      (effects (font (size 1.27 1.27))))
+    (property "MPN" "LTST-C190GKT" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  (symbol (lib_id "R") (at 100 55 0) (unit 1)
+    (property "Reference" "R2" (at 102 55 90)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "270Ω 1% 0402" (at 100 55 90)
+      (effects (font (size 1.27 1.27))))
+    (property "MPN" "RC0402FR-07270RL" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  (symbol (lib_id "LED") (at 110 55 0) (unit 1)
+    (property "Reference" "D2" (at 110 51 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "GREEN 0402" (at 110 58 0)
+      (effects (font (size 1.27 1.27))))
+    (property "MPN" "LTST-C190GKT" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  ;;
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;; AUDIO POWER — AGND/DGND STAR POINT
+  ;; IPC-2221B §6.2.4: Analog and digital grounds joined at single point
+  ;; to prevent digital switching noise coupling into audio signal path.
+  ;; Star point is physically at ES8388 U5 on PCB.
+  ;; Net tie NT1 creates the schematic connection for ERC while allowing
+  ;; separate copper pours that meet at one via.
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;;
+  (symbol (lib_id "NET_TIE_2") (at 100 75 0) (unit 1)
+    (property "Reference" "NT1" (at 100 71 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "AGND_DGND_STAR" (at 100 78 0)
+      (effects (font (size 1.27 1.27)))))
+
+  ;; Audio AVDD filter — ferrite bead isolates analog supply from digital +3V3
+  ;; 600Ω @ 100MHz ferrite passes DC but blocks HF switching noise
+  (symbol (lib_id "FERRITE_BEAD") (at 130 75 0) (unit 1)
+    (property "Reference" "FB1" (at 132 71 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "BLM15AX601SN1D 600R@100MHz" (at 130 79 0)
+      (effects (font (size 1.27 1.27))))
+    (property "MPN" "BLM15AX601SN1D" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  (symbol (lib_id "C") (at 145 75 0) (unit 1)
+    (property "Reference" "C6" (at 147 74 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "10µF 10V X5R" (at 147 76 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  (symbol (lib_id "C") (at 155 75 0) (unit 1)
+    (property "Reference" "C7" (at 157 74 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "100nF 10V X7R" (at 157 76 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  ;;
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;; DESIGN NOTES — POWER
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;;
+  (text "POWER ARCHITECTURE NOTES (IPC-2221B / IPC-2152):\n\n+5V_EXT RAIL (J4 barrel jack, 5.5/2.1mm, tip-positive):\n  - Feeds HUB75 panel direct (J1 pins 4,8,14,18) — NO LDO in path\n  - Feeds AMS1117-3.3 IN pin\n  - PCB trace: 1.5mm min (handles 3A per IPC-2152 at 1oz Cu, 10°C rise)\n  - Polygon pour preferred for +5V distribution to J1\n\n+3V3 RAIL (AMS1117-3.3 output):\n  - Supplies: ESP32-S3 (U1), ES8388 DVDD (U5), 74HCT245 x2 (U2/U3)\n  - Max load: ~400mA. AMS1117 rated 800mA — 2x margin OK\n  - PCB trace: 0.5mm min\n  - Polygon pour on inner power plane preferred\n\nAGND/DGND STAR TOPOLOGY:\n  - NT1 net tie: AGND and DGND join at single star point (U5 ES8388)\n  - PCB: separate AGND pour under U5 audio section, DGND pour everywhere else\n  - Both pours connect through single via or pad bridge at U5\n  - DO NOT route DGND traces through AGND pour region\n\nAUDIO AVDD FILTERING:\n  - FB1 (600Ω @ 100MHz) in series with +3V3 to ES8388 AVDD pin\n  - C6 10µF + C7 100nF bypass on AVDD side of FB1\n  - Creates isolated analog power island"
+    (at 20 100 0)
+    (effects (font (size 1.27 1.27)) (justify left top)))
+
+  ;; ── Net labels (hierarchical port connections) ───────────────────────────
+  (hierarchical_label "+5V_EXT"
+    (shape output) (at 50 26 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+
+  (hierarchical_label "+3V3"
+    (shape output) (at 135 26 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+
+  (hierarchical_label "DGND"
+    (shape output) (at 100 80 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+
+  (hierarchical_label "AGND"
+    (shape output) (at 120 80 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+
+  (hierarchical_label "+5V_EXT_HUB75"
+    (shape output) (at 50 30 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+)

@@ -1,0 +1,314 @@
+(kicad_sch
+  (version 20231120)
+  (generator "eeschema")
+  (generator_version "9.0")
+  (paper "A4")
+  (title_block
+    (title "UNO Q HUB75 Shield — HUB75 LED Driver")
+    (date "2026-05-08")
+    (rev "0.2")
+    (company "Hybrid RobotiX")
+    (comment 1 "74HCT245 level shift: 3.3V logic → 5V HUB75 signals")
+    (comment 2 "IPC-2221B: return current path kept under signal traces")
+    (comment 3 "U2: R1 G1 B1 R2 G2 B2 CLK LAT — U3: ADDR_A-E OE")
+    (comment 4 "DIR=GND (A→B unidirectional). ~OE=GND (always enabled).")
+  )
+
+  (lib_symbols
+
+    ;; ── 74HCT245 Octal Bus Transceiver ──────────────────────────────────────
+    ;; Pinout matches SN74HCT245PW (TSSOP-20)
+    ;; IEEE 315: inputs left, outputs right, VCC top, GND bottom
+    (symbol "SN74HCT245"
+      (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 14 0)
+        (effects (font (size 1.27 1.27))))
+      (property "Value" "SN74HCT245PW" (at 0 12 0)
+        (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm" (at 0 10 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/sn74hct245.pdf" (at 0 8 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (property "MPN" "SN74HCT245PWR" (at 0 6 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (symbol "SN74HCT245_0_0"
+        (rectangle (start -10 -12) (end 10 12)
+          (stroke (width 0.254) (type default)) (fill (type background)))
+        ;; VCC top-center (IEEE 315)
+        (pin power_in at 0 15 270 (length 3)
+          (name "VCC" (effects (font (size 1.016 1.016))))
+          (number "20" (effects (font (size 1.016 1.016)))))
+        ;; GND bottom-center (IEEE 315)
+        (pin power_in at 0 -15 90 (length 3)
+          (name "GND" (effects (font (size 1.016 1.016))))
+          (number "10" (effects (font (size 1.016 1.016)))))
+        ;; Control inputs — left side, top
+        (pin input at -13 10 0 (length 3)
+          (name "DIR" (effects (font (size 1.016 1.016))))
+          (number "1" (effects (font (size 1.016 1.016)))))
+        (pin input at -13 8 0 (length 3)
+          (name "~{OE}" (effects (font (size 1.016 1.016))))
+          (number "19" (effects (font (size 1.016 1.016)))))
+        ;; A inputs (3.3V side) — left
+        (pin input at -13 6 0 (length 3)
+          (name "A1" (effects (font (size 1.016 1.016))))
+          (number "2" (effects (font (size 1.016 1.016)))))
+        (pin input at -13 4 0 (length 3)
+          (name "A2" (effects (font (size 1.016 1.016))))
+          (number "3" (effects (font (size 1.016 1.016)))))
+        (pin input at -13 2 0 (length 3)
+          (name "A3" (effects (font (size 1.016 1.016))))
+          (number "4" (effects (font (size 1.016 1.016)))))
+        (pin input at -13 0 0 (length 3)
+          (name "A4" (effects (font (size 1.016 1.016))))
+          (number "5" (effects (font (size 1.016 1.016)))))
+        (pin input at -13 -2 0 (length 3)
+          (name "A5" (effects (font (size 1.016 1.016))))
+          (number "6" (effects (font (size 1.016 1.016)))))
+        (pin input at -13 -4 0 (length 3)
+          (name "A6" (effects (font (size 1.016 1.016))))
+          (number "7" (effects (font (size 1.016 1.016)))))
+        (pin input at -13 -6 0 (length 3)
+          (name "A7" (effects (font (size 1.016 1.016))))
+          (number "8" (effects (font (size 1.016 1.016)))))
+        (pin input at -13 -8 0 (length 3)
+          (name "A8" (effects (font (size 1.016 1.016))))
+          (number "9" (effects (font (size 1.016 1.016)))))
+        ;; B outputs (5V side) — right
+        (pin output at 13 6 180 (length 3)
+          (name "B1" (effects (font (size 1.016 1.016))))
+          (number "18" (effects (font (size 1.016 1.016)))))
+        (pin output at 13 4 180 (length 3)
+          (name "B2" (effects (font (size 1.016 1.016))))
+          (number "17" (effects (font (size 1.016 1.016)))))
+        (pin output at 13 2 180 (length 3)
+          (name "B3" (effects (font (size 1.016 1.016))))
+          (number "16" (effects (font (size 1.016 1.016)))))
+        (pin output at 13 0 180 (length 3)
+          (name "B4" (effects (font (size 1.016 1.016))))
+          (number "15" (effects (font (size 1.016 1.016)))))
+        (pin output at 13 -2 180 (length 3)
+          (name "B5" (effects (font (size 1.016 1.016))))
+          (number "14" (effects (font (size 1.016 1.016)))))
+        (pin output at 13 -4 180 (length 3)
+          (name "B6" (effects (font (size 1.016 1.016))))
+          (number "13" (effects (font (size 1.016 1.016)))))
+        (pin output at 13 -6 180 (length 3)
+          (name "B7" (effects (font (size 1.016 1.016))))
+          (number "12" (effects (font (size 1.016 1.016)))))
+        (pin output at 13 -8 180 (length 3)
+          (name "B8" (effects (font (size 1.016 1.016))))
+          (number "11" (effects (font (size 1.016 1.016)))))
+      )
+    )
+
+    ;; ── HUB75 2×8 IDC Panel Connector ───────────────────────────────────────
+    ;; Standard HUB75 pinout. Signals flow right-to-left INTO connector.
+    (symbol "HUB75_IDC_2x8"
+      (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+      (property "Reference" "J1" (at 0 16 0)
+        (effects (font (size 1.27 1.27))))
+      (property "Value" "HUB75 2×8 IDC" (at 0 14 0)
+        (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Connector_IDC:IDC-Header_2x08_P2.54mm_Vertical" (at 0 12 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (property "Datasheet" "~" (at 0 10 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (symbol "HUB75_IDC_2x8_0_0"
+        (rectangle (start -6 -14) (end 6 14)
+          (stroke (width 0.254) (type default)) (fill (type background)))
+        ;; Pin 1 marker (triangle at pin 1)
+        (polyline (pts (xy -6 14) (xy -4 14) (xy -6 12))
+          (stroke (width 0.254) (type default)) (fill (type filled)))
+        ;; Color data inputs — left column (odd pins)
+        (pin passive at -9 12 0 (length 3)
+          (name "R1" (effects (font (size 1.016 1.016))))
+          (number "1" (effects (font (size 1.016 1.016)))))
+        (pin passive at -9 8 0 (length 3)
+          (name "B1" (effects (font (size 1.016 1.016))))
+          (number "3" (effects (font (size 1.016 1.016)))))
+        (pin passive at -9 4 0 (length 3)
+          (name "R2" (effects (font (size 1.016 1.016))))
+          (number "5" (effects (font (size 1.016 1.016)))))
+        (pin passive at -9 0 0 (length 3)
+          (name "B2" (effects (font (size 1.016 1.016))))
+          (number "7" (effects (font (size 1.016 1.016)))))
+        (pin passive at -9 -4 0 (length 3)
+          (name "ADDR_A" (effects (font (size 1.016 1.016))))
+          (number "9" (effects (font (size 1.016 1.016)))))
+        (pin passive at -9 -8 0 (length 3)
+          (name "ADDR_C" (effects (font (size 1.016 1.016))))
+          (number "11" (effects (font (size 1.016 1.016)))))
+        (pin passive at -9 -10 0 (length 3)
+          (name "~{CLK}" (effects (font (size 1.016 1.016))))
+          (number "13" (effects (font (size 1.016 1.016)))))
+        (pin passive at -9 -12 0 (length 3)
+          (name "~{OE}" (effects (font (size 1.016 1.016))))
+          (number "15" (effects (font (size 1.016 1.016)))))
+        ;; Right column (even pins) — color data and GND
+        (pin passive at 9 12 180 (length 3)
+          (name "G1" (effects (font (size 1.016 1.016))))
+          (number "2" (effects (font (size 1.016 1.016)))))
+        (pin power_in at 9 8 180 (length 3)
+          (name "GND" (effects (font (size 1.016 1.016))))
+          (number "4" (effects (font (size 1.016 1.016)))))
+        (pin passive at 9 4 180 (length 3)
+          (name "G2" (effects (font (size 1.016 1.016))))
+          (number "6" (effects (font (size 1.016 1.016)))))
+        (pin power_in at 9 0 180 (length 3)
+          (name "GND" (effects (font (size 1.016 1.016))))
+          (number "8" (effects (font (size 1.016 1.016)))))
+        (pin passive at 9 -4 180 (length 3)
+          (name "ADDR_B" (effects (font (size 1.016 1.016))))
+          (number "10" (effects (font (size 1.016 1.016)))))
+        (pin passive at 9 -8 180 (length 3)
+          (name "ADDR_D" (effects (font (size 1.016 1.016))))
+          (number "12" (effects (font (size 1.016 1.016)))))
+        (pin passive at 9 -10 180 (length 3)
+          (name "LAT" (effects (font (size 1.016 1.016))))
+          (number "14" (effects (font (size 1.016 1.016)))))
+        (pin power_in at 9 -12 180 (length 3)
+          (name "GND" (effects (font (size 1.016 1.016))))
+          (number "16" (effects (font (size 1.016 1.016)))))
+      )
+    )
+
+    ;; ── Capacitor ───────────────────────────────────────────────────────────
+    (symbol "C"
+      (pin_names (offset 0.254) hide) (in_bom yes) (on_board yes)
+      (property "Reference" "C" (at 1.016 0.508 0)
+        (effects (font (size 1.27 1.27)) (justify left)))
+      (property "Value" "C" (at 1.016 -1.016 0)
+        (effects (font (size 1.27 1.27)) (justify left)))
+      (property "Footprint" "" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (symbol "C_0_1"
+        (polyline (pts (xy -1.524 -0.508) (xy 1.524 -0.508))
+          (stroke (width 0.3302) (type default)) (fill (type none)))
+        (polyline (pts (xy -1.524 0.508) (xy 1.524 0.508))
+          (stroke (width 0.3302) (type default)) (fill (type none)))
+      )
+      (symbol "C_1_1"
+        (pin passive at 0 2.032 270 (length 1.524)
+          (name "~{}" (effects (font (size 1.016 1.016))))
+          (number "1" (effects (font (size 1.016 1.016)))))
+        (pin passive at 0 -2.032 90 (length 1.524)
+          (name "~{}" (effects (font (size 1.016 1.016))))
+          (number "2" (effects (font (size 1.016 1.016)))))
+      )
+    )
+  )
+
+  ;;
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;; U2 — SN74HCT245 — RGB DATA + CLK + LAT
+  ;; A-side (pins 2-9): 3.3V from ESP32-S3
+  ;; B-side (pins 11-18): 5V to HUB75 connector
+  ;; DIR (pin 1) = GND → A→B direction only (unidirectional output)
+  ;; ~OE (pin 19) = GND → always enabled
+  ;; VCC (pin 20) = +5V_EXT_HUB75 (NOT +3V3 — 74HCT inputs are 3.3V tolerant
+  ;;                                 but outputs must be 5V for HUB75)
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;;
+  (symbol (lib_id "SN74HCT245") (at 80 45 0) (unit 1)
+    (property "Reference" "U2" (at 80 29 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "SN74HCT245PW" (at 80 27 0)
+      (effects (font (size 1.27 1.27)))))
+
+  ;; U2 bypass cap — 100nF within 2mm of pin 20 (VCC) on PCB
+  (symbol (lib_id "C") (at 65 32 0) (unit 1)
+    (property "Reference" "C8" (at 67 31 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "100nF 10V X7R 0402" (at 67 33 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "GRM155R71A104KA01D" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  ;;
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;; U3 — SN74HCT245 — ADDR_A–E + OE
+  ;; Same DIR/~OE/VCC rules as U2.
+  ;; Only 6 of 8 channels used — A7/A8/B7/B8 left no-connect (NC marker)
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;;
+  (symbol (lib_id "SN74HCT245") (at 80 110 0) (unit 1)
+    (property "Reference" "U3" (at 80 94 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "SN74HCT245PW" (at 80 92 0)
+      (effects (font (size 1.27 1.27)))))
+
+  ;; U3 bypass cap
+  (symbol (lib_id "C") (at 65 97 0) (unit 1)
+    (property "Reference" "C9" (at 67 96 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "100nF 10V X7R 0402" (at 67 98 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "GRM155R71A104KA01D" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  ;;
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;; J1 — HUB75 2×8 IDC PANEL CONNECTOR
+  ;; Signal flow: ESP32-S3 → U2/U3 level shift → J1 → flat cable → panel
+  ;; GND pins 4, 8, 14, 16 provide return current paths for signal groups
+  ;; Per IPC-2221B: connector ground pins must return to GND plane via
+  ;; low-inductance vias — do NOT route GND pins to long traces
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;;
+  (symbol (lib_id "HUB75_IDC_2x8") (at 155 77 0) (unit 1)
+    (property "Reference" "J1" (at 155 61 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "HUB75 2×8 IDC" (at 155 59 0)
+      (effects (font (size 1.27 1.27)))))
+
+  ;;
+  ;; ── Net labels (hierarchical ports) ────────────────────────────────────────
+  ;;
+  ;; Inputs from ESP32-S3 sub-sheet
+  (hierarchical_label "S3_R1"
+    (shape input) (at 20 51 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "S3_G1"
+    (shape input) (at 20 53 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "S3_B1"
+    (shape input) (at 20 55 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "S3_R2"
+    (shape input) (at 20 57 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "S3_G2"
+    (shape input) (at 20 59 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "S3_B2"
+    (shape input) (at 20 61 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "S3_HUB75_CLK"
+    (shape input) (at 20 63 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "S3_HUB75_LAT"
+    (shape input) (at 20 65 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "S3_ADDR_A"
+    (shape input) (at 20 116 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "S3_ADDR_B"
+    (shape input) (at 20 118 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "S3_ADDR_C"
+    (shape input) (at 20 120 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "S3_ADDR_D"
+    (shape input) (at 20 122 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "S3_ADDR_E"
+    (shape input) (at 20 124 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "S3_HUB75_OE"
+    (shape input) (at 20 126 0) (effects (font (size 1.27 1.27)) (justify right)))
+
+  ;; Power inputs from power sub-sheet
+  (hierarchical_label "+5V_EXT_HUB75"
+    (shape power_in) (at 80 28 180) (effects (font (size 1.27 1.27))))
+  (hierarchical_label "DGND"
+    (shape power_in) (at 80 62 180) (effects (font (size 1.27 1.27))))
+
+  ;;
+  ;; ── Design notes ──────────────────────────────────────────────────────────
+  ;;
+  (text "HUB75 LEVEL SHIFTER NOTES (IPC-2221B):\n\nU2 / U3 VCC = +5V_EXT_HUB75 (NOT +3V3)\n  74HCT inputs: VIH min = 2.0V — 3.3V logic drives them reliably\n  74HCT outputs swing to VCC (5V) — required for HUB75 panel\n  Do NOT power from +3V3: outputs would be 3.3V, unreliable with some panels\n\nDIR pin (pin 1) = GND on both U2 and U3\n  0Ω resistor or direct connection acceptable\n  Makes direction fixed A→B (3.3V in, 5V out)\n  Do NOT leave DIR floating\n\n~OE pin (pin 19) = GND on both U2 and U3\n  Always-enabled. No dynamic enable needed for HUB75.\n\nBYPASS CAPACITORS (IPC-2221B §6.3.3):\n  100nF 0402 X7R on each VCC pin\n  Place within 2mm of pin 20 on PCB\n  Via directly to GND plane — no trace between cap GND and via\n\nRETURN CURRENT PATH (IPC-2221B §6.2.3):\n  GND pins on J1 (pins 4, 8, 14, 16) must stitch directly to GND plane\n  Signal traces from U2/U3 outputs to J1 must have unbroken GND plane beneath\n  Do NOT route other signals between U2/U3 and J1 on the same layer"
+    (at 20 145 0)
+    (effects (font (size 1.27 1.27)) (justify left top)))
+)
