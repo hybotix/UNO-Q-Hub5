@@ -1,96 +1,76 @@
 # UNO-Q-Hub5
 
-**Hybrid RobotiX** — UNO Q Shield for HUB75 LED Panels
+**Hybrid RobotiX** — UNO Q HUB75 Shield and Carrier Board
+Dale Weber | Part of the **My Chairiet** distributed computing platform
 
 ---
 
 ## Overview
 
-UNO-Q-Hub5 is a custom Arduino UNO Q shield that drives HUB75 RGB LED matrix panels via an onboard ESP32-S3 co-processor. The ESP32-S3 owns the HUB75 interface entirely, offloading all panel refresh timing from the UNO Q's STM32U585 MCU.
+UNO-Q-Hub5 is a hardware project producing two complementary boards that enable
+HUB75 RGB LED matrix panel driving and ecosystem expansion for the Arduino UNO Q:
 
-The shield is designed for use with the **My Chairiet** platform and the **Hybrid RobotiX Standardized Sensor Platform (HSP)**, but functions as a general-purpose HUB75 display shield for any UNO Q project.
+| Board | Form Factor | Connects Via |
+|-------|-------------|-------------|
+| **UNO Q HUB75 Shield** | Arduino UNO shield | Top headers (JDIGITAL/JANALOG/JSPI) + JMISC pass-through |
+| **UNO Q HUB75 Carrier** | Carrier board | Bottom connectors (JMISC B1 + JMEDIA B2) |
 
----
-
-## Architecture
-
-### Dual-Brain SPI Control
-
-The UNO Q has two independent processors, and either can command the shield:
-
-| Master | Interface | Connection |
-|--------|-----------|------------|
-| STM32U585 (MCU / sketch side) | SPI via shield headers | J2 — CS_MCU |
-| QRB2210 (MPU / Linux side) | SPI via shield headers | J3 — CS_MPU |
-
-MOSI, MISO, and SCK are shared. Each master has its own dedicated CS line. The ESP32-S3 is a pure SPI slave — it processes commands and data without caring which master is active. Software on the UNO Q must ensure only one master drives the bus at a time.
-
-### HUB75 Signal Path
-
-```
-ESP32-S3 (3.3V) → 74HCT245 (U2/U3) (level shift to 5V) → HUB75 IDC Connector (J1) → Panel
-```
-
-Two 74HCT245 octal bus transceivers handle level shifting:
-- **U2** — RGB data lines (R1, G1, B1, R2, G2, B2) + CLK + LAT
-- **U3** — Address lines (A, B, C, D, E) + OE
-
-### Power
-
-External 5V power is **required** for the HUB75 panel. The barrel jack (J4) feeds the panel directly. The AMS1117-3.3 LDO (U4) derives 3.3V from the external 5V rail to power the ESP32-S3. The UNO Q shield headers carry logic signals only — panel power does not flow through the shield headers.
-
-> ⚠️ A 64×32 HUB75 panel can draw 3–4A at 5V under full brightness. Use an adequately rated 5V supply.
+Both boards share a common ESP32-S3 co-processor architecture for HUB75 driving.
 
 ---
 
-## Hardware
+## Common Features (Both Boards)
 
-### Bill of Materials
-
-| Ref | Value | Description |
-|-----|-------|-------------|
-| U1 | ESP32-S3-MINI-1 | HUB75 co-processor, SPI slave |
-| U2 | 74HCT245 | Octal bus transceiver, RGB + CLK + LAT |
-| U3 | 74HCT245 | Octal bus transceiver, address + OE |
-| U4 | AMS1117-3.3 | 3.3V LDO regulator |
-| J1 | HUB75 2×8 IDC | Panel connector |
-| J2 | 1×6 pin header | UNO Q SPI + CS_MCU |
-| J3 | 1×3 pin header | UNO Q MPU CS_MPU |
-| J4 | Barrel jack | External 5V panel power input |
-| C1, C2 | 10µF | LDO input/output bulk caps |
-| C3 | 100nF | ESP32-S3 3.3V decoupling |
-| C4 | 10µF | ESP32-S3 3.3V bulk decoupling |
-| C5, C6 | 100nF | 74HCT245 VCC decoupling |
-| R1 | 10kΩ | ESP32-S3 EN pullup |
-| R2 | 330Ω | Power LED current limit |
-| D1 | LED | Power indicator |
-
-### Supported Panels
-
-- 64×32 HUB75 RGB LED matrix (primary target)
-- Other HUB75-compatible panels supported by [ESP32-HUB75-MatrixPanel-DMA](https://github.com/mrfaptastic/ESP32-HUB75-MatrixPanel-DMA)
+- **ESP32-S3-MINI-1** HUB75 co-processor — DMA-driven via ESP32-HUB75-MatrixPanel-DMA
+- **Dual SPI master control** — STM32U585 MCU (sketch side) and QRB2210 MPU (Linux side) via independent CS lines
+- **2x 74HCT245** level shifters — 3.3V ESP32-S3 to 5V HUB75 panel signals
+- **HUB75 2x8 IDC connector** — 64x32 panel and compatible
+- **External 5V power** for HUB75 panel (barrel jack)
+- **AMS1117-3.3 LDO** — 3.3V for ESP32-S3 from external 5V rail
+- **Audio** — analog PMIC audio from JMISC to 3.5mm jacks (headphone/mic combo, line out)
+- **2x Qwiic** JST-SH 4-pin connectors (daisy-chain)
+- **5x Grove connectors** — I2C, UART, SPI, Digital, Analog
+- **Power indicator LED**
 
 ---
 
-## Firmware
+## UNO Q HUB75 Shield
 
-The ESP32-S3 firmware uses the **ESP32-HUB75-MatrixPanel-DMA** library for DMA-driven panel refresh. The SPI slave interface receives display commands and frame data from whichever UNO Q brain is active.
+Standard Arduino UNO form-factor shield. Mounts on UNO Q top headers.
+Includes a Samtec FTSH-130-01 pass-through connector on the underside for
+JMISC audio signal access.
 
-Firmware source will be located in the `firmware/` directory (in development).
+**Shield-specific features:**
+- JMISC pass-through (Samtec FTSH-130-01 2x30 1.27mm) for audio access
+- 3.5mm combo jack (headphone + mic)
+- 3.5mm line out jack
+- All standard UNO Q top header pins passed through
 
 ---
 
-## KiCad Project
+## UNO Q HUB75 Carrier Board
 
-The schematic is located in `KiCad/`:
+Full carrier board. UNO Q mounts on top via JMISC and JMEDIA connectors.
+Provides the complete high-speed peripheral ecosystem plus RPi 5 compatible
+interfaces.
 
-```
-KiCad/
-├── uno_q_hub75_shield.kicad_pro   KiCad v9 project file
-└── uno_q_hub75_shield.kicad_sch   Schematic (KiCad v9 S-expression format)
-```
+**Carrier-specific features:**
+- **MIPI DSI** — 22-pin 0.5mm FPC, RPi 5 compatible
+- **MIPI CSI0 + CSI1** — 22-pin 0.5mm FPC x2, RPi 5 compatible
+- **40-pin GPIO header** — RPi 5 electrically compatible (GPIO, SPI, I2C, UART, PWM)
+- **HAT ID EEPROM** on pins 27/28 for RPi HAT compliance
+- **1.8V to 3.3V level shifting** (TXS0108E) for MPU GPIO bank
+- **Carrier VIN input** — barrel jack + screw terminal (7-24V)
+- **HUB75 power** — separate barrel jack + screw terminal (5V)
+- **Audio** — headphone/mic combo, line out, earpiece (3x 3.5mm jacks)
+- **PSSI breakout** — 2.54mm + JST (STM32U585 parallel interface)
+- **I2C4 breakout** — 2.54mm + JST
+- **OpAmp breakout** — 2.54mm
+- **MPU GPIO breakout** — 2.54mm + JST (1.8V — clearly labeled)
+- **Buck converter** — onboard 5V/3A from VIN rail
 
-Open `uno_q_hub75_shield.kicad_pro` in KiCad 9 to load the project.
+> WARNING: No PCIe — The QRB2210 SoC has no PCIe root complex. NVMe HATs and
+> PCIe HATs will not function. See docs/RPi_COMPATIBILITY.md.
 
 ---
 
@@ -98,29 +78,48 @@ Open `uno_q_hub75_shield.kicad_pro` in KiCad 9 to load the project.
 
 ```
 UNO-Q-Hub5/
-├── KiCad/          KiCad v9 schematic and PCB files
-├── firmware/       ESP32-S3 PlatformIO firmware (in development)
-├── docs/           Design notes, pin assignments, architecture diagrams
+├── KiCad/
+│   ├── shield/                 Shield KiCad v9 project
+│   └── carrier/                Carrier KiCad v9 project
+├── firmware/
+│   ├── shield/                 ESP32-S3 PlatformIO firmware (shield)
+│   └── carrier/                ESP32-S3 PlatformIO firmware (carrier)
+├── docs/
+│   ├── DESIGN_SPEC.md          Full design specification
+│   ├── PIN_MAPPING.md          Detailed signal mapping tables
+│   └── RPi_COMPATIBILITY.md    RPi 5 HAT compatibility notes
 ├── LICENSE
 └── README.md
 ```
 
 ---
 
-## Status
+## Hardware Status
 
-| Item | Status |
-|------|--------|
-| Schematic | 🟡 Initial draft |
-| PCB layout | 🔴 Not started |
-| ESP32-S3 firmware | 🔴 Not started |
-| UNO Q sketch integration | 🔴 Not started |
-| UNO Q Python/MQTT integration | 🔴 Not started |
+| Item | Shield | Carrier |
+|------|--------|---------|
+| Design spec | Done | Done |
+| Schematic | In progress | In progress |
+| PCB layout | Not started | Not started |
+| ESP32-S3 firmware | Not started | Not started |
+| UNO Q sketch integration | Not started | Not started |
+| UNO Q Linux/MQTT integration | Not started | Not started |
+
+---
+
+## References
+
+- Arduino UNO Q Documentation: https://docs.arduino.cc/hardware/uno-q/
+- QRB2210 Datasheet: https://docs.qualcomm.com/bundle/publicresource/80-30843-1
+- ESP32-HUB75-MatrixPanel-DMA: https://github.com/mrfaptastic/ESP32-HUB75-MatrixPanel-DMA
+- RPi HAT Specification: https://github.com/raspberrypi/hats
+- Samtec FTSH-130-01-L-DV: https://www.samtec.com/products/ftsh
+- Molex 0545821522 FPC: https://www.molex.com
 
 ---
 
 ## Project
 
-**Hybrid RobotiX** — Dale Weber  
+**Hybrid RobotiX** — Dale Weber
 Part of the **My Chairiet** distributed computing platform.
-UNO Q Shield for Hub5 Compatible LED Panels
+"I. WILL. NEVER. GIVE. UP. OR. SURRENDER."
