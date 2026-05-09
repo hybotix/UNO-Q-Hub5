@@ -1,0 +1,296 @@
+(kicad_sch
+  (version 20231120)
+  (generator "eeschema")
+  (generator_version "9.0")
+  (paper "A4")
+  (title_block
+    (title "UNO Q HUB75 Shield — Display Interface")
+    (date "2026-05-08")
+    (rev "0.3")
+    (company "Hybrid RobotiX")
+    (comment 1 "4-wire SPI display — SPI2/LCD_CAM, 80MHz")
+    (comment 2 "Target: 5\" 800×480 TFT + GT911 5-point capacitive touch")
+    (comment 3 "GT911: I2C shared bus (GPIO8/9) + INT (GPIO44, input-only)")
+    (comment 4 "LCD_RST and TOUCH_RST shared on GPIO43")
+  )
+
+  (lib_symbols
+
+    ;; ── 22-pin 0.5mm FPC connector ───────────────────────────────────────────
+    ;; Molex 503480-2200 or equivalent
+    ;; Bottom-contact, right-angle, ZIF locking
+    (symbol "FPC_22PIN_DISPLAY"
+      (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+      (property "Reference" "J6" (at 0 16 0)
+        (effects (font (size 1.27 1.27))))
+      (property "Value" "FPC_22pin_0.5mm_Display" (at 0 14 0)
+        (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Connector_FFC-FPC:Molex_503480-2200_1x22-1MP_P0.50mm_Horizontal" (at 0 12 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (property "Datasheet" "https://www.molex.com/en-us/products/part-detail/5034802200" (at 0 10 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (property "MPN" "503480-2200" (at 0 8 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (symbol "FPC_22PIN_DISPLAY_0_0"
+        (rectangle (start -6 -14) (end 6 14)
+          (stroke (width 0.254) (type default)) (fill (type background)))
+        ;; Pin 1 marker
+        (polyline (pts (xy -6 14) (xy -4 14) (xy -6 12))
+          (stroke (width 0.254) (type default)) (fill (type filled)))
+        ;; Signal pins — left column
+        (pin passive at -9 12 0 (length 3)
+          (name "GND" (effects (font (size 1.016 1.016))))
+          (number "1" (effects (font (size 1.016 1.016)))))
+        (pin power_in at -9 10 0 (length 3)
+          (name "+3V3" (effects (font (size 1.016 1.016))))
+          (number "2" (effects (font (size 1.016 1.016)))))
+        (pin input at -9 8 0 (length 3)
+          (name "LCD_CLK" (effects (font (size 1.016 1.016))))
+          (number "3" (effects (font (size 1.016 1.016)))))
+        (pin input at -9 6 0 (length 3)
+          (name "LCD_MOSI" (effects (font (size 1.016 1.016))))
+          (number "4" (effects (font (size 1.016 1.016)))))
+        (pin input at -9 4 0 (length 3)
+          (name "LCD_CS" (effects (font (size 1.016 1.016))))
+          (number "5" (effects (font (size 1.016 1.016)))))
+        (pin input at -9 2 0 (length 3)
+          (name "LCD_DC" (effects (font (size 1.016 1.016))))
+          (number "6" (effects (font (size 1.016 1.016)))))
+        (pin input at -9 0 0 (length 3)
+          (name "LCD_RST/TOUCH_RST" (effects (font (size 1.016 1.016))))
+          (number "7" (effects (font (size 1.016 1.016)))))
+        (pin input at -9 -2 0 (length 3)
+          (name "LCD_BL_PWM" (effects (font (size 1.016 1.016))))
+          (number "8" (effects (font (size 1.016 1.016)))))
+        (pin output at -9 -4 0 (length 3)
+          (name "TOUCH_INT" (effects (font (size 1.016 1.016))))
+          (number "9" (effects (font (size 1.016 1.016)))))
+        (pin bidirectional at -9 -6 0 (length 3)
+          (name "I2C_SDA" (effects (font (size 1.016 1.016))))
+          (number "10" (effects (font (size 1.016 1.016)))))
+        (pin input at -9 -8 0 (length 3)
+          (name "I2C_SCL" (effects (font (size 1.016 1.016))))
+          (number "11" (effects (font (size 1.016 1.016)))))
+        (pin passive at -9 -10 0 (length 3)
+          (name "GND" (effects (font (size 1.016 1.016))))
+          (number "12" (effects (font (size 1.016 1.016)))))
+        (pin power_in at -9 -12 0 (length 3)
+          (name "+5V_BL" (effects (font (size 1.016 1.016))))
+          (number "13" (effects (font (size 1.016 1.016)))))
+        ;; Right column — NC reserved
+        (pin no_connect at 9 12 180 (length 3)
+          (name "GND" (effects (font (size 1.016 1.016))))
+          (number "14" (effects (font (size 1.016 1.016)))))
+        (pin no_connect at 9 10 180 (length 3)
+          (name "NC" (effects (font (size 1.016 1.016))))
+          (number "15" (effects (font (size 1.016 1.016)))))
+        (pin no_connect at 9 8 180 (length 3)
+          (name "NC" (effects (font (size 1.016 1.016))))
+          (number "16" (effects (font (size 1.016 1.016)))))
+        (pin no_connect at 9 6 180 (length 3)
+          (name "NC" (effects (font (size 1.016 1.016))))
+          (number "17" (effects (font (size 1.016 1.016)))))
+        (pin no_connect at 9 4 180 (length 3)
+          (name "NC" (effects (font (size 1.016 1.016))))
+          (number "18" (effects (font (size 1.016 1.016)))))
+        (pin no_connect at 9 2 180 (length 3)
+          (name "NC" (effects (font (size 1.016 1.016))))
+          (number "19" (effects (font (size 1.016 1.016)))))
+        (pin no_connect at 9 0 180 (length 3)
+          (name "NC" (effects (font (size 1.016 1.016))))
+          (number "20" (effects (font (size 1.016 1.016)))))
+        (pin no_connect at 9 -2 180 (length 3)
+          (name "NC" (effects (font (size 1.016 1.016))))
+          (number "21" (effects (font (size 1.016 1.016)))))
+        (pin passive at 9 -12 180 (length 3)
+          (name "GND_SHIELD" (effects (font (size 1.016 1.016))))
+          (number "22" (effects (font (size 1.016 1.016)))))
+      )
+    )
+
+    ;; ── Capacitor ────────────────────────────────────────────────────────────
+    (symbol "C"
+      (pin_names (offset 0.254) hide) (in_bom yes) (on_board yes)
+      (property "Reference" "C" (at 1.016 0.508 0)
+        (effects (font (size 1.27 1.27)) (justify left)))
+      (property "Value" "C" (at 1.016 -1.016 0)
+        (effects (font (size 1.27 1.27)) (justify left)))
+      (property "Footprint" "" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (symbol "C_0_1"
+        (polyline (pts (xy -1.524 -0.508) (xy 1.524 -0.508))
+          (stroke (width 0.3302) (type default)) (fill (type none)))
+        (polyline (pts (xy -1.524 0.508) (xy 1.524 0.508))
+          (stroke (width 0.3302) (type default)) (fill (type none)))
+      )
+      (symbol "C_1_1"
+        (pin passive at 0 2.032 270 (length 1.524)
+          (name "~{}" (effects (font (size 1.016 1.016))))
+          (number "1" (effects (font (size 1.016 1.016)))))
+        (pin passive at 0 -2.032 90 (length 1.524)
+          (name "~{}" (effects (font (size 1.016 1.016))))
+          (number "2" (effects (font (size 1.016 1.016)))))
+      )
+    )
+
+    ;; ── Resistor ─────────────────────────────────────────────────────────────
+    (symbol "R"
+      (pin_names (offset 0) hide) (in_bom yes) (on_board yes)
+      (property "Reference" "R" (at 2.032 0 90)
+        (effects (font (size 1.27 1.27))))
+      (property "Value" "R" (at 0 0 90)
+        (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (symbol "R_0_1"
+        (rectangle (start -1.016 -2.032) (end 1.016 2.032)
+          (stroke (width 0.254) (type default)) (fill (type none)))
+      )
+      (symbol "R_1_1"
+        (pin passive at 0 3.556 270 (length 1.524)
+          (name "~{}" (effects (font (size 1.016 1.016))))
+          (number "1" (effects (font (size 1.016 1.016)))))
+        (pin passive at 0 -3.556 90 (length 1.524)
+          (name "~{}" (effects (font (size 1.016 1.016))))
+          (number "2" (effects (font (size 1.016 1.016)))))
+      )
+    )
+
+    ;; ── 0Ω jumper resistor ───────────────────────────────────────────────────
+    ;; Used for JP1/JP2 mode select and SPI trace termination
+    (symbol "R_0R_JUMPER"
+      (pin_names (offset 0) hide) (in_bom yes) (on_board yes)
+      (property "Reference" "JP" (at 2.032 0 90)
+        (effects (font (size 1.27 1.27))))
+      (property "Value" "0Ω DNP" (at 0 0 90)
+        (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (symbol "R_0R_JUMPER_0_0"
+        (rectangle (start -1.016 -2.032) (end 1.016 2.032)
+          (stroke (width 0.508) (type default)) (fill (type none)))
+        (polyline (pts (xy -1.016 0) (xy 1.016 0))
+          (stroke (width 0.508) (type default)) (fill (type none)))
+      )
+      (symbol "R_0R_JUMPER_1_1"
+        (pin passive at 0 3.556 270 (length 1.524)
+          (name "~{}" (effects (font (size 1.016 1.016))))
+          (number "1" (effects (font (size 1.016 1.016)))))
+        (pin passive at 0 -3.556 90 (length 1.524)
+          (name "~{}" (effects (font (size 1.016 1.016))))
+          (number "2" (effects (font (size 1.016 1.016)))))
+      )
+    )
+  )
+
+  ;;
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;; J6 — 22-pin 0.5mm FPC Display Connector
+  ;; Signal routing: S3 SPI2 → J6 → flat cable → 5" TFT module
+  ;; Touch: GT911 on display module → I2C back through J6 → shared I2C bus
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;;
+  (symbol (lib_id "FPC_22PIN_DISPLAY") (at 100 80 0) (unit 1)
+    (property "Reference" "J6" (at 100 62 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "5in_TFT_GT911" (at 100 60 0)
+      (effects (font (size 1.27 1.27)))))
+
+  ;;
+  ;; JP1 — SPI mode select (0Ω jumper on LCD_CLK path)
+  ;; Closed = 4-wire SPI (default, populated)
+  ;; Open   = future QSPI path (DNP unless QSPI upgrade)
+  ;;
+  (symbol (lib_id "R_0R_JUMPER") (at 75 78 90) (unit 1)
+    (property "Reference" "JP1" (at 75 74 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "0Ω SPI_CLK_SEL" (at 75 76 0)
+      (effects (font (size 1.27 1.27)))))
+
+  ;; +3V3 decoupling at FPC connector
+  (symbol (lib_id "C") (at 115 68 0) (unit 1)
+    (property "Reference" "C20" (at 117 67 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "100nF 10V X7R 0402" (at 117 69 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "GRM155R71A104KA01D" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  ;; +5V_BL bulk cap — backlight current can be 100–200mA
+  (symbol (lib_id "C") (at 115 72 0) (unit 1)
+    (property "Reference" "C21" (at 117 71 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "10µF 10V X5R 0805" (at 117 73 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "GRM21BR61A106KE18L" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  ;; GT911 I2C pullups — 4.7kΩ on display side of FPC
+  ;; Note: ES8388 has 1kΩ on same bus. Net parallel = ~820Ω. Fine at 400kHz.
+  (symbol (lib_id "R") (at 87 92 0) (unit 1)
+    (property "Reference" "R20" (at 89 92 90)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "4.7kΩ 1% 0402" (at 87 92 90)
+      (effects (font (size 1.27 1.27))))
+    (property "MPN" "RC0402FR-074K7L" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  (symbol (lib_id "R") (at 87 96 0) (unit 1)
+    (property "Reference" "R21" (at 89 96 90)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "4.7kΩ 1% 0402" (at 87 96 90)
+      (effects (font (size 1.27 1.27))))
+    (property "MPN" "RC0402FR-074K7L" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  ;;
+  ;; ── Hierarchical port connections ─────────────────────────────────────────
+  ;;
+  (hierarchical_label "LCD_CLK"
+    (shape input) (at 50 78 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "LCD_MOSI"
+    (shape input) (at 50 82 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "LCD_CS"
+    (shape input) (at 50 86 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "LCD_DC"
+    (shape input) (at 50 90 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "LCD_RST"
+    (shape input) (at 50 94 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "TOUCH_INT"
+    (shape output) (at 50 98 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "LCD_BL_PWM"
+    (shape input) (at 50 102 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "CODEC_SDA"
+    (shape bidirectional) (at 50 108 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "CODEC_SCL"
+    (shape input) (at 50 112 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "+3V3"
+    (shape power_in) (at 115 65 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "+5V_EXT"
+    (shape power_in) (at 115 69 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "DGND"
+    (shape power_in) (at 115 76 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+
+  ;;
+  ;; ── Design notes ──────────────────────────────────────────────────────────
+  ;;
+  (text "DISPLAY INTERFACE NOTES:\n\nSPI2 (LCD_CAM peripheral) — 4-wire SPI:\n  GPIO17 = LCD_CLK  (SPI2 clock, 80MHz max)\n  GPIO18 = LCD_MOSI (SPI2 MOSI, pixel data out)\n  GPIO11 = LCD_CS   (SPI2 CS, active LOW)\n  GPIO16 = LCD_DC   (Data=HIGH, Command=LOW)\n  No MISO needed — display is write-only\n\nGT911 CAPACITIVE TOUCH:\n  I2C address: 0x5D (INT pulled HIGH before RST released)\n              or 0x14 (INT pulled LOW before RST released)\n  Use 0x5D as default — pull INT HIGH during RST sequence in firmware\n  Shared I2C bus with ES8388 (addresses 0x10/0x11) — no conflict\n  INT (GPIO44) is input-only — correct for interrupt-driven touch\n  RST (GPIO43) shared with LCD_RST — both reset together at power-on\n\nSHARED RST SEQUENCE:\n  1. Assert RST LOW (GPIO43 LOW)\n  2. Wait 10ms\n  3. Deassert RST HIGH (GPIO43 HIGH)\n  4. Wait 100ms for display init\n  5. GT911 is also ready by this point\n  This is safe — GT911 tolerates extended reset assertion\n\nBACKLIGHT:\n  GPIO46 = PWM via LEDC peripheral (any frequency 1Hz–40MHz)\n  Typical: 5kHz, 8-bit duty cycle for flicker-free dimming\n  +5V_BL rail: direct from +5V_EXT, max 200mA\n  C21 (10µF) provides local bulk for LED inrush\n\nIPC-2221B LAYOUT RULES FOR THIS SHEET:\n  SPI2 traces (CLK, MOSI, CS, DC) must have unbroken GND plane beneath\n  Keep SPI2 traces away from HUB75 CLK and LAT (both switching at 20MHz+)\n  FPC pads: ENIG finish required. IPC-7351C Level B land pattern.\n  Stencil aperture: 80% for 0.5mm FPC pads\n  ESD protection TVS on LCD_CLK and LCD_MOSI recommended for production"
+    (at 30 125 0)
+    (effects (font (size 1.27 1.27)) (justify left top)))
+)

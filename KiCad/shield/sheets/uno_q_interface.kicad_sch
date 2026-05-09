@@ -1,0 +1,73 @@
+(kicad_sch
+  (version 20231120)
+  (generator "eeschema")
+  (generator_version "9.0")
+  (paper "A4")
+  (title_block
+    (title "UNO Q HUB75 Shield — UNO Q Interface Headers")
+    (date "2026-05-08")
+    (rev "0.3")
+    (company "Hybrid RobotiX")
+    (comment 1 "J2: SPI3 + CS_S3_MCU (STM32U585). J3: CS_S3_MPU — DNP on shield")
+    (comment 2 "Signal flow: UNO Q top headers → shield. STM32U585 is SPI master.")
+    (comment 3 "QRB2210 CS (CS_S3_MPU) available on carrier via GPIO0, not shield.")
+  )
+
+  (lib_symbols
+    (symbol "CONN_1x6"
+      (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+      (property "Reference" "J" (at 0 10 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "Conn_1x06" (at 0 8 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical" (at 0 6 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "CONN_1x6_0_0"
+        (rectangle (start -3 -8) (end 3 8) (stroke (width 0.254)) (fill (type background)))
+        (pin passive at -6  6 0 (length 3) (name "P1" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))
+        (pin passive at -6  4 0 (length 3) (name "P2" (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))
+        (pin passive at -6  2 0 (length 3) (name "P3" (effects (font (size 1.016 1.016)))) (number "3" (effects (font (size 1.016 1.016)))))
+        (pin passive at -6  0 0 (length 3) (name "P4" (effects (font (size 1.016 1.016)))) (number "4" (effects (font (size 1.016 1.016)))))
+        (pin passive at -6 -2 0 (length 3) (name "P5" (effects (font (size 1.016 1.016)))) (number "5" (effects (font (size 1.016 1.016)))))
+        (pin passive at -6 -4 0 (length 3) (name "P6" (effects (font (size 1.016 1.016)))) (number "6" (effects (font (size 1.016 1.016)))))
+      )
+    )
+    (symbol "CONN_1x2"
+      (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+      (property "Reference" "J" (at 0 6 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "Conn_1x02" (at 0 4 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" (at 0 2 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "CONN_1x2_0_0"
+        (rectangle (start -3 -3) (end 3 3) (stroke (width 0.254)) (fill (type background)))
+        (pin passive at -6  1 0 (length 3) (name "TX" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))
+        (pin passive at -6 -1 0 (length 3) (name "GND" (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))
+      )
+    )
+  )
+
+  ;; J2 — SPI3 interface from UNO Q (STM32U585 master)
+  ;; Signals: MOSI, MISO, SCK from JSPI header; CS_S3_MCU from JDIGITAL
+  (symbol (lib_id "CONN_1x6") (at 60 50 0) (unit 1)
+    (property "Reference" "J2" (at 60 40 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "UNO_SPI_MCU" (at 60 38 0) (effects (font (size 1.27 1.27)))))
+
+  ;; J3 — Debug UART header (GPIO47 TX only)
+  ;; Also serves as CS_S3_MPU breakout on carrier (GPIO0)
+  ;; On shield: TX only (GPIO47), GND
+  (symbol (lib_id "CONN_1x2") (at 60 80 0) (unit 1)
+    (property "Reference" "J3" (at 60 74 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "UART_DEBUG_TX" (at 60 72 0) (effects (font (size 1.27 1.27)))))
+
+  (hierarchical_label "SPI_MOSI"
+    (shape output) (at 40 44 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "SPI_MISO"
+    (shape input) (at 40 48 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "SPI_SCK"
+    (shape output) (at 40 52 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "CS_S3_MCU"
+    (shape output) (at 40 56 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "+5V_EXT"
+    (shape power_in) (at 40 60 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "DGND"
+    (shape power_in) (at 40 64 0) (effects (font (size 1.27 1.27)) (justify right)))
+
+  (text "J2 PINOUT (1x6 2.54mm, mates with UNO Q JSPI):\n  Pin 1: SPI_MOSI (from STM32U585)\n  Pin 2: SPI_MISO (to STM32U585)\n  Pin 3: SPI_SCK  (from STM32U585)\n  Pin 4: CS_S3_MCU (GPIO10, active LOW)\n  Pin 5: GND\n  Pin 6: +3V3 (reference only — do not draw current from UNO Q header)\n\nJ3 PINOUT (1x2 2.54mm, debug header):\n  Pin 1: UART_TX (GPIO47) — S3 debug output\n  Pin 2: GND\n  Use a USB-UART adapter at 115200 baud to read S3 debug output.\n  On Super Carrier, GPIO47 is S3→C6 UART TX — this header is DNP on carrier.\n\nCS_S3_MPU NOTE:\n  CS_S3_MPU (GPIO0) is NOT present on the shield.\n  The QRB2210 MPU is not accessible via UNO Q top headers.\n  CS_S3_MPU is only used on the Super Carrier via JMISC (B1).\n  GPIO0 has a 10kΩ pullup on both shield and carrier PCBs\n  to ensure safe boot even when CS_S3_MPU is unused."
+    (at 20 100 0) (effects (font (size 1.27 1.27)) (justify left top)))
+)

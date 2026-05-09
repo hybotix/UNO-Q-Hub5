@@ -1,267 +1,355 @@
 # UNO Q HUB75 Project — Design Specification
 
 **Hybrid RobotiX** — Dale Weber
-**Revision:** 0.2
+**Revision:** 0.3
 **Date:** 2026-05-08
-**Status:** APPROVED — Proceeding to schematic
+**Status:** APPROVED
 
 ---
 
-## Overview
+## Project Overview
 
-This project produces two hardware designs for HUB75 RGB LED matrix panel driving
-and ecosystem expansion on the Arduino UNO Q platform:
+Two hardware products for HUB75 RGB LED matrix driving, QSPI display,
+and I2S audio on the Arduino UNO Q platform:
 
-1. **UNO Q HUB75 Shield** — Arduino UNO form-factor shield (top headers)
-2. **UNO Q HUB75 Carrier** — Full carrier board (JMISC B1 + JMEDIA B2 bottom connectors)
-
-These are standalone Hybrid RobotiX products — not platform-specific to My Chairiet.
-
----
-
-## Co-Processor Architecture
-
-### ESP32-S3-MINI-1 (both boards)
-
-| Role | Detail |
-|------|--------|
-| HUB75 co-processor | DMA-driven via ESP32-HUB75-MatrixPanel-DMA library |
-| I2S audio processor | Master to ES8388 codec (BCLK, LRCLK, DOUT, DIN) |
-| SPI interface | Slave — dual CS: CS_S3_MCU (STM32U585) + CS_S3_MPU (QRB2210) |
-| C6 link | Direct UART to ESP32-C6 (carrier only) |
-| USB | Native USB-OTG via USB-C for flashing/debug |
-
-### ESP32-C6-MINI-1 (carrier only)
-
-| Role | Detail |
-|------|--------|
-| Radio co-processor | Thread, Matter, Zigbee (802.15.4), WiFi 6, BLE 5 |
-| Ecosystems | Home Assistant, broader IoT/Mesh networking |
-| SPI interface | Slave — dual CS: CS_C6_MCU (STM32U585) + CS_C6_MPU (QRB2210) |
-| S3 link | Direct UART to ESP32-S3 (independent of UNO Q) |
-| USB | USB-Serial/JTAG for flashing/debug |
-
-### S3 ↔ C6 Direct Link
-
-S3 and C6 communicate via dedicated UART. This is independent of the UNO Q —
-the C6 can push data to the S3 display, and the S3 can trigger wireless events
-on the C6 without UNO Q involvement.
-
-### SPI Bus Architecture
-
-Four independent CS lines on the shared SPI bus:
-
-| CS Line | Master | Target |
-|---------|--------|--------|
-| CS_S3_MCU | STM32U585 | ESP32-S3 |
-| CS_S3_MPU | QRB2210 | ESP32-S3 |
-| CS_C6_MCU | STM32U585 | ESP32-C6 (carrier only) |
-| CS_C6_MPU | QRB2210 | ESP32-C6 (carrier only) |
-
-MOSI, MISO, SCK shared across all. Software must ensure only one master
-and one target active simultaneously.
+| Board | Description | Build Order |
+|-------|-------------|-------------|
+| **UNO Q HUB75 Shield** | Arduino UNO form-factor shield | First |
+| **UNO Q Super Carrier** | Full development carrier | Second |
 
 ---
 
-## Audio Architecture (both boards)
+## ESP32-S3 — Co-Processor Role (No Wireless)
 
-### I2S Codec: ES8388
+**The ESP32-S3 is a dedicated co-processor. It has no wireless role.**
+
+All wireless (WiFi 6, BLE 5, Thread, Matter, Zigbee) is handled exclusively
+by the ESP32-C6. The S3's onboard PCB antenna is non-functional by design.
+The C6 antenna keepout is the only one requiring strict PCB enforcement.
+
+### S3 Co-Processor Functions
+
+| Function | Interface | Notes |
+|----------|-----------|-------|
+| HUB75 LED panel driver | 13 GPIO → 74HCT245 ×2 → IDC | DMA via ESP32-HUB75-MatrixPanel-DMA |
+| 5" TFT display driver | 4-wire SPI (SPI2/LCD_CAM) | 80MHz, LVGL partial rendering |
+| I2S audio processor | 4 GPIO → ES8388 | I2S master |
+| SPI slave to UNO Q | SPI3, 1–2 CS lines | STM32U585 and/or QRB2210 masters |
+| I2C master | GPIO8/9 shared bus | ES8388 control + GT911 touch |
+| USB debug | GPIO19/20 | CDC/JTAG — replaces UART0 |
+
+---
+
+## Module: ESP32-S3-WROOM-1-N16R8
+
+### Selection Rationale
+
+| Candidate | Verdict | Reason |
+|-----------|---------|--------|
+| ESP32-S3-MINI-1 | ❌ Rejected | No PSRAM — cannot buffer 5" display |
+| ESP32-S3-WROOM-1-N8R8 | ⚠️ Marginal | 8MB flash too small for full firmware stack |
+| **ESP32-S3-WROOM-1-N16R8** | ✅ **Selected** | 16MB flash, 8MB PSRAM, VDD_SPI=3.3V |
+| ESP32-S3-WROOM-1-N16R16V | ❌ Rejected | VDD_SPI=1.8V — GPIO47/48 incompatible with 3.3V HUB75 |
+| ESP32-S3-WROOM-2-N32R16V | ❌ Rejected | Same VDD_SPI=1.8V issue on GPIO47/48 |
+
+### Module Specifications
 
 | Parameter | Value |
 |-----------|-------|
-| Resolution | 24-bit |
-| Interface | I2S slave to ESP32-S3 |
-| Output | Stereo line-level on pin headers |
-| Input | Digital PDM/I2S microphone via header |
-| Supply | 3.3V |
-| Control | I2C from ESP32-S3 |
+| Part number | ESP32-S3-WROOM-1-N16R8 |
+| Flash | 16MB Quad SPI |
+| PSRAM | 8MB Octal SPI (in-package, ESP32-S3R8) |
+| Internal SRAM | 512KB |
+| Castellated pads | 36 |
+| Usable GPIO | **33** (GPIO35/36/37 consumed by PSRAM internally) |
+| VDD_SPI | 3.3V — GPIO47/48 safe at 3.3V |
+| Dimensions | 18.0 × 25.5 × 3.1mm |
+| Antenna | PCB trace — **non-functional, C6 handles all RF** |
+| Alternate PN | ESP32-S3-WROOM-1U-N16R8 (U.FL) — drop-in substitute |
 
-### Signal Chain
+### PSRAM Constraint — Critical Design Note
 
-```
-ESP32-S3 I2S DOUT → ES8388 DAC → Line Out header (stereo, line-level)
-PDM/I2S Mic header → ES8388 ADC → ESP32-S3 I2S DIN
-```
+The ESP32-S3R8 chip uses octal SPI for its in-package PSRAM.
+**GPIO35, GPIO36, and GPIO37 are hardwired to the PSRAM internally.**
+They appear as castellated pads on the module edge but cannot be used
+as general-purpose GPIO. Treat as NC on the carrier PCB.
 
-### Audio Connectors
+### PSRAM Memory Budget
 
-| Connector | Type | Signals |
-|-----------|------|---------|
-| Line Out | 2.54mm pin header | L+, L-, R+, R- (differential) or L, R, GND |
-| Mic In | 2.54mm pin header | VCC, GND, DATA, CLK (PDM/I2S mic compatible) |
-
-No analog JMISC audio path on either board. No headphone amplifier.
-No 3.5mm jacks (line-level headers only).
+| Use | Size |
+|-----|------|
+| Full 800×480 16bpp frame buffer | 768KB |
+| LVGL heap (partial rendering) | 512KB |
+| Audio DMA ring buffers | 64KB |
+| Application heap | ~6.7MB remaining |
 
 ---
 
-## HUB75 Signal Path (both boards)
+## GPIO Allocation — Shield (Verified: 32 used, 1 spare)
+
+OE on both 74HCT245s is tied permanently LOW in hardware (0Ω to GND
+at pin 19). No GPIO required for OE.
+
+UART0 (GPIO43/44 default) is superseded by USB CDC on GPIO19/20.
+GPIO43/44 are reassigned to the display SPI bus.
+
+| GPIO | Signal | Direction | Peripheral |
+|------|--------|-----------|------------|
+| 0 | — | — | **NC on shield** (used on carrier for CS_S3_MPU) |
+| 1 | HUB75_R1 | OUT | 74HCT245 U2 |
+| 2 | HUB75_G1 | OUT | 74HCT245 U2 |
+| 3 | HUB75_B1 | OUT | 74HCT245 U2 |
+| 4 | HUB75_R2 | OUT | 74HCT245 U2 |
+| 5 | I2S_BCLK | OUT | ES8388 |
+| 6 | I2S_LRCLK | OUT | ES8388 |
+| 7 | I2S_DOUT | OUT | ES8388 DAC |
+| 8 | I2C_SDA | BIDIR | ES8388 + GT911 (shared) |
+| 9 | I2C_SCL | OUT | ES8388 + GT911 (shared) |
+| 10 | CS_S3_MCU | IN | SPI3 slave — STM32U585 CS |
+| 11 | LCD_CS | OUT | SPI2 display |
+| 12 | SPI_MISO | OUT | SPI3 slave |
+| 13 | SPI_MOSI | IN | SPI3 slave |
+| 14 | SPI_SCK | IN | SPI3 slave |
+| 15 | I2S_DIN | IN | ES8388 ADC |
+| 16 | LCD_DC | OUT | SPI2 display — Data/Command |
+| 17 | LCD_CLK | OUT | SPI2 display — SPI clock |
+| 18 | LCD_MOSI | OUT | SPI2 display — pixel data |
+| 19 | USB_D- | BIDIR | USB CDC/JTAG |
+| 20 | USB_D+ | BIDIR | USB CDC/JTAG |
+| 21 | HUB75_G2 | OUT | 74HCT245 U2 |
+| 33 | HUB75_CLK | OUT | 74HCT245 U2 |
+| 34 | HUB75_LAT | OUT | 74HCT245 U2 |
+| 35 | *** NC *** | — | PSRAM internal — do not connect |
+| 36 | *** NC *** | — | PSRAM internal — do not connect |
+| 37 | *** NC *** | — | PSRAM internal — do not connect |
+| 38 | HUB75_ADDR_A | OUT | 74HCT245 U3 |
+| 39 | HUB75_ADDR_B | OUT | 74HCT245 U3 |
+| 40 | HUB75_ADDR_C | OUT | 74HCT245 U3 |
+| 41 | HUB75_ADDR_D | OUT | 74HCT245 U3 |
+| 42 | HUB75_ADDR_E | OUT | 74HCT245 U3 |
+| 43 | LCD_RST / TOUCH_RST | OUT | Display + GT911 (shared reset) |
+| 44 | TOUCH_INT | IN | GT911 (input-only GPIO) |
+| 45 | HUB75_B2 | OUT | 74HCT245 U2 |
+| 46 | LCD_BL_PWM | OUT | Backlight — LEDC peripheral |
+| 47 | UART_DEBUG_TX | OUT | **Spare — 2-pin debug header on shield** |
+| 48 | — | — | **Spare — available** |
+
+### GPIO Count Verification
+
+| Function | Count | GPIOs |
+|----------|-------|-------|
+| HUB75 RGB data (R1,G1,B1,R2,G2,B2) | 6 | 1,2,3,4,21,45 |
+| HUB75 timing (CLK,LAT) | 2 | 33,34 |
+| HUB75 address (ADDR_A–E) | 5 | 38,39,40,41,42 |
+| HUB75 OE | 0 | **Tied LOW at 74HCT245** |
+| I2S audio (BCLK,LRCLK,DOUT,DIN) | 4 | 5,6,7,15 |
+| I2C shared bus (SDA,SCL) | 2 | 8,9 |
+| SPI3 slave (MOSI,MISO,SCK,CS_MCU) | 4 | 10,12,13,14 |
+| USB CDC/JTAG (D+,D-) | 2 | 19,20 |
+| SPI2 display (CLK,MOSI,CS,DC) | 4 | 11,16,17,18 |
+| Display+Touch RST (shared) | 1 | 43 |
+| Touch INT | 1 | 44 |
+| Backlight PWM | 1 | 46 |
+| **Total required** | **32** | |
+| **Usable on WROOM-1-N16R8** | **33** | |
+| **Spare** | **1** | GPIO47 (debug TX) |
+| **Available** | **1** | GPIO48 |
+
+---
+
+## GPIO Allocation — Super Carrier Additions
+
+The carrier adds CS_S3_MPU (QRB2210 chip select) and the S3↔C6 direct
+UART link. These use GPIO0 and the two spare GPIOs from the shield map.
+
+### Boot Constraint on GPIO0
+GPIO0 is a strapping pin. It must be HIGH at boot for normal operation.
+CS_S3_MPU is active-LOW and pulled HIGH by a 10kΩ resistor to +3V3.
+At power-on, CS_S3_MPU is deasserted (HIGH), satisfying the GPIO0
+strapping requirement. This is safe and a well-established pattern.
+
+| GPIO | Signal | Direction | Notes |
+|------|--------|-----------|-------|
+| 0 | CS_S3_MPU | IN | SPI3 slave — QRB2210 CS. 10kΩ pullup to +3V3. Boot-safe. |
+| 47 | S3_C6_TX | OUT | Direct UART to ESP32-C6 RX (GPIO4) |
+| 48 | S3_C6_RX | IN | Direct UART from ESP32-C6 TX (GPIO5) |
+
+**Carrier total: 35 GPIOs used (32 base + GPIO0 + GPIO47 + GPIO48).**
+**Carrier usable: 33 + GPIO0 = 34. Over by 1.**
+
+### Carrier Resolution
+
+On the carrier, the S3↔C6 UART is bidirectional — both TX and RX are
+needed. That requires GPIO47 + GPIO48 = 2 GPIOs. Plus CS_S3_MPU on
+GPIO0. Total carrier demand = 35. Available = 34 (33 + GPIO0).
+
+**Resolution: Drop S3_C6_RX on the carrier.**
+
+The S3 sends data TO the C6 (display events, sensor triggers).
+The C6 sends data TO the S3 (WiFi status, MQTT payloads to display).
+The return path (C6→S3) is already covered by the SPI slave bus —
+the C6 can assert CS_C6 to drive the S3's SPI3 slave directly.
+
+**S3↔C6 communication model:**
+- S3→C6: UART TX (GPIO47) — fast unidirectional push
+- C6→S3: SPI slave CS_C6_MCU line (QRB2210 or STM32U585 mediates)
+
+This eliminates the need for GPIO48 on the carrier as a UART RX line.
+GPIO48 remains spare on both shield and carrier.
+
+**Final carrier GPIO count: 34 used, 0 spare on WROOM-1-N16R8+GPIO0.**
+
+---
+
+## Display Interface — 5" TFT with Capacitive Touch
+
+### Interface Specification
+
+| Parameter | Value |
+|-----------|-------|
+| Bus | 4-wire SPI via SPI2 (LCD_CAM peripheral) |
+| Max clock | 80MHz |
+| Throughput | ~10MB/s |
+| Frame rate | ~13fps full frame; smooth UI with LVGL partial rendering |
+| Connector | 22-pin 0.5mm FPC (Molex 503480-2200 family) |
+| Touch controller | GT911 (5-point capacitive, I2C, 100Hz) |
+| Touch bus | Shared I2C (GPIO8/9) + INT (GPIO44) |
+| Touch RST | Shared with LCD_RST on GPIO43 |
+| Backlight | PWM via GPIO46 (LEDC), power from +5V_EXT |
+
+### Target Display Modules
+
+Any 5" 800×480 SPI TFT with GT911 capacitive touch and 22-pin FPC.
+Primary target: Waveshare 5" SPI LCD 800×480 + GT911 cap touch.
+Secondary target: BuyDisplay ER-TFTM050 series with SPI interface.
+
+### Display Connector Pinout (22-pin 0.5mm FPC)
+
+| Pin | Signal | Notes |
+|-----|--------|-------|
+| 1 | GND | |
+| 2 | +3V3 | Display logic supply |
+| 3 | LCD_CLK | SPI2 clock (GPIO17) |
+| 4 | LCD_MOSI | SPI2 data (GPIO18) |
+| 5 | LCD_CS | SPI2 chip select (GPIO11) |
+| 6 | LCD_DC | Data/Command (GPIO16) |
+| 7 | LCD_RST | Shared with TOUCH_RST (GPIO43) |
+| 8 | LCD_BL_PWM | Backlight PWM (GPIO46) |
+| 9 | TOUCH_INT | GT911 interrupt (GPIO44, input-only) |
+| 10 | I2C_SDA | GT911 touch data (GPIO8, shared) |
+| 11 | I2C_SCL | GT911 touch clock (GPIO9, shared) |
+| 12 | GND | |
+| 13 | +5V_BL | Backlight LED supply (from +5V_EXT) |
+| 14 | GND | |
+| 15–22 | NC | Reserved |
+
+### Jumper Select (JP1/JP2)
+
+Two 0Ω resistor footprints (2.54mm pads, jumper-compatible) on the
+SPI data path allow future QSPI upgrade if GPIO budget permits:
+
+| Jumper | Position | Mode |
+|--------|----------|------|
+| JP1 | Closed (default) | 4-wire SPI |
+| JP2 | Open (default) | QSPI D1/D2 path — DNP |
+
+---
+
+## Audio Interface — ES8388
+
+| Parameter | Value |
+|-----------|-------|
+| Codec | ES8388 (24-bit stereo I2S) |
+| S3 role | I2S master |
+| Sample rate | Up to 96kHz |
+| Control | I2C (GPIO8/9, shared with GT911) |
+| Output | Stereo line-level, 1×4 2.54mm header |
+| Input | PDM/I2S digital mic, 1×4 2.54mm header |
+| AVDD | Filtered from +3V3 via FB1 (600Ω@100MHz ferrite) |
+| AGND | Star point at U5 — separate pour from DGND |
+
+---
+
+## HUB75 Driver
 
 ```
-ESP32-S3 (3.3V) → 74HCT245 x2 (3.3V→5V) → HUB75 2x8 IDC → Panel
+ESP32-S3 (3.3V GPIO) → 74HCT245 ×2 (3.3V→5V) → HUB75 2×8 IDC → Panel
 ```
 
-| IC | Signals |
-|----|---------|
-| U_LS1 (74HCT245) | R1, G1, B1, R2, G2, B2, CLK, LAT |
-| U_LS2 (74HCT245) | ADDR_A, ADDR_B, ADDR_C, ADDR_D, ADDR_E, OE |
+| IC | Function | Signals |
+|----|----------|---------|
+| U2 (SN74HCT245PW) | RGB + timing | R1,G1,B1,R2,G2,B2,CLK,LAT |
+| U3 (SN74HCT245PW) | Address | ADDR_A,ADDR_B,ADDR_C,ADDR_D,ADDR_E + 3 NC |
 
-DIR tied LOW (A→B), ~OE tied LOW (always enabled).
-External 5V required. Panel power does not flow through UNO Q headers.
+Both ICs: DIR tied LOW (A→B), ~OE tied LOW (always enabled) via 0Ω to GND.
+VCC = +5V_EXT_HUB75. No GPIO consumed for OE or DIR.
+
+---
+
+## SPI Bus Architecture
+
+| CS Signal | GPIO | Active On | SPI Controller |
+|-----------|------|-----------|----------------|
+| CS_S3_MCU | GPIO10 | Shield + Carrier | SPI3 |
+| CS_S3_MPU | GPIO0 | Carrier only | SPI3 |
+| CS_C6_MCU | — | Carrier only | C6 SPI slave |
+| CS_C6_MPU | — | Carrier only | C6 SPI slave |
+
+---
+
+## Wireless Architecture
+
+| Capability | Owner | Notes |
+|-----------|-------|-------|
+| WiFi 6 (802.11ax) | ESP32-C6 | Carrier only |
+| BLE 5.0 | ESP32-C6 | Carrier only |
+| Thread (802.15.4) | ESP32-C6 | Carrier only |
+| Matter | ESP32-C6 | Carrier only |
+| Zigbee | ESP32-C6 | Carrier only |
+| **S3 WiFi/BLE** | **Unused** | Module present, antenna non-functional by design |
+
+---
+
+## S3 ↔ C6 Direct Link (Carrier)
+
+| Direction | Path | GPIO |
+|-----------|------|------|
+| S3 → C6 | UART TX (unidirectional) | S3: GPIO47, C6: GPIO4 |
+| C6 → S3 | SPI3 slave (C6 asserts CS_C6 via UNO Q) | Existing SPI bus |
+
+---
+
+## Power Architecture
+
+| Rail | Source | Voltage | Max Current | Used For |
+|------|--------|---------|-------------|----------|
+| +5V_EXT | Barrel jack J4 | 5.0V | 5A | HUB75 panel, backlight |
+| +5V_EXT_HUB75 | Direct from J4 | 5.0V | 3A | 74HCT245 VCC, HUB75 IDC |
+| +5V_BL | Direct from J4 | 5.0V | 200mA | Display backlight LED |
+| +3V3 | AMS1117-3.3 | 3.3V | 800mA | S3, ES8388, level shifters |
+| AVDD | +3V3 via FB1 | 3.3V | 50mA | ES8388 analog supply |
+| DGND | GND plane (L2) | 0V | — | All digital returns |
+| AGND | Separate pour | 0V | — | ES8388 analog only, star at U5 |
 
 ---
 
 ## Qwiic + Grove (both boards)
 
-### Qwiic
-- 2x JST-SH 4-pin (1.0mm pitch) in daisy-chain configuration
-- I2C SDA/SCL from STM32U585 (3.3V)
-- 4.7kΩ pullups to 3.3V
-
-### Grove
-| Connector | Interface | Signals |
-|-----------|-----------|---------|
-| Grove I2C | I2C | SDA, SCL |
-| Grove UART | UART | TX, RX |
-| Grove SPI | SPI | MOSI, MISO, SCK, CS |
-| Grove Digital | GPIO | GPIO0, GPIO1 |
-| Grove Analog | ADC | ADC0, ADC1 |
-
-All Grove signals from STM32U585 at 3.3V. Standard 4-pin 2.0mm pitch connectors.
-
----
-
-## UNO Q HUB75 Shield
-
-### Form Factor
-Standard Arduino UNO shield. Connects via top headers only (JDIGITAL, JANALOG,
-JSPI, JCTL). Fully self-contained — no JMISC pass-through required.
-
-### Components
-| Ref | Part | Function |
-|-----|------|----------|
-| U1 | ESP32-S3-MINI-1 | HUB75 + I2S audio co-processor |
-| U2 | SN74HCT245 | Level shifter: RGB + CLK + LAT |
-| U3 | SN74HCT245 | Level shifter: ADDR A-E + OE |
-| U4 | AMS1117-3.3 | 3.3V LDO from external 5V |
-| U5 | ES8388 | 24-bit I2S audio codec |
-
-### Connectors
-| Ref | Type | Purpose |
-|-----|------|---------|
-| J1 | HUB75 2x8 IDC | Panel connector |
-| J2 | 1x6 2.54mm | UNO Q SPI + CS_S3_MCU |
-| J3 | 1x3 2.54mm | UNO Q CS_S3_MPU |
-| J4 | Barrel jack 5.5/2.1mm | HUB75 external 5V |
-| J5 | USB-C | ESP32-S3 flash/debug |
-| J6 | 1x4 2.54mm | Line out (L, R, GND, AGND) |
-| J7 | 1x4 2.54mm | PDM/I2S mic in (VCC, GND, DATA, CLK) |
-| J8 | JST-SH 4-pin | Qwiic 1 |
-| J9 | JST-SH 4-pin | Qwiic 2 |
-| J10 | Grove 4-pin 2.0mm | Grove I2C |
-| J11 | Grove 4-pin 2.0mm | Grove UART |
-| J12 | Grove 4-pin 2.0mm | Grove SPI |
-| J13 | Grove 4-pin 2.0mm | Grove Digital |
-| J14 | Grove 4-pin 2.0mm | Grove Analog |
-
----
-
-## UNO Q HUB75 Carrier Board
-
-### Form Factor
-Carrier board. UNO Q mounts on top via JMISC (B1) + JMEDIA (B2).
-Smallest PCB to accommodate all connectors with clean signal routing.
-
-### UNO Q Mounting
-| Ref | Part | Mates With |
-|-----|------|-----------|
-| B1 | Samtec FTSH-130-01 2x30 1.27mm | JMISC on UNO Q underside |
-| B2 | Samtec FTSH-130-01 2x30 1.27mm | JMEDIA on UNO Q underside |
-
-### Components
-| Ref | Part | Function |
-|-----|------|----------|
-| U1 | ESP32-S3-MINI-1 | HUB75 + I2S audio co-processor |
-| U2 | SN74HCT245 | Level shifter: RGB + CLK + LAT |
-| U3 | SN74HCT245 | Level shifter: ADDR A-E + OE |
-| U4 | AMS1117-3.3 | 3.3V LDO for S3 |
-| U5 | ES8388 | 24-bit I2S audio codec |
-| U6 | ESP32-C6-MINI-1 | Thread/Matter/Zigbee/WiFi6/BLE radio |
-| U7 | TPS54331 (or similar) | Buck converter 7-24V→5V, 3A |
-| U8 | TXS0108E | 1.8V→3.3V level shifter bank 1 (MPU GPIO 0-7) |
-| U9 | TXS0108E | 1.8V→3.3V level shifter bank 2 (MPU GPIO 8-12) |
-| U10 | 24C32 EEPROM | RPi HAT ID EEPROM (pins 27/28) |
-
-### High-Speed Interfaces (from JMEDIA)
-| Ref | Connector | Interface | Compatibility |
-|-----|-----------|-----------|---------------|
-| J1 | Molex 0545821522 22-pin 0.5mm FPC | MIPI DSI 4-lane | RPi 5 compatible |
-| J2 | Molex 0545821522 22-pin 0.5mm FPC | MIPI CSI0 4-lane | RPi 5 compatible |
-| J3 | Molex 0545821522 22-pin 0.5mm FPC | MIPI CSI1 4-lane | RPi 5 compatible |
-
-### 40-Pin GPIO Header
-| Ref | Connector | Compatibility |
-|-----|-----------|---------------|
-| J4 | 2x20 2.54mm | RPi 5 electrically compatible |
-
-- STM32U585 signals: 3.3V native, direct routing
-- QRB2210 MPU GPIO (1.8V): TXS0108E level shifted to 3.3V
-- HAT ID EEPROM on pins 27/28, 4.7kΩ pullups
-- No PCIe (QRB2210 silicon limitation — documented)
-
-### HUB75 + Power
-| Ref | Type | Purpose |
-|-----|------|---------|
-| J5 | HUB75 2x8 IDC | Panel connector |
-| J6 | Barrel jack 5.5/2.1mm | HUB75 5V input |
-| J7 | Screw terminal 2-pin | HUB75 5V input (alternate) |
-| J8 | Barrel jack 5.5/2.1mm | Carrier VIN 7-24V |
-| J9 | Screw terminal 2-pin | Carrier VIN 7-24V (alternate) |
-
-### Audio
-| Ref | Type | Purpose |
-|-----|------|---------|
-| J10 | USB-C | ESP32-S3 flash/debug |
-| J11 | 1x4 2.54mm | Line out (L, R, GND, AGND) |
-| J12 | 1x4 2.54mm | PDM/I2S mic in (VCC, GND, DATA, CLK) |
-
-### Radio (C6)
-| Ref | Type | Purpose |
-|-----|------|---------|
-| J13 | USB-C | ESP32-C6 flash/debug |
-
-### Qwiic + Grove
-| Ref | Type | Purpose |
-|-----|------|---------|
-| J14 | JST-SH 4-pin | Qwiic 1 |
-| J15 | JST-SH 4-pin | Qwiic 2 |
-| J16 | Grove 4-pin 2.0mm | Grove I2C |
-| J17 | Grove 4-pin 2.0mm | Grove UART |
-| J18 | Grove 4-pin 2.0mm | Grove SPI |
-| J19 | Grove 4-pin 2.0mm | Grove Digital |
-| J20 | Grove 4-pin 2.0mm | Grove Analog |
-
-### Expansion Breakout
-| Ref | Type | Signals | Voltage |
-|-----|------|---------|---------|
-| J21 | 2.54mm + JST | PSSI (8 data + CLK + RDY + DE) | 3.3V |
-| J22 | 2.54mm + JST | I2C4 SCL/SDA | 3.3V |
-| J23 | 2.54mm | OpAmp1 VOUT/VINP/VINM | Analog |
-| J24 | 2.54mm + JST | MPU GPIO 0-11 | 1.8V ⚠️ |
-
-⚠️ J24 signals are 1.8V. Do not connect 3.3V or 5V logic directly.
-
-### Known Limitations
-- No PCIe — QRB2210 has no PCIe root complex
-- No I2S digital audio from JMISC — MI2S stays internal
-- MPU GPIO count: 12 available from JMISC
-- Some RPi 40-pin positions populated from STM32U585 not QRB2210
+| Connector | Count | Interface | Source | Pullups |
+|-----------|-------|-----------|--------|---------|
+| Qwiic (JST-SH 1.0mm) | 2 | I2C | STM32U585 | 4.7kΩ to +3V3 |
+| Grove I2C (2.0mm) | 1 | I2C | STM32U585 | — |
+| Grove UART (2.0mm) | 1 | UART | STM32U585 | — |
+| Grove SPI (2.0mm) | 1 | SPI | STM32U585 | — |
+| Grove Digital (2.0mm) | 1 | GPIO | STM32U585 | — |
+| Grove Analog (2.0mm) | 1 | ADC | STM32U585 | — |
 
 ---
 
 ## Revision History
 
-| Rev | Date | Author | Notes |
-|-----|------|--------|-------|
-| 0.1 | 2026-05-08 | Dale Weber | Initial spec |
-| 0.2 | 2026-05-08 | Dale Weber | Final approved spec — ESP32-S3 I2S audio (ES8388 24-bit), ESP32-C6 radio co-processor (carrier only), S3/C6 direct UART link, line-level headers only, PDM/I2S mic, no analog JMISC audio, no JMISC pass-through on shield |
+| Rev | Date | Notes |
+|-----|------|-------|
+| 0.1 | 2026-05-08 | Initial |
+| 0.2 | 2026-05-08 | ES8388 codec, ESP32-C6 carrier-only, S3↔C6 UART, hierarchical schematics |
+| 0.3 | 2026-05-08 | **Major update.** Module: MINI-1 → WROOM-1-N16R8 (8MB PSRAM). S3 defined as pure co-processor — no wireless role. GPIO35/36/37 consumed by PSRAM — full GPIO remapping. 74HCT245 OE tied LOW in hardware (no GPIO). USB CDC replaces UART0. Display: 4-wire SPI via SPI2/LCD_CAM, 80MHz, GT911 cap touch on shared I2C, 22-pin FPC. GPIO0 on carrier for CS_S3_MPU (boot-safe with 10kΩ pullup). S3→C6 UART TX on GPIO47 (unidirectional). Final verified: shield 32 GPIO used / 1 spare; carrier 34 GPIO used / 0 spare. |

@@ -1,0 +1,102 @@
+(kicad_sch
+  (version 20231120)
+  (generator "eeschema")
+  (generator_version "9.0")
+  (paper "A4")
+  (title_block
+    (title "UNO Q HUB75 Shield — Connectivity")
+    (date "2026-05-08")
+    (rev "0.3")
+    (company "Hybrid RobotiX")
+    (comment 1 "Qwiic x2 (JST-SH 1.0mm) + Grove x5 (2.0mm)")
+    (comment 2 "All signals from STM32U585 (UNO Q MCU) — NOT from ESP32-S3")
+    (comment 3 "4.7k pullups on Qwiic I2C. Grove signals 3.3V max.")
+  )
+
+  (lib_symbols
+    (symbol "QWIIC_JST"
+      (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+      (property "Reference" "J" (at 0 8 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "Qwiic_JST-SH-4" (at 0 6 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Connector_JST:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal" (at 0 4 0) (effects (font (size 1.27 1.27)) hide))
+      (property "MPN" "SM04B-SRSS-TB(LF)(SN)" (at 0 2 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "QWIIC_JST_0_0"
+        (rectangle (start -4 -4) (end 4 4) (stroke (width 0.254)) (fill (type background)))
+        (pin power_in    at -7  2 0 (length 3) (name "GND"  (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))
+        (pin power_in    at -7  0 0 (length 3) (name "+3V3" (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))
+        (pin bidirectional at -7 -2 0 (length 3) (name "SDA" (effects (font (size 1.016 1.016)))) (number "3" (effects (font (size 1.016 1.016)))))
+        (pin input       at -7 -4 0 (length 3) (name "SCL"  (effects (font (size 1.016 1.016)))) (number "4" (effects (font (size 1.016 1.016)))))
+      )
+    )
+    (symbol "GROVE_4PIN"
+      (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+      (property "Reference" "J" (at 0 8 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "Grove_4pin" (at 0 6 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Connector_PinHeader_2.00mm:PinHeader_1x04_P2.00mm_Vertical" (at 0 4 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "GROVE_4PIN_0_0"
+        (rectangle (start -4 -4) (end 4 4) (stroke (width 0.254)) (fill (type background)))
+        (pin passive  at -7  2 0 (length 3) (name "SIG1" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))
+        (pin passive  at -7  0 0 (length 3) (name "SIG2" (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))
+        (pin power_in at -7 -2 0 (length 3) (name "+3V3" (effects (font (size 1.016 1.016)))) (number "3" (effects (font (size 1.016 1.016)))))
+        (pin power_in at -7 -4 0 (length 3) (name "GND"  (effects (font (size 1.016 1.016)))) (number "4" (effects (font (size 1.016 1.016)))))
+      )
+    )
+    (symbol "R"
+      (pin_names (offset 0) hide) (in_bom yes) (on_board yes)
+      (property "Reference" "R" (at 2.032 0 90) (effects (font (size 1.27 1.27))))
+      (property "Value" "R" (at 0 0 90) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "R_0_1"
+        (rectangle (start -1.016 -2.032) (end 1.016 2.032) (stroke (width 0.254)) (fill (type none))))
+      (symbol "R_1_1"
+        (pin passive at 0 3.556 270 (length 1.524) (name "~{}" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))
+        (pin passive at 0 -3.556 90 (length 1.524) (name "~{}" (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))
+      )
+    )
+  )
+
+  (symbol (lib_id "QWIIC_JST") (at 80 30 0) (unit 1)
+    (property "Reference" "J8" (at 80 22 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "Qwiic_1" (at 80 20 0) (effects (font (size 1.27 1.27)))))
+  (symbol (lib_id "QWIIC_JST") (at 100 30 0) (unit 1)
+    (property "Reference" "J9" (at 100 22 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "Qwiic_2" (at 100 20 0) (effects (font (size 1.27 1.27)))))
+
+  ;; I2C pullups for Qwiic — 4.7kΩ to +3V3
+  (symbol (lib_id "R") (at 92 24 0) (unit 1)
+    (property "Reference" "R5" (at 94 24 90) (effects (font (size 1.27 1.27))))
+    (property "Value" "4.7kΩ 1% 0402" (at 92 24 90) (effects (font (size 1.27 1.27))))
+    (property "MPN" "RC0402FR-074K7L" (at 0 0 0) (effects (font (size 1.27 1.27)) hide)))
+  (symbol (lib_id "R") (at 92 26 0) (unit 1)
+    (property "Reference" "R6" (at 94 26 90) (effects (font (size 1.27 1.27))))
+    (property "Value" "4.7kΩ 1% 0402" (at 92 26 90) (effects (font (size 1.27 1.27))))
+    (property "MPN" "RC0402FR-074K7L" (at 0 0 0) (effects (font (size 1.27 1.27)) hide)))
+
+  (symbol (lib_id "GROVE_4PIN") (at 60 55 0) (unit 1)
+    (property "Reference" "J10" (at 60 47 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "Grove_I2C" (at 60 45 0) (effects (font (size 1.27 1.27)))))
+  (symbol (lib_id "GROVE_4PIN") (at 80 55 0) (unit 1)
+    (property "Reference" "J11" (at 80 47 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "Grove_UART" (at 80 45 0) (effects (font (size 1.27 1.27)))))
+  (symbol (lib_id "GROVE_4PIN") (at 100 55 0) (unit 1)
+    (property "Reference" "J12" (at 100 47 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "Grove_SPI" (at 100 45 0) (effects (font (size 1.27 1.27)))))
+  (symbol (lib_id "GROVE_4PIN") (at 120 55 0) (unit 1)
+    (property "Reference" "J13" (at 120 47 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "Grove_Digital" (at 120 45 0) (effects (font (size 1.27 1.27)))))
+  (symbol (lib_id "GROVE_4PIN") (at 140 55 0) (unit 1)
+    (property "Reference" "J14" (at 140 47 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "Grove_Analog" (at 140 45 0) (effects (font (size 1.27 1.27)))))
+
+  (hierarchical_label "+3V3"
+    (shape power_in) (at 50 22 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "DGND"
+    (shape power_in) (at 50 26 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "I2C_SDA"
+    (shape bidirectional) (at 50 32 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "I2C_SCL"
+    (shape output) (at 50 36 0) (effects (font (size 1.27 1.27)) (justify right)))
+
+  (text "CONNECTIVITY NOTES:\n\nAll Qwiic and Grove signals originate from the STM32U585 (UNO Q MCU).\nThe ESP32-S3 does NOT drive these connectors.\n\nQWIIC:\n  Standard SparkFun/Adafruit Qwiic spec: 3.3V, I2C, 100/400kHz\n  4.7kΩ pullups R5/R6 on SDA/SCL to +3V3\n  Daisy-chain: J8 and J9 are electrically parallel\n  Cable polarity: GND=black, 3V3=red, SDA=blue, SCL=yellow\n\nGROVE:\n  J10 I2C:    SIG1=SDA, SIG2=SCL (from STM32U585)\n  J11 UART:   SIG1=TX,  SIG2=RX  (STM32U585 UART)\n  J12 SPI:    SIG1=MOSI,SIG2=SCK (STM32U585 SPI, CS via JDIGITAL)\n  J13 Digital:SIG1=GPIO,SIG2=GPIO (STM32U585 GPIO)\n  J14 Analog: SIG1=ADC0,SIG2=ADC1 (STM32U585 ADC)\n  All Grove signals: 3.3V max. Do not connect 5V Grove sensors directly."
+    (at 30 75 0) (effects (font (size 1.27 1.27)) (justify left top)))
+)

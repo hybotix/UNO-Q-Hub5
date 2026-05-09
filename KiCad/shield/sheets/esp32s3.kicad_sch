@@ -1,0 +1,467 @@
+(kicad_sch
+  (version 20231120)
+  (generator "eeschema")
+  (generator_version "9.0")
+  (paper "A3")
+  (title_block
+    (title "UNO Q HUB75 Shield — ESP32-S3 Co-Processor")
+    (date "2026-05-08")
+    (rev "0.3")
+    (company "Hybrid RobotiX")
+    (comment 1 "ESP32-S3-WROOM-1-N16R8: 16MB flash, 8MB octal PSRAM")
+    (comment 2 "Co-processor only — HUB75 DMA, SPI display, I2S audio, SPI slave")
+    (comment 3 "NO wireless role — WiFi/BLE handled exclusively by ESP32-C6")
+    (comment 4 "GPIO35/36/37: NC — internally consumed by octal PSRAM")
+  )
+
+  (lib_symbols
+
+    ;; ── ESP32-S3-WROOM-1-N16R8 ─────────────────────────────────────────────
+    ;; IEEE 315: power top, GND bottom, inputs left, outputs right
+    ;; GPIO35/36/37 shown as NC (consumed by PSRAM internally)
+    ;; GPIO0 shown with boot constraint annotation
+    (symbol "ESP32-S3-WROOM-1-N16R8"
+      (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+      (property "Reference" "U1" (at 0 52 0)
+        (effects (font (size 1.27 1.27))))
+      (property "Value" "ESP32-S3-WROOM-1-N16R8" (at 0 50 0)
+        (effects (font (size 1.27 1.27))))
+      (property "Footprint" "RF_Module:ESP32-S3-WROOM-1" (at 0 48 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (property "Datasheet" "https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf" (at 0 46 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (property "MPN" "ESP32-S3-WROOM-1-N16R8" (at 0 44 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (property "Manufacturer" "Espressif Systems" (at 0 42 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (symbol "ESP32-S3-WROOM-1-N16R8_0_0"
+        (rectangle (start -18 -48) (end 18 48)
+          (stroke (width 0.254) (type default)) (fill (type background)))
+
+        ;; Power pins — TOP (IEEE 315)
+        (pin power_in at 0 51 270 (length 3)
+          (name "3V3" (effects (font (size 1.016 1.016))))
+          (number "2" (effects (font (size 1.016 1.016)))))
+        (pin power_in at -6 51 270 (length 3)
+          (name "GND" (effects (font (size 1.016 1.016))))
+          (number "1" (effects (font (size 1.016 1.016)))))
+        (pin input at 6 51 270 (length 3)
+          (name "EN" (effects (font (size 1.016 1.016))))
+          (number "3" (effects (font (size 1.016 1.016)))))
+
+        ;; Left side — SPI3 slave + I2C + I2S inputs
+        (pin input at -21 44 0 (length 3)
+          (name "GPIO0/CS_S3_MPU†" (effects (font (size 1.016 1.016))))
+          (number "27" (effects (font (size 1.016 1.016)))))
+        (pin input at -21 40 0 (length 3)
+          (name "GPIO10/CS_S3_MCU" (effects (font (size 1.016 1.016))))
+          (number "12" (effects (font (size 1.016 1.016)))))
+        (pin input at -21 36 0 (length 3)
+          (name "GPIO13/SPI_MOSI" (effects (font (size 1.016 1.016))))
+          (number "15" (effects (font (size 1.016 1.016)))))
+        (pin output at -21 32 0 (length 3)
+          (name "GPIO12/SPI_MISO" (effects (font (size 1.016 1.016))))
+          (number "14" (effects (font (size 1.016 1.016)))))
+        (pin input at -21 28 0 (length 3)
+          (name "GPIO14/SPI_SCK" (effects (font (size 1.016 1.016))))
+          (number "16" (effects (font (size 1.016 1.016)))))
+        (pin bidirectional at -21 22 0 (length 3)
+          (name "GPIO8/I2C_SDA" (effects (font (size 1.016 1.016))))
+          (number "10" (effects (font (size 1.016 1.016)))))
+        (pin output at -21 18 0 (length 3)
+          (name "GPIO9/I2C_SCL" (effects (font (size 1.016 1.016))))
+          (number "11" (effects (font (size 1.016 1.016)))))
+        (pin output at -21 12 0 (length 3)
+          (name "GPIO5/I2S_BCLK" (effects (font (size 1.016 1.016))))
+          (number "5" (effects (font (size 1.016 1.016)))))
+        (pin output at -21 8 0 (length 3)
+          (name "GPIO6/I2S_LRCLK" (effects (font (size 1.016 1.016))))
+          (number "6" (effects (font (size 1.016 1.016)))))
+        (pin output at -21 4 0 (length 3)
+          (name "GPIO7/I2S_DOUT" (effects (font (size 1.016 1.016))))
+          (number "7" (effects (font (size 1.016 1.016)))))
+        (pin input at -21 0 0 (length 3)
+          (name "GPIO15/I2S_DIN" (effects (font (size 1.016 1.016))))
+          (number "17" (effects (font (size 1.016 1.016)))))
+        (pin bidirectional at -21 -8 0 (length 3)
+          (name "GPIO19/USB_D-" (effects (font (size 1.016 1.016))))
+          (number "40" (effects (font (size 1.016 1.016)))))
+        (pin bidirectional at -21 -12 0 (length 3)
+          (name "GPIO20/USB_D+" (effects (font (size 1.016 1.016))))
+          (number "41" (effects (font (size 1.016 1.016)))))
+        (pin output at -21 -20 0 (length 3)
+          (name "GPIO47/UART_TX†" (effects (font (size 1.016 1.016))))
+          (number "24" (effects (font (size 1.016 1.016)))))
+        (pin passive at -21 -26 0 (length 3)
+          (name "GPIO48/SPARE" (effects (font (size 1.016 1.016))))
+          (number "25" (effects (font (size 1.016 1.016)))))
+
+        ;; Right side — HUB75 outputs (to level shifters)
+        (pin output at 21 44 180 (length 3)
+          (name "GPIO1/HUB75_R1" (effects (font (size 1.016 1.016))))
+          (number "28" (effects (font (size 1.016 1.016)))))
+        (pin output at 21 40 180 (length 3)
+          (name "GPIO2/HUB75_G1" (effects (font (size 1.016 1.016))))
+          (number "29" (effects (font (size 1.016 1.016)))))
+        (pin output at 21 36 180 (length 3)
+          (name "GPIO3/HUB75_B1" (effects (font (size 1.016 1.016))))
+          (number "30" (effects (font (size 1.016 1.016)))))
+        (pin output at 21 32 180 (length 3)
+          (name "GPIO4/HUB75_R2" (effects (font (size 1.016 1.016))))
+          (number "31" (effects (font (size 1.016 1.016)))))
+        (pin output at 21 28 180 (length 3)
+          (name "GPIO21/HUB75_G2" (effects (font (size 1.016 1.016))))
+          (number "33" (effects (font (size 1.016 1.016)))))
+        (pin output at 21 24 180 (length 3)
+          (name "GPIO45/HUB75_B2" (effects (font (size 1.016 1.016))))
+          (number "22" (effects (font (size 1.016 1.016)))))
+        (pin output at 21 18 180 (length 3)
+          (name "GPIO33/HUB75_CLK" (effects (font (size 1.016 1.016))))
+          (number "34" (effects (font (size 1.016 1.016)))))
+        (pin output at 21 14 180 (length 3)
+          (name "GPIO34/HUB75_LAT" (effects (font (size 1.016 1.016))))
+          (number "35" (effects (font (size 1.016 1.016)))))
+        (pin output at 21 8 180 (length 3)
+          (name "GPIO38/HUB75_ADDR_A" (effects (font (size 1.016 1.016))))
+          (number "9" (effects (font (size 1.016 1.016)))))
+        (pin output at 21 4 180 (length 3)
+          (name "GPIO39/HUB75_ADDR_B" (effects (font (size 1.016 1.016))))
+          (number "36" (effects (font (size 1.016 1.016)))))
+        (pin output at 21 0 180 (length 3)
+          (name "GPIO40/HUB75_ADDR_C" (effects (font (size 1.016 1.016))))
+          (number "37" (effects (font (size 1.016 1.016)))))
+        (pin output at 21 -4 180 (length 3)
+          (name "GPIO41/HUB75_ADDR_D" (effects (font (size 1.016 1.016))))
+          (number "38" (effects (font (size 1.016 1.016)))))
+        (pin output at 21 -8 180 (length 3)
+          (name "GPIO42/HUB75_ADDR_E" (effects (font (size 1.016 1.016))))
+          (number "39" (effects (font (size 1.016 1.016)))))
+
+        ;; Right side — Display SPI2 outputs
+        (pin output at 21 -18 180 (length 3)
+          (name "GPIO17/LCD_CLK" (effects (font (size 1.016 1.016))))
+          (number "18" (effects (font (size 1.016 1.016)))))
+        (pin output at 21 -22 180 (length 3)
+          (name "GPIO18/LCD_MOSI" (effects (font (size 1.016 1.016))))
+          (number "19" (effects (font (size 1.016 1.016)))))
+        (pin output at 21 -26 180 (length 3)
+          (name "GPIO11/LCD_CS" (effects (font (size 1.016 1.016))))
+          (number "13" (effects (font (size 1.016 1.016)))))
+        (pin output at 21 -30 180 (length 3)
+          (name "GPIO16/LCD_DC" (effects (font (size 1.016 1.016))))
+          (number "20" (effects (font (size 1.016 1.016)))))
+        (pin output at 21 -34 180 (length 3)
+          (name "GPIO43/LCD_RST/TOUCH_RST" (effects (font (size 1.016 1.016))))
+          (number "44" (effects (font (size 1.016 1.016)))))
+        (pin input at 21 -38 180 (length 3)
+          (name "GPIO44/TOUCH_INT" (effects (font (size 1.016 1.016))))
+          (number "45" (effects (font (size 1.016 1.016)))))
+        (pin output at 21 -42 180 (length 3)
+          (name "GPIO46/LCD_BL_PWM" (effects (font (size 1.016 1.016))))
+          (number "23" (effects (font (size 1.016 1.016)))))
+
+        ;; PSRAM pins — NC, shown for documentation
+        (pin no_connect at 0 -51 90 (length 3)
+          (name "GPIO35/NC-PSRAM" (effects (font (size 1.016 1.016))))
+          (number "35" (effects (font (size 1.016 1.016)))))
+        (pin no_connect at 4 -51 90 (length 3)
+          (name "GPIO36/NC-PSRAM" (effects (font (size 1.016 1.016))))
+          (number "36" (effects (font (size 1.016 1.016)))))
+        (pin no_connect at 8 -51 90 (length 3)
+          (name "GPIO37/NC-PSRAM" (effects (font (size 1.016 1.016))))
+          (number "37" (effects (font (size 1.016 1.016)))))
+      )
+    )
+
+    ;; ── Capacitor ────────────────────────────────────────────────────────────
+    (symbol "C"
+      (pin_names (offset 0.254) hide) (in_bom yes) (on_board yes)
+      (property "Reference" "C" (at 1.016 0.508 0)
+        (effects (font (size 1.27 1.27)) (justify left)))
+      (property "Value" "C" (at 1.016 -1.016 0)
+        (effects (font (size 1.27 1.27)) (justify left)))
+      (property "Footprint" "" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (symbol "C_0_1"
+        (polyline (pts (xy -1.524 -0.508) (xy 1.524 -0.508))
+          (stroke (width 0.3302) (type default)) (fill (type none)))
+        (polyline (pts (xy -1.524 0.508) (xy 1.524 0.508))
+          (stroke (width 0.3302) (type default)) (fill (type none)))
+      )
+      (symbol "C_1_1"
+        (pin passive at 0 2.032 270 (length 1.524)
+          (name "~{}" (effects (font (size 1.016 1.016))))
+          (number "1" (effects (font (size 1.016 1.016)))))
+        (pin passive at 0 -2.032 90 (length 1.524)
+          (name "~{}" (effects (font (size 1.016 1.016))))
+          (number "2" (effects (font (size 1.016 1.016)))))
+      )
+    )
+
+    ;; ── Resistor ─────────────────────────────────────────────────────────────
+    (symbol "R"
+      (pin_names (offset 0) hide) (in_bom yes) (on_board yes)
+      (property "Reference" "R" (at 2.032 0 90)
+        (effects (font (size 1.27 1.27))))
+      (property "Value" "R" (at 0 0 90)
+        (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (symbol "R_0_1"
+        (rectangle (start -1.016 -2.032) (end 1.016 2.032)
+          (stroke (width 0.254) (type default)) (fill (type none)))
+      )
+      (symbol "R_1_1"
+        (pin passive at 0 3.556 270 (length 1.524)
+          (name "~{}" (effects (font (size 1.016 1.016))))
+          (number "1" (effects (font (size 1.016 1.016)))))
+        (pin passive at 0 -3.556 90 (length 1.524)
+          (name "~{}" (effects (font (size 1.016 1.016))))
+          (number "2" (effects (font (size 1.016 1.016)))))
+      )
+    )
+
+    ;; ── USB-C connector ──────────────────────────────────────────────────────
+    (symbol "USB_C_RECEPTACLE"
+      (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+      (property "Reference" "J5" (at 0 10 0)
+        (effects (font (size 1.27 1.27))))
+      (property "Value" "USB_C_Receptacle" (at 0 8 0)
+        (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Connector_USB:USB_C_Receptacle_GCT_USB4135_FlipMounted" (at 0 6 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (property "MPN" "USB4135-GF-A" (at 0 4 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (symbol "USB_C_RECEPTACLE_0_0"
+        (rectangle (start -5 -6) (end 5 6)
+          (stroke (width 0.254) (type default)) (fill (type background)))
+        (pin passive at -8 4 0 (length 3)
+          (name "VBUS" (effects (font (size 1.016 1.016))))
+          (number "A4" (effects (font (size 1.016 1.016)))))
+        (pin passive at -8 0 0 (length 3)
+          (name "D-" (effects (font (size 1.016 1.016))))
+          (number "A7" (effects (font (size 1.016 1.016)))))
+        (pin passive at -8 -2 0 (length 3)
+          (name "D+" (effects (font (size 1.016 1.016))))
+          (number "A6" (effects (font (size 1.016 1.016)))))
+        (pin passive at -8 -4 0 (length 3)
+          (name "GND" (effects (font (size 1.016 1.016))))
+          (number "A1" (effects (font (size 1.016 1.016)))))
+        (pin passive at 8 2 180 (length 3)
+          (name "CC1" (effects (font (size 1.016 1.016))))
+          (number "A5" (effects (font (size 1.016 1.016)))))
+        (pin passive at 8 -2 180 (length 3)
+          (name "CC2" (effects (font (size 1.016 1.016))))
+          (number "B5" (effects (font (size 1.016 1.016)))))
+      )
+    )
+  )
+
+  ;;
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;; U1 — ESP32-S3-WROOM-1-N16R8
+  ;; Co-processor: HUB75 DMA + SPI2 display + I2S audio + SPI3 slave + I2C
+  ;; NO wireless role — C6 handles all RF
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;;
+  (symbol (lib_id "ESP32-S3-WROOM-1-N16R8") (at 100 100 0) (unit 1)
+    (property "Reference" "U1" (at 100 50 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "ESP32-S3-WROOM-1-N16R8" (at 100 48 0)
+      (effects (font (size 1.27 1.27)))))
+
+  ;; Decoupling — 3V3 supply
+  ;; IPC-2221B §6.3.3: 100nF + 10µF within 3mm of VCC pin
+  (symbol (lib_id "C") (at 78 95 0) (unit 1)
+    (property "Reference" "C10" (at 80 94 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "100nF 10V X7R 0402" (at 80 96 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "GRM155R71A104KA01D" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  (symbol (lib_id "C") (at 78 99 0) (unit 1)
+    (property "Reference" "C11" (at 80 98 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "10µF 10V X5R 0805" (at 80 100 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "GRM21BR61A106KE18L" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  ;; EN pullup — 10kΩ to +3V3 (required — do not leave EN floating)
+  (symbol (lib_id "R") (at 76 90 0) (unit 1)
+    (property "Reference" "R10" (at 78 90 90)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "10kΩ 1% 0402" (at 76 90 90)
+      (effects (font (size 1.27 1.27))))
+    (property "MPN" "RC0402FR-0710KL" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  ;; GPIO0 pullup — 10kΩ to +3V3
+  ;; Boot constraint: GPIO0 HIGH = normal boot. CS_S3_MPU is active-LOW
+  ;; and rests HIGH (deasserted). Satisfies strapping requirement.
+  ;; Carrier only: GPIO0 = CS_S3_MPU. Shield: GPIO0 = NC
+  (symbol (lib_id "R") (at 76 86 0) (unit 1)
+    (property "Reference" "R11" (at 78 86 90)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "10kΩ 1% 0402" (at 76 86 90)
+      (effects (font (size 1.27 1.27))))
+    (property "MPN" "RC0402FR-0710KL" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  ;;
+  ;; ── USB-C for S3 debug (CDC/JTAG) ────────────────────────────────────────
+  ;; USB replaces UART0. GPIO19/20 = USB D-/D+.
+  ;; CC1/CC2: 5.1kΩ to GND per USB-C spec (identifies device role)
+  ;;
+  (symbol (lib_id "USB_C_RECEPTACLE") (at 60 100 0) (unit 1)
+    (property "Reference" "J5" (at 60 92 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "USB_C_S3_DEBUG" (at 60 90 0)
+      (effects (font (size 1.27 1.27)))))
+
+  ;; CC resistors — 5.1kΩ each to GND
+  (symbol (lib_id "R") (at 52 104 0) (unit 1)
+    (property "Reference" "R12" (at 54 104 90)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "5.1kΩ 1% 0402" (at 52 104 90)
+      (effects (font (size 1.27 1.27))))
+    (property "MPN" "RC0402FR-075K1L" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  (symbol (lib_id "R") (at 52 108 0) (unit 1)
+    (property "Reference" "R13" (at 54 108 90)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "5.1kΩ 1% 0402" (at 52 108 90)
+      (effects (font (size 1.27 1.27))))
+    (property "MPN" "RC0402FR-075K1L" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  ;;
+  ;; ── Hierarchical port connections ─────────────────────────────────────────
+  ;;
+  ;; Power ports (from power sheet)
+  (hierarchical_label "+3V3"
+    (shape power_in) (at 78 92 180)
+    (effects (font (size 1.27 1.27)) (justify left)))
+  (hierarchical_label "DGND"
+    (shape power_in) (at 78 105 180)
+    (effects (font (size 1.27 1.27)) (justify left)))
+
+  ;; SPI3 slave (from/to UNO Q interface sheet)
+  (hierarchical_label "SPI_MOSI"
+    (shape input) (at 40 130 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "SPI_MISO"
+    (shape output) (at 40 134 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "SPI_SCK"
+    (shape input) (at 40 138 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "CS_S3_MCU"
+    (shape input) (at 40 142 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+
+  ;; HUB75 outputs (to hub75_driver sheet)
+  (hierarchical_label "S3_R1"
+    (shape output) (at 160 56 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "S3_G1"
+    (shape output) (at 160 60 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "S3_B1"
+    (shape output) (at 160 64 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "S3_R2"
+    (shape output) (at 160 68 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "S3_G2"
+    (shape output) (at 160 72 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "S3_B2"
+    (shape output) (at 160 76 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "S3_HUB75_CLK"
+    (shape output) (at 160 82 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "S3_HUB75_LAT"
+    (shape output) (at 160 86 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "S3_ADDR_A"
+    (shape output) (at 160 92 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "S3_ADDR_B"
+    (shape output) (at 160 96 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "S3_ADDR_C"
+    (shape output) (at 160 100 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "S3_ADDR_D"
+    (shape output) (at 160 104 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "S3_ADDR_E"
+    (shape output) (at 160 108 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+
+  ;; I2S outputs (to audio_codec sheet)
+  (hierarchical_label "I2S_BCLK"
+    (shape output) (at 160 118 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "I2S_LRCLK"
+    (shape output) (at 160 122 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "I2S_DOUT"
+    (shape output) (at 160 126 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "I2S_DIN"
+    (shape input) (at 160 130 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "CODEC_SDA"
+    (shape bidirectional) (at 160 136 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "CODEC_SCL"
+    (shape output) (at 160 140 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+
+  ;; Display outputs (to display sheet)
+  (hierarchical_label "LCD_CLK"
+    (shape output) (at 160 150 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "LCD_MOSI"
+    (shape output) (at 160 154 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "LCD_CS"
+    (shape output) (at 160 158 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "LCD_DC"
+    (shape output) (at 160 162 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "LCD_RST"
+    (shape output) (at 160 166 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "TOUCH_INT"
+    (shape input) (at 160 170 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "LCD_BL_PWM"
+    (shape output) (at 160 174 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+
+  ;; I2C to connectivity sheet (Qwiic/Grove share same bus)
+  (hierarchical_label "I2C_SDA"
+    (shape bidirectional) (at 40 150 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "I2C_SCL"
+    (shape output) (at 40 154 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+
+  ;;
+  ;; ── Design notes ──────────────────────────────────────────────────────────
+  ;;
+  (text "ESP32-S3-WROOM-1-N16R8 — CO-PROCESSOR NOTES:\n\nWIRELESS: The S3 radio (WiFi/BLE) is NOT USED in this design.\nAll wireless is handled by the ESP32-C6 on the Super Carrier.\nThe PCB antenna on the WROOM-1 is non-functional by design.\nDo NOT attempt to enable S3 WiFi in firmware — it will conflict with C6 RF.\n\nPSRAM: GPIO35, GPIO36, GPIO37 are internally connected to the octal PSRAM.\nThey appear as castellated pads but cannot be used as general-purpose GPIO.\nTreat as NC on the PCB. Do not route signals to these pads.\n\nGPIO0 (CS_S3_MPU on carrier):\nGPIO0 is a strapping pin — must be HIGH at boot for normal operation.\nCS_S3_MPU is active-LOW. The 10kΩ pullup R11 holds it HIGH at boot.\nSatisfies strapping requirement. This is a safe and well-established pattern.\nOn the shield, GPIO0 is NC (CS_S3_MPU not needed — MPU not on shield).\n\nUART0 vs USB CDC:\nGPIO43/44 are the default UART0 pins. These are reassigned to the SPI2\ndisplay bus (GPIO43=LCD_RST, GPIO44=TOUCH_INT) in this design.\nAll S3 debug output uses USB CDC on GPIO19/20 (J5 USB-C connector).\nUSB CDC provides printf(), logging, and JTAG debugging — no UART needed.\n\nSPI2 vs SPI3:\nSPI2 (LCD_CAM peripheral): GPIO17=CLK, GPIO18=MOSI, GPIO11=CS, GPIO16=DC\n  → 5\" TFT display. 80MHz. Write-only (no MISO needed for display).\nSPI3 (GPSPI controller): GPIO14=SCK, GPIO13=MOSI, GPIO12=MISO, GPIO10=CS\n  → UNO Q interface. Slave mode. STM32U585 is master.\n\nI2C bus (GPIO8/9) shared between:\n  ES8388 codec control (address 0x10 or 0x11 per ADDR pin)\n  GT911 capacitive touch controller (address 0x5D or 0x14)\n  Both are I2C slaves at different addresses — no conflict.\n  1kΩ pullups R3/R4 sized for ES8388. 4.7kΩ for GT911 on display FPC.\n  Net effective pullup with both in parallel: ~820Ω. Acceptable at 400kHz."
+    (at 30 185 0)
+    (effects (font (size 1.27 1.27)) (justify left top)))
+)
