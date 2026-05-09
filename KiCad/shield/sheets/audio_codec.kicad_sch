@@ -1,0 +1,605 @@
+(kicad_sch
+  (version 20231120)
+  (generator "eeschema")
+  (generator_version "9.0")
+  (paper "A3")
+  (title_block
+    (title "UNO Q HUB75 Shield — Audio Codec (ES8388)")
+    (date "2026-05-08")
+    (rev "0.3")
+    (company "Hybrid RobotiX")
+    (comment 1 "ES8388: 24-bit stereo I2S codec — DAC + ADC")
+    (comment 2 "AVDD: filtered from +3V3 via FB1 (600Ω@100MHz). AGND star at U5.")
+    (comment 3 "Output: stereo line-level via 10µF DC-blocking caps to J_OUT header")
+    (comment 4 "Input: PDM/I2S digital mic via J_MIC header. No analog mic path.")
+  )
+
+  (lib_symbols
+
+    ;; ── ES8388 24-bit Stereo Audio Codec ────────────────────────────────────
+    ;; LQFP-48, 7×7mm, 0.5mm pitch
+    ;; IEEE 315: power pins top/bottom, signal flow left→right
+    ;; AVDD/AGND: analog supply — must be filtered from DVDD/DGND
+    ;; I2C address: 0x10 (ADDR=GND) or 0x11 (ADDR=VDD) — use 0x10
+    (symbol "ES8388"
+      (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+      (property "Reference" "U5" (at 0 26 0)
+        (effects (font (size 1.27 1.27))))
+      (property "Value" "ES8388" (at 0 24 0)
+        (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Package_QFP:LQFP-48_7x7mm_P0.5mm" (at 0 22 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (property "Datasheet" "https://datasheet.lcsc.com/szlcsc/Everest-Semiconductor-ES8388_C109698.pdf" (at 0 20 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (property "MPN" "ES8388" (at 0 18 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (property "Manufacturer" "Everest Semiconductor" (at 0 16 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (symbol "ES8388_0_0"
+        (rectangle (start -14 -20) (end 14 20)
+          (stroke (width 0.254) (type default)) (fill (type background)))
+
+        ;; ── POWER — TOP (IEEE 315) ──────────────────────────────────────────
+        ;; AVDD: analog supply (from +3V3 through FB1 ferrite)
+        ;; DVDD: digital supply (from +3V3 direct)
+        ;; HPVDD: headphone supply — NOT USED (no headphone amp on this design)
+        ;; SPKVDD: speaker supply — NOT USED
+        (pin power_in at -6 23 270 (length 3)
+          (name "AVDD" (effects (font (size 1.016 1.016))))
+          (number "1" (effects (font (size 1.016 1.016)))))
+        (pin power_in at -2 23 270 (length 3)
+          (name "AVDD" (effects (font (size 1.016 1.016))))
+          (number "28" (effects (font (size 1.016 1.016)))))
+        (pin power_in at 2 23 270 (length 3)
+          (name "DVDD" (effects (font (size 1.016 1.016))))
+          (number "15" (effects (font (size 1.016 1.016)))))
+        (pin power_in at 6 23 270 (length 3)
+          (name "DVDD" (effects (font (size 1.016 1.016))))
+          (number "39" (effects (font (size 1.016 1.016)))))
+
+        ;; ── POWER — BOTTOM (IEEE 315) ───────────────────────────────────────
+        (pin power_in at -6 -23 90 (length 3)
+          (name "AGND" (effects (font (size 1.016 1.016))))
+          (number "2" (effects (font (size 1.016 1.016)))))
+        (pin power_in at -2 -23 90 (length 3)
+          (name "AGND" (effects (font (size 1.016 1.016))))
+          (number "29" (effects (font (size 1.016 1.016)))))
+        (pin power_in at 2 -23 90 (length 3)
+          (name "DGND" (effects (font (size 1.016 1.016))))
+          (number "16" (effects (font (size 1.016 1.016)))))
+        (pin power_in at 6 -23 90 (length 3)
+          (name "DGND" (effects (font (size 1.016 1.016))))
+          (number "40" (effects (font (size 1.016 1.016)))))
+
+        ;; ── LEFT SIDE — I2S + I2C inputs (from ESP32-S3) ──────────────────
+        ;; I2S interface: S3 is master (provides BCLK, LRCLK, DOUT)
+        (pin input at -17 16 0 (length 3)
+          (name "BCLK" (effects (font (size 1.016 1.016))))
+          (number "8" (effects (font (size 1.016 1.016)))))
+        (pin input at -17 12 0 (length 3)
+          (name "LRCK" (effects (font (size 1.016 1.016))))
+          (number "9" (effects (font (size 1.016 1.016)))))
+        (pin input at -17 8 0 (length 3)
+          (name "ADCDAT" (effects (font (size 1.016 1.016))))
+          (number "10" (effects (font (size 1.016 1.016)))))
+        (pin output at -17 4 0 (length 3)
+          (name "DACDAT" (effects (font (size 1.016 1.016))))
+          (number "11" (effects (font (size 1.016 1.016)))))
+        (pin output at -17 0 0 (length 3)
+          (name "MCLK" (effects (font (size 1.016 1.016))))
+          (number "12" (effects (font (size 1.016 1.016)))))
+
+        ;; I2C control interface
+        (pin input at -17 -6 0 (length 3)
+          (name "SCLK/SCL" (effects (font (size 1.016 1.016))))
+          (number "5" (effects (font (size 1.016 1.016)))))
+        (pin bidirectional at -17 -10 0 (length 3)
+          (name "SDIN/SDA" (effects (font (size 1.016 1.016))))
+          (number "6" (effects (font (size 1.016 1.016)))))
+        (pin input at -17 -14 0 (length 3)
+          (name "~{CSB}/ADDR" (effects (font (size 1.016 1.016))))
+          (number "7" (effects (font (size 1.016 1.016)))))
+
+        ;; ── RIGHT SIDE — Analog I/O ────────────────────────────────────────
+        ;; DAC outputs (line level after external DC-blocking caps)
+        (pin output at 17 16 180 (length 3)
+          (name "LOUT1" (effects (font (size 1.016 1.016))))
+          (number "44" (effects (font (size 1.016 1.016)))))
+        (pin output at 17 12 180 (length 3)
+          (name "ROUT1" (effects (font (size 1.016 1.016))))
+          (number "46" (effects (font (size 1.016 1.016)))))
+        (pin output at 17 8 180 (length 3)
+          (name "LOUT2" (effects (font (size 1.016 1.016))))
+          (number "45" (effects (font (size 1.016 1.016)))))
+        (pin output at 17 4 180 (length 3)
+          (name "ROUT2" (effects (font (size 1.016 1.016))))
+          (number "47" (effects (font (size 1.016 1.016)))))
+
+        ;; ADC inputs (digital mic path — LINPUT1/RINPUT1)
+        (pin input at 17 -4 180 (length 3)
+          (name "LINPUT1" (effects (font (size 1.016 1.016))))
+          (number "34" (effects (font (size 1.016 1.016)))))
+        (pin input at 17 -8 180 (length 3)
+          (name "RINPUT1" (effects (font (size 1.016 1.016))))
+          (number "35" (effects (font (size 1.016 1.016)))))
+        (pin input at 17 -12 180 (length 3)
+          (name "LINPUT2" (effects (font (size 1.016 1.016))))
+          (number "36" (effects (font (size 1.016 1.016)))))
+        (pin input at 17 -16 180 (length 3)
+          (name "RINPUT2" (effects (font (size 1.016 1.016))))
+          (number "37" (effects (font (size 1.016 1.016)))))
+
+        ;; Miscellaneous
+        (pin passive at -17 -18 0 (length 3)
+          (name "VMID" (effects (font (size 1.016 1.016))))
+          (number "3" (effects (font (size 1.016 1.016)))))
+        (pin passive at -17 -16 0 (length 3)
+          (name "VREF" (effects (font (size 1.016 1.016))))
+          (number "4" (effects (font (size 1.016 1.016)))))
+        (pin no_connect at 17 0 180 (length 3)
+          (name "HPOUT_L" (effects (font (size 1.016 1.016))))
+          (number "48" (effects (font (size 1.016 1.016)))))
+        (pin no_connect at 17 -18 180 (length 3)
+          (name "HPOUT_R" (effects (font (size 1.016 1.016))))
+          (number "43" (effects (font (size 1.016 1.016)))))
+      )
+    )
+
+    ;; ── Ferrite Bead ────────────────────────────────────────────────────────
+    (symbol "FERRITE_BEAD"
+      (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+      (property "Reference" "FB" (at 0 5 0)
+        (effects (font (size 1.27 1.27))))
+      (property "Value" "600R@100MHz" (at 0 -5 0)
+        (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Inductor_SMD:L_0402_1005Metric" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (symbol "FERRITE_BEAD_0_0"
+        (arc (start -2.032 0) (mid 0 1.524) (end 2.032 0)
+          (stroke (width 0.254) (type default)) (fill (type none)))
+        (arc (start -2.032 0) (mid 0 -1.524) (end 2.032 0)
+          (stroke (width 0.254) (type default)) (fill (type none)))
+        (polyline (pts (xy -2.032 0) (xy -3.556 0))
+          (stroke (width 0.254) (type default)) (fill (type none)))
+        (polyline (pts (xy 2.032 0) (xy 3.556 0))
+          (stroke (width 0.254) (type default)) (fill (type none)))
+      )
+      (symbol "FERRITE_BEAD_1_1"
+        (pin passive at -6.096 0 0 (length 2.54)
+          (name "~{}" (effects (font (size 1.016 1.016))))
+          (number "1" (effects (font (size 1.016 1.016)))))
+        (pin passive at 6.096 0 180 (length 2.54)
+          (name "~{}" (effects (font (size 1.016 1.016))))
+          (number "2" (effects (font (size 1.016 1.016)))))
+      )
+    )
+
+    ;; ── Net Tie (AGND↔DGND star point) ─────────────────────────────────────
+    (symbol "NET_TIE_2"
+      (pin_names (offset 1.016)) (in_bom no) (on_board yes)
+      (property "Reference" "NT" (at 0 4 0)
+        (effects (font (size 1.27 1.27))))
+      (property "Value" "NetTie-2" (at 0 -4 0)
+        (effects (font (size 1.27 1.27))))
+      (property "Footprint" "NetTie:NetTie-2_Pad1.0mm_Drill0.8mm" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (symbol "NET_TIE_2_0_0"
+        (polyline (pts (xy -2 0) (xy 2 0))
+          (stroke (width 0.508) (type default)) (fill (type none)))
+        (circle (center -2 0) (radius 0.508)
+          (stroke (width 0.254) (type default)) (fill (type filled)))
+        (circle (center 2 0) (radius 0.508)
+          (stroke (width 0.254) (type default)) (fill (type filled)))
+      )
+      (symbol "NET_TIE_2_1_1"
+        (pin passive at -5 0 0 (length 3)
+          (name "AGND_IN" (effects (font (size 1.016 1.016))))
+          (number "1" (effects (font (size 1.016 1.016)))))
+        (pin passive at 5 0 180 (length 3)
+          (name "DGND_IN" (effects (font (size 1.016 1.016))))
+          (number "2" (effects (font (size 1.016 1.016)))))
+      )
+    )
+
+    ;; ── Capacitor ───────────────────────────────────────────────────────────
+    (symbol "C"
+      (pin_names (offset 0.254) hide) (in_bom yes) (on_board yes)
+      (property "Reference" "C" (at 1.016 0.508 0)
+        (effects (font (size 1.27 1.27)) (justify left)))
+      (property "Value" "C" (at 1.016 -1.016 0)
+        (effects (font (size 1.27 1.27)) (justify left)))
+      (property "Footprint" "" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (symbol "C_0_1"
+        (polyline (pts (xy -1.524 -0.508) (xy 1.524 -0.508))
+          (stroke (width 0.3302) (type default)) (fill (type none)))
+        (polyline (pts (xy -1.524 0.508) (xy 1.524 0.508))
+          (stroke (width 0.3302) (type default)) (fill (type none)))
+      )
+      (symbol "C_1_1"
+        (pin passive at 0 2.032 270 (length 1.524)
+          (name "~{}" (effects (font (size 1.016 1.016))))
+          (number "1" (effects (font (size 1.016 1.016)))))
+        (pin passive at 0 -2.032 90 (length 1.524)
+          (name "~{}" (effects (font (size 1.016 1.016))))
+          (number "2" (effects (font (size 1.016 1.016)))))
+      )
+    )
+
+    ;; ── Resistor ────────────────────────────────────────────────────────────
+    (symbol "R"
+      (pin_names (offset 0) hide) (in_bom yes) (on_board yes)
+      (property "Reference" "R" (at 2.032 0 90)
+        (effects (font (size 1.27 1.27))))
+      (property "Value" "R" (at 0 0 90)
+        (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (symbol "R_0_1"
+        (rectangle (start -1.016 -2.032) (end 1.016 2.032)
+          (stroke (width 0.254) (type default)) (fill (type none)))
+      )
+      (symbol "R_1_1"
+        (pin passive at 0 3.556 270 (length 1.524)
+          (name "~{}" (effects (font (size 1.016 1.016))))
+          (number "1" (effects (font (size 1.016 1.016)))))
+        (pin passive at 0 -3.556 90 (length 1.524)
+          (name "~{}" (effects (font (size 1.016 1.016))))
+          (number "2" (effects (font (size 1.016 1.016)))))
+      )
+    )
+
+    ;; ── 4-pin 2.54mm line-out header ────────────────────────────────────────
+    (symbol "CONN_1x4_AUDIO"
+      (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+      (property "Reference" "J" (at 0 8 0)
+        (effects (font (size 1.27 1.27))))
+      (property "Value" "Line_Out" (at 0 6 0)
+        (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" (at 0 4 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (symbol "CONN_1x4_AUDIO_0_0"
+        (rectangle (start -3 -6) (end 3 6)
+          (stroke (width 0.254) (type default)) (fill (type background)))
+        (pin passive at -6  4 0 (length 3)
+          (name "L_OUT" (effects (font (size 1.016 1.016))))
+          (number "1" (effects (font (size 1.016 1.016)))))
+        (pin passive at -6  2 0 (length 3)
+          (name "R_OUT" (effects (font (size 1.016 1.016))))
+          (number "2" (effects (font (size 1.016 1.016)))))
+        (pin passive at -6  0 0 (length 3)
+          (name "GND" (effects (font (size 1.016 1.016))))
+          (number "3" (effects (font (size 1.016 1.016)))))
+        (pin passive at -6 -2 0 (length 3)
+          (name "AGND" (effects (font (size 1.016 1.016))))
+          (number "4" (effects (font (size 1.016 1.016)))))
+      )
+    )
+
+    ;; ── 4-pin 2.54mm mic-in header ───────────────────────────────────────────
+    (symbol "CONN_1x4_MIC"
+      (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+      (property "Reference" "J" (at 0 8 0)
+        (effects (font (size 1.27 1.27))))
+      (property "Value" "Mic_In" (at 0 6 0)
+        (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" (at 0 4 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (symbol "CONN_1x4_MIC_0_0"
+        (rectangle (start -3 -6) (end 3 6)
+          (stroke (width 0.254) (type default)) (fill (type background)))
+        (pin power_out at -6  4 0 (length 3)
+          (name "+3V3_MIC" (effects (font (size 1.016 1.016))))
+          (number "1" (effects (font (size 1.016 1.016)))))
+        (pin passive   at -6  2 0 (length 3)
+          (name "GND" (effects (font (size 1.016 1.016))))
+          (number "2" (effects (font (size 1.016 1.016)))))
+        (pin passive   at -6  0 0 (length 3)
+          (name "DATA" (effects (font (size 1.016 1.016))))
+          (number "3" (effects (font (size 1.016 1.016)))))
+        (pin passive   at -6 -2 0 (length 3)
+          (name "CLK" (effects (font (size 1.016 1.016))))
+          (number "4" (effects (font (size 1.016 1.016)))))
+      )
+    )
+
+    ;; ── PWR_FLAG ─────────────────────────────────────────────────────────────
+    (symbol "PWR_FLAG"
+      (pin_names (offset 0) hide) (in_bom no) (on_board no)
+      (property "Reference" "#PWR" (at 0 8 0)
+        (effects (font (size 1.27 1.27)) hide))
+      (property "Value" "PWR_FLAG" (at 0 6 0)
+        (effects (font (size 1.27 1.27))))
+      (symbol "PWR_FLAG_0_0"
+        (pin power_out at 0 0 90 (length 0)
+          (name "PWR" (effects (font (size 1.016 1.016))))
+          (number "1" (effects (font (size 1.016 1.016)))))
+      )
+      (symbol "PWR_FLAG_0_1"
+        (polyline (pts (xy 0 0) (xy 0 1.27) (xy -1.27 2.032)
+                       (xy 0 2.794) (xy 1.27 2.032) (xy 0 1.27))
+          (stroke (width 0.254) (type default)) (fill (type filled)))
+      )
+    )
+  )
+
+  ;;
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;; POWER SECTION — AVDD filtering and AGND/DGND star point
+  ;;
+  ;; IPC-2221B §6.2.4: Analog and digital grounds joined at single star
+  ;; point to prevent switching noise coupling into audio path.
+  ;;
+  ;; FB1 (600Ω@100MHz) passes DC but blocks HF switching noise from the
+  ;; +3V3 digital rail before it reaches ES8388 AVDD.
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;;
+  ;; FB1 — Ferrite bead: +3V3 → AVDD
+  ;; Murata BLM15AX601SN1D, 600Ω@100MHz, 500mA, 0402
+  ;; IPC-2221B: place within 5mm of U5 AVDD pins on PCB
+
+  ;; AVDD bypass — both caps on AVDD side of FB1 (analog island)
+  ;; C6: 10µF — low-frequency bulk storage for DAC transients
+  ;; C7: 100nF — high-frequency bypass for RF/EMI rejection
+  ;; IPC-2221B: both within 2mm of U5 AVDD pins
+  (symbol (lib_id "C") (at 80 26 0) (unit 1)
+    (property "Reference" "C30" (at 82 25 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "10µF 10V X5R 0805" (at 82 27 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "GRM21BR61A106KE18L" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  (symbol (lib_id "C") (at 88 26 0) (unit 1)
+    (property "Reference" "C31" (at 90 25 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "100nF 10V X7R 0402" (at 90 27 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "GRM155R71A104KA01D" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  ;; DVDD bypass — digital supply decoupling
+  ;; C8: 10µF bulk, C9: 100nF HF — within 2mm of U5 DVDD pins
+  (symbol (lib_id "C") (at 120 26 0) (unit 1)
+    (property "Reference" "C32" (at 122 25 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "10µF 10V X5R 0805" (at 122 27 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "GRM21BR61A106KE18L" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  (symbol (lib_id "C") (at 128 26 0) (unit 1)
+    (property "Reference" "C33" (at 130 25 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "100nF 10V X7R 0402" (at 130 27 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "GRM155R71A104KA01D" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  ;; VMID bypass — 2.2µF to AGND
+  ;; ES8388 datasheet: VMID pin requires bypass cap for reference stability
+  (symbol (lib_id "C") (at 60 50 0) (unit 1)
+    (property "Reference" "C34" (at 62 49 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "2.2µF 10V X5R 0402" (at 62 51 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "GRM155R61A225KE15D" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  ;; VREF bypass — 2.2µF to AGND
+  ;; Internal reference stabilisation — same recommendation as VMID
+  (symbol (lib_id "C") (at 68 50 0) (unit 1)
+    (property "Reference" "C35" (at 70 49 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "2.2µF 10V X5R 0402" (at 70 51 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "GRM155R61A225KE15D" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  ;; NT1 — AGND/DGND star point net tie
+  ;; PCB: single via or pad bridge at U5 — see PCB layout guidelines
+  (symbol (lib_id "NET_TIE_2") (at 100 55 0) (unit 1)
+    (property "Reference" "NT1" (at 100 51 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "AGND_DGND_STAR" (at 100 57 0)
+      (effects (font (size 1.27 1.27)))))
+
+  ;; PWR_FLAG on AVDD net (ERC compliance)
+  (symbol (lib_id "PWR_FLAG") (at 96 23 0) (unit 1)
+    (property "Reference" "#PWR10" (at 96 19 0)
+      (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "PWR_FLAG" (at 96 18 0)
+      (effects (font (size 1.27 1.27)))))
+
+  ;;
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;; U5 — ES8388 AUDIO CODEC
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;;
+  (symbol (lib_id "ES8388") (at 100 80 0) (unit 1)
+    (property "Reference" "U5" (at 100 56 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "ES8388" (at 100 54 0)
+      (effects (font (size 1.27 1.27)))))
+
+  ;; I2C address select — CSB/ADDR pin to GND → address 0x10
+  ;; Tie via 0Ω resistor (documented, allows rework to 0x11 if needed)
+  (symbol (lib_id "R") (at 70 67 0) (unit 1)
+    (property "Reference" "R3" (at 72 67 90)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "0Ω 0402 (ADDR=GND→0x10)" (at 70 67 90)
+      (effects (font (size 1.27 1.27))))
+    (property "MPN" "RC0402JR-070RL" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  ;;
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;; DAC OUTPUT PATH
+  ;;
+  ;; ES8388 LOUT1/ROUT1 → DC-blocking caps → J_OUT header
+  ;;
+  ;; DC-blocking caps: 10µF removes DC bias from DAC outputs.
+  ;; Calculated: f_-3dB = 1/(2π×R_load×C) = 1/(2π×10k×10µF) = 1.6Hz
+  ;; Well below 20Hz — negligible LF rolloff. 10µF is correct.
+  ;;
+  ;; Load resistor: 10kΩ each channel to GND provides defined impedance.
+  ;; Prevents floating output when no load connected.
+  ;; Line-level output impedance: ~600Ω (ES8388 internal) + 0 external = OK
+  ;;
+  ;; LOUT2/ROUT2: no-connect — second output pair not used on this board
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;;
+  ;; Left channel DC-blocking cap
+  (symbol (lib_id "C") (at 145 70 0) (unit 1)
+    (property "Reference" "C12" (at 147 69 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "10µF 10V X5R 0805" (at 147 71 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "GRM21BR61A106KE18L" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  ;; Right channel DC-blocking cap
+  (symbol (lib_id "C") (at 145 78 0) (unit 1)
+    (property "Reference" "C13" (at 147 77 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "10µF 10V X5R 0805" (at 147 79 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "GRM21BR61A106KE18L" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  ;; Left channel load resistor — 10kΩ to AGND
+  (symbol (lib_id "R") (at 158 74 0) (unit 1)
+    (property "Reference" "R30" (at 160 74 90)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "10kΩ 1% 0402" (at 158 74 90)
+      (effects (font (size 1.27 1.27))))
+    (property "MPN" "RC0402FR-0710KL" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  ;; Right channel load resistor — 10kΩ to AGND
+  (symbol (lib_id "R") (at 158 82 0) (unit 1)
+    (property "Reference" "R31" (at 160 82 90)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "10kΩ 1% 0402" (at 158 82 90)
+      (effects (font (size 1.27 1.27))))
+    (property "MPN" "RC0402FR-0710KL" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  ;; J_OUT — Stereo line-out header (1×4, 2.54mm)
+  ;; Pin 1: L_OUT  — left channel (after DC-block cap)
+  ;; Pin 2: R_OUT  — right channel (after DC-block cap)
+  ;; Pin 3: GND    — digital ground reference
+  ;; Pin 4: AGND   — analog ground (star point) — connect separately in cable
+  (symbol (lib_id "CONN_1x4_AUDIO") (at 180 78 0) (unit 1)
+    (property "Reference" "J_OUT" (at 180 68 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "LINE_OUT_STEREO" (at 180 66 0)
+      (effects (font (size 1.27 1.27)))))
+
+  ;;
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;; ADC INPUT PATH — DIGITAL MICROPHONE
+  ;;
+  ;; Digital mic (PDM/I2S) connects to J_MIC header.
+  ;; Data and CLK from mic go directly to ES8388 LINPUT1/RINPUT1.
+  ;; ES8388 ADC processes digital mic data — no analog mic path needed.
+  ;;
+  ;; Compatible mics: INMP441, SPH0645, MP34DT01, or any I2S/PDM mic
+  ;; Header supplies +3V3 and GND for mic power.
+  ;;
+  ;; LINPUT2/RINPUT2: no-connect — second ADC input pair unused
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;;
+  ;; J_MIC — Digital mic header (1×4, 2.54mm)
+  ;; Pin 1: +3V3  — mic VCC (100mA max, from +3V3 rail)
+  ;; Pin 2: GND   — mic ground
+  ;; Pin 3: DATA  — I2S/PDM data from mic to ES8388 LINPUT1
+  ;; Pin 4: CLK   — I2S clock or PDM clock from ES8388 to mic
+  (symbol (lib_id "CONN_1x4_MIC") (at 180 100 0) (unit 1)
+    (property "Reference" "J_MIC" (at 180 90 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "PDM_I2S_MIC_IN" (at 180 88 0)
+      (effects (font (size 1.27 1.27)))))
+
+  ;; Mic VCC decoupling — 10µF + 100nF at mic header
+  ;; Digital mic power is sensitive — local bypassing prevents
+  ;; power-supply noise coupling into the mic data stream
+  (symbol (lib_id "C") (at 168 88 0) (unit 1)
+    (property "Reference" "C36" (at 170 87 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "10µF 10V X5R 0805" (at 170 89 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "GRM21BR61A106KE18L" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  (symbol (lib_id "C") (at 168 92 0) (unit 1)
+    (property "Reference" "C37" (at 170 91 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Value" "100nF 10V X7R 0402" (at 170 93 0)
+      (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "GRM155R71A104KA01D" (at 0 0 0)
+      (effects (font (size 1.27 1.27)) hide)))
+
+  ;;
+  ;; ── Hierarchical port connections ─────────────────────────────────────────
+  ;;
+  ;; Power inputs (from power sheet)
+  (hierarchical_label "+3V3"
+    (shape power_in) (at 45 26 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "AGND"
+    (shape power_in) (at 95 58 180)
+    (effects (font (size 1.27 1.27)) (justify left)))
+  (hierarchical_label "DGND"
+    (shape power_in) (at 105 58 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+
+  ;; I2S inputs from ESP32-S3 (S3 is I2S master)
+  (hierarchical_label "I2S_BCLK"
+    (shape input) (at 50 65 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "I2S_LRCLK"
+    (shape input) (at 50 69 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "I2S_DOUT"
+    (shape input) (at 50 73 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "I2S_DIN"
+    (shape output) (at 50 77 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+
+  ;; I2C control from ESP32-S3 (shared bus, ES8388 at 0x10)
+  (hierarchical_label "CODEC_SDA"
+    (shape bidirectional) (at 50 85 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "CODEC_SCL"
+    (shape input) (at 50 89 0)
+    (effects (font (size 1.27 1.27)) (justify right)))
+
+  ;;
+  ;; ── Design notes ──────────────────────────────────────────────────────────
+  ;;
+  (text "ES8388 AUDIO CODEC DESIGN NOTES:\n\nI2S MASTER/SLAVE CONFIGURATION:\n  ESP32-S3 is I2S MASTER: provides BCLK, LRCLK, and DACDAT (GPIO7).\n  ES8388 is I2S SLAVE: receives clock, sends ADCDAT back (GPIO15).\n  MCLK: ES8388 can generate its own MCLK internally — tie MCLK pin NC\n  or provide from S3 if needed. Default: ES8388 auto-generates from BCLK.\n  Sample rate: up to 96kHz (BCLK = 64×Fs = 6.144MHz at 96kHz).\n\nI2C ADDRESS:\n  CSB/ADDR (pin 7) tied to AGND via R3 (0Ω) → I2C address 0x10.\n  Alternate: tie CSB to AVDD → address 0x11. Rework R3 if needed.\n  Shared bus with GT911 (address 0x5D). No conflict.\n\nAGND / DGND STAR POINT (IPC-2221B §6.2.4):\n  NT1 net tie joins AGND and DGND at a SINGLE point at U5.\n  PCB implementation: separate copper pours meeting at one via under U5.\n  AGND pour: covers only U5, C6, C7, C12, C13, C15, C16, R30, R31, J_OUT.\n  DGND pour: all other components.\n  DO NOT route digital signal traces over the AGND pour region.\n  DO NOT connect AGND to DGND anywhere except at NT1 (star point).\n\nAVDD FILTERING (FB1 ferrite bead):\n  BLM15AX601SN1D: 600Ω @ 100MHz, DC resistance < 0.5Ω, rated 500mA.\n  ES8388 AVDD current: < 30mA. Well within FB1 rating.\n  Voltage drop at 30mA: 30mA × 0.5Ω = 15mV. Negligible.\n  FB1 must be placed within 5mm of U5 AVDD pins on PCB.\n  C6 (10µF) + C7 (100nF) on AVDD side of FB1 — analog island.\n\nDC-BLOCKING CAPACITORS (C12, C13):\n  Value: 10µF X5R 0805\n  f_-3dB = 1/(2π × R_load × C) = 1/(2π × 10kΩ × 10µF) ≈ 1.6 Hz\n  Rolloff well below 20Hz audio band — no audible LF effect.\n  Polarity: positive terminal toward ES8388 output (DAC output has\n  positive DC bias). Mark polarity on silkscreen.\n  X5R dielectric: stable over audio temperature range (-40 to +85°C).\n  Do NOT use X7R for audio DC-blocking — capacitance varies with DC bias.\n\nLOAD RESISTORS (R30, R31):\n  10kΩ to AGND on each channel after DC-blocking cap.\n  Defines output impedance for unloaded condition.\n  Without load resistor, ES8388 output may ring on cable capacitance.\n  10kΩ is a reasonable compromise: minimal current, defined impedance.\n\nDIGITAL MICROPHONE INPUT (J_MIC):\n  Compatible: INMP441, SPH0645, MP34DT01, or any I2S/PDM mic module.\n  DATA (pin 3) → ES8388 LINPUT1 (pin 34) — left channel ADC input.\n  CLK (pin 4) ← ES8388 provides bit clock to mic.\n  Stereo mics: LINPUT1 = left, RINPUT1 = right. Use L/R select pin on mic.\n  LINPUT2/RINPUT2: no-connect markers on U5 (second ADC input unused).\n\nHEADPHONE OUTPUTS (HPOUT_L, HPOUT_R):\n  LOUT2/ROUT2 and HPOUT pins: no-connect on this board.\n  No headphone amplifier populated — line-level only.\n  If headphone output needed in future: add TPA6133A2 amp after J_OUT.\n\nPCB LAYOUT PRIORITY (IPC-2221B):\n  1. Place U5 first. Establish AGND pour boundary.\n  2. Place FB1 within 5mm of U5 AVDD pins.\n  3. Place C6/C7 on AVDD side of FB1, within 2mm of U5 AVDD.\n  4. Place C8/C9 within 2mm of U5 DVDD pins.\n  5. Place C12/C13 on output side, as close to J_OUT as possible.\n  6. Route all audio traces over AGND pour only.\n  7. Keep I2S traces (BCLK, LRCLK) away from audio output traces.\n  8. NT1 star point: single via connecting AGND pour to DGND plane."
+    (at 20 125 0)
+    (effects (font (size 1.27 1.27)) (justify left top)))
+)

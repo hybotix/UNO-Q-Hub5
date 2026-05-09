@@ -372,11 +372,6 @@
   ;; separate copper pours that meet at one via.
   ;; ═══════════════════════════════════════════════════════════════════════════
   ;;
-  (symbol (lib_id "NET_TIE_2") (at 100 75 0) (unit 1)
-    (property "Reference" "NT1" (at 100 71 0)
-      (effects (font (size 1.27 1.27))))
-    (property "Value" "AGND_DGND_STAR" (at 100 78 0)
-      (effects (font (size 1.27 1.27)))))
 
   ;; Audio AVDD filter — ferrite bead isolates analog supply from digital +3V3
   ;; 600Ω @ 100MHz ferrite passes DC but blocks HF switching noise

@@ -296,7 +296,6 @@
     (shape input) (at 20 122 0) (effects (font (size 1.27 1.27)) (justify right)))
   (hierarchical_label "S3_ADDR_E"
     (shape input) (at 20 124 0) (effects (font (size 1.27 1.27)) (justify right)))
-  (hierarchical_label "S3_HUB75_OE"
     (shape input) (at 20 126 0) (effects (font (size 1.27 1.27)) (justify right)))
 
   ;; Power inputs from power sub-sheet
