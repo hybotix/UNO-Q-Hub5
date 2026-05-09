@@ -2,267 +2,497 @@
   (version 20260326)
   (generator "eeschema")
   (generator_version "10.0.0")
-  (uuid 998cbc46-99c8-4ec1-b4fa-bbcee231c7c1)
+  (uuid "7f51cdd9-8537-4087-ba96-4bd152b597b5")
   (paper "A3")
   (title_block
     (title "UNO Q Super Carrier — ESP32-C6 Radio Co-Processor")
     (date "2026-05-08")
     (rev "0.1")
     (company "Hybrid RobotiX")
-    (comment 1 "ESP32-C6-MINI-1 (default PCB ant) or MINI-1U (U.FL) — same footprint")
-    (comment 2 "Antenna select: R_ANT_PCB=0Ω, R_ANT_EXT=DNP (PCB default)")
-    (comment 3 "WiFi6, BLE5, Thread, Matter, Zigbee — ALL wireless on this device")
-    (comment 4 "Espressif HW guidelines: antenna edge overhang, no Cu under antenna")
+    (comment 1 "ESP32-C6-MINI-1 (PCB ant default) or MINI-1U (U.FL) same footprint")
+    (comment 2 "R_ANT_PCB=0Ω (populated) R_ANT_EXT=DNP J_ANT U.FL connector")
+    (comment 3 "WiFi6 BLE5 Thread Matter Zigbee — ALL wireless on this device")
+    (comment 4 "Module antenna edge MUST overhang carrier PCB edge (Espressif HW guideline)")
   )
 
   (lib_symbols
-
-    ;; ── ESP32-C6-MINI-1 / MINI-1U ────────────────────────────────────────────
-    ;; MINI-1 = PCB trace antenna (default populated)
-    ;; MINI-1U = U.FL external antenna connector (alternate BOM)
-    ;; Both share IDENTICAL footprint: castellation 2×12+2 1.27mm pitch
-    ;; Antenna selection handled by 0Ω resistors R_ANT_PCB / R_ANT_EXT
-    ;; C6 GPIO: Thread/Matter/Zigbee co-exist with WiFi6 and BLE5
-    (symbol "ESP32-C6-MINI-1"
+    (symbol "HybotixParts:ESP32-C6-MINI-1"
       (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
-      (property "Reference" "U6" (at 0 30 0) (effects (font (size 1.27 1.27))))
-      (property "Value" "ESP32-C6-MINI-1" (at 0 28 0) (effects (font (size 1.27 1.27))))
-      (property "Footprint" "RF_Module:ESP32-C6-MINI-1" (at 0 26 0) (effects (font (size 1.27 1.27)) hide))
-      (property "Datasheet" "https://www.espressif.com/sites/default/files/documentation/esp32-c6-mini-1_mini-1u_datasheet_en.pdf" (at 0 24 0) (effects (font (size 1.27 1.27)) hide))
-      (property "MPN" "ESP32-C6-MINI-1-N4" (at 0 22 0) (effects (font (size 1.27 1.27)) hide))
-      (property "MPN_ALT" "ESP32-C6-MINI-1U-N4 (U.FL variant)" (at 0 20 0) (effects (font (size 1.27 1.27)) hide))
+      (property "Reference" "U" (at 0 28 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "ESP32-C6-MINI-1" (at 0 26 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "RF_Module:ESP32-C6-MINI-1" (at 0 24 0) (effects (font (size 1.27 1.27)) hide))
+      (property "Datasheet" "https://www.espressif.com/sites/default/files/documentation/esp32-c6-mini-1_mini-1u_datasheet_en.pdf" (at 0 22 0) (effects (font (size 1.27 1.27)) hide))
       (symbol "ESP32-C6-MINI-1_0_0"
         (rectangle (start -12 -22) (end 12 22) (stroke (width 0.254) (type default)) (fill (type background)))
-
-        ;; Power — top/bottom (IEEE 315)
-        (pin power_in at 0  25 270 (length 3)
-          (name "3V3" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))
-        (pin power_in at -4  25 270 (length 3)
-          (name "GND" (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))
-        (pin input at 4  25 270 (length 3)
-          (name "EN" (effects (font (size 1.016 1.016)))) (number "3" (effects (font (size 1.016 1.016)))))
-
-        ;; Left — SPI slave + UART inputs
-        (pin input at -15 18 0 (length 3)
-          (name "CS_C6_MCU/GPIO18" (effects (font (size 1.016 1.016)))) (number "12" (effects (font (size 1.016 1.016)))))
-        (pin input at -15 14 0 (length 3)
-          (name "CS_C6_MPU/GPIO19" (effects (font (size 1.016 1.016)))) (number "13" (effects (font (size 1.016 1.016)))))
-        (pin input at -15 10 0 (length 3)
-          (name "SPI_MOSI/GPIO20" (effects (font (size 1.016 1.016)))) (number "14" (effects (font (size 1.016 1.016)))))
-        (pin output at -15 6 0 (length 3)
-          (name "SPI_MISO/GPIO21" (effects (font (size 1.016 1.016)))) (number "15" (effects (font (size 1.016 1.016)))))
-        (pin input at -15 2 0 (length 3)
-          (name "SPI_SCK/GPIO22" (effects (font (size 1.016 1.016)))) (number "16" (effects (font (size 1.016 1.016)))))
-        (pin input at -15 -2 0 (length 3)
-          (name "S3_C6_RX/GPIO4" (effects (font (size 1.016 1.016)))) (number "5" (effects (font (size 1.016 1.016)))))
-        (pin output at -15 -6 0 (length 3)
-          (name "S3_C6_TX/GPIO5" (effects (font (size 1.016 1.016)))) (number "6" (effects (font (size 1.016 1.016)))))
-        (pin input at -15 -10 0 (length 3)
-          (name "MCU_UART_RX/GPIO16" (effects (font (size 1.016 1.016)))) (number "17" (effects (font (size 1.016 1.016)))))
-        (pin output at -15 -14 0 (length 3)
-          (name "MCU_UART_TX/GPIO17" (effects (font (size 1.016 1.016)))) (number "18" (effects (font (size 1.016 1.016)))))
-
-        ;; Right — debug USB + spare GPIOs
-        (pin bidirectional at 15 18 180 (length 3)
-          (name "USB_D-/GPIO12" (effects (font (size 1.016 1.016)))) (number "30" (effects (font (size 1.016 1.016)))))
-        (pin bidirectional at 15 14 180 (length 3)
-          (name "USB_D+/GPIO13" (effects (font (size 1.016 1.016)))) (number "31" (effects (font (size 1.016 1.016)))))
-        (pin passive at 15 8 180 (length 3)
-          (name "GPIO6" (effects (font (size 1.016 1.016)))) (number "7" (effects (font (size 1.016 1.016)))))
-        (pin passive at 15 4 180 (length 3)
-          (name "GPIO7" (effects (font (size 1.016 1.016)))) (number "8" (effects (font (size 1.016 1.016)))))
-        (pin passive at 15 0 180 (length 3)
-          (name "GPIO8" (effects (font (size 1.016 1.016)))) (number "9" (effects (font (size 1.016 1.016)))))
-        (pin passive at 15 -4 180 (length 3)
-          (name "GPIO9" (effects (font (size 1.016 1.016)))) (number "10" (effects (font (size 1.016 1.016)))))
-        (pin passive at 15 -8 180 (length 3)
-          (name "GPIO10" (effects (font (size 1.016 1.016)))) (number "11" (effects (font (size 1.016 1.016)))))
-        (pin passive at 15 -18 180 (length 3)
-          (name "GPIO23" (effects (font (size 1.016 1.016)))) (number "19" (effects (font (size 1.016 1.016)))))
-      )
-    )
-
-    ;; ── Capacitor ────────────────────────────────────────────────────────────
-    (symbol "C"
+        (pin power_in line (at  0  25 270) (length 3) (name "3V3"             (effects (font (size 1.016 1.016)))) (number "1"  (effects (font (size 1.016 1.016)))))
+        (pin power_in line (at -4  25 270) (length 3) (name "GND"             (effects (font (size 1.016 1.016)))) (number "2"  (effects (font (size 1.016 1.016)))))
+        (pin input    line (at  4  25 270) (length 3) (name "EN"              (effects (font (size 1.016 1.016)))) (number "3"  (effects (font (size 1.016 1.016)))))
+        (pin input    line (at -15  18   0) (length 3) (name "CS_C6_MCU/GPIO18"(effects (font (size 1.016 1.016)))) (number "12" (effects (font (size 1.016 1.016)))))
+        (pin input    line (at -15  14   0) (length 3) (name "CS_C6_MPU/GPIO19"(effects (font (size 1.016 1.016)))) (number "13" (effects (font (size 1.016 1.016)))))
+        (pin input    line (at -15  10   0) (length 3) (name "SPI_MOSI/GPIO20" (effects (font (size 1.016 1.016)))) (number "14" (effects (font (size 1.016 1.016)))))
+        (pin output   line (at -15   6   0) (length 3) (name "SPI_MISO/GPIO21" (effects (font (size 1.016 1.016)))) (number "15" (effects (font (size 1.016 1.016)))))
+        (pin input    line (at -15   2   0) (length 3) (name "SPI_SCK/GPIO22"  (effects (font (size 1.016 1.016)))) (number "16" (effects (font (size 1.016 1.016)))))
+        (pin input    line (at -15  -2   0) (length 3) (name "S3_C6_RX/GPIO4"  (effects (font (size 1.016 1.016)))) (number "5"  (effects (font (size 1.016 1.016)))))
+        (pin output   line (at -15  -6   0) (length 3) (name "S3_C6_TX/GPIO5"  (effects (font (size 1.016 1.016)))) (number "6"  (effects (font (size 1.016 1.016)))))
+        (pin input    line (at -15 -10   0) (length 3) (name "UART_RX/GPIO16"  (effects (font (size 1.016 1.016)))) (number "17" (effects (font (size 1.016 1.016)))))
+        (pin output   line (at -15 -14   0) (length 3) (name "UART_TX/GPIO17"  (effects (font (size 1.016 1.016)))) (number "18" (effects (font (size 1.016 1.016)))))
+        (pin bidirectional line (at 15  18 180) (length 3) (name "USB_D-/GPIO12"   (effects (font (size 1.016 1.016)))) (number "30" (effects (font (size 1.016 1.016)))))
+        (pin bidirectional line (at 15  14 180) (length 3) (name "USB_D+/GPIO13"   (effects (font (size 1.016 1.016)))) (number "31" (effects (font (size 1.016 1.016)))))
+        (pin passive   line (at 15   0 180) (length 3) (name "GPIO8_SPARE"     (effects (font (size 1.016 1.016)))) (number "9"  (effects (font (size 1.016 1.016)))))
+        (pin passive   line (at 15  -8 180) (length 3) (name "GPIO23_SPARE"    (effects (font (size 1.016 1.016)))) (number "19" (effects (font (size 1.016 1.016)))))))
+    (symbol "HybotixParts:UFL_Connector"
+      (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+      (property "Reference" "J" (at 0 6 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "U.FL-R-SMT-1" (at 0 4 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Connector_Coaxial:U.FL_Hirose_U.FL-R-SMT-1_Vertical" (at 0 2 0) (effects (font (size 1.27 1.27)) hide))
+      (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "UFL_Connector_0_0"
+        (circle (center 0 0) (radius 3) (stroke (width 0.254) (type default)) (fill (type background)))
+        (circle (center 0 0) (radius 1.5) (stroke (width 0.254) (type default)) (fill (type filled))))
+      (symbol "UFL_Connector_1_1"
+        (pin passive line (at -6 0   0) (length 3) (name "RF"  (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))
+        (pin passive line (at  6 0 180) (length 3) (name "GND" (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))))
+    (symbol "HybotixParts:USB_C"
+      (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+      (property "Reference" "J" (at 0 10 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "USB_C_Receptacle" (at 0 8 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Connector_USB:USB_C_Receptacle_GCT_USB4135_FlipMounted" (at 0 6 0) (effects (font (size 1.27 1.27)) hide))
+      (property "Datasheet" "~" (at 0 4 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "USB_C_0_0"
+        (rectangle (start -5 -6) (end 5 6) (stroke (width 0.254) (type default)) (fill (type background)))
+        (pin passive line (at -8  4   0) (length 3) (name "VBUS" (effects (font (size 1.016 1.016)))) (number "A4" (effects (font (size 1.016 1.016)))))
+        (pin passive line (at -8  0   0) (length 3) (name "D-"   (effects (font (size 1.016 1.016)))) (number "A7" (effects (font (size 1.016 1.016)))))
+        (pin passive line (at -8 -2   0) (length 3) (name "D+"   (effects (font (size 1.016 1.016)))) (number "A6" (effects (font (size 1.016 1.016)))))
+        (pin passive line (at -8 -4   0) (length 3) (name "GND"  (effects (font (size 1.016 1.016)))) (number "A1" (effects (font (size 1.016 1.016)))))
+        (pin passive line (at  8  2 180) (length 3) (name "CC1"  (effects (font (size 1.016 1.016)))) (number "A5" (effects (font (size 1.016 1.016)))))
+        (pin passive line (at  8 -2 180) (length 3) (name "CC2"  (effects (font (size 1.016 1.016)))) (number "B5" (effects (font (size 1.016 1.016)))))))
+    (symbol "Device:C"
       (pin_names (offset 0.254) hide) (in_bom yes) (on_board yes)
       (property "Reference" "C" (at 1.016 0.508 0) (effects (font (size 1.27 1.27)) (justify left)))
       (property "Value" "C" (at 1.016 -1.016 0) (effects (font (size 1.27 1.27)) (justify left)))
+      (property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
       (symbol "C_0_1"
         (polyline (pts (xy -1.524 -0.508) (xy 1.524 -0.508)) (stroke (width 0.3302) (type default)) (fill (type none)))
-        (polyline (pts (xy -1.524  0.508) (xy 1.524  0.508)) (stroke (width 0.3302) (type default)) (fill (type none)))
-      )
+        (polyline (pts (xy -1.524  0.508) (xy 1.524  0.508)) (stroke (width 0.3302) (type default)) (fill (type none))))
       (symbol "C_1_1"
-        (pin passive at 0  2.032 270 (length 1.524) (name "~{}" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))
-        (pin passive at 0 -2.032  90 (length 1.524) (name "~{}" (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))
-      )
-    )
-
-    ;; ── Resistor ─────────────────────────────────────────────────────────────
-    (symbol "R"
+        (pin passive line (at 0  2.032 270) (length 1.524) (name "~{}" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))
+        (pin passive line (at 0 -2.032  90) (length 1.524) (name "~{}" (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))))
+    (symbol "Device:R"
       (pin_names (offset 0) hide) (in_bom yes) (on_board yes)
       (property "Reference" "R" (at 2.032 0 90) (effects (font (size 1.27 1.27))))
       (property "Value" "R" (at 0 0 90) (effects (font (size 1.27 1.27))))
       (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
       (symbol "R_0_1"
-        (rectangle (start -1.016 -2.032) (end 1.016 2.032) (stroke (width 0.254) (type default)) (fill (type none)))
-      )
+        (rectangle (start -1.016 -2.032) (end 1.016 2.032) (stroke (width 0.254) (type default)) (fill (type none))))
       (symbol "R_1_1"
-        (pin passive at 0  3.556 270 (length 1.524) (name "~{}" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))
-        (pin passive at 0 -3.556  90 (length 1.524) (name "~{}" (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))
-      )
+        (pin passive line (at 0  3.556 270) (length 1.524) (name "~{}" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))
+        (pin passive line (at 0 -3.556  90) (length 1.524) (name "~{}" (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))))
+    (symbol "power:PWR_FLAG"
+      (pin_names (offset 0) hide) (in_bom no) (on_board no)
+      (property "Reference" "#PWR" (at 0 8 0) (effects (font (size 1.27 1.27)) hide))
+      (property "Value" "PWR_FLAG" (at 0 6 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "PWR_FLAG_0_0"
+        (pin power_out line (at 0 0 90) (length 0) (name "PWR" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016))))))
+      (symbol "PWR_FLAG_0_1"
+        (polyline (pts (xy 0 0) (xy 0 1.27) (xy -1.27 2.032) (xy 0 2.794) (xy 1.27 2.032) (xy 0 1.27))
+          (stroke (width 0.254) (type default)) (fill (type filled)))))
+  )
+  (symbol (lib_id "HybotixParts:ESP32-C6-MINI-1")
+    (at 100 80 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "d8a42c41-3e45-469f-864b-bdb7dbdaaab4")
+    (property "Reference" "U6" (at 102 79 0)
+      (effects (font (size 1.27 1.27)))
     )
-
-    ;; ── U.FL SMD Antenna Connector ───────────────────────────────────────────
-    ;; Hirose U.FL-R-SMT-1(10) or equivalent
-    ;; Keep all layers clear beneath — Espressif HW guideline
-    (symbol "U_FL_CONN"
-      (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
-      (property "Reference" "J_ANT" (at 0 6 0) (effects (font (size 1.27 1.27))))
-      (property "Value" "U.FL_Ext_Antenna" (at 0 4 0) (effects (font (size 1.27 1.27))))
-      (property "Footprint" "Connector_Coaxial:U.FL_Hirose_U.FL-R-SMT-1_Vertical" (at 0 2 0) (effects (font (size 1.27 1.27)) hide))
-      (property "MPN" "U.FL-R-SMT-1(10)" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
-      (symbol "U_FL_CONN_0_0"
-        (circle (center 0 0) (radius 3) (stroke (width 0.254) (type default)) (fill (type background)))
-        (circle (center 0 0) (radius 1.5) (stroke (width 0.254) (type default)) (fill (type filled)))
-      )
-      (symbol "U_FL_CONN_1_1"
-        (pin passive at -6 0   0 (length 3) (name "RF" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))
-        (pin passive at  6 0 180 (length 3) (name "GND" (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))
-      )
+    (property "Value" "ESP32-C6-MINI-1" (at 102 81 0)
+      (effects (font (size 1.27 1.27)))
     )
-
-    ;; ── USB-C for C6 debug ───────────────────────────────────────────────────
-    (symbol "USB_C_RECEPTACLE"
-      (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
-      (property "Reference" "J_C6_USB" (at 0 10 0) (effects (font (size 1.27 1.27))))
-      (property "Value" "USB_C_C6_Debug" (at 0 8 0) (effects (font (size 1.27 1.27))))
-      (property "Footprint" "Connector_USB:USB_C_Receptacle_GCT_USB4135_FlipMounted" (at 0 6 0) (effects (font (size 1.27 1.27)) hide))
-      (property "MPN" "USB4135-GF-A" (at 0 4 0) (effects (font (size 1.27 1.27)) hide))
-      (symbol "USB_C_RECEPTACLE_0_0"
-        (rectangle (start -5 -6) (end 5 6) (stroke (width 0.254) (type default)) (fill (type background)))
-        (pin passive at -8  4   0 (length 3) (name "VBUS" (effects (font (size 1.016 1.016)))) (number "A4" (effects (font (size 1.016 1.016)))))
-        (pin passive at -8  0   0 (length 3) (name "D-"   (effects (font (size 1.016 1.016)))) (number "A7" (effects (font (size 1.016 1.016)))))
-        (pin passive at -8 -2   0 (length 3) (name "D+"   (effects (font (size 1.016 1.016)))) (number "A6" (effects (font (size 1.016 1.016)))))
-        (pin passive at -8 -4   0 (length 3) (name "GND"  (effects (font (size 1.016 1.016)))) (number "A1" (effects (font (size 1.016 1.016)))))
-        (pin passive at  8  2 180 (length 3) (name "CC1"  (effects (font (size 1.016 1.016)))) (number "A5" (effects (font (size 1.016 1.016)))))
-        (pin passive at  8 -2 180 (length 3) (name "CC2"  (effects (font (size 1.016 1.016)))) (number "B5" (effects (font (size 1.016 1.016)))))
+    (property "Footprint" "RF_Module:ESP32-C6-MINI-1" (at 100 80 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "https://www.espressif.com/sites/default/files/documentation/esp32-c6-mini-1_mini-1u_datasheet_en.pdf" (at 100 80 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MPN" "ESP32-C6-MINI-1-N4" (at 100 80 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MPN_ALT" "ESP32-C6-MINI-1U-N4 U.FL variant" (at 100 80 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_super_carrier"
+        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a/7f51cdd9-8537-4087-ba96-4bd152b597b5"
+          (reference "U6")
+          (unit 1)
+        )
       )
     )
   )
-
-  ;;
-  ;; ═══════════════════════════════════════════════════════════════════════════
-  ;; U6 — ESP32-C6-MINI-1 (or MINI-1U for external antenna)
-  ;; ALL wireless on this device: WiFi6, BLE5, Thread, Matter, Zigbee
-  ;; PCB placement: module antenna edge MUST overhang carrier PCB edge
-  ;; C6 antenna keepout: 3mm clear of all copper, all layers
-  ;; ═══════════════════════════════════════════════════════════════════════════
-  ;;
-  (symbol (lib_id "ESP32-C6-MINI-1") (at 100 80 0) (unit 1)
-    (property "Reference" "U6" (at 100 52 0) (effects (font (size 1.27 1.27))))
-    (property "Value" "ESP32-C6-MINI-1" (at 100 50 0) (effects (font (size 1.27 1.27)))))
-
-  ;; Decoupling — 100nF + 10µF within 3mm of VCC
-  (symbol (lib_id "C") (at 78 66 0) (unit 1)
-    (property "Reference" "C_C1" (at 80 65 0) (effects (font (size 1.27 1.27))))
-    (property "Value" "100nF 10V X7R 0402" (at 80 67 0) (effects (font (size 1.27 1.27))))
-    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
-    (property "MPN" "GRM155R71A104KA01D" (at 0 0 0) (effects (font (size 1.27 1.27)) hide)))
-
-  (symbol (lib_id "C") (at 78 70 0) (unit 1)
-    (property "Reference" "C_C2" (at 80 69 0) (effects (font (size 1.27 1.27))))
-    (property "Value" "10µF 10V X5R 0805" (at 80 71 0) (effects (font (size 1.27 1.27))))
-    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
-    (property "MPN" "GRM21BR61A106KE18L" (at 0 0 0) (effects (font (size 1.27 1.27)) hide)))
-
-  ;; EN pullup — 10kΩ, required
-  (symbol (lib_id "R") (at 76 62 0) (unit 1)
-    (property "Reference" "R_C1" (at 78 62 90) (effects (font (size 1.27 1.27))))
-    (property "Value" "10kΩ 1% 0402" (at 76 62 90) (effects (font (size 1.27 1.27)))))
-
-  ;; GPIO0 strapping pullup (boot mode) — 10kΩ to +3V3
-  (symbol (lib_id "R") (at 76 66 0) (unit 1)
-    (property "Reference" "R_C2" (at 78 66 90) (effects (font (size 1.27 1.27))))
-    (property "Value" "10kΩ 1% 0402" (at 76 66 90) (effects (font (size 1.27 1.27)))))
-
-  ;;
-  ;; ═══════════════════════════════════════════════════════════════════════════
-  ;; ANTENNA SELECTION — 0Ω RESISTOR METHOD
-  ;;
-  ;; The MINI-1 (PCB antenna) and MINI-1U (U.FL) share the same footprint.
-  ;; On-board, a 0Ω resistor R_ANT_PCB routes the RF pad to the module's
-  ;; own PCB antenna (for MINI-1 fitted). R_ANT_EXT is DNP by default.
-  ;;
-  ;; To use external antenna:
-  ;;   1. Swap module to MINI-1U
-  ;;   2. DNP R_ANT_PCB, populate R_ANT_EXT (0Ω)
-  ;;   3. Connect pigtail + external 2.4GHz antenna to J_ANT (U.FL)
-  ;;
-  ;; PCB topology:
-  ;;   C6 RF pad ──┬── R_ANT_PCB (0Ω, default) ──▶ Module PCB ant (MINI-1)
-  ;;               └── R_ANT_EXT (0Ω, DNP)     ──▶ J_ANT (U.FL) ──▶ external
-  ;;
-  ;; Note: ONLY ONE resistor populated at a time. Never both.
-  ;; 50Ω characteristic impedance maintained in RF trace.
-  ;; ═══════════════════════════════════════════════════════════════════════════
-  ;;
-  ;; R_ANT_PCB — populated by default (MINI-1 PCB antenna path)
-  (symbol (lib_id "R") (at 145 65 90) (unit 1)
-    (property "Reference" "R_ANT_PCB" (at 147 65 0) (effects (font (size 1.27 1.27))))
-    (property "Value" "0Ω PCB_ANT (default)" (at 143 65 0) (effects (font (size 1.27 1.27)))))
-
-  ;; R_ANT_EXT — DNP (not populated unless external antenna required)
-  (symbol (lib_id "R") (at 145 73 90) (unit 1)
-    (property "Reference" "R_ANT_EXT" (at 147 73 0) (effects (font (size 1.27 1.27))))
-    (property "Value" "0Ω EXT_ANT DNP" (at 143 73 0) (effects (font (size 1.27 1.27)))))
-
-  ;; J_ANT — U.FL connector for external antenna
-  ;; DNP when MINI-1 (PCB antenna) is fitted; populate when MINI-1U is fitted
-  (symbol (lib_id "U_FL_CONN") (at 165 73 0) (unit 1)
-    (property "Reference" "J_ANT" (at 165 67 0) (effects (font (size 1.27 1.27))))
-    (property "Value" "U.FL_Ext_2.4GHz" (at 165 65 0) (effects (font (size 1.27 1.27)))))
-
-  ;;
-  ;; ── USB-C for C6 debug (USB-Serial/JTAG) ─────────────────────────────────
-  ;;
-  (symbol (lib_id "USB_C_RECEPTACLE") (at 65 105 0) (unit 1)
-    (property "Reference" "J_C6_USB" (at 65 97 0) (effects (font (size 1.27 1.27))))
-    (property "Value" "C6_DEBUG_USB" (at 65 95 0) (effects (font (size 1.27 1.27)))))
-
-  ;; CC resistors — 5.1kΩ each to GND
-  (symbol (lib_id "R") (at 55 110 0) (unit 1)
-    (property "Reference" "R_C3" (at 57 110 90) (effects (font (size 1.27 1.27))))
-    (property "Value" "5.1kΩ 1% 0402" (at 55 110 90) (effects (font (size 1.27 1.27)))))
-
-  (symbol (lib_id "R") (at 55 114 0) (unit 1)
-    (property "Reference" "R_C4" (at 57 114 90) (effects (font (size 1.27 1.27))))
-    (property "Value" "5.1kΩ 1% 0402" (at 55 114 90) (effects (font (size 1.27 1.27)))))
-
-  ;;
-  ;; ── Hierarchical ports ────────────────────────────────────────────────────
-  ;;
+  (symbol (lib_id "Device:C")
+    (at 78 66 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "fcc49db5-5cfe-43e0-8784-d79ca42e3416")
+    (property "Reference" "C_C1" (at 80 65 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "100nF 10V X7R 0402" (at 80 67 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 78 66 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 78 66 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MPN" "GRM155R71A104KA01D" (at 78 66 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_super_carrier"
+        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a/7f51cdd9-8537-4087-ba96-4bd152b597b5"
+          (reference "C_C1")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (symbol (lib_id "Device:C")
+    (at 78 70 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "3fd4302e-9728-41aa-a182-5a47050ddc01")
+    (property "Reference" "C_C2" (at 80 69 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "10µF 10V X5R 0805" (at 80 71 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 78 70 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 78 70 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MPN" "GRM21BR61A106KE18L" (at 78 70 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_super_carrier"
+        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a/7f51cdd9-8537-4087-ba96-4bd152b597b5"
+          (reference "C_C2")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (symbol (lib_id "Device:R")
+    (at 76 62 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "b376b21d-b8ac-4ebb-906d-a28165098646")
+    (property "Reference" "R_C1" (at 78 61 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "10kΩ 1% 0402 EN pullup" (at 78 63 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 76 62 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 76 62 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_super_carrier"
+        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a/7f51cdd9-8537-4087-ba96-4bd152b597b5"
+          (reference "R_C1")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (symbol (lib_id "Device:R")
+    (at 76 66 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "8ae88592-18e7-4ffa-9a62-bcd09f22f23e")
+    (property "Reference" "R_C2" (at 78 65 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "10kΩ 1% 0402 GPIO0 pullup" (at 78 67 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 76 66 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 76 66 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_super_carrier"
+        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a/7f51cdd9-8537-4087-ba96-4bd152b597b5"
+          (reference "R_C2")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (symbol (lib_id "Device:R")
+    (at 145 65 90)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "2d003985-e19f-40e6-b13d-3be6cb40b1d4")
+    (property "Reference" "R_ANT_PCB" (at 147 64 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "0Ω PCB_ANT_default" (at 147 66 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 145 65 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 145 65 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_super_carrier"
+        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a/7f51cdd9-8537-4087-ba96-4bd152b597b5"
+          (reference "R_ANT_PCB")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (symbol (lib_id "Device:R")
+    (at 145 73 90)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "9cd409ba-bad0-4cd5-a2c9-4cbcdb96729e")
+    (property "Reference" "R_ANT_EXT" (at 147 72 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "0Ω EXT_ANT_DNP" (at 147 74 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 145 73 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 145 73 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_super_carrier"
+        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a/7f51cdd9-8537-4087-ba96-4bd152b597b5"
+          (reference "R_ANT_EXT")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (symbol (lib_id "HybotixParts:UFL_Connector")
+    (at 165 73 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "84134f62-2ea2-431e-94e2-1bc6947743f4")
+    (property "Reference" "J_ANT" (at 167 72 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "U.FL_Ext_2.4GHz" (at 167 74 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Connector_Coaxial:U.FL_Hirose_U.FL-R-SMT-1_Vertical" (at 165 73 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 165 73 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MPN" "U.FL-R-SMT-1(10)" (at 165 73 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_super_carrier"
+        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a/7f51cdd9-8537-4087-ba96-4bd152b597b5"
+          (reference "J_ANT")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (symbol (lib_id "HybotixParts:USB_C")
+    (at 65 105 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "f270288b-2860-4275-89a3-32e379ac867a")
+    (property "Reference" "J_C6_USB" (at 67 104 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "C6_DEBUG_USB" (at 67 106 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Connector_USB:USB_C_Receptacle_GCT_USB4135_FlipMounted" (at 65 105 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 65 105 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "MPN" "USB4135-GF-A" (at 65 105 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_super_carrier"
+        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a/7f51cdd9-8537-4087-ba96-4bd152b597b5"
+          (reference "J_C6_USB")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (symbol (lib_id "Device:R")
+    (at 55 110 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "387a6c43-501a-4647-a184-f2e8cde919ae")
+    (property "Reference" "R_C3" (at 57 109 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "5.1kΩ 1% 0402 CC1" (at 57 111 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 55 110 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 55 110 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_super_carrier"
+        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a/7f51cdd9-8537-4087-ba96-4bd152b597b5"
+          (reference "R_C3")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (symbol (lib_id "Device:R")
+    (at 55 114 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "01cf849e-2fa8-48f2-9c62-b189dda900c2")
+    (property "Reference" "R_C4" (at 57 113 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "5.1kΩ 1% 0402 CC2" (at 57 115 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 55 114 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 55 114 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_super_carrier"
+        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a/7f51cdd9-8537-4087-ba96-4bd152b597b5"
+          (reference "R_C4")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (symbol (lib_id "power:PWR_FLAG")
+    (at 78 58 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "d85c5da3-9247-4b2d-8c13-2d7fd0f0a88a")
+    (property "Reference" "#PWR_C3" (at 80 57 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "PWR_FLAG" (at 80 59 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 78 58 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 78 58 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_super_carrier"
+        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a/7f51cdd9-8537-4087-ba96-4bd152b597b5"
+          (reference "#PWR_C3")
+          (unit 1)
+        )
+      )
+    )
+  )
   (hierarchical_label "+3V3"
-    (shape power_in) (at 78 62 180) (effects (font (size 1.27 1.27)) (justify left)))
+    (shape power_in)
+    (at 78 62 180)
+    (effects (font (size 1.27 1.27)) (justify right))
+    (uuid "5be9b878-4a28-41d6-ae5c-9215e7d6fb71")
+  )
   (hierarchical_label "DGND"
-    (shape power_in) (at 78 75 180) (effects (font (size 1.27 1.27)) (justify left)))
+    (shape power_in)
+    (at 78 75 180)
+    (effects (font (size 1.27 1.27)) (justify right))
+    (uuid "4c0f7b89-f396-410f-a5fb-87ac707013b2")
+  )
   (hierarchical_label "SPI_MOSI"
-    (shape input) (at 50 76 0) (effects (font (size 1.27 1.27)) (justify right)))
+    (shape input)
+    (at 50 76 0)
+    (effects (font (size 1.27 1.27)) (justify right))
+    (uuid "fea3fc32-f9b6-472c-8217-e05a818e0471")
+  )
   (hierarchical_label "SPI_MISO"
-    (shape output) (at 50 80 0) (effects (font (size 1.27 1.27)) (justify right)))
+    (shape output)
+    (at 50 80 0)
+    (effects (font (size 1.27 1.27)) (justify right))
+    (uuid "9157e630-9ab3-45b1-8066-658b3fd0343f")
+  )
   (hierarchical_label "SPI_SCK"
-    (shape input) (at 50 84 0) (effects (font (size 1.27 1.27)) (justify right)))
+    (shape input)
+    (at 50 84 0)
+    (effects (font (size 1.27 1.27)) (justify right))
+    (uuid "bb222925-c415-4ae9-8053-99f9626562ac")
+  )
   (hierarchical_label "CS_C6_MCU"
-    (shape input) (at 50 88 0) (effects (font (size 1.27 1.27)) (justify right)))
+    (shape input)
+    (at 50 88 0)
+    (effects (font (size 1.27 1.27)) (justify right))
+    (uuid "364cc00d-32b8-4247-8be4-a2acd1cd6851")
+  )
   (hierarchical_label "CS_C6_MPU"
-    (shape input) (at 50 92 0) (effects (font (size 1.27 1.27)) (justify right)))
+    (shape input)
+    (at 50 92 0)
+    (effects (font (size 1.27 1.27)) (justify right))
+    (uuid "bb18ffa7-6a1b-42f5-b427-839ecb4b3193")
+  )
   (hierarchical_label "S3_C6_TX"
-    (shape input) (at 50 98 0) (effects (font (size 1.27 1.27)) (justify right)))
+    (shape input)
+    (at 50 98 0)
+    (effects (font (size 1.27 1.27)) (justify right))
+    (uuid "632f211a-ac2d-4394-95f0-1aaab6139e03")
+  )
   (hierarchical_label "S3_C6_RX"
-    (shape output) (at 50 102 0) (effects (font (size 1.27 1.27)) (justify right)))
-
-  ;;
-  ;; ── Design notes ──────────────────────────────────────────────────────────
-  ;;
-  (text "ESP32-C6 RADIO CO-PROCESSOR NOTES:\n\nANTENNA SELECTION (Espressif HW Design Guidelines §RF):\n  R_ANT_PCB (0Ω, populated): routes C6 RF pad to MINI-1 PCB trace antenna\n  R_ANT_EXT (0Ω, DNP):       routes C6 RF pad to J_ANT U.FL connector\n  Only ONE resistor may be populated. Never both simultaneously.\n  PCB RF trace: 50Ω impedance controlled, outer layer only, no vias, 135° bends\n  Keepout under J_ANT U.FL: all layers clear per Espressif guideline\n\nMODULE SELECTION:\n  Default BOM: ESP32-C6-MINI-1-N4 (PCB antenna, 4MB flash)\n  Alternate:   ESP32-C6-MINI-1U-N4 (U.FL connector, same footprint)\n  To use external antenna: swap to MINI-1U, populate R_ANT_EXT, DNP R_ANT_PCB\n  Connect pigtail + 2.4GHz antenna to J_ANT\n\nPCB PLACEMENT (CRITICAL — Espressif HW guideline):\n  C6 module placed at carrier PCB EDGE with antenna overhanging the board\n  Feed point of antenna close to board edge\n  No copper (any layer) within 3mm of antenna trace\n  No HUB75 CLK/LAT traces within 10mm of antenna\n  No power switching traces (TPS54331 PH node) within 15mm of antenna\n\nSPI SLAVE INTERFACE:\n  CS_C6_MCU (GPIO18): chip select from STM32U585 (MCU)\n  CS_C6_MPU (GPIO19): chip select from QRB2210 (MPU)\n  MOSI/MISO/SCK: shared with S3 SPI bus — separate CS lines arbitrate\n\nUART TO ESP32-S3 (direct link, independent of UNO Q):\n  S3_C6_TX → C6 GPIO4 (RX): S3 pushes display events, MQTT payloads\n  S3_C6_RX → C6 GPIO5 (TX): not used on this carrier (C6→S3 via SPI)\n  See design spec §S3↔C6 Direct Link for architecture rationale\n\nMCU UART (GPIO16/17 default):\n  STM32U585 UART for AT-command style control of WiFi/BLE\n  499Ω series resistor recommended on TX line (suppress 80MHz harmonics)\n  Per Espressif HW guideline §UART\n\nUSB-C J_C6_USB:\n  C6 has built-in USB-Serial/JTAG — no external bridge chip needed\n  Use for C6 firmware flashing and debug logging\n  CC1/CC2: 5.1kΩ to GND (USB device identification)"
-    (at 20 130 0) (effects (font (size 1.27 1.27)) (justify left top)))
+    (shape output)
+    (at 50 102 0)
+    (effects (font (size 1.27 1.27)) (justify right))
+    (uuid "ba006bd8-6d4b-4937-a42b-6958db583be9")
+  )
+  (text "ESP32-C6 ANTENNA SELECTION:\\nR_ANT_PCB (0Ω populated): RF → MINI-1 PCB trace antenna\\nR_ANT_EXT (0Ω DNP):       RF → J_ANT U.FL external antenna\\nNEVER populate both resistors simultaneously\\nFor external antenna: swap to MINI-1U + populate R_ANT_EXT only\\nAntenna keepout: 3mm clear of all copper all layers\\nModule PCB edge placement: antenna must overhang carrier board\\n50Ω RF trace: outer layer only no vias 135° bends\\nS3→C6 UART TX: independent of UNO Q (display events MQTT payloads)\\nC6 USB debug: built-in USB-Serial/JTAG no external bridge chip"
+    (at 20 130 0)
+    (effects (font (size 1.27 1.27)) (justify left top))
+    (uuid "b45aaa36-e046-4c48-98f1-f3a1631a9a5a")
+  )
+  (sheet_instances
+    (path "/"
+      (page "4")
+    )
+  )
 )
