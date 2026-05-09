@@ -1,0 +1,441 @@
+(kicad_sch
+  (version 20231120)
+  (generator "eeschema")
+  (generator_version "9.0")
+  (paper "A3")
+  (title_block
+    (title "UNO Q Super Carrier — Power Distribution")
+    (date "2026-05-08")
+    (rev "0.1")
+    (company "Hybrid RobotiX")
+    (comment 1 "VIN 7-24V → TPS54331 buck → +5V/3A → AMS1117-3.3 → +3V3")
+    (comment 2 "HUB75 panel: separate +5V_HUB75 input (barrel + screw terminal)")
+    (comment 3 "IPC-2221B/IPC-2152: VIN traces 1.5mm min; +5V polygon pour")
+    (comment 4 "AGND/DGND star point at U_CODEC (ES8388) — see audio sheet")
+  )
+
+  (lib_symbols
+
+    ;; ── TPS54331 Buck Converter ──────────────────────────────────────────────
+    ;; VIN 3.5-28V, 3A continuous, 570kHz switching, SOIC-8
+    ;; IPC-2152: at 3A, 1oz Cu outer layer, need 1.5mm trace min (10°C rise)
+    ;; Use polygon pour for +5V and VIN rails
+    (symbol "TPS54331"
+      (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+      (property "Reference" "U7" (at 0 12 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "TPS54331DR" (at 0 10 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" (at 0 8 0) (effects (font (size 1.27 1.27)) hide))
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps54331.pdf" (at 0 6 0) (effects (font (size 1.27 1.27)) hide))
+      (property "MPN" "TPS54331DR" (at 0 4 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "TPS54331_0_0"
+        (rectangle (start -7 -7) (end 7 7) (stroke (width 0.254) (type default)) (fill (type background)))
+        ;; VIN top (IEEE 315: power in from top-left area)
+        (pin power_in at -10 5 0 (length 3)
+          (name "VIN" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))
+        (pin power_in at -10 3 0 (length 3)
+          (name "VIN" (effects (font (size 1.016 1.016)))) (number "8" (effects (font (size 1.016 1.016)))))
+        ;; Control inputs
+        (pin input at -10 1 0 (length 3)
+          (name "EN" (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))
+        (pin input at -10 -1 0 (length 3)
+          (name "SS/TR" (effects (font (size 1.016 1.016)))) (number "3" (effects (font (size 1.016 1.016)))))
+        (pin input at -10 -3 0 (length 3)
+          (name "COMP" (effects (font (size 1.016 1.016)))) (number "4" (effects (font (size 1.016 1.016)))))
+        (pin input at -10 -5 0 (length 3)
+          (name "VSENSE" (effects (font (size 1.016 1.016)))) (number "5" (effects (font (size 1.016 1.016)))))
+        ;; Power output (switching node PH, right side)
+        (pin power_in at 10 -3 180 (length 3)
+          (name "PGND" (effects (font (size 1.016 1.016)))) (number "6" (effects (font (size 1.016 1.016)))))
+        (pin power_out at 10 1 180 (length 3)
+          (name "PH" (effects (font (size 1.016 1.016)))) (number "7" (effects (font (size 1.016 1.016)))))
+      )
+    )
+
+    ;; ── AMS1117-3.3 LDO ─────────────────────────────────────────────────────
+    (symbol "AMS1117-3.3"
+      (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+      (property "Reference" "U4" (at 0 8 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "AMS1117-3.3" (at 0 6 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-223-3_TabPin2" (at 0 4 0) (effects (font (size 1.27 1.27)) hide))
+      (property "MPN" "AMS1117-3.3" (at 0 2 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "AMS1117-3.3_0_0"
+        (rectangle (start -5 -4) (end 5 4) (stroke (width 0.254) (type default)) (fill (type background)))
+        (pin power_in  at  8  2 180 (length 3) (name "IN"  (effects (font (size 1.016 1.016)))) (number "3" (effects (font (size 1.016 1.016)))))
+        (pin power_out at -8  2   0 (length 3) (name "OUT" (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))
+        (pin power_in  at  0 -7  90 (length 3) (name "GND" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))
+      )
+    )
+
+    ;; ── Schottky Diode (TPS54331 catch diode) ───────────────────────────────
+    (symbol "SS34"
+      (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+      (property "Reference" "D" (at 0 5 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "SS34" (at 0 -5 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Diode_SMD:D_SMA" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (property "MPN" "SS34-E3/57T" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "SS34_0_0"
+        (polyline (pts (xy -1.016 0) (xy 1.016 0)) (stroke (width 0.254) (type default)) (fill (type none)))
+        (polyline (pts (xy 1.016 -1.016) (xy -1.016 0) (xy 1.016 1.016) (xy 1.016 -1.016)) (stroke (width 0.254) (type default)) (fill (type filled)))
+        (polyline (pts (xy 1.016 -1.016) (xy 0.762 -1.016)) (stroke (width 0.254) (type default)) (fill (type none)))
+        (polyline (pts (xy 1.016  1.016) (xy 1.27   1.016)) (stroke (width 0.254) (type default)) (fill (type none)))
+      )
+      (symbol "SS34_1_1"
+        (pin passive at -3.556 0   0 (length 2.54) (name "A" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))
+        (pin passive at  3.556 0 180 (length 2.54) (name "K" (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))
+      )
+    )
+
+    ;; ── Inductor (TPS54331 output) ───────────────────────────────────────────
+    (symbol "L_10UH"
+      (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+      (property "Reference" "L1" (at 0 5 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "10µH 3A" (at 0 -5 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Inductor_SMD:L_Bourns_SRR1260A" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (property "MPN" "SRR1260A-100M" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "L_10UH_0_0"
+        (arc (start -2.032 0) (mid -1.016 1.016) (end 0 0) (stroke (width 0.254) (type default)) (fill (type none)))
+        (arc (start 0 0) (mid 1.016 1.016) (end 2.032 0) (stroke (width 0.254) (type default)) (fill (type none)))
+      )
+      (symbol "L_10UH_1_1"
+        (pin passive at -3.556 0   0 (length 1.524) (name "~{}" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))
+        (pin passive at  3.556 0 180 (length 1.524) (name "~{}" (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))
+      )
+    )
+
+    ;; ── Capacitor ───────────────────────────────────────────────────────────
+    (symbol "C"
+      (pin_names (offset 0.254) hide) (in_bom yes) (on_board yes)
+      (property "Reference" "C" (at 1.016 0.508 0) (effects (font (size 1.27 1.27)) (justify left)))
+      (property "Value" "C" (at 1.016 -1.016 0) (effects (font (size 1.27 1.27)) (justify left)))
+      (symbol "C_0_1"
+        (polyline (pts (xy -1.524 -0.508) (xy 1.524 -0.508)) (stroke (width 0.3302) (type default)) (fill (type none)))
+        (polyline (pts (xy -1.524  0.508) (xy 1.524  0.508)) (stroke (width 0.3302) (type default)) (fill (type none)))
+      )
+      (symbol "C_1_1"
+        (pin passive at 0  2.032 270 (length 1.524) (name "~{}" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))
+        (pin passive at 0 -2.032  90 (length 1.524) (name "~{}" (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))
+      )
+    )
+
+    ;; ── Resistor ────────────────────────────────────────────────────────────
+    (symbol "R"
+      (pin_names (offset 0) hide) (in_bom yes) (on_board yes)
+      (property "Reference" "R" (at 2.032 0 90) (effects (font (size 1.27 1.27))))
+      (property "Value" "R" (at 0 0 90) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "R_0_1"
+        (rectangle (start -1.016 -2.032) (end 1.016 2.032) (stroke (width 0.254) (type default)) (fill (type none)))
+      )
+      (symbol "R_1_1"
+        (pin passive at 0  3.556 270 (length 1.524) (name "~{}" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))
+        (pin passive at 0 -3.556  90 (length 1.524) (name "~{}" (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))
+      )
+    )
+
+    ;; ── LED ─────────────────────────────────────────────────────────────────
+    (symbol "LED"
+      (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
+      (property "Reference" "D" (at 0 3.81 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "LED" (at 0 -3.81 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "LED_SMD:LED_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "LED_0_1"
+        (polyline (pts (xy -1.016 -1.016) (xy -1.016 1.016)) (stroke (width 0.254) (type default)) (fill (type none)))
+        (polyline (pts (xy -1.016 0) (xy 1.016 0)) (stroke (width 0.254) (type default)) (fill (type none)))
+        (polyline (pts (xy 1.016 -1.016) (xy -1.016 0) (xy 1.016 1.016) (xy 1.016 -1.016)) (stroke (width 0.254) (type default)) (fill (type none)))
+      )
+      (symbol "LED_1_1"
+        (pin passive at -3.556 0   0 (length 2.54) (name "K" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))
+        (pin passive at  3.556 0 180 (length 2.54) (name "A" (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))
+      )
+    )
+
+    ;; ── Barrel Jack ─────────────────────────────────────────────────────────
+    (symbol "BARREL_JACK"
+      (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+      (property "Reference" "J" (at 0 6 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "BarrelJack_5.5/2.1" (at 0 4 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Connector_BarrelJack:BarrelJack_CUI_PJ-102AH_Horizontal" (at 0 2 0) (effects (font (size 1.27 1.27)) hide))
+      (property "MPN" "PJ-102AH" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "BARREL_JACK_0_0"
+        (rectangle (start -4 -3) (end 4 3) (stroke (width 0.254) (type default)) (fill (type background)))
+        (pin power_in at -7  1   0 (length 3) (name "VIN+" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))
+        (pin power_in at -7 -1   0 (length 3) (name "GND"  (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))
+        (pin passive  at  7  0 180 (length 3) (name "SW"   (effects (font (size 1.016 1.016)))) (number "3" (effects (font (size 1.016 1.016)))))
+      )
+    )
+
+    ;; ── Screw Terminal ───────────────────────────────────────────────────────
+    (symbol "SCREW_TERM_2"
+      (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+      (property "Reference" "J" (at 0 6 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "ScrewTerm_2P_5.0mm" (at 0 4 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_PT-1,5-2-5.0-H_1x02_P5.00mm_Horizontal" (at 0 2 0) (effects (font (size 1.27 1.27)) hide))
+      (property "MPN" "1935161" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "SCREW_TERM_2_0_0"
+        (rectangle (start -4 -2) (end 4 2) (stroke (width 0.254) (type default)) (fill (type background)))
+        (pin passive at -7  1   0 (length 3) (name "P+" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))
+        (pin passive at -7 -1   0 (length 3) (name "P-" (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))
+      )
+    )
+
+    ;; ── PWR_FLAG ────────────────────────────────────────────────────────────
+    (symbol "PWR_FLAG"
+      (pin_names (offset 0) hide) (in_bom no) (on_board no)
+      (property "Reference" "#PWR" (at 0 8 0) (effects (font (size 1.27 1.27)) hide))
+      (property "Value" "PWR_FLAG" (at 0 6 0) (effects (font (size 1.27 1.27))))
+      (symbol "PWR_FLAG_0_0"
+        (pin power_out at 0 0 90 (length 0) (name "PWR" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))
+      )
+      (symbol "PWR_FLAG_0_1"
+        (polyline (pts (xy 0 0) (xy 0 1.27) (xy -1.27 2.032) (xy 0 2.794) (xy 1.27 2.032) (xy 0 1.27))
+          (stroke (width 0.254) (type default)) (fill (type filled)))
+      )
+    )
+
+    ;; ── Ferrite Bead (AVDD filter) ───────────────────────────────────────────
+    (symbol "FERRITE_BEAD"
+      (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+      (property "Reference" "FB" (at 0 5 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "600R@100MHz" (at 0 -5 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Inductor_SMD:L_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "FERRITE_BEAD_0_0"
+        (arc (start -2.032 0) (mid 0 1.524) (end 2.032 0) (stroke (width 0.254) (type default)) (fill (type none)))
+        (arc (start -2.032 0) (mid 0 -1.524) (end 2.032 0) (stroke (width 0.254) (type default)) (fill (type none)))
+        (polyline (pts (xy -2.032 0) (xy -3.556 0)) (stroke (width 0.254) (type default)) (fill (type none)))
+        (polyline (pts (xy  2.032 0) (xy  3.556 0)) (stroke (width 0.254) (type default)) (fill (type none)))
+      )
+      (symbol "FERRITE_BEAD_1_1"
+        (pin passive at -6.096 0   0 (length 2.54) (name "~{}" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))
+        (pin passive at  6.096 0 180 (length 2.54) (name "~{}" (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))
+      )
+    )
+  )
+
+  ;;
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;; SECTION 1 — CARRIER VIN INPUT (7-24V)
+  ;; J_VIN_JACK: barrel jack (primary) + J_VIN_TERM: screw terminal (alternate)
+  ;; IPC-2221B: dual-entry power with reverse-polarity protection TVS recommended
+  ;; IPC-2152: VIN traces must handle 3A sustained → 1.5mm min at 1oz Cu
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;;
+  (symbol (lib_id "BARREL_JACK") (at 30 40 0) (unit 1)
+    (property "Reference" "J_VIN_JACK" (at 30 32 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "VIN_7-24V_BARREL" (at 30 30 0) (effects (font (size 1.27 1.27)))))
+
+  (symbol (lib_id "SCREW_TERM_2") (at 30 52 0) (unit 1)
+    (property "Reference" "J_VIN_TERM" (at 30 46 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "VIN_7-24V_SCREW" (at 30 44 0) (effects (font (size 1.27 1.27)))))
+
+  ;; VIN bulk cap — 100µF 35V electrolytic
+  ;; IPC-2221B: input bulk capacitor close to VIN connector, before buck
+  (symbol (lib_id "C") (at 50 38 0) (unit 1)
+    (property "Reference" "C_P1" (at 52 37 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "100µF 35V Elec 1206" (at 52 39 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:CP_Elec_6.3x7.7" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "UVR1V101MED1TD" (at 0 0 0) (effects (font (size 1.27 1.27)) hide)))
+
+  (symbol (lib_id "C") (at 58 38 0) (unit 1)
+    (property "Reference" "C_P2" (at 60 37 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "100nF 50V X7R 0402" (at 60 39 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "GRM155R71H104KE14D" (at 0 0 0) (effects (font (size 1.27 1.27)) hide)))
+
+  (symbol (lib_id "PWR_FLAG") (at 45 33 0) (unit 1)
+    (property "Reference" "#PWR_P1" (at 45 29 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "PWR_FLAG" (at 45 28 0) (effects (font (size 1.27 1.27)))))
+
+  ;;
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;; SECTION 2 — TPS54331 BUCK CONVERTER: VIN → +5V / 3A
+  ;;
+  ;; TPS54331 component values (calculated for 5V output, 570kHz):
+  ;;   RT (pin 5 via R_RT): 100kΩ → 570kHz switching frequency
+  ;;   VSENSE divider: R_FB_TOP=1.0MΩ, R_FB_BOT=200kΩ → Vout=5.03V
+  ;;   Vout = 0.8V × (1 + R_FB_TOP/R_FB_BOT) = 0.8 × (1 + 1M/200k) = 4.8V
+  ;;   Adjusted: R_FB_TOP=1.0MΩ, R_FB_BOT=191kΩ → 5.00V exact
+  ;;   Use: 200kΩ + adjust with 2nd parallel resistor, or use 196kΩ std
+  ;;   Simpler: R_FB_BOT = 196kΩ → Vout = 0.8×(1+1M/196k) = 4.98V ≈ 5.0V
+  ;;   Inductor: L = Vout×(1-D)/(ΔIL×f) = 5×(1-5/12)/(0.6×570k) ≈ 8.8µH → 10µH
+  ;;   D2 catch diode: SS34 (3A, 40V Schottky)
+  ;;   Input caps: 2×100µF 35V + 100nF (already at VIN connector)
+  ;;   Output caps: 2×100µF 10V (low ESR for stable loop)
+  ;;   Soft-start cap C_SS: 100nF → 5ms startup
+  ;;   COMP: 10kΩ + 100nF (Type II compensation, safe starting values)
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;;
+  (symbol (lib_id "TPS54331") (at 100 40 0) (unit 1)
+    (property "Reference" "U7" (at 100 30 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "TPS54331DR" (at 100 28 0) (effects (font (size 1.27 1.27)))))
+
+  ;; Catch diode D_P1 — SS34 (anode→GND, cathode→PH node)
+  (symbol (lib_id "SS34") (at 118 44 270) (unit 1)
+    (property "Reference" "D_P1" (at 118 48 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "SS34 3A/40V" (at 118 50 0) (effects (font (size 1.27 1.27)))))
+
+  ;; Output inductor L1 — 10µH 3A SRR1260A-100M
+  (symbol (lib_id "L_10UH") (at 135 39 0) (unit 1)
+    (property "Reference" "L_P1" (at 135 34 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "SRR1260A-100M 10µH/3A" (at 135 32 0) (effects (font (size 1.27 1.27)))))
+
+  ;; Output bulk caps — 2×100µF 10V low-ESR polymer
+  (symbol (lib_id "C") (at 150 36 0) (unit 1)
+    (property "Reference" "C_P3" (at 152 35 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "100µF 10V Polymer 1210" (at 152 37 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:CP_Elec_8x10.5" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "APXS100ARA101MH70G" (at 0 0 0) (effects (font (size 1.27 1.27)) hide)))
+
+  (symbol (lib_id "C") (at 158 36 0) (unit 1)
+    (property "Reference" "C_P4" (at 160 35 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "100µF 10V Polymer 1210" (at 160 37 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:CP_Elec_8x10.5" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "APXS100ARA101MH70G" (at 0 0 0) (effects (font (size 1.27 1.27)) hide)))
+
+  (symbol (lib_id "C") (at 166 36 0) (unit 1)
+    (property "Reference" "C_P5" (at 168 35 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "100nF 10V X7R 0402" (at 168 37 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) hide)))
+
+  ;; Compensation network (pin 4 COMP)
+  (symbol (lib_id "R") (at 84 44 0) (unit 1)
+    (property "Reference" "R_P1" (at 86 44 90) (effects (font (size 1.27 1.27))))
+    (property "Value" "10kΩ 1% 0402" (at 84 44 90) (effects (font (size 1.27 1.27)))))
+
+  (symbol (lib_id "C") (at 78 44 0) (unit 1)
+    (property "Reference" "C_P6" (at 80 43 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "100nF 10V X7R 0402" (at 80 45 0) (effects (font (size 1.27 1.27)))))
+
+  ;; Soft-start cap (pin 3 SS/TR)
+  (symbol (lib_id "C") (at 84 48 0) (unit 1)
+    (property "Reference" "C_P7" (at 86 47 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "100nF 10V X7R 0402" (at 86 49 0) (effects (font (size 1.27 1.27)))))
+
+  ;; RT resistor — sets switching frequency to 570kHz
+  (symbol (lib_id "R") (at 84 52 0) (unit 1)
+    (property "Reference" "R_P2" (at 86 52 90) (effects (font (size 1.27 1.27))))
+    (property "Value" "100kΩ 1% 0402" (at 84 52 90) (effects (font (size 1.27 1.27)))))
+
+  ;; VSENSE divider
+  (symbol (lib_id "R") (at 84 56 0) (unit 1)
+    (property "Reference" "R_P3" (at 86 56 90) (effects (font (size 1.27 1.27))))
+    (property "Value" "1.0MΩ 1% 0402" (at 84 56 90) (effects (font (size 1.27 1.27)))))
+
+  (symbol (lib_id "R") (at 84 60 0) (unit 1)
+    (property "Reference" "R_P4" (at 86 60 90) (effects (font (size 1.27 1.27))))
+    (property "Value" "196kΩ 1% 0402" (at 84 60 90) (effects (font (size 1.27 1.27)))))
+
+  ;; Power-good LED — 5V rail indicator
+  (symbol (lib_id "R") (at 175 32 0) (unit 1)
+    (property "Reference" "R_P5" (at 177 32 90) (effects (font (size 1.27 1.27))))
+    (property "Value" "620Ω 1% 0402" (at 175 32 90) (effects (font (size 1.27 1.27)))))
+
+  (symbol (lib_id "LED") (at 185 32 0) (unit 1)
+    (property "Reference" "D_P2" (at 185 28 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "GREEN_5V" (at 185 34 0) (effects (font (size 1.27 1.27)))))
+
+  ;;
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;; SECTION 3 — AMS1117-3.3 LDO: +5V → +3V3
+  ;; Max load: S3 (~300mA) + C6 (~200mA) + ES8388 (~30mA) + level shifters (~40mA)
+  ;; Total ~570mA. AMS1117 rated 800mA — adequate with margin.
+  ;; Tab (pin 2) = +3V3 output: connect to +3V3 plane + 4 thermal vias
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;;
+  (symbol (lib_id "AMS1117-3.3") (at 100 80 0) (unit 1)
+    (property "Reference" "U4" (at 100 74 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "AMS1117-3.3" (at 100 72 0) (effects (font (size 1.27 1.27)))))
+
+  ;; LDO input bypass
+  (symbol (lib_id "C") (at 86 76 0) (unit 1)
+    (property "Reference" "C_P8" (at 88 75 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "10µF 10V X5R 0805" (at 88 77 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) hide)))
+
+  ;; LDO output bypass — AMS1117 requires ≥10µF for stability
+  (symbol (lib_id "C") (at 116 76 0) (unit 1)
+    (property "Reference" "C_P9" (at 118 75 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "10µF 10V X5R 0805" (at 118 77 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) hide)))
+
+  (symbol (lib_id "C") (at 124 76 0) (unit 1)
+    (property "Reference" "C_P10" (at 126 75 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "100nF 10V X7R 0402" (at 126 77 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) hide)))
+
+  ;; 3V3 power indicator
+  (symbol (lib_id "R") (at 140 72 0) (unit 1)
+    (property "Reference" "R_P6" (at 142 72 90) (effects (font (size 1.27 1.27))))
+    (property "Value" "270Ω 1% 0402" (at 140 72 90) (effects (font (size 1.27 1.27)))))
+
+  (symbol (lib_id "LED") (at 150 72 0) (unit 1)
+    (property "Reference" "D_P3" (at 150 68 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "GREEN_3V3" (at 150 74 0) (effects (font (size 1.27 1.27)))))
+
+  (symbol (lib_id "PWR_FLAG") (at 135 72 0) (unit 1)
+    (property "Reference" "#PWR_P2" (at 135 68 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "PWR_FLAG" (at 135 66 0) (effects (font (size 1.27 1.27)))))
+
+  ;;
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;; SECTION 4 — HUB75 PANEL POWER INPUT (separate from VIN)
+  ;; J_HUB_JACK: barrel jack + J_HUB_TERM: screw terminal
+  ;; Panel power does NOT go through the carrier buck converter
+  ;; ═══════════════════════════════════════════════════════════════════════════
+  ;;
+  (symbol (lib_id "BARREL_JACK") (at 30 100 0) (unit 1)
+    (property "Reference" "J_HUB_JACK" (at 30 92 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "HUB75_5V_BARREL" (at 30 90 0) (effects (font (size 1.27 1.27)))))
+
+  (symbol (lib_id "SCREW_TERM_2") (at 30 112 0) (unit 1)
+    (property "Reference" "J_HUB_TERM" (at 30 106 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "HUB75_5V_SCREW" (at 30 104 0) (effects (font (size 1.27 1.27)))))
+
+  ;; HUB75 power bulk cap — handles panel inrush (LEDs switching)
+  (symbol (lib_id "C") (at 50 98 0) (unit 1)
+    (property "Reference" "C_P11" (at 52 97 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "1000µF 10V Elec" (at 52 99 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:CP_Elec_10x10.5" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "UVK1A102MRD" (at 0 0 0) (effects (font (size 1.27 1.27)) hide)))
+
+  (symbol (lib_id "C") (at 58 98 0) (unit 1)
+    (property "Reference" "C_P12" (at 60 97 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "100nF 10V X7R 0402" (at 60 99 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) hide)))
+
+  ;; HUB75 5V indicator
+  (symbol (lib_id "R") (at 70 94 0) (unit 1)
+    (property "Reference" "R_P7" (at 72 94 90) (effects (font (size 1.27 1.27))))
+    (property "Value" "620Ω 1% 0402" (at 70 94 90) (effects (font (size 1.27 1.27)))))
+
+  (symbol (lib_id "LED") (at 80 94 0) (unit 1)
+    (property "Reference" "D_P4" (at 80 90 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "AMBER_HUB75" (at 80 96 0) (effects (font (size 1.27 1.27)))))
+
+  ;; ES8388 AVDD ferrite bead — defined here in power sheet
+  (symbol (lib_id "FERRITE_BEAD") (at 170 80 0) (unit 1)
+    (property "Reference" "FB1" (at 172 78 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "BLM15AX601SN1D 600R@100MHz" (at 170 82 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Inductor_SMD:L_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "BLM15AX601SN1D" (at 0 0 0) (effects (font (size 1.27 1.27)) hide)))
+
+  ;;
+  ;; ── Hierarchical port connections ─────────────────────────────────────────
+  ;;
+  (hierarchical_label "VIN_7_24V"
+    (shape output) (at 55 33 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "+5V"
+    (shape output) (at 175 33 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "+3V3"
+    (shape output) (at 135 70 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "DGND"
+    (shape output) (at 30 60 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "AGND"
+    (shape output) (at 170 88 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "+5V_HUB75"
+    (shape output) (at 70 92 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "AVDD"
+    (shape output) (at 185 80 0) (effects (font (size 1.27 1.27)) (justify right)))
+
+  (text "POWER ARCHITECTURE NOTES (IPC-2221B / IPC-2152):\n\nVIN RAIL (7-24V):\n  Dual entry: J_VIN_JACK (barrel, primary) + J_VIN_TERM (screw, alternate)\n  C_P1 100µF 35V bulk close to connector for inrush handling\n  PCB trace: 1.5mm min (IPC-2152: 3A, 1oz Cu, 10°C rise, outer layer)\n  Polygon pour on F.Cu and B.Cu preferred, stitched every 3mm\n\nBUCK CONVERTER TPS54331 (VIN→+5V/3A):\n  Switching frequency: 570kHz (R_P2=100kΩ on RT pin)\n  Output voltage: 5.00V (R_P3=1.0MΩ, R_P4=196kΩ VSENSE divider)\n  Catch diode D_P1 (SS34): place anode to GND, cathode to PH within 5mm of U7\n  Inductor L_P1 (10µH/3A): place close to PH pin, between D_P1 and output caps\n  PH node (switching): minimize copper area to reduce EMI\n  PGND star: separate from signal GND, single via connection to GND plane\n  C_P6 (COMP): 10kΩ + 100nF Type II compensation — adjust during bring-up\n  C_P7 (SS): 100nF → ~5ms soft-start ramp\n  EN pin: tie to VIN (always-on) via 100kΩ pullup — modify for power sequencing\n\nLDO AMS1117-3.3 (+5V→+3V3):\n  Tab pin (pin 2) = output: thermal via array under tab, 4 vias min\n  C_P8 (10µF input) + C_P9 (10µF output) within 2mm of AMS1117\n  AMS1117 requires ≥10µF ESR ≥20mΩ on output for stability\n  Use X5R 0805 (ESR ~5mΩ at 100Hz) — add series 22mΩ trace if needed\n\nHUB75 PANEL POWER:\n  J_HUB_JACK + J_HUB_TERM: isolated from carrier VIN path\n  C_P11 (1000µF): handles LED switching inrush on large panels\n  Route +5V_HUB75 directly to HUB75 IDC pins — do not share with logic\n  Heavy polygon pour: 3mm+ width, both layers, via stitched\n\nAVDD FERRITE (FB1): +3V3→AVDD for ES8388 analog supply\n  Defined here; AVDD net distributed to audio_codec sheet"
+    (at 20 130 0) (effects (font (size 1.27 1.27)) (justify left top)))
+)

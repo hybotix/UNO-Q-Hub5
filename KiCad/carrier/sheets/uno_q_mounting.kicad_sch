@@ -1,0 +1,133 @@
+(kicad_sch
+  (version 20231120)
+  (generator "eeschema")
+  (generator_version "9.0")
+  (paper "A3")
+  (title_block
+    (title "UNO Q Super Carrier — UNO Q Mounting Connectors")
+    (date "2026-05-08")
+    (rev "0.1")
+    (company "Hybrid RobotiX")
+    (comment 1 "B1: JMISC (Samtec FTSH-130-01 2x30 1.27mm) — SPI, I2C, GPIO, power")
+    (comment 2 "B2: JMEDIA (Samtec FTSH-130-01 2x30 1.27mm) — MIPI DSI, CSI0, CSI1")
+    (comment 3 "IPC-2221B: 1.27mm SMD — ENIG finish required, impedance on MIPI pairs")
+    (comment 4 "MPU GPIO 1.8V: routed to TXS0108E level shifters (see level_shift sheet)")
+  )
+
+  (lib_symbols
+    ;; Samtec FTSH-130-01 2x30 1.27mm SMD mezzanine connector
+    ;; Simplified representation — full 60-pin pinout
+    (symbol "SAMTEC_FTSH130_JMISC"
+      (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+      (property "Reference" "B1" (at 0 22 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "JMISC_FTSH-130-01" (at 0 20 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Connector_PinHeader_1.27mm:PinHeader_2x30_P1.27mm_SMD" (at 0 18 0) (effects (font (size 1.27 1.27)) hide))
+      (property "MPN" "FTSH-130-01-L-DV-A" (at 0 16 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "SAMTEC_FTSH130_JMISC_0_0"
+        (rectangle (start -8 -20) (end 8 20) (stroke (width 0.254) (type default)) (fill (type background)))
+        ;; SPI bus (from STM32U585 MCU)
+        (pin passive at -11  18   0 (length 3) (name "SPI_MOSI"   (effects (font (size 1.016 1.016)))) (number "1"  (effects (font (size 1.016 1.016)))))
+        (pin passive at -11  16   0 (length 3) (name "SPI_MISO"   (effects (font (size 1.016 1.016)))) (number "3"  (effects (font (size 1.016 1.016)))))
+        (pin passive at -11  14   0 (length 3) (name "SPI_SCK"    (effects (font (size 1.016 1.016)))) (number "5"  (effects (font (size 1.016 1.016)))))
+        (pin passive at -11  12   0 (length 3) (name "CS_S3_MCU"  (effects (font (size 1.016 1.016)))) (number "7"  (effects (font (size 1.016 1.016)))))
+        (pin passive at -11  10   0 (length 3) (name "CS_S3_MPU"  (effects (font (size 1.016 1.016)))) (number "9"  (effects (font (size 1.016 1.016)))))
+        (pin passive at -11   8   0 (length 3) (name "CS_C6_MCU"  (effects (font (size 1.016 1.016)))) (number "11" (effects (font (size 1.016 1.016)))))
+        (pin passive at -11   6   0 (length 3) (name "CS_C6_MPU"  (effects (font (size 1.016 1.016)))) (number "13" (effects (font (size 1.016 1.016)))))
+        ;; I2C (STM32U585)
+        (pin passive at -11   2   0 (length 3) (name "I2C_SDA"    (effects (font (size 1.016 1.016)))) (number "15" (effects (font (size 1.016 1.016)))))
+        (pin passive at -11   0   0 (length 3) (name "I2C_SCL"    (effects (font (size 1.016 1.016)))) (number "17" (effects (font (size 1.016 1.016)))))
+        ;; PSSI parallel interface
+        (pin passive at -11  -4   0 (length 3) (name "PSSI_D0"    (effects (font (size 1.016 1.016)))) (number "19" (effects (font (size 1.016 1.016)))))
+        (pin passive at -11  -6   0 (length 3) (name "PSSI_D1"    (effects (font (size 1.016 1.016)))) (number "21" (effects (font (size 1.016 1.016)))))
+        (pin passive at -11  -8   0 (length 3) (name "PSSI_D2"    (effects (font (size 1.016 1.016)))) (number "23" (effects (font (size 1.016 1.016)))))
+        (pin passive at -11 -10   0 (length 3) (name "PSSI_D3"    (effects (font (size 1.016 1.016)))) (number "25" (effects (font (size 1.016 1.016)))))
+        ;; QRB2210 MPU GPIO (1.8V) — route to TXS0108E
+        (pin passive at  11  18 180 (length 3) (name "MPU_GPIO0_1V8" (effects (font (size 1.016 1.016)))) (number "2"  (effects (font (size 1.016 1.016)))))
+        (pin passive at  11  16 180 (length 3) (name "MPU_GPIO1_1V8" (effects (font (size 1.016 1.016)))) (number "4"  (effects (font (size 1.016 1.016)))))
+        (pin passive at  11  14 180 (length 3) (name "MPU_GPIO2_1V8" (effects (font (size 1.016 1.016)))) (number "6"  (effects (font (size 1.016 1.016)))))
+        (pin passive at  11  12 180 (length 3) (name "MPU_GPIO3_1V8" (effects (font (size 1.016 1.016)))) (number "8"  (effects (font (size 1.016 1.016)))))
+        (pin passive at  11  10 180 (length 3) (name "MPU_GPIO18_1V8"(effects (font (size 1.016 1.016)))) (number "10" (effects (font (size 1.016 1.016)))))
+        (pin passive at  11   8 180 (length 3) (name "MPU_GPIO28_1V8"(effects (font (size 1.016 1.016)))) (number "12" (effects (font (size 1.016 1.016)))))
+        (pin passive at  11   6 180 (length 3) (name "MPU_GPIO82_1V8"(effects (font (size 1.016 1.016)))) (number "14" (effects (font (size 1.016 1.016)))))
+        ;; Power rails from UNO Q
+        (pin power_out at  11  -8 180 (length 3) (name "+3V3_OUT"  (effects (font (size 1.016 1.016)))) (number "53" (effects (font (size 1.016 1.016)))))
+        (pin power_out at  11 -10 180 (length 3) (name "+5V_USB"   (effects (font (size 1.016 1.016)))) (number "54" (effects (font (size 1.016 1.016)))))
+        (pin power_in  at  11 -16 180 (length 3) (name "GND"       (effects (font (size 1.016 1.016)))) (number "26" (effects (font (size 1.016 1.016)))))
+        (pin passive   at  11 -18 180 (length 3) (name "1V8_REF"   (effects (font (size 1.016 1.016)))) (number "55" (effects (font (size 1.016 1.016)))))
+      )
+    )
+
+    (symbol "SAMTEC_FTSH130_JMEDIA"
+      (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+      (property "Reference" "B2" (at 0 22 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "JMEDIA_FTSH-130-01" (at 0 20 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Connector_PinHeader_1.27mm:PinHeader_2x30_P1.27mm_SMD" (at 0 18 0) (effects (font (size 1.27 1.27)) hide))
+      (property "MPN" "FTSH-130-01-L-DV-A" (at 0 16 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "SAMTEC_FTSH130_JMEDIA_0_0"
+        (rectangle (start -8 -20) (end 8 20) (stroke (width 0.254) (type default)) (fill (type background)))
+        ;; MIPI DSI 4-lane (QRB2210 display output)
+        (pin passive at -11  18   0 (length 3) (name "DSI_CLK_P"  (effects (font (size 1.016 1.016)))) (number "1"  (effects (font (size 1.016 1.016)))))
+        (pin passive at -11  16   0 (length 3) (name "DSI_CLK_N"  (effects (font (size 1.016 1.016)))) (number "3"  (effects (font (size 1.016 1.016)))))
+        (pin passive at -11  14   0 (length 3) (name "DSI_D0_P"   (effects (font (size 1.016 1.016)))) (number "5"  (effects (font (size 1.016 1.016)))))
+        (pin passive at -11  12   0 (length 3) (name "DSI_D0_N"   (effects (font (size 1.016 1.016)))) (number "7"  (effects (font (size 1.016 1.016)))))
+        (pin passive at -11  10   0 (length 3) (name "DSI_D1_P"   (effects (font (size 1.016 1.016)))) (number "9"  (effects (font (size 1.016 1.016)))))
+        (pin passive at -11   8   0 (length 3) (name "DSI_D1_N"   (effects (font (size 1.016 1.016)))) (number "11" (effects (font (size 1.016 1.016)))))
+        (pin passive at -11   6   0 (length 3) (name "DSI_D2_P"   (effects (font (size 1.016 1.016)))) (number "13" (effects (font (size 1.016 1.016)))))
+        (pin passive at -11   4   0 (length 3) (name "DSI_D2_N"   (effects (font (size 1.016 1.016)))) (number "15" (effects (font (size 1.016 1.016)))))
+        (pin passive at -11   2   0 (length 3) (name "DSI_D3_P"   (effects (font (size 1.016 1.016)))) (number "17" (effects (font (size 1.016 1.016)))))
+        (pin passive at -11   0   0 (length 3) (name "DSI_D3_N"   (effects (font (size 1.016 1.016)))) (number "19" (effects (font (size 1.016 1.016)))))
+        ;; MIPI CSI0 4-lane (camera 0)
+        (pin passive at -11  -4   0 (length 3) (name "CSI0_CLK_P" (effects (font (size 1.016 1.016)))) (number "21" (effects (font (size 1.016 1.016)))))
+        (pin passive at -11  -6   0 (length 3) (name "CSI0_CLK_N" (effects (font (size 1.016 1.016)))) (number "23" (effects (font (size 1.016 1.016)))))
+        (pin passive at -11  -8   0 (length 3) (name "CSI0_D0_P"  (effects (font (size 1.016 1.016)))) (number "25" (effects (font (size 1.016 1.016)))))
+        (pin passive at -11 -10   0 (length 3) (name "CSI0_D0_N"  (effects (font (size 1.016 1.016)))) (number "27" (effects (font (size 1.016 1.016)))))
+        ;; MIPI CSI1 (camera 1)
+        (pin passive at  11  18 180 (length 3) (name "CSI1_CLK_P" (effects (font (size 1.016 1.016)))) (number "2"  (effects (font (size 1.016 1.016)))))
+        (pin passive at  11  16 180 (length 3) (name "CSI1_CLK_N" (effects (font (size 1.016 1.016)))) (number "4"  (effects (font (size 1.016 1.016)))))
+        (pin passive at  11  14 180 (length 3) (name "CSI1_D0_P"  (effects (font (size 1.016 1.016)))) (number "6"  (effects (font (size 1.016 1.016)))))
+        (pin passive at  11  12 180 (length 3) (name "CSI1_D0_N"  (effects (font (size 1.016 1.016)))) (number "8"  (effects (font (size 1.016 1.016)))))
+        ;; Power
+        (pin power_out at  11  -8 180 (length 3) (name "VIN_7_24V_OUT" (effects (font (size 1.016 1.016)))) (number "55" (effects (font (size 1.016 1.016)))))
+        (pin power_in  at  11 -16 180 (length 3) (name "GND"           (effects (font (size 1.016 1.016)))) (number "60" (effects (font (size 1.016 1.016)))))
+      )
+    )
+  )
+
+  ;; B1 — JMISC
+  (symbol (lib_id "SAMTEC_FTSH130_JMISC") (at 80 80 0) (unit 1)
+    (property "Reference" "B1" (at 80 58 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "JMISC_FTSH-130-01" (at 80 56 0) (effects (font (size 1.27 1.27)))))
+
+  ;; B2 — JMEDIA
+  (symbol (lib_id "SAMTEC_FTSH130_JMEDIA") (at 160 80 0) (unit 1)
+    (property "Reference" "B2" (at 160 58 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "JMEDIA_FTSH-130-01" (at 160 56 0) (effects (font (size 1.27 1.27)))))
+
+  ;; Hierarchical ports — JMISC signals
+  (hierarchical_label "SPI_MOSI"   (shape output) (at 50 62 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "SPI_MISO"   (shape input)  (at 50 66 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "SPI_SCK"    (shape output) (at 50 70 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "CS_S3_MCU"  (shape output) (at 50 74 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "CS_S3_MPU"  (shape output) (at 50 78 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "CS_C6_MCU"  (shape output) (at 50 82 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "CS_C6_MPU"  (shape output) (at 50 86 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "I2C_SDA"    (shape bidirectional) (at 50 90 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "I2C_SCL"    (shape output) (at 50 94 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "MPU_GPIO_1V8_BUS" (shape output) (at 110 62 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "MPU_1V8_REF" (shape output) (at 110 66 0) (effects (font (size 1.27 1.27)) (justify right)))
+
+  ;; Hierarchical ports — JMEDIA signals
+  (hierarchical_label "DSI_CLK_P"  (shape output) (at 190 62 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "DSI_CLK_N"  (shape output) (at 190 66 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "DSI_D0_P"   (shape output) (at 190 70 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "DSI_D0_N"   (shape output) (at 190 74 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "DSI_D1_P"   (shape output) (at 190 78 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "DSI_D1_N"   (shape output) (at 190 82 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "CSI0_CLK_P" (shape output) (at 190 88 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "CSI0_CLK_N" (shape output) (at 190 92 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "CSI1_CLK_P" (shape output) (at 190 96 0) (effects (font (size 1.27 1.27)) (justify right)))
+  (hierarchical_label "CSI1_CLK_N" (shape output) (at 190 100 0) (effects (font (size 1.27 1.27)) (justify right)))
+
+  (text "JMISC / JMEDIA MOUNTING NOTES:\n\nSAMTEC FTSH-130-01-L-DV-A:\n  2x30 contacts, 1.27mm pitch, SMD mezzanine\n  Mates with UNO Q board underside connectors\n  ENIG surface finish required for reliable 1.27mm pitch soldering\n  Stencil: 0.12mm aperture reduction per pad\n  Placement accuracy: ±0.05mm (use vision system in pick-and-place)\n\nMPU GPIO (1.8V):\n  QRB2210 GPIO outputs from JMISC are 1.8V\n  Route directly to TXS0108E level shifters (see level_shift sheet)\n  DO NOT connect to any 3.3V or 5V logic directly\n  1V8_REF from JMISC used as VCCA on TXS0108E\n\nMIPI ROUTING FROM B2:\n  DSI: 4-lane → CBTL04GP054 switch → LT8618SX or J_DSI FPC\n  CSI0: 2-lane shown (D0 only; expand to 4-lane if camera requires)\n  CSI1: 2-lane shown (D0 only)\n  All MIPI pairs: 100Ω differential, IPC-2221B inner layer routing\n  GND pins interleaved with signal pins — route GND vias directly to L2"
+    (at 20 130 0) (effects (font (size 1.27 1.27)) (justify left top)))
+)
