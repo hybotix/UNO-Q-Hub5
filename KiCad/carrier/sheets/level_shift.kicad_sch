@@ -1,7 +1,8 @@
 (kicad_sch
-  (version 20231120)
+  (version 20260326)
   (generator "eeschema")
-  (generator_version "9.0")
+  (generator_version "10.0.0")
+  (uuid d4730445-9bb8-4b29-a2b8-7b8763ba29da)
   (paper "A4")
   (title_block
     (title "UNO Q Super Carrier — Level Shifters")
