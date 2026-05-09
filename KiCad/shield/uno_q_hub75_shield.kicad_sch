@@ -253,7 +253,22 @@
       (effects (font (size 1.27 1.27)))
       (uuid "21cf4738-d808-4df1-8e4f-91ba725957cc")
     )
-    (instances
+        (pin "CS_S3_MPU" input
+      (at 100 62 180)
+      (effects (font (size 1.27 1.27)))
+      (uuid "1b3a57a3-0490-4f3d-9000-c079b6867a95")
+    )
+    (pin "S3_C6_RX" input
+      (at 100 84 180)
+      (effects (font (size 1.27 1.27)))
+      (uuid "07389950-9104-428c-92df-ff654e51bc46")
+    )
+    (pin "S3_C6_TX" output
+      (at 100 80 180)
+      (effects (font (size 1.27 1.27)))
+      (uuid "ef02a535-bd25-46b2-8796-246c3c4a2948")
+    )
+(instances
       (project "uno_q_hub75_shield"
         (path "/bc84562d-846a-4607-81a1-500b7991d137"
           (page "3")

@@ -1070,7 +1070,7 @@
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid "3fe960b2-112d-491f-a02b-dd833d4fe92d")
   )
-  (hierarchical_label "+5V_HUB75"
+  (hierarchical_label "+5V_EXT_HUB75"
     (shape output)
     (at 70 92 0)
     (effects (font (size 1.27 1.27)) (justify right))

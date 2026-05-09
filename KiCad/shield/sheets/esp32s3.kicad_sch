@@ -599,6 +599,24 @@
     (effects (font (size 1.27 1.27)) (justify left top))
     (uuid "a8216fe1-8517-4eb4-a1af-a1bafda0e3ba")
   )
+  (hierarchical_label "CS_S3_MPU"
+    (shape input)
+    (at 60 124 180)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "9233d3c6-fc27-48bc-839d-8dad884bf4f0")
+  )
+  (hierarchical_label "S3_C6_TX"
+    (shape output)
+    (at 60 130 180)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "48d0d4ae-3534-4b88-9660-965a6a3a782c")
+  )
+  (hierarchical_label "S3_C6_RX"
+    (shape input)
+    (at 60 136 180)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "dd76a166-358f-44d6-a84b-ef06ef2462de")
+  )
   (sheet_instances
     (path "/"
       (page "3")

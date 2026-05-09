@@ -46,7 +46,7 @@
       (effects (font (size 1.27 1.27)))
       (uuid "e529fb2e-c22b-4e9c-a043-297415d378f4")
     )
-    (pin "+5V_HUB75" output
+    (pin "+5V_EXT_HUB75" output
       (at 90 52 0)
       (effects (font (size 1.27 1.27)))
       (uuid "d3935319-8ab4-44c1-9080-46257c921bf6")
@@ -365,7 +365,42 @@
       (effects (font (size 1.27 1.27)))
       (uuid "0763256d-96cb-4f09-805b-d94ad1a5ec5a")
     )
-    (instances
+        (pin "LCD_CLK" output
+      (at 180 116 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "22e7c699-b65c-4175-9508-b0a5679ac997")
+    )
+    (pin "LCD_MOSI" output
+      (at 180 120 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "5820e118-954c-4e2c-95a5-132194e2e8af")
+    )
+    (pin "LCD_CS" output
+      (at 180 124 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "7dc5fc3b-96aa-48f1-a51b-3adfeb46a990")
+    )
+    (pin "LCD_DC" output
+      (at 180 128 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "9314ae54-125d-44d7-925a-7e95382b1dd2")
+    )
+    (pin "LCD_RST" output
+      (at 180 132 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "eabae0d7-fc63-49da-8108-64af4317b37a")
+    )
+    (pin "TOUCH_INT" input
+      (at 180 136 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "2aec201f-d5f3-4f57-aa82-b4888be15e07")
+    )
+    (pin "LCD_BL_PWM" output
+      (at 180 140 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "558d01c1-0bc4-4afa-be10-f25841770ad4")
+    )
+(instances
       (project "uno_q_super_carrier"
         (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a"
           (page "4")
@@ -454,7 +489,7 @@
       (at 200 16 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
     )
-    (pin "+5V_HUB75" power_in
+    (pin "+5V_EXT_HUB75" power_in
       (at 200 30 180)
       (effects (font (size 1.27 1.27)))
       (uuid "5fe0d974-eb83-4a70-9d51-2da44fb5b64a")
