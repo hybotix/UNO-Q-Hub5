@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name "HybotixParts")(type "Legacy")(uri "${KIPRJMOD}/HybotixParts.kicad_sym")(options "")(descr "Custom HybX components for UNO Q Shield and Carrier"))
+)
