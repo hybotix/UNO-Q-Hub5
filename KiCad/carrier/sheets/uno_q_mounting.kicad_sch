@@ -2,10 +2,104 @@
   (version 20231120)
   (generator eeschema)
   (generator_version "10.0.0")
-  (uuid "024f2b00-a375-43d1-97e4-20c834608c94")
+  (uuid "d2e3f4a5-6b7c-8d9e-0f1a-2b3c4d5e6f7a")
   (paper "A4")
 
   (lib_symbols
+  )
+
+  (symbol (lib_id "HybotixParts:FTSH-130-01")
+    (at 30 25 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "b7a1bbbc-af0d-443b-8857-cfe633e04075")
+    (property "Reference" "B1"
+      (at 30 23.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "JMISC"
+      (at 30 26.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Connector_Samtec:Samtec_FTSH-130-01-L-DV-A_2x30_P1.27mm_Vertical"
+      (at 30 25 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "B1") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "HybotixParts:FTSH-130-01")
+    (at 50 25 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "f476f102-ec78-419c-9dc0-f2c1ed53dc31")
+    (property "Reference" "B2"
+      (at 50 23.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "JMEDIA"
+      (at 50 26.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Connector_Samtec:Samtec_FTSH-130-01-L-DV-A_2x30_P1.27mm_Vertical"
+      (at 50 25 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "B2") (unit 1)
+        )
+      )
+    )
+  )
+
+  (hierarchical_label "+5V"
+    (shape input)
+    (at 10 20 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "d0c41e8d-ed26-4af8-9178-784630001d97")
+  )
+
+  (hierarchical_label "+3V3"
+    (shape input)
+    (at 10 25 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "7adfa7f6-735c-48b5-b22c-be639bebaffe")
+  )
+
+  (hierarchical_label "DGND"
+    (shape input)
+    (at 10 30 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "bc241d2a-87c0-417d-914a-c89f94787b18")
+  )
+
+  (hierarchical_label "CS_S3_MPU"
+    (shape input)
+    (at 10 40 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "53ad71d9-c86b-414c-ae9a-4d1f59dcf238")
+  )
+
+  (hierarchical_label "S3_C6_TX"
+    (shape output)
+    (at 70 20 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "385438c8-d439-4bb9-b0bf-c90aa919498c")
+  )
+
+  (hierarchical_label "S3_C6_RX"
+    (shape input)
+    (at 70 25 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "8a10e32c-b312-43f8-b184-bf72cfe39445")
   )
 
   (sheet_instances

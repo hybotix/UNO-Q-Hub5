@@ -2,10 +2,213 @@
   (version 20231120)
   (generator eeschema)
   (generator_version "10.0.0")
-  (uuid "03c49037-417d-4051-8aed-e2532bbcb7e9")
+  (uuid "a5b6c7d8-9e0f-1a2b-3c4d-5e6f7a8b9c0d")
   (paper "A4")
 
   (lib_symbols
+  )
+
+  (symbol (lib_id "Connector:Conn_2x20_Odd_Even")
+    (at 30 30 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "97ec8bb7-940e-4d7f-839c-f48e28b632ef")
+    (property "Reference" "J_GPIO"
+      (at 30 28.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "GPIO 40-pin"
+      (at 30 31.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x20_P2.54mm_Vertical"
+      (at 30 30 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "J_GPIO") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "HybotixParts:AT24C32")
+    (at 60 25 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "78798e4d-c739-4906-a0e7-90f174324834")
+    (property "Reference" "U12"
+      (at 60 23.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "24C32"
+      (at 60 26.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+      (at 60 25 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "U12") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:C")
+    (at 55 25 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "9a0d40be-2bfd-4147-989a-50b6e02585d9")
+    (property "Reference" "C31"
+      (at 55 23.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "100nF"
+      (at 55 26.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+      (at 55 25 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "C31") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:R")
+    (at 65 20 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "5e5f5a6b-362f-4867-98f4-65f4f679aec1")
+    (property "Reference" "R22"
+      (at 65 18.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "4.7kΩ"
+      (at 65 21.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+      (at 65 20 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "R22") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:R")
+    (at 70 20 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "02f9617b-6b88-41a5-a92a-42da3b4eff58")
+    (property "Reference" "R23"
+      (at 70 18.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "4.7kΩ"
+      (at 70 21.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+      (at 70 20 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "R23") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "HybotixParts:FPC_CSI")
+    (at 70 35 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "050f9571-63ff-485a-925d-6b950f1cf588")
+    (property "Reference" "J_CSI0"
+      (at 70 33.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "CSI0"
+      (at 70 36.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Connector_FPC:Molex_503480-30_30pin_P0.5mm_Vertical"
+      (at 70 35 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "J_CSI0") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "HybotixParts:FPC_CSI")
+    (at 75 35 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "b88a03e0-df8c-44d4-91a6-b0ec193a6828")
+    (property "Reference" "J_CSI1"
+      (at 75 33.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "CSI1"
+      (at 75 36.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Connector_FPC:Molex_503480-30_30pin_P0.5mm_Vertical"
+      (at 75 35 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "J_CSI1") (unit 1)
+        )
+      )
+    )
+  )
+
+  (hierarchical_label "+5V"
+    (shape input)
+    (at 10 20 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "6591fab8-9902-4051-8ff5-7354b0074655")
+  )
+
+  (hierarchical_label "+3V3"
+    (shape input)
+    (at 10 25 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "05d59e6c-6383-48d7-a7a2-c5e82e5e1416")
+  )
+
+  (hierarchical_label "DGND"
+    (shape input)
+    (at 10 30 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "9ebf1e22-04b3-4f23-afc9-53fd23cdd63e")
   )
 
   (sheet_instances

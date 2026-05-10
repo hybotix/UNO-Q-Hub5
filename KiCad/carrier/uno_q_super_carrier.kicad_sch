@@ -2,7 +2,7 @@
   (version 20231120)
   (generator eeschema)
   (generator_version "10.0.0")
-  (uuid "8ad7e29e-3d82-4dbf-a729-2eef62d90de2")
+  (uuid "a7d62ed3-8e95-4e64-b6df-722c91664a1a")
   (paper "A3")
   (title_block
     (title "UNO Q Super Carrier")
@@ -19,7 +19,7 @@
     (size 60 50)
     (stroke (width 0.254) (type default))
     (fill (type color) (color 255 255 204 0.3))
-    (uuid "2cf3b542-e729-47f9-80d3-3b9eaadfaec6")
+    (uuid "c1d2e3f4-5a6b-7c8d-9e0f-1a2b3c4d5e6f")
     (property "Sheet name" "Power"
       (at 20 28 0)
       (effects (font (size 1.524 1.524)) (justify left bottom))
@@ -28,19 +28,29 @@
       (at 20 26 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
     )
-    (pin "+5V" power_out
+    (pin "VIN_7_24V" input
       (at 80 40 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "2c8cfa5f-6e67-4fac-bd05-3c77bc79ec0c")
+      (uuid "e889199c-d5e8-4c05-a35b-3ae73e48f7e3")
     )
-    (pin "+3V3" power_out
+    (pin "+5V" power_out
       (at 80 44 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "0a0a790e-301d-453a-9c05-d269b5c16ecc")
+      (uuid "79fc8dc1-87e6-4dec-a640-a461aec3c654")
+    )
+    (pin "+3V3" power_out
+      (at 80 48 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "3dae0274-ff4e-41c5-b5a2-bdf62e43fd0c")
+    )
+    (pin "DGND" power_out
+      (at 80 52 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "a9dc68e6-1309-4c1f-9bf8-085c5592269e")
     )
     (instances
-      (project "uno_q_hub75_shield"
-        (path "/8ad7e29e-3d82-4dbf-a729-2eef62d90de2"
+      (project "uno_q_super_carrier"
+        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a"
           (page "2")
         )
       )
@@ -52,7 +62,7 @@
     (size 60 50)
     (stroke (width 0.254) (type default))
     (fill (type color) (color 255 255 204 0.3))
-    (uuid "ec43cc22-69c6-43e0-9945-481473925bb5")
+    (uuid "d2e3f4a5-6b7c-8d9e-0f1a-2b3c4d5e6f7a")
     (property "Sheet name" "UNO Q Mounting"
       (at 20 88 0)
       (effects (font (size 1.524 1.524)) (justify left bottom))
@@ -61,9 +71,39 @@
       (at 20 86 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
     )
+    (pin "+5V" power_in
+      (at 80 100 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "3b710655-a388-412a-897d-f171bfcdc809")
+    )
+    (pin "+3V3" power_in
+      (at 80 104 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "e579f2fe-3646-4589-b3ef-4d7a279668a4")
+    )
+    (pin "DGND" power_in
+      (at 80 108 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "f6121207-de3b-45fd-8495-bf62bd4cbd01")
+    )
+    (pin "CS_S3_MPU" input
+      (at 80 112 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "f1ba6a1d-326c-48a1-ab63-440302e31501")
+    )
+    (pin "S3_C6_TX" output
+      (at 80 116 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "86c61458-a9f4-441a-903d-de5c51e1ed83")
+    )
+    (pin "S3_C6_RX" input
+      (at 80 120 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "73d9af35-968e-47ab-96f7-52c97a3f820c")
+    )
     (instances
-      (project "uno_q_hub75_shield"
-        (path "/8ad7e29e-3d82-4dbf-a729-2eef62d90de2"
+      (project "uno_q_super_carrier"
+        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a"
           (page "3")
         )
       )
@@ -75,7 +115,7 @@
     (size 60 50)
     (stroke (width 0.254) (type default))
     (fill (type color) (color 255 255 204 0.3))
-    (uuid "64c1405b-2d28-4ee6-83d0-264e27eddf19")
+    (uuid "e3f4a5b6-7c8d-9e0f-1a2b-3c4d5e6f7a8b")
     (property "Sheet name" "ESP32-C6 Radio"
       (at 20 148 0)
       (effects (font (size 1.524 1.524)) (justify left bottom))
@@ -87,11 +127,26 @@
     (pin "+3V3" power_in
       (at 80 160 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "57f8f726-03b4-4e3e-8638-cb97ef576b14")
+      (uuid "c1719665-7f77-4a12-b3b6-9cd68edafea9")
+    )
+    (pin "DGND" power_in
+      (at 80 164 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "ddb07d43-5c38-4e38-92c8-3589a0d3f42d")
+    )
+    (pin "S3_C6_TX" input
+      (at 80 168 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "1b50fe71-4bb2-40ef-94a9-37f313857e1c")
+    )
+    (pin "S3_C6_RX" output
+      (at 80 172 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "aa9f4cc3-8ad8-417d-8f4b-582b3b191cbd")
     )
     (instances
-      (project "uno_q_hub75_shield"
-        (path "/8ad7e29e-3d82-4dbf-a729-2eef62d90de2"
+      (project "uno_q_super_carrier"
+        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a"
           (page "4")
         )
       )
@@ -103,7 +158,7 @@
     (size 60 50)
     (stroke (width 0.254) (type default))
     (fill (type color) (color 255 255 204 0.3))
-    (uuid "3cf2d112-afa4-4bc9-a481-446b078b78d0")
+    (uuid "f4a5b6c7-8d9e-0f1a-2b3c-4d5e6f7a8b9c")
     (property "Sheet name" "Display Chain"
       (at 20 208 0)
       (effects (font (size 1.524 1.524)) (justify left bottom))
@@ -112,9 +167,24 @@
       (at 20 206 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
     )
+    (pin "+5V" power_in
+      (at 80 220 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "dd1eed34-a238-4ed4-ad44-666a03d6089d")
+    )
+    (pin "+3V3" power_in
+      (at 80 224 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "8dcaef53-cc77-461d-919e-f208820fe414")
+    )
+    (pin "DGND" power_in
+      (at 80 228 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "10eb3d23-23ca-45f5-821f-9c6bb5bd9cfb")
+    )
     (instances
-      (project "uno_q_hub75_shield"
-        (path "/8ad7e29e-3d82-4dbf-a729-2eef62d90de2"
+      (project "uno_q_super_carrier"
+        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a"
           (page "5")
         )
       )
@@ -126,7 +196,7 @@
     (size 60 50)
     (stroke (width 0.254) (type default))
     (fill (type color) (color 255 255 204 0.3))
-    (uuid "5282343d-bf0e-4f06-adca-83ee664a25e0")
+    (uuid "a5b6c7d8-9e0f-1a2b-3c4d-5e6f7a8b9c0d")
     (property "Sheet name" "RPi5 Interface"
       (at 20 268 0)
       (effects (font (size 1.524 1.524)) (justify left bottom))
@@ -135,9 +205,24 @@
       (at 20 266 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
     )
+    (pin "+5V" power_in
+      (at 80 280 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "2c25e0e0-6365-4caf-9932-edf3bf69f064")
+    )
+    (pin "+3V3" power_in
+      (at 80 284 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "aeeb1219-f343-462d-a22b-5bde7119bbd0")
+    )
+    (pin "DGND" power_in
+      (at 80 288 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "7f2f041a-f5e2-4677-aa51-106e48f00dab")
+    )
     (instances
-      (project "uno_q_hub75_shield"
-        (path "/8ad7e29e-3d82-4dbf-a729-2eef62d90de2"
+      (project "uno_q_super_carrier"
+        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a"
           (page "6")
         )
       )
@@ -149,7 +234,7 @@
     (size 60 50)
     (stroke (width 0.254) (type default))
     (fill (type color) (color 255 255 204 0.3))
-    (uuid "33701fde-38b8-4c87-bfd7-174af518e269")
+    (uuid "b6c7d8e9-0f1a-2b3c-4d5e-6f7a8b9c0d1e")
     (property "Sheet name" "Level Shift"
       (at 20 328 0)
       (effects (font (size 1.524 1.524)) (justify left bottom))
@@ -158,9 +243,24 @@
       (at 20 326 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
     )
+    (pin "VIN_1V8_REF" input
+      (at 80 340 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "0262ce7c-792d-474b-b17e-c51c13bdb103")
+    )
+    (pin "+3V3" power_in
+      (at 80 344 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "573325b5-e6fa-42ed-9608-22bce7d97976")
+    )
+    (pin "DGND" power_in
+      (at 80 348 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "9d91281f-15a9-4ef3-a56f-adaf5b64df91")
+    )
     (instances
-      (project "uno_q_hub75_shield"
-        (path "/8ad7e29e-3d82-4dbf-a729-2eef62d90de2"
+      (project "uno_q_super_carrier"
+        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a"
           (page "7")
         )
       )
@@ -172,7 +272,7 @@
     (size 60 50)
     (stroke (width 0.254) (type default))
     (fill (type color) (color 255 255 204 0.3))
-    (uuid "c07d9109-1ef6-48f9-98b2-8726ab3ccb65")
+    (uuid "c7d8e9f0-1a2b-3c4d-5e6f-7a8b9c0d1e2f")
     (property "Sheet name" "Expansion"
       (at 20 388 0)
       (effects (font (size 1.524 1.524)) (justify left bottom))
@@ -181,9 +281,29 @@
       (at 20 386 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
     )
+    (pin "I2C_SDA" bidirectional
+      (at 80 400 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "69c483a1-6d19-4843-ad7b-4996bb5199e2")
+    )
+    (pin "I2C_SCL" bidirectional
+      (at 80 404 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "50ff4516-6eef-40e2-9db9-cded152f7ae2")
+    )
+    (pin "+3V3" power_in
+      (at 80 408 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "7c4de4e2-fffc-47a1-9377-9cc31dca18fc")
+    )
+    (pin "DGND" power_in
+      (at 80 412 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "65ede096-7e33-4db0-8892-e0fbd9d120cf")
+    )
     (instances
-      (project "uno_q_hub75_shield"
-        (path "/8ad7e29e-3d82-4dbf-a729-2eef62d90de2"
+      (project "uno_q_super_carrier"
+        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a"
           (page "8")
         )
       )

@@ -2,10 +2,187 @@
   (version 20231120)
   (generator eeschema)
   (generator_version "10.0.0")
-  (uuid "e2cf6ad0-6b6b-4e45-8695-db245cb21a06")
+  (uuid "f4a5b6c7-8d9e-0f1a-2b3c-4d5e6f7a8b9c")
   (paper "A4")
 
   (lib_symbols
+  )
+
+  (symbol (lib_id "HybotixParts:LT8618SX")
+    (at 30 30 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "b7d27e2f-665b-40d7-b5e2-596fddb8e921")
+    (property "Reference" "U10"
+      (at 30 28.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "LT8618SX"
+      (at 30 31.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Package_QFP:LQFP-56_10x10mm_P0.5mm"
+      (at 30 30 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "U10") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "HybotixParts:CBTL04GP054")
+    (at 55 30 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "2c0ab9dd-83a1-4f13-822f-08c401c265cc")
+    (property "Reference" "U11"
+      (at 55 28.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "CBTL04GP054"
+      (at 55 31.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Package_DFN:DFN-16_3x3mm_P0.5mm"
+      (at 55 30 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "U11") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:C")
+    (at 20 25 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "1e13a844-611b-48db-922c-863d1c1b8dbe")
+    (property "Reference" "C29"
+      (at 20 23.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "100nF"
+      (at 20 26.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+      (at 20 25 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "C29") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:C")
+    (at 25 25 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "e5501410-4ad8-4081-a159-b4307ce53031")
+    (property "Reference" "C30"
+      (at 25 23.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "10µF"
+      (at 25 26.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+      (at 25 25 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "C30") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "HybotixParts:HDMI_Micro_D")
+    (at 75 30 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "7020eedb-a50e-4732-b0e4-e9503e002cea")
+    (property "Reference" "J_HDMI"
+      (at 75 28.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "Micro-HDMI"
+      (at 75 31.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Connector_HDMI:Molex_47151-2001_Micro-HDMI_Horizontal"
+      (at 75 30 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "J_HDMI") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "HybotixParts:FPC_MIPI_DSI")
+    (at 75 40 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "92e4b72c-04f9-4bbd-9921-b5e925f78d7f")
+    (property "Reference" "J_DSI"
+      (at 75 38.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "MIPI DSI"
+      (at 75 41.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Connector_FPC:Molex_503480-40_40pin_P0.5mm_Vertical"
+      (at 75 40 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "J_DSI") (unit 1)
+        )
+      )
+    )
+  )
+
+  (hierarchical_label "+5V"
+    (shape input)
+    (at 10 20 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "74064723-0f6a-4bac-9154-5b06b3641fe8")
+  )
+
+  (hierarchical_label "+3V3"
+    (shape input)
+    (at 10 25 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "2f5313b6-3047-4f06-abc6-a969799e17e6")
+  )
+
+  (hierarchical_label "DGND"
+    (shape input)
+    (at 10 30 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "bf74834f-bf7d-4901-945e-bf04166b533f")
   )
 
   (sheet_instances

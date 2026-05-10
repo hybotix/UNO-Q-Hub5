@@ -2,10 +2,135 @@
   (version 20231120)
   (generator eeschema)
   (generator_version "10.0.0")
-  (uuid "bae83e85-7b38-4091-94d8-f5ffaeeb25d3")
+  (uuid "b6c7d8e9-0f1a-2b3c-4d5e-6f7a8b9c0d1e")
   (paper "A4")
 
   (lib_symbols
+  )
+
+  (symbol (lib_id "HybotixParts:TXS0108E")
+    (at 30 25 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "8e20bdf3-9eb2-4408-a8c1-437073ffcd6f")
+    (property "Reference" "U_LS1"
+      (at 30 23.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "TXS0108E"
+      (at 30 26.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm"
+      (at 30 25 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "U_LS1") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "HybotixParts:TXS0108E")
+    (at 50 25 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "1caf00a9-af82-46e6-92d2-b8363aaa5196")
+    (property "Reference" "U_LS2"
+      (at 50 23.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "TXS0108E"
+      (at 50 26.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm"
+      (at 50 25 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "U_LS2") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:C")
+    (at 20 25 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "93f27dbc-aaa9-4707-9f03-c50ab2bfb1b3")
+    (property "Reference" "C32"
+      (at 20 23.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "100nF"
+      (at 20 26.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+      (at 20 25 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "C32") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:C")
+    (at 40 25 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "819a74ae-61b3-4428-ad20-601a4851672d")
+    (property "Reference" "C33"
+      (at 40 23.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "100nF"
+      (at 40 26.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+      (at 40 25 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "C33") (unit 1)
+        )
+      )
+    )
+  )
+
+  (hierarchical_label "VIN_1V8_REF"
+    (shape input)
+    (at 10 20 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "62272ce4-0b72-4ed8-9f5e-2662648305d2")
+  )
+
+  (hierarchical_label "+3V3"
+    (shape input)
+    (at 10 30 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "51023e6b-2996-42e6-845c-c00d2b0c0cdc")
+  )
+
+  (hierarchical_label "DGND"
+    (shape input)
+    (at 10 35 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "8d67eacc-93c9-4e79-92fa-d9274faf2ed8")
   )
 
   (sheet_instances

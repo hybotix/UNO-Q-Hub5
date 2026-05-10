@@ -2,17 +2,220 @@
   (version 20231120)
   (generator eeschema)
   (generator_version "10.0.0")
-  (uuid "156c2628-daa2-4021-9314-067d56d6c224")
+  (uuid "e3f4a5b6-7c8d-9e0f-1a2b-3c4d5e6f7a8b")
   (paper "A4")
 
   (lib_symbols
   )
 
+  (symbol (lib_id "HybotixParts:ESP32-C6-MINI-1")
+    (at 30 30 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "db4c50f8-75bb-4b87-8baf-6f540e973d5e")
+    (property "Reference" "U9"
+      (at 30 28.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "ESP32-C6-MINI-1"
+      (at 30 31.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Package_BGA:ESP32-C6-MINI-1_18x18.5mm_P0.4mm"
+      (at 30 30 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "U9") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:C")
+    (at 20 30 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "c18cc51e-87e0-432d-8cf1-74fa6ff74a00")
+    (property "Reference" "C27"
+      (at 20 28.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "100nF"
+      (at 20 31.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+      (at 20 30 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "C27") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:C")
+    (at 25 30 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "cb9c1731-0804-45cb-8def-ca0dc642c021")
+    (property "Reference" "C28"
+      (at 25 28.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "10µF"
+      (at 25 31.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+      (at 25 30 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "C28") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:R")
+    (at 50 25 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "702d0633-6613-4e36-99f7-0cbe154c3593")
+    (property "Reference" "R_ANT_PCB"
+      (at 50 23.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "0Ω"
+      (at 50 26.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+      (at 50 25 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "R_ANT_PCB") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:R")
+    (at 55 25 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "0ec27425-6a47-4b62-afda-1e2d68549926")
+    (property "Reference" "R_ANT_EXT"
+      (at 55 23.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "DNP"
+      (at 55 26.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+      (at 55 25 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "R_ANT_EXT") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "HybotixParts:UFL_Connector")
+    (at 60 30 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "73496094-91f7-42da-82f4-b4f56bd2036a")
+    (property "Reference" "J_ANT"
+      (at 60 28.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "U.FL"
+      (at 60 31.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Connector_Coaxial:HIROSE_UFL_2013_E"
+      (at 60 30 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "J_ANT") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "HybotixParts:USB_C_Receptacle")
+    (at 70 30 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "c2ca4f7e-70de-4bee-87d9-2ec05e9481cd")
+    (property "Reference" "J_C6_USB"
+      (at 70 28.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "C6 USB"
+      (at 70 31.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Connector_USB:USB_C_Receptacle_GCT_USB4135-GF-A_Horizontal"
+      (at 70 30 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "J_C6_USB") (unit 1)
+        )
+      )
+    )
+  )
+
   (hierarchical_label "+3V3"
     (shape input)
-    (at 10 10 0)
+    (at 10 25 0)
     (effects (font (size 1.27 1.27)) (justify left))
-    (uuid "2b954bde-ef78-4cad-b8cf-a1ca785ee08c")
+    (uuid "4d0823c5-7367-44a9-9baf-30d996013b1e")
+  )
+
+  (hierarchical_label "DGND"
+    (shape input)
+    (at 10 35 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "523f54b1-a90b-47ee-b33a-eca51c6b6c5c")
+  )
+
+  (hierarchical_label "S3_C6_TX"
+    (shape input)
+    (at 10 40 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "6437aea0-308f-490a-aa75-99510439a4a3")
+  )
+
+  (hierarchical_label "S3_C6_RX"
+    (shape output)
+    (at 10 45 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "c07215b5-8dc7-4ee9-af65-c08070604be5")
   )
 
   (sheet_instances
