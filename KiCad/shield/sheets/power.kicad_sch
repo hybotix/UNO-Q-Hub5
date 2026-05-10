@@ -2,31 +2,390 @@
   (version 20231120)
   (generator eeschema)
   (generator_version "10.0.0")
-  (uuid "6565e6b9-05b5-4920-83b6-0d8897c9491e")
+  (uuid "efaa96f4-7a06-4df5-bf2b-8bbb82a448c8")
   (paper "A4")
 
   (lib_symbols
   )
 
+  (symbol (lib_id "HybotixParts:BarrelJack_5V")
+    (at 10 20 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "8b3dbec8-a818-48e7-bd2a-bcb810b3d7c9")
+    (property "Reference" "J4"
+      (at 10 18.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "DC +5V IN"
+      (at 10 21.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Connector_BarrelJack:BarrelJack_CUI_PJ-102AH_Horizontal"
+      (at 10 20 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "J4") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:C")
+    (at 20 20 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "28cd0255-d40f-419c-8c73-d128cffd601b")
+    (property "Reference" "C1"
+      (at 20 18.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "100µF"
+      (at 20 21.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
+      (at 20 20 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "C1") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:C")
+    (at 25 20 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "c612daae-6d5f-42f3-9c80-4779a1f48b0d")
+    (property "Reference" "C2"
+      (at 25 18.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "100nF"
+      (at 25 21.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+      (at 25 20 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "C2") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "HybotixParts:AMS1117-3.3")
+    (at 35 20 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "c5d2f7f2-d983-4c80-9a6b-5d6b404e6d8a")
+    (property "Reference" "U4"
+      (at 35 18.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "AMS1117-3.3"
+      (at 35 21.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-223-3_TabPin2"
+      (at 35 20 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "U4") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:C")
+    (at 45 20 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "a37eff1e-eb13-4884-ae8a-a1c7735f4912")
+    (property "Reference" "C3"
+      (at 45 18.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "10µF"
+      (at 45 21.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+      (at 45 20 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "C3") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:C")
+    (at 50 20 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "610c1c5d-b3ae-4429-8703-c853abbc1a70")
+    (property "Reference" "C4"
+      (at 50 18.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "10µF"
+      (at 50 21.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+      (at 50 20 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "C4") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:C")
+    (at 55 20 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "56942b0b-8580-4083-9885-5e141e5c19d9")
+    (property "Reference" "C5"
+      (at 55 18.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "100nF"
+      (at 55 21.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+      (at 55 20 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "C5") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:R")
+    (at 60 15 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "660ef184-fb90-4fbf-b1b2-56a8276e8f7b")
+    (property "Reference" "R10"
+      (at 60 13.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "10kΩ"
+      (at 60 16.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+      (at 60 15 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "R10") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:R")
+    (at 60 25 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "d666c19e-1939-4e60-8d5e-0f23f5957f40")
+    (property "Reference" "R11"
+      (at 60 23.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "10kΩ"
+      (at 60 26.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+      (at 60 25 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "R11") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:LED")
+    (at 70 15 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "48147bab-e27e-4254-9bf1-85a1fad6a222")
+    (property "Reference" "D1"
+      (at 70 13.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "Green LED"
+      (at 70 16.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "LED_SMD:LED_0402_1005Metric"
+      (at 70 15 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "D1") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:R")
+    (at 75 15 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "0d9be9b8-53bc-4d47-8aef-6c0570cf7a25")
+    (property "Reference" "R1"
+      (at 75 13.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "620Ω"
+      (at 75 16.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+      (at 75 15 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "R1") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:LED")
+    (at 70 25 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "48feedf0-4673-4449-be67-7ddc8858e146")
+    (property "Reference" "D2"
+      (at 70 23.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "Green LED"
+      (at 70 26.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "LED_SMD:LED_0402_1005Metric"
+      (at 70 25 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "D2") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:R")
+    (at 75 25 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "bc2e6c9f-695d-43ac-afca-6c4e7d36d87a")
+    (property "Reference" "R2"
+      (at 75 23.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "270Ω"
+      (at 75 26.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+      (at 75 25 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "R2") (unit 1)
+        )
+      )
+    )
+  )
+
   (hierarchical_label "+5V_EXT"
     (shape output)
-    (at 10 10 0)
+    (at 85 20 0)
     (effects (font (size 1.27 1.27)) (justify left))
-    (uuid "d3d8d8e5-18b6-4e76-abac-ca2153b2be6b")
+    (uuid "0e587948-a1c5-46b2-bd09-8be48bf34c59")
+  )
+
+  (hierarchical_label "+5V_EXT_HUB75"
+    (shape output)
+    (at 85 25 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "5ef95b1c-751c-4204-aab0-eff9ddfc571f")
   )
 
   (hierarchical_label "+3V3"
     (shape output)
-    (at 10 10 0)
+    (at 85 30 0)
     (effects (font (size 1.27 1.27)) (justify left))
-    (uuid "26ce50df-9e84-4465-affb-6a25b475f723")
+    (uuid "bc3250bb-9dc1-40d4-a9a3-b607da228ea0")
   )
 
   (hierarchical_label "DGND"
     (shape output)
-    (at 10 10 0)
+    (at 85 35 0)
     (effects (font (size 1.27 1.27)) (justify left))
-    (uuid "28c8c6a8-51bb-449b-9829-c942a4aa4e7e")
+    (uuid "404e0089-b9a4-491b-aa01-848bbcec2d0f")
+  )
+
+  (hierarchical_label "AGND"
+    (shape output)
+    (at 85 40 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "2e270191-9dd2-4483-9090-5cdaee6bccbb")
+  )
+
+  (hierarchical_label "AVDD"
+    (shape output)
+    (at 85 45 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "7f9cf078-8e01-44f2-b0c5-3899bab5a42d")
   )
 
   (sheet_instances

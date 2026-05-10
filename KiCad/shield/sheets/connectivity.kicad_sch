@@ -2,17 +2,265 @@
   (version 20231120)
   (generator eeschema)
   (generator_version "10.0.0")
-  (uuid "0b6477d1-0074-4905-936b-58e171a7ac6c")
+  (uuid "5d6e7f8a-9b0c-1d2e-3f4a-5b6c7d8e9f0a")
   (paper "A4")
 
   (lib_symbols
   )
 
+  (symbol (lib_id "HybotixParts:Qwiic_JST_SH_4")
+    (at 30 20 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "abd8a203-57cc-40f2-9bd3-0c56ecc8a933")
+    (property "Reference" "J8"
+      (at 30 18.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "Qwiic"
+      (at 30 21.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Connector_JST:JST_SH_BM04B-SRSS-TB_1x04-1MP_P1.0mm_Vertical"
+      (at 30 20 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "J8") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "HybotixParts:Qwiic_JST_SH_4")
+    (at 40 20 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "3b708f5d-a029-4f75-b4ac-31fcbbb3e52f")
+    (property "Reference" "J9"
+      (at 40 18.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "Qwiic"
+      (at 40 21.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Connector_JST:JST_SH_BM04B-SRSS-TB_1x04-1MP_P1.0mm_Vertical"
+      (at 40 20 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "J9") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:R")
+    (at 50 15 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "dc20b33c-c300-424e-bc52-9d91e7ddeebd")
+    (property "Reference" "R5"
+      (at 50 13.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "4.7kΩ"
+      (at 50 16.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+      (at 50 15 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "R5") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:R")
+    (at 55 15 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "277111d0-9a06-4642-a25b-285befb8518c")
+    (property "Reference" "R6"
+      (at 55 13.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "4.7kΩ"
+      (at 55 16.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+      (at 55 15 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "R6") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "HybotixParts:Grove_4pin")
+    (at 30 40 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "331ee49b-0105-4572-ac63-2d489656ae82")
+    (property "Reference" "J10"
+      (at 30 38.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "Grove"
+      (at 30 41.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Connector_Grove:Grove_4pin_Vertical"
+      (at 30 40 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "J10") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "HybotixParts:Grove_4pin")
+    (at 40 40 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "75110585-5031-4748-bb11-de90f90e29f0")
+    (property "Reference" "J11"
+      (at 40 38.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "Grove"
+      (at 40 41.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Connector_Grove:Grove_4pin_Vertical"
+      (at 40 40 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "J11") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "HybotixParts:Grove_4pin")
+    (at 50 40 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "0869eb14-cde3-47c7-9809-d013579e7b40")
+    (property "Reference" "J12"
+      (at 50 38.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "Grove"
+      (at 50 41.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Connector_Grove:Grove_4pin_Vertical"
+      (at 50 40 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "J12") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "HybotixParts:Grove_4pin")
+    (at 60 40 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "8df32dba-1d00-47c6-8d25-09f2a9c281d7")
+    (property "Reference" "J13"
+      (at 60 38.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "Grove"
+      (at 60 41.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Connector_Grove:Grove_4pin_Vertical"
+      (at 60 40 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "J13") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "HybotixParts:Grove_4pin")
+    (at 70 40 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "61570974-9818-4c01-ad93-4383a6ea53e4")
+    (property "Reference" "J14"
+      (at 70 38.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "Grove"
+      (at 70 41.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Connector_Grove:Grove_4pin_Vertical"
+      (at 70 40 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "J14") (unit 1)
+        )
+      )
+    )
+  )
+
+  (hierarchical_label "I2C_SDA"
+    (shape input)
+    (at 10 20 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "ecdf96ba-bd4e-4e15-b947-25231c1aa65b")
+  )
+
+  (hierarchical_label "I2C_SCL"
+    (shape input)
+    (at 10 25 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "d32d4533-3e56-4b08-9380-549e1ec6ab54")
+  )
+
   (hierarchical_label "+3V3"
     (shape input)
-    (at 10 10 0)
+    (at 10 30 0)
     (effects (font (size 1.27 1.27)) (justify left))
-    (uuid "28533267-df0b-4a0f-9b1f-0ab9eb7853a4")
+    (uuid "d281cc07-78dd-4f41-9423-c67fd2bd1d34")
   )
 
   (sheet_instances

@@ -2,10 +2,97 @@
   (version 20231120)
   (generator eeschema)
   (generator_version "10.0.0")
-  (uuid "617f910c-7be5-4a43-9b00-6ffe37f6d481")
+  (uuid "4c5d6e7f-8a9b-0c1d-2e3f-4a5b6c7d8e9f")
   (paper "A4")
 
   (lib_symbols
+  )
+
+  (symbol (lib_id "Connector:Conn_1x06_Pin")
+    (at 30 25 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "48994fee-af8d-436a-a7bc-51449f6b0f57")
+    (property "Reference" "J2"
+      (at 30 23.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "SPI3"
+      (at 30 26.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical"
+      (at 30 25 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "J2") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Connector:Conn_1x02_Pin")
+    (at 50 25 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "e6e74d5c-8ff3-40c8-a86e-183d682afd04")
+    (property "Reference" "J3"
+      (at 50 23.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "UART"
+      (at 50 26.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+      (at 50 25 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "J3") (unit 1)
+        )
+      )
+    )
+  )
+
+  (hierarchical_label "SPI_MOSI"
+    (shape input)
+    (at 10 20 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "234334e4-d21b-4051-bd0f-f6054edfcc80")
+  )
+
+  (hierarchical_label "SPI_MISO"
+    (shape input)
+    (at 10 25 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "da6d3e52-6327-485b-b9b4-cc8796f40c47")
+  )
+
+  (hierarchical_label "SPI_SCK"
+    (shape input)
+    (at 10 30 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "6b8af292-17a6-42f2-87e1-8dd146e2d5b1")
+  )
+
+  (hierarchical_label "CS_S3_MCU"
+    (shape input)
+    (at 10 35 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "a5ae965d-7813-4628-b011-320f69906cd1")
+  )
+
+  (hierarchical_label "GPIO47"
+    (shape input)
+    (at 10 40 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "bf003a8a-66a3-4ef6-84f8-6a480aa1d937")
   )
 
   (sheet_instances

@@ -2,17 +2,191 @@
   (version 20231120)
   (generator eeschema)
   (generator_version "10.0.0")
-  (uuid "3f674afb-033f-4ed5-8487-a26ea658953d")
+  (uuid "3b4c5d6e-7f8a-9b0c-1d2e-3f4a5b6c7d8e")
   (paper "A4")
 
   (lib_symbols
   )
 
+  (symbol (lib_id "HybotixParts:FPC_22pin_0.5mm")
+    (at 30 30 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "99e459c7-c9ad-4d89-9b27-c97412096000")
+    (property "Reference" "J6"
+      (at 30 28.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "FPC 22-pin"
+      (at 30 31.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Connector_FPC:Molex_503480-2200_22pin_P0.5mm_Vertical"
+      (at 30 30 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "J6") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:R")
+    (at 50 25 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "72f78a9e-7fc6-4255-b8ee-ff0bf3214183")
+    (property "Reference" "R20"
+      (at 50 23.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "4.7kΩ"
+      (at 50 26.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+      (at 50 25 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "R20") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:R")
+    (at 55 25 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "206a6d47-2973-4f90-a659-899c01910e6e")
+    (property "Reference" "R21"
+      (at 55 23.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "4.7kΩ"
+      (at 55 26.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+      (at 55 25 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "R21") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Device:R")
+    (at 60 30 0)
+    (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid "61ed3a07-7404-465f-9c0a-7312649fde8a")
+    (property "Reference" "JP1"
+      (at 60 28.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "0Ω"
+      (at 60 31.5 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+      (at 60 30 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+          (reference "JP1") (unit 1)
+        )
+      )
+    )
+  )
+
   (hierarchical_label "+3V3"
     (shape input)
-    (at 10 10 0)
+    (at 10 25 0)
     (effects (font (size 1.27 1.27)) (justify left))
-    (uuid "c038d9c1-0bd8-46e1-9e47-3b98fac49bff")
+    (uuid "998f6ed8-c457-41e3-8718-885bc3d8e83d")
+  )
+
+  (hierarchical_label "+5V_BL"
+    (shape input)
+    (at 10 30 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "1f5c5f7b-1c53-41c5-800c-739439682bee")
+  )
+
+  (hierarchical_label "LCD_CLK"
+    (shape input)
+    (at 10 35 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "f30153fe-b05c-4550-b47b-9fa57cd9ad78")
+  )
+
+  (hierarchical_label "LCD_MOSI"
+    (shape input)
+    (at 10 40 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "4eecdde0-6c6a-4800-b44c-e46ce9839524")
+  )
+
+  (hierarchical_label "LCD_CS"
+    (shape input)
+    (at 10 45 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "4bf4848a-172c-4ed8-b706-a1c708ab62ae")
+  )
+
+  (hierarchical_label "LCD_DC"
+    (shape input)
+    (at 10 50 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "897ce844-dc9c-43e2-a80f-dc2f07fec509")
+  )
+
+  (hierarchical_label "LCD_RST"
+    (shape input)
+    (at 10 55 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "1cb32a1d-bbca-4fca-9b4a-cd4ac780f56e")
+  )
+
+  (hierarchical_label "LCD_BL_PWM"
+    (shape input)
+    (at 10 60 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "6db5ea21-a66b-4662-89ac-83de1d10273d")
+  )
+
+  (hierarchical_label "I2C_SDA"
+    (shape input)
+    (at 10 65 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "86e98e7d-1b2e-4614-805e-e779590b9f54")
+  )
+
+  (hierarchical_label "I2C_SCL"
+    (shape input)
+    (at 10 70 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "d3c5338a-f2de-4391-871b-6c1f7b003bd1")
+  )
+
+  (hierarchical_label "TOUCH_INT"
+    (shape input)
+    (at 10 75 0)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid "8ba16b0b-2171-467e-94d8-9c5cc62a5faf")
   )
 
   (sheet_instances

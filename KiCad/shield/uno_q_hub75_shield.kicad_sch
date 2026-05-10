@@ -2,7 +2,7 @@
   (version 20231120)
   (generator eeschema)
   (generator_version "10.0.0")
-  (uuid "64df3dd7-2d16-420a-a10b-154cebece877")
+  (uuid "bc84562d-846a-4607-81a1-500b7991d137")
   (paper "A3")
   (title_block
     (title "UNO Q HUB75 Shield")
@@ -19,7 +19,7 @@
     (size 60 50)
     (stroke (width 0.254) (type default))
     (fill (type color) (color 255 255 204 0.3))
-    (uuid "1b89fba6-f434-45e9-b932-debc8005e52b")
+    (uuid "efaa96f4-7a06-4df5-bf2b-8bbb82a448c8")
     (property "Sheet name" "Power"
       (at 20 28 0)
       (effects (font (size 1.524 1.524)) (justify left bottom))
@@ -31,21 +31,36 @@
     (pin "+5V_EXT" power_out
       (at 80 40 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "e5893968-4c4d-4253-a716-d410ddb3542b")
+      (uuid "67ac5fcb-e437-49f0-bebf-cfccded87b3d")
     )
-    (pin "+3V3" power_out
+    (pin "+5V_EXT_HUB75" power_out
       (at 80 44 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "37c110e5-6afd-4ece-b96c-cb628760b39e")
+      (uuid "92c5f114-15ce-41cd-8433-8ec9a49a049b")
     )
-    (pin "DGND" power_out
+    (pin "+3V3" power_out
       (at 80 48 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "44746393-176c-4313-a787-0330e21fe04f")
+      (uuid "2913f147-6a09-4bac-ab69-6ca620b82a4e")
+    )
+    (pin "DGND" power_out
+      (at 80 52 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "958001ab-4926-4fc2-ac82-898abbbf5107")
+    )
+    (pin "AGND" power_out
+      (at 80 56 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "2b39a1a3-095e-4acd-a4fa-a882fec2b691")
+    )
+    (pin "AVDD" power_out
+      (at 80 60 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "34f4af0d-33d7-433f-bdab-65ebc10e2a22")
     )
     (instances
       (project "uno_q_hub75_shield"
-        (path "/64df3dd7-2d16-420a-a10b-154cebece877"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137"
           (page "2")
         )
       )
@@ -57,7 +72,7 @@
     (size 60 50)
     (stroke (width 0.254) (type default))
     (fill (type color) (color 255 255 204 0.3))
-    (uuid "d0ff69b2-02bc-4508-9e07-3c52be8ed91f")
+    (uuid "02ac644c-33d8-477e-a8a6-71ca0780d582")
     (property "Sheet name" "ESP32-S3"
       (at 20 88 0)
       (effects (font (size 1.524 1.524)) (justify left bottom))
@@ -69,16 +84,36 @@
     (pin "+3V3" power_in
       (at 80 100 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "41ee5ff9-f7f3-4867-9ac0-6ac30a86aee4")
+      (uuid "57b5d6c1-fd28-4d20-aeff-50c89d635e48")
     )
     (pin "DGND" power_in
       (at 80 104 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "1ac0b85d-52a9-41b4-8789-8806e0171fa5")
+      (uuid "ce1e3f3e-3f39-4416-a422-703c3a287a3e")
+    )
+    (pin "SPI_MOSI" output
+      (at 80 108 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "62db6ba6-6233-408d-a47b-50aa4a752e76")
+    )
+    (pin "SPI_MISO" output
+      (at 80 112 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "65025db2-80d5-421c-8f33-771615a36c59")
+    )
+    (pin "SPI_SCK" output
+      (at 80 116 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "8dfcdddc-7a6a-407a-b580-7a972423d9a1")
+    )
+    (pin "CS_S3_MCU" output
+      (at 80 120 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "49a1aca1-58b4-4436-af58-4a9bba2d86d6")
     )
     (instances
       (project "uno_q_hub75_shield"
-        (path "/64df3dd7-2d16-420a-a10b-154cebece877"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137"
           (page "3")
         )
       )
@@ -90,7 +125,7 @@
     (size 60 50)
     (stroke (width 0.254) (type default))
     (fill (type color) (color 255 255 204 0.3))
-    (uuid "99a4e703-4ab0-42d2-917c-422e089ceb18")
+    (uuid "1f2c3d4e-5f6a-7b8c-9d0e-1f2a3b4c5d6e")
     (property "Sheet name" "HUB75 Driver"
       (at 20 148 0)
       (effects (font (size 1.524 1.524)) (justify left bottom))
@@ -102,11 +137,21 @@
     (pin "+5V_EXT_HUB75" power_in
       (at 80 160 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "1e77cb23-25a4-4057-98a2-ab730db97853")
+      (uuid "5096f3ea-9fa0-418e-b9b9-3851c857520c")
+    )
+    (pin "HUB75_RGB" input
+      (at 80 164 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "ad212252-efc3-452d-9917-54c247239be1")
+    )
+    (pin "HUB75_CTRL" input
+      (at 80 168 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "305ae310-f4b8-4f3c-9024-72c891badc43")
     )
     (instances
       (project "uno_q_hub75_shield"
-        (path "/64df3dd7-2d16-420a-a10b-154cebece877"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137"
           (page "4")
         )
       )
@@ -118,7 +163,7 @@
     (size 60 50)
     (stroke (width 0.254) (type default))
     (fill (type color) (color 255 255 204 0.3))
-    (uuid "067a672d-61e9-483d-b8d8-3cb431666b42")
+    (uuid "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d")
     (property "Sheet name" "Audio Codec"
       (at 20 208 0)
       (effects (font (size 1.524 1.524)) (justify left bottom))
@@ -130,16 +175,41 @@
     (pin "+3V3" power_in
       (at 80 220 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "9a4f6981-3cdd-44e8-8339-7434c0bc964e")
+      (uuid "86f5a1f5-55b1-4506-b6ee-3dfe348af5bb")
     )
     (pin "AGND" power_out
       (at 80 224 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "74318168-3459-4ed9-800f-a24e022d260a")
+      (uuid "c2054038-5a2c-492d-87df-f2961f72225a")
+    )
+    (pin "I2S_BCLK" input
+      (at 80 228 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "90ff77d0-1ce4-4bcc-821e-c9f090719f67")
+    )
+    (pin "I2S_LRCLK" input
+      (at 80 232 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "61310af0-15fb-4bf7-9fe2-ce5b7017d527")
+    )
+    (pin "I2S_DOUT" input
+      (at 80 236 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "6379faab-ef51-4838-925f-d14ab50f6d30")
+    )
+    (pin "I2C_SDA" bidirectional
+      (at 80 240 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "72b471e4-b53b-45a4-b560-a384c2a8646b")
+    )
+    (pin "I2C_SCL" bidirectional
+      (at 80 244 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "8d088fcd-d01d-4383-9366-018218c2ec73")
     )
     (instances
       (project "uno_q_hub75_shield"
-        (path "/64df3dd7-2d16-420a-a10b-154cebece877"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137"
           (page "5")
         )
       )
@@ -151,7 +221,7 @@
     (size 60 50)
     (stroke (width 0.254) (type default))
     (fill (type color) (color 255 255 204 0.3))
-    (uuid "15459aa8-c7cc-4cdd-97c4-db11186a946e")
+    (uuid "3b4c5d6e-7f8a-9b0c-1d2e-3f4a5b6c7d8e")
     (property "Sheet name" "Display"
       (at 20 268 0)
       (effects (font (size 1.524 1.524)) (justify left bottom))
@@ -163,11 +233,61 @@
     (pin "+3V3" power_in
       (at 80 280 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "38a3802a-6a01-4047-be08-609662f9365c")
+      (uuid "e857e736-4cf6-41ed-a0ed-24219c5f8b70")
+    )
+    (pin "+5V_BL" power_in
+      (at 80 284 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "836191d3-8d90-43a7-b1ef-a2a3f44b4da9")
+    )
+    (pin "LCD_CLK" input
+      (at 80 288 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "05dbf571-f299-49a2-b6f8-fd8c864ad13c")
+    )
+    (pin "LCD_MOSI" input
+      (at 80 292 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "be8a9a6c-c0f8-4066-a96c-a004b30b2190")
+    )
+    (pin "LCD_CS" input
+      (at 80 296 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "80f7d969-d8c3-4899-a3ab-1702b2896996")
+    )
+    (pin "LCD_DC" input
+      (at 80 300 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "5fa98593-a3b2-4718-a62c-e2d513b50eb7")
+    )
+    (pin "LCD_RST" input
+      (at 80 304 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "f02ac2f7-4832-4b8e-aa1d-663c21f13650")
+    )
+    (pin "LCD_BL_PWM" input
+      (at 80 308 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "29face7e-6c65-4a4f-a845-6f9be1497cf8")
+    )
+    (pin "I2C_SDA" bidirectional
+      (at 80 312 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "76919e89-a330-4343-aa60-05e71f0fc207")
+    )
+    (pin "I2C_SCL" bidirectional
+      (at 80 316 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "415c44d3-f9e4-4d9a-a207-dc4309c0f5c1")
+    )
+    (pin "TOUCH_INT" input
+      (at 80 320 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "867cd85f-7bde-47e9-bab4-c6517bc985ec")
     )
     (instances
       (project "uno_q_hub75_shield"
-        (path "/64df3dd7-2d16-420a-a10b-154cebece877"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137"
           (page "6")
         )
       )
@@ -179,7 +299,7 @@
     (size 60 50)
     (stroke (width 0.254) (type default))
     (fill (type color) (color 255 255 204 0.3))
-    (uuid "4105ea3a-fdbc-485f-8495-e1e209df13b8")
+    (uuid "4c5d6e7f-8a9b-0c1d-2e3f-4a5b6c7d8e9f")
     (property "Sheet name" "UNO Q Interface"
       (at 20 328 0)
       (effects (font (size 1.524 1.524)) (justify left bottom))
@@ -188,9 +308,34 @@
       (at 20 326 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
     )
+    (pin "SPI_MOSI" input
+      (at 80 340 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "25fd951e-07f9-4f01-a39f-731222a9cba1")
+    )
+    (pin "SPI_MISO" input
+      (at 80 344 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "9129361f-40e5-4ea4-ac52-90aa69c335ab")
+    )
+    (pin "SPI_SCK" input
+      (at 80 348 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "9f70c404-f911-4c59-ae6a-51412b44010e")
+    )
+    (pin "CS_S3_MCU" input
+      (at 80 352 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "203401ce-ef9d-4336-a362-b52519bba841")
+    )
+    (pin "GPIO47" input
+      (at 80 356 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "b468e2d9-56f2-46ae-af82-a04c1b86eb48")
+    )
     (instances
       (project "uno_q_hub75_shield"
-        (path "/64df3dd7-2d16-420a-a10b-154cebece877"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137"
           (page "7")
         )
       )
@@ -202,7 +347,7 @@
     (size 60 50)
     (stroke (width 0.254) (type default))
     (fill (type color) (color 255 255 204 0.3))
-    (uuid "2a959899-6046-4e86-93b0-3b7d493b6f0a")
+    (uuid "5d6e7f8a-9b0c-1d2e-3f4a-5b6c7d8e9f0a")
     (property "Sheet name" "Connectivity"
       (at 20 388 0)
       (effects (font (size 1.524 1.524)) (justify left bottom))
@@ -211,14 +356,24 @@
       (at 20 386 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
     )
-    (pin "+3V3" power_in
+    (pin "I2C_SDA" bidirectional
       (at 80 400 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "b1bcd5a6-28de-46ff-bbc3-b3be06cd5085")
+      (uuid "55b8ba45-8446-4d9b-96ca-1e947883bcc2")
+    )
+    (pin "I2C_SCL" bidirectional
+      (at 80 404 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "48bb421f-35ab-41e7-8750-5bae46e0d57e")
+    )
+    (pin "+3V3" power_in
+      (at 80 408 0)
+      (effects (font (size 1.27 1.27)))
+      (uuid "3bc7bd8d-e41f-4619-8cba-9991bc4102d8")
     )
     (instances
       (project "uno_q_hub75_shield"
-        (path "/64df3dd7-2d16-420a-a10b-154cebece877"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137"
           (page "8")
         )
       )
