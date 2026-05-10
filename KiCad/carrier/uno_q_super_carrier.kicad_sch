@@ -15,49 +15,6 @@
   )
 
   (sheet
-    (at 20 30)
-    (size 60 50)
-    (stroke (width 0.254) (type default))
-    (fill (type color) (color 255 255 204 0.3))
-    (uuid "c1d2e3f4-5a6b-7c8d-9e0f-1a2b3c4d5e6f")
-    (property "Sheet name" "Power"
-      (at 20 28 0)
-      (effects (font (size 1.524 1.524)) (justify left bottom))
-    )
-    (property "Sheet file" "sheets/power.kicad_sch"
-      (at 20 26 0)
-      (effects (font (size 1.27 1.27)) (justify left bottom))
-    )
-    (pin "VIN_7_24V" input
-      (at 80 40 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "827b394b-6946-41eb-a26f-9e7f66e56b0b")
-    )
-    (pin "+5V" power_out
-      (at 80 44 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "c99f0f1a-b190-4387-8ae3-09a242412cc7")
-    )
-    (pin "+3V3" power_out
-      (at 80 48 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "2dbc9834-c2a2-4816-bbc2-d4bc8f111342")
-    )
-    (pin "DGND" power_out
-      (at 80 52 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "07d5e504-d8df-4780-9f73-6c991251601d")
-    )
-    (instances
-      (project "uno_q_super_carrier"
-        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a"
-          (page "2")
-        )
-      )
-    )
-  )
-
-  (sheet
     (at 20 90)
     (size 60 50)
     (stroke (width 0.254) (type default))
