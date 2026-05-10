@@ -12,259 +12,6 @@
   )
 
   (lib_symbols
-  (symbol "BarrelJack_5V" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
-    (property "Reference" "J" (at 0 5.08 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Value" "BarrelJack_5V" (at 0 -7.62 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Footprint" "Connector_BarrelJack:BarrelJack_CUI_PJ-102AH_Horizontal" (at 1.27 0 0)
-      (effects (font (size 1.27 1.27)) hide))
-    (symbol "BarrelJack_5V_0_1"
-      (circle (center -2.54 0) (radius 1.27) (stroke (width 0.254) (type default)) (fill (type none))))
-    (symbol "BarrelJack_5V_1_1"
-      (pin passive line (at -5.08 0 0) (length 2.54) (name "Tip" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
-      (pin passive line (at -5.08 -2.54 0) (length 2.54) (name "Sleeve" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))))
-  (symbol "AMS1117-3.3" (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
-    (property "Reference" "U" (at 0 5.08 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Value" "AMS1117-3.3" (at 0 -5.08 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Footprint" "Package_TO_SOT_SMD:SOT-223-3_TabPin2" (at 0 -10.16 0)
-      (effects (font (size 1.27 1.27)) hide))
-    (symbol "AMS1117-3.3_0_1"
-      (rectangle (start -5.08 3.81) (end 5.08 -3.81) (stroke (width 0.254) (type default)) (fill (type background))))
-    (symbol "AMS1117-3.3_1_1"
-      (pin power_in line (at -7.62 2.54 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
-      (pin power_out line (at 7.62 2.54 180) (length 2.54) (name "OUT" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
-      (pin power_in line (at -7.62 -2.54 0) (length 2.54) (name "IN" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))))
-  (symbol "ESP32-S3-WROOM-1-N16R8" (in_bom yes) (on_board yes)
-    (property "Reference" "U" (at 0 50.8 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Value" "ESP32-S3-WROOM-1-N16R8" (at 0 -50.8 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Footprint" "Package_BGA:ESP32-S3-WROOM-1_18x25.5mm_P0.5mm" (at 0 -63.5 0)
-      (effects (font (size 1.27 1.27)) hide))
-    (symbol "ESP32-S3-WROOM-1-N16R8_0_1"
-      (rectangle (start -25.4 48.26) (end 25.4 -48.26) (stroke (width 0.254) (type default)) (fill (type background))))
-    (symbol "ESP32-S3-WROOM-1-N16R8_1_1"
-      (pin passive line (at -27.94 45.72 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
-      (pin passive line (at -27.94 43.18 0) (length 2.54) (name "3V3" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
-      (pin passive line (at -27.94 40.64 0) (length 2.54) (name "EN" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))
-      (pin passive line (at -27.94 38.1 0) (length 2.54) (name "BOOT" (effects (font (size 1.27 1.27)))) (number "4" (effects (font (size 1.27 1.27)))))
-      (pin passive line (at 27.94 -45.72 180) (length 2.54) (name "GPIO0" (effects (font (size 1.27 1.27)))) (number "5" (effects (font (size 1.27 1.27)))))
-      (pin passive line (at 27.94 -43.18 180) (length 2.54) (name "GPIO1" (effects (font (size 1.27 1.27)))) (number "6" (effects (font (size 1.27 1.27)))))
-      (pin passive line (at 27.94 -40.64 180) (length 2.54) (name "GPIO2" (effects (font (size 1.27 1.27)))) (number "7" (effects (font (size 1.27 1.27)))))
-      (pin passive line (at 27.94 -38.1 180) (length 2.54) (name "GPIO42" (effects (font (size 1.27 1.27)))) (number "8" (effects (font (size 1.27 1.27))))))
-    )
-  (symbol "SN74HCT245PW" (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
-    (property "Reference" "U" (at 0 12.7 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Value" "SN74HCT245PW" (at 0 -12.7 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Footprint" "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm" (at 0 -17.78 0)
-      (effects (font (size 1.27 1.27)) hide))
-    (symbol "SN74HCT245PW_0_1"
-      (rectangle (start -7.62 11.43) (end 7.62 -11.43) (stroke (width 0.254) (type default)) (fill (type background))))
-    (symbol "SN74HCT245PW_1_1"
-      (pin power_in line (at -10.16 8.89 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "10" (effects (font (size 1.27 1.27)))))
-      (pin power_in line (at 10.16 8.89 180) (length 2.54) (name "VCC" (effects (font (size 1.27 1.27)))) (number "20" (effects (font (size 1.27 1.27)))))
-      (pin input line (at -10.16 6.35 0) (length 2.54) (name "DIR" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
-      (pin output line (at 10.16 6.35 180) (length 2.54) (name "~OE" (effects (font (size 1.27 1.27)))) (number "19" (effects (font (size 1.27 1.27))))))
-    )
-  (symbol "ES8388" (in_bom yes) (on_board yes)
-    (property "Reference" "U" (at 0 30.48 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Value" "ES8388" (at 0 -30.48 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Footprint" "Package_QFP:LQFP-48_7x7mm_P0.5mm" (at 0 -40.64 0)
-      (effects (font (size 1.27 1.27)) hide))
-    (symbol "ES8388_0_1"
-      (rectangle (start -12.7 29.21) (end 12.7 -29.21) (stroke (width 0.254) (type default)) (fill (type background))))
-    (symbol "ES8388_1_1"
-      (pin power_in line (at -15.24 26.67 0) (length 2.54) (name "AVDD" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
-      (pin power_in line (at -15.24 -26.67 0) (length 2.54) (name "AGND" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
-      (pin power_in line (at 15.24 26.67 180) (length 2.54) (name "DVDD" (effects (font (size 1.27 1.27)))) (number "15" (effects (font (size 1.27 1.27)))))
-      (pin power_in line (at 15.24 -26.67 180) (length 2.54) (name "DGND" (effects (font (size 1.27 1.27)))) (number "16" (effects (font (size 1.27 1.27))))))
-    )
-  (symbol "USB_C_Receptacle_GCT" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
-    (property "Reference" "J" (at 0 19.05 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Value" "USB_C_Receptacle_GCT" (at 0 -19.05 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Footprint" "Connector_USB:USB_C_Receptacle_GCT_USB4135-GF-A_Horizontal" (at 2.54 0 0)
-      (effects (font (size 1.27 1.27)) hide))
-    (symbol "USB_C_Receptacle_GCT_0_1"
-      (rectangle (start -10.16 17.78) (end 10.16 -17.78) (stroke (width 0.254) (type default)) (fill (type background))))
-    (symbol "USB_C_Receptacle_GCT_1_1"
-      (pin passive line (at -12.7 15.24 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "A1" (effects (font (size 1.27 1.27)))))
-      (pin passive line (at -12.7 12.7 0) (length 2.54) (name "VBUS" (effects (font (size 1.27 1.27)))) (number "A4" (effects (font (size 1.27 1.27)))))
-      (pin passive line (at -12.7 10.16 0) (length 2.54) (name "CC1" (effects (font (size 1.27 1.27)))) (number "A5" (effects (font (size 1.27 1.27)))))
-      (pin passive line (at -12.7 7.62 0) (length 2.54) (name "D-" (effects (font (size 1.27 1.27)))) (number "A7" (effects (font (size 1.27 1.27)))))
-      (pin passive line (at -12.7 5.08 0) (length 2.54) (name "D+" (effects (font (size 1.27 1.27)))) (number "A6" (effects (font (size 1.27 1.27))))))
-    )
-  (symbol "FPC_22pin_0.5mm" (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
-    (property "Reference" "J" (at 0 12.7 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Value" "FPC_22pin_0.5mm" (at 0 -12.7 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Footprint" "Connector_FPC:Molex_503480-2200_22pin_P0.5mm_Vertical" (at 0 -15.24 0)
-      (effects (font (size 1.27 1.27)) hide))
-    (symbol "FPC_22pin_0.5mm_0_1"
-      (rectangle (start -5.08 11.43) (end 5.08 -11.43) (stroke (width 0.254) (type default)) (fill (type background))))
-    (symbol "FPC_22pin_0.5mm_1_1"
-      (pin passive line (at -7.62 10.16 0) (length 2.54) (name "P1" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
-      (pin passive line (at -7.62 7.62 0) (length 2.54) (name "P2" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))))
-  (symbol "Qwiic_JST_SH_4" (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
-    (property "Reference" "J" (at 0 5.08 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Value" "Qwiic_JST_SH_4" (at 0 -5.08 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Footprint" "Connector_JST:JST_SH_BM04B-SRSS-TB_1x04-1MP_P1.0mm_Vertical" (at 0 -7.62 0)
-      (effects (font (size 1.27 1.27)) hide))
-    (symbol "Qwiic_JST_SH_4_0_1"
-      (rectangle (start -3.81 3.81) (end 3.81 -3.81) (stroke (width 0.254) (type default)) (fill (type background))))
-    (symbol "Qwiic_JST_SH_4_1_1"
-      (pin passive line (at -6.35 2.54 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
-      (pin passive line (at -6.35 0 0) (length 2.54) (name "+3.3V" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
-      (pin passive line (at -6.35 -2.54 0) (length 2.54) (name "SDA" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))
-      (pin passive line (at -6.35 -5.08 0) (length 2.54) (name "SCL" (effects (font (size 1.27 1.27)))) (number "4" (effects (font (size 1.27 1.27))))))
-    )
-  (symbol "Grove_4pin" (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
-    (property "Reference" "J" (at 0 5.08 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Value" "Grove_4pin" (at 0 -5.08 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Footprint" "Connector_Grove:Grove_4pin_Vertical" (at 0 -7.62 0)
-      (effects (font (size 1.27 1.27)) hide))
-    (symbol "Grove_4pin_0_1"
-      (rectangle (start -3.81 3.81) (end 3.81 -3.81) (stroke (width 0.254) (type default)) (fill (type background))))
-    (symbol "Grove_4pin_1_1"
-      (pin passive line (at -6.35 2.54 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
-      (pin passive line (at -6.35 0 0) (length 2.54) (name "+5V" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
-      (pin passive line (at -6.35 -2.54 0) (length 2.54) (name "SDA" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))
-      (pin passive line (at -6.35 -5.08 0) (length 2.54) (name "SCL" (effects (font (size 1.27 1.27)))) (number "4" (effects (font (size 1.27 1.27))))))
-    )
-  (symbol "HUB75_2x8_IDC" (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
-    (property "Reference" "J" (at 0 10.16 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Value" "HUB75_2x8_IDC" (at 0 -10.16 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Footprint" "Connector_IDC:IDC-Header_2x08_P2.54mm_Vertical" (at 0 -12.7 0)
-      (effects (font (size 1.27 1.27)) hide))
-    (symbol "HUB75_2x8_IDC_0_1"
-      (rectangle (start -5.08 8.89) (end 5.08 -8.89) (stroke (width 0.254) (type default)) (fill (type background))))
-    (symbol "HUB75_2x8_IDC_1_1"
-      (pin passive line (at -7.62 7.62 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
-      (pin passive line (at 7.62 7.62 180) (length 2.54) (name "+5V" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
-      (pin passive line (at -7.62 5.08 0) (length 2.54) (name "R1" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))
-      (pin passive line (at 7.62 5.08 180) (length 2.54) (name "G1" (effects (font (size 1.27 1.27)))) (number "4" (effects (font (size 1.27 1.27))))))
-    )
-  (symbol "FTSH-130-01" (in_bom yes) (on_board yes)
-    (property "Reference" "B" (at 0 30.48 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Value" "FTSH-130-01" (at 0 -30.48 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Footprint" "Connector_Samtec:Samtec_FTSH-130-01-L-DV-A_2x30_P1.27mm_Vertical" (at 0 -40.64 0)
-      (effects (font (size 1.27 1.27)) hide))
-    (symbol "FTSH-130-01_0_1"
-      (rectangle (start -10.16 29.21) (end 10.16 -29.21) (stroke (width 0.254) (type default)) (fill (type background))))
-    (symbol "FTSH-130-01_1_1"
-      (pin passive line (at -12.7 26.67 0) (length 2.54) (name "1" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))))
-  (symbol "TPS54331DR" (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
-    (property "Reference" "U" (at 0 6.35 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Value" "TPS54331DR" (at 0 -6.35 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" (at 0 -10.16 0)
-      (effects (font (size 1.27 1.27)) hide))
-    (symbol "TPS54331DR_0_1"
-      (rectangle (start -5.08 5.08) (end 5.08 -5.08) (stroke (width 0.254) (type default)) (fill (type background))))
-    (symbol "TPS54331DR_1_1"
-      (pin power_in line (at -7.62 3.81 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "4" (effects (font (size 1.27 1.27)))))
-      (pin power_out line (at 7.62 3.81 180) (length 2.54) (name "OUT" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
-      (pin power_in line (at -7.62 -3.81 0) (length 2.54) (name "VIN" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27))))))
-    )
-  (symbol "ESP32-C6-MINI-1" (in_bom yes) (on_board yes)
-    (property "Reference" "U" (at 0 25.4 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Value" "ESP32-C6-MINI-1" (at 0 -25.4 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Footprint" "Package_BGA:ESP32-C6-MINI-1_18x18.5mm_P0.4mm" (at 0 -35.56 0)
-      (effects (font (size 1.27 1.27)) hide))
-    (symbol "ESP32-C6-MINI-1_0_1"
-      (rectangle (start -12.7 24.13) (end 12.7 -24.13) (stroke (width 0.254) (type default)) (fill (type background))))
-    (symbol "ESP32-C6-MINI-1_1_1"
-      (pin passive line (at -15.24 21.59 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
-      (pin passive line (at -15.24 19.05 0) (length 2.54) (name "+3V3" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27))))))
-    )
-  (symbol "LT8618SX" (in_bom yes) (on_board yes)
-    (property "Reference" "U" (at 0 35.56 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Value" "LT8618SX" (at 0 -35.56 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Footprint" "Package_QFP:LQFP-56_10x10mm_P0.5mm" (at 0 -45.72 0)
-      (effects (font (size 1.27 1.27)) hide))
-    (symbol "LT8618SX_0_1"
-      (rectangle (start -15.24 34.29) (end 15.24 -34.29) (stroke (width 0.254) (type default)) (fill (type background))))
-    (symbol "LT8618SX_1_1"
-      (pin power_in line (at -17.78 31.75 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "28" (effects (font (size 1.27 1.27)))))
-      (pin power_in line (at -17.78 -31.75 0) (length 2.54) (name "AGND" (effects (font (size 1.27 1.27)))) (number "29" (effects (font (size 1.27 1.27))))))
-    )
-  (symbol "CBTL04GP054" (in_bom yes) (on_board yes)
-    (property "Reference" "U" (at 0 10.16 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Value" "CBTL04GP054" (at 0 -10.16 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Footprint" "Package_DFN:DFN-16_3x3mm_P0.5mm" (at 0 -12.7 0)
-      (effects (font (size 1.27 1.27)) hide))
-    (symbol "CBTL04GP054_0_1"
-      (rectangle (start -7.62 8.89) (end 7.62 -8.89) (stroke (width 0.254) (type default)) (fill (type background))))
-    (symbol "CBTL04GP054_1_1"
-      (pin passive line (at -10.16 6.35 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "8" (effects (font (size 1.27 1.27)))))
-      (pin passive line (at 10.16 6.35 180) (length 2.54) (name "VCC" (effects (font (size 1.27 1.27)))) (number "16" (effects (font (size 1.27 1.27))))))
-    )
-  (symbol "TXS0108E" (in_bom yes) (on_board yes)
-    (property "Reference" "U" (at 0 12.7 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Value" "TXS0108E" (at 0 -12.7 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Footprint" "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm" (at 0 -17.78 0)
-      (effects (font (size 1.27 1.27)) hide))
-    (symbol "TXS0108E_0_1"
-      (rectangle (start -7.62 11.43) (end 7.62 -11.43) (stroke (width 0.254) (type default)) (fill (type background))))
-    (symbol "TXS0108E_1_1"
-      (pin power_in line (at -10.16 8.89 0) (length 2.54) (name "VCCA" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
-      (pin power_in line (at 10.16 8.89 180) (length 2.54) (name "VCCB" (effects (font (size 1.27 1.27)))) (number "20" (effects (font (size 1.27 1.27)))))
-      (pin power_in line (at -10.16 -8.89 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "10" (effects (font (size 1.27 1.27))))))
-    )
-  (symbol "AT24C32" (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
-    (property "Reference" "U" (at 0 5.08 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Value" "AT24C32" (at 0 -5.08 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" (at 0 -10.16 0)
-      (effects (font (size 1.27 1.27)) hide))
-    (symbol "AT24C32_0_1"
-      (rectangle (start -5.08 3.81) (end 5.08 -3.81) (stroke (width 0.254) (type default)) (fill (type background))))
-    (symbol "AT24C32_1_1"
-      (pin power_in line (at -7.62 2.54 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "4" (effects (font (size 1.27 1.27)))))
-      (pin power_in line (at 7.62 2.54 180) (length 2.54) (name "VCC" (effects (font (size 1.27 1.27)))) (number "8" (effects (font (size 1.27 1.27)))))
-      (pin passive line (at -7.62 0 0) (length 2.54) (name "SDA" (effects (font (size 1.27 1.27)))) (number "5" (effects (font (size 1.27 1.27)))))
-      (pin passive line (at -7.62 -2.54 0) (length 2.54) (name "SCL" (effects (font (size 1.27 1.27)))) (number "6" (effects (font (size 1.27 1.27))))))
-    )
-  (symbol "UFL_Connector" (in_bom yes) (on_board yes)
-    (property "Reference" "J" (at 0 5.08 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Value" "UFL_Connector" (at 0 -5.08 0)
-      (effects (font (size 1.27 1.27) (thickness 0.15))))
-    (property "Footprint" "Connector_Coaxial:HIROSE_UFL_2013_E" (at 0 -7.62 0)
-      (effects (font (size 1.27 1.27)) hide))
-    (symbol "UFL_Connector_0_1"
-      (circle (center -2.54 0) (radius 1.27) (stroke (width 0.254) (type default)) (fill (type none))))
-    (symbol "UFL_Connector_1_1"
-      (pin passive line (at -5.08 0 0) (length 2.54) (name "RF" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
-      (pin passive line (at -5.08 -2.54 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27))))))
-    )
   )
 
   (sheet
@@ -284,22 +31,22 @@
     (pin "VIN_7_24V" input
       (at 80 40 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "e889199c-d5e8-4c05-a35b-3ae73e48f7e3")
+      (uuid "827b394b-6946-41eb-a26f-9e7f66e56b0b")
     )
     (pin "+5V" power_out
       (at 80 44 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "79fc8dc1-87e6-4dec-a640-a461aec3c654")
+      (uuid "c99f0f1a-b190-4387-8ae3-09a242412cc7")
     )
     (pin "+3V3" power_out
       (at 80 48 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "3dae0274-ff4e-41c5-b5a2-bdf62e43fd0c")
+      (uuid "2dbc9834-c2a2-4816-bbc2-d4bc8f111342")
     )
     (pin "DGND" power_out
       (at 80 52 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "a9dc68e6-1309-4c1f-9bf8-085c5592269e")
+      (uuid "07d5e504-d8df-4780-9f73-6c991251601d")
     )
     (instances
       (project "uno_q_super_carrier"
@@ -327,32 +74,32 @@
     (pin "+5V" power_in
       (at 80 100 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "3b710655-a388-412a-897d-f171bfcdc809")
+      (uuid "ce1d0fe9-dddb-4cdd-8b11-ef9079482ac6")
     )
     (pin "+3V3" power_in
       (at 80 104 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "e579f2fe-3646-4589-b3ef-4d7a279668a4")
+      (uuid "e405d2da-2e84-435d-b33d-fa5c7aa241a9")
     )
     (pin "DGND" power_in
       (at 80 108 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "f6121207-de3b-45fd-8495-bf62bd4cbd01")
+      (uuid "55af0e60-d6ca-4825-b466-483b1bb34417")
     )
     (pin "CS_S3_MPU" input
       (at 80 112 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "f1ba6a1d-326c-48a1-ab63-440302e31501")
+      (uuid "5538a641-daac-49c3-8acd-9e54b1e6d5e2")
     )
     (pin "S3_C6_TX" output
       (at 80 116 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "86c61458-a9f4-441a-903d-de5c51e1ed83")
+      (uuid "e62eb480-d7c1-4f32-9b89-16fb79e46c72")
     )
     (pin "S3_C6_RX" input
       (at 80 120 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "73d9af35-968e-47ab-96f7-52c97a3f820c")
+      (uuid "b22e428b-f6c0-432a-80c2-88897fcf73e4")
     )
     (instances
       (project "uno_q_super_carrier"
@@ -380,22 +127,22 @@
     (pin "+3V3" power_in
       (at 80 160 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "c1719665-7f77-4a12-b3b6-9cd68edafea9")
+      (uuid "31a0ba74-649f-407f-afe9-8e0825f17579")
     )
     (pin "DGND" power_in
       (at 80 164 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "ddb07d43-5c38-4e38-92c8-3589a0d3f42d")
+      (uuid "8dfccb7a-7695-4399-baec-a705bea3eff0")
     )
     (pin "S3_C6_TX" input
       (at 80 168 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "1b50fe71-4bb2-40ef-94a9-37f313857e1c")
+      (uuid "e5cbe52f-cc98-408a-9602-d80aad74b8ee")
     )
     (pin "S3_C6_RX" output
       (at 80 172 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "aa9f4cc3-8ad8-417d-8f4b-582b3b191cbd")
+      (uuid "6818cfe9-2eec-41dc-b74d-93017ffa7509")
     )
     (instances
       (project "uno_q_super_carrier"
@@ -423,17 +170,17 @@
     (pin "+5V" power_in
       (at 80 220 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "dd1eed34-a238-4ed4-ad44-666a03d6089d")
+      (uuid "efbd71ec-bf2c-4c74-9ec2-c95fadeb500c")
     )
     (pin "+3V3" power_in
       (at 80 224 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "8dcaef53-cc77-461d-919e-f208820fe414")
+      (uuid "b94a8ce5-5ee0-46fd-a322-b011b580813a")
     )
     (pin "DGND" power_in
       (at 80 228 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "10eb3d23-23ca-45f5-821f-9c6bb5bd9cfb")
+      (uuid "0c0ffc6a-a3a1-486d-8705-8893c1e41564")
     )
     (instances
       (project "uno_q_super_carrier"
@@ -461,17 +208,17 @@
     (pin "+5V" power_in
       (at 80 280 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "2c25e0e0-6365-4caf-9932-edf3bf69f064")
+      (uuid "ca6ee19e-ae11-488f-8b7e-5753093f0df7")
     )
     (pin "+3V3" power_in
       (at 80 284 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "aeeb1219-f343-462d-a22b-5bde7119bbd0")
+      (uuid "3acd0626-4325-4de9-9a5a-ec8499055533")
     )
     (pin "DGND" power_in
       (at 80 288 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "7f2f041a-f5e2-4677-aa51-106e48f00dab")
+      (uuid "a37bbcdd-5db9-4d0e-a5b7-093250ef9120")
     )
     (instances
       (project "uno_q_super_carrier"
@@ -499,17 +246,17 @@
     (pin "VIN_1V8_REF" input
       (at 80 340 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "0262ce7c-792d-474b-b17e-c51c13bdb103")
+      (uuid "46bf7250-493c-4ea1-8a0d-c21d6fbd5b50")
     )
     (pin "+3V3" power_in
       (at 80 344 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "573325b5-e6fa-42ed-9608-22bce7d97976")
+      (uuid "d87e333a-9323-4e53-83db-44b4977ebdbc")
     )
     (pin "DGND" power_in
       (at 80 348 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "9d91281f-15a9-4ef3-a56f-adaf5b64df91")
+      (uuid "99313f58-12ac-418d-bfee-b126fe429237")
     )
     (instances
       (project "uno_q_super_carrier"
@@ -537,22 +284,22 @@
     (pin "I2C_SDA" bidirectional
       (at 80 400 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "69c483a1-6d19-4843-ad7b-4996bb5199e2")
+      (uuid "4167644c-adaa-424b-8503-ba6b444dd98f")
     )
     (pin "I2C_SCL" bidirectional
       (at 80 404 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "50ff4516-6eef-40e2-9db9-cded152f7ae2")
+      (uuid "b01324dd-b8e4-4ee6-884f-39e8d52e4001")
     )
     (pin "+3V3" power_in
       (at 80 408 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "7c4de4e2-fffc-47a1-9377-9cc31dca18fc")
+      (uuid "eb8e1197-55de-4859-b6ad-304791dcf439")
     )
     (pin "DGND" power_in
       (at 80 412 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "65ede096-7e33-4db0-8892-e0fbd9d120cf")
+      (uuid "d3f75b39-3761-43ff-bfdd-7c3816828a19")
     )
     (instances
       (project "uno_q_super_carrier"

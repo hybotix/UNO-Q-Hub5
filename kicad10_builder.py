@@ -92,7 +92,51 @@ class HierarchicalLabel:
         return "\n".join(lines)
 
 class Schematic:
-    """Represents a complete KiCad schematic file."""
+    """Represents a complete KiCad schematic file with embedded HybotixParts symbols."""
+    
+    # Class-level cache for embedded symbols
+    _embedded_symbols = None
+    
+    @classmethod
+    def _load_embedded_symbols(cls):
+        """Load HybotixParts symbols to embed in all schematics."""
+        if cls._embedded_symbols is not None:
+            return
+        
+        try:
+            hybotix_lib_path = Path(__file__).parent / "HybotixParts.kicad_sym"
+            if hybotix_lib_path.exists():
+                with open(hybotix_lib_path) as f:
+                    lib_content = f.read()
+                
+                # Extract all symbol definitions
+                symbols = []
+                i = 0
+                while True:
+                    start = lib_content.find('(symbol ', i)
+                    if start == -1:
+                        break
+                    depth = 0
+                    j = start
+                    while j < len(lib_content):
+                        if lib_content[j] == '(':
+                            depth += 1
+                        elif lib_content[j] == ')':
+                            depth -= 1
+                            if depth == 0:
+                                symbols.append(lib_content[start:j+1])
+                                i = j + 1
+                                break
+                        j += 1
+                
+                cls._embedded_symbols = symbols
+                return True
+            else:
+                cls._embedded_symbols = []
+                return False
+        except Exception:
+            cls._embedded_symbols = []
+            return False
     
     def __init__(self, filename: str, title: str, sheet_uuid: str = None):
         self.filename = filename
@@ -100,6 +144,7 @@ class Schematic:
         self.sheet_uuid = sheet_uuid or str(uuid.uuid4())
         self.components: List[Component] = []
         self.labels: List[HierarchicalLabel] = []
+        self._load_embedded_symbols()
     
     def add_component(self, comp: Component) -> None:
         """Add a placed symbol to the schematic."""
@@ -110,7 +155,7 @@ class Schematic:
         self.labels.append(label)
     
     def generate(self) -> str:
-        """Generate complete KiCad schematic s-expression."""
+        """Generate complete KiCad schematic s-expression with embedded symbols."""
         lines = [
             "(kicad_sch",
             f"  (version {KICAD_VERSION})",
@@ -120,9 +165,17 @@ class Schematic:
             "  (paper \"A4\")",
             "",
             "  (lib_symbols",
+        ]
+        
+        # Add embedded symbols
+        if self._embedded_symbols:
+            for sym in self._embedded_symbols:
+                lines.append("    " + sym)
+        
+        lines.extend([
             "  )",
             "",
-        ]
+        ])
         
         # Add components
         for comp in self.components:
