@@ -31,32 +31,32 @@
       (at 20 26 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
     )
-    (pin "+5V" output
+    (pin "+5V" power_out
       (at 90 40 0)
       (effects (font (size 1.27 1.27)))
       (uuid "57ac25f6-3888-473e-ba41-34c4c36d7538")
     )
-    (pin "+3V3" output
+    (pin "+3V3" power_out
       (at 90 44 0)
       (effects (font (size 1.27 1.27)))
       (uuid "5922bae4-0c01-43a4-82a3-778220f05f75")
     )
-    (pin "DGND" output
+    (pin "DGND" power_out
       (at 90 48 0)
       (effects (font (size 1.27 1.27)))
       (uuid "e529fb2e-c22b-4e9c-a043-297415d378f4")
     )
-    (pin "+5V_EXT_HUB75" output
+    (pin "+5V_EXT_HUB75" power_out
       (at 90 52 0)
       (effects (font (size 1.27 1.27)))
       (uuid "d3935319-8ab4-44c1-9080-46257c921bf6")
     )
-    (pin "AVDD" output
+    (pin "AVDD" power_out
       (at 90 56 0)
       (effects (font (size 1.27 1.27)))
       (uuid "f904140c-b6ec-4933-a234-a3d3a493b3dc")
     )
-    (pin "AGND" output
+    (pin "AGND" power_out
       (at 90 60 0)
       (effects (font (size 1.27 1.27)))
       (uuid "9442bc49-e43a-42b0-b2e3-dc6dd1d92b1f")
