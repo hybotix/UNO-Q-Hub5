@@ -1,28 +1,25 @@
 (kicad_sch
   (version 20260326)
-  (generator "eeschema")
+  (generator eeschema)
   (generator_version "10.0.0")
-  (uuid "a7d62ed3-8e95-4e64-b6df-722c91664a1a")
-  (paper "A1")
+  (uuid "8ad7e29e-3d82-4dbf-a729-2eef62d90de2")
+  (paper "A3")
   (title_block
     (title "UNO Q Super Carrier")
-    (date "2026-05-08")
-    (rev "0.1")
+    (date "2026-05-09")
+    (rev "0.3")
     (company "Hybrid RobotiX")
-    (comment 1 "Full development carrier for Arduino UNO Q — second board to fab")
-    (comment 2 "Dale Weber — N7PKT — Hybrid RobotiX")
-    (comment 3 "Micro-HDMI Type D (RPi5 compatible) C6 WiFi6/BLE5/Thread/Matter/Zigbee")
-    (comment 4 "Standards: IEEE 315 IPC-2221B IPC-2152 IPC-7351C")
   )
 
   (lib_symbols
   )
+
   (sheet
     (at 20 30)
-    (size 70 60)
+    (size 60 50)
     (stroke (width 0.254) (type default))
     (fill (type color) (color 255 255 204 0.3))
-    (uuid "336c1827-83de-45ec-86f7-761e126d3616")
+    (uuid "2cf3b542-e729-47f9-80d3-3b9eaadfaec6")
     (property "Sheet name" "Power"
       (at 20 28 0)
       (effects (font (size 1.524 1.524)) (justify left bottom))
@@ -32,880 +29,165 @@
       (effects (font (size 1.27 1.27)) (justify left bottom))
     )
     (pin "+5V" power_out
-      (at 90 40 0)
+      (at 80 40 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "57ac25f6-3888-473e-ba41-34c4c36d7538")
+      (uuid "2c8cfa5f-6e67-4fac-bd05-3c77bc79ec0c")
     )
     (pin "+3V3" power_out
-      (at 90 44 0)
+      (at 80 44 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "5922bae4-0c01-43a4-82a3-778220f05f75")
-    )
-    (pin "DGND" power_out
-      (at 90 48 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "e529fb2e-c22b-4e9c-a043-297415d378f4")
-    )
-    (pin "+5V_EXT_HUB75" power_out
-      (at 90 52 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "d3935319-8ab4-44c1-9080-46257c921bf6")
-    )
-    (pin "AVDD" power_out
-      (at 90 56 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "f904140c-b6ec-4933-a234-a3d3a493b3dc")
-    )
-    (pin "AGND" power_out
-      (at 90 60 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "9442bc49-e43a-42b0-b2e3-dc6dd1d92b1f")
-    )
-    (pin "VIN_7_24V" output
-      (at 90 64 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "d96ebbae-f3cf-47d1-a643-6c616f5fe483")
+      (uuid "0a0a790e-301d-453a-9c05-d269b5c16ecc")
     )
     (instances
-      (project "uno_q_super_carrier"
-        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a"
+      (project "uno_q_hub75_shield"
+        (path "/8ad7e29e-3d82-4dbf-a729-2eef62d90de2"
           (page "2")
         )
       )
     )
   )
+
   (sheet
-    (at 20 105)
-    (size 70 70)
+    (at 20 90)
+    (size 60 50)
     (stroke (width 0.254) (type default))
-    (fill (type color) (color 204 255 204 0.3))
-    (uuid "449d30f0-eb84-4d63-9d19-34540df21399")
+    (fill (type color) (color 255 255 204 0.3))
+    (uuid "ec43cc22-69c6-43e0-9945-481473925bb5")
     (property "Sheet name" "UNO Q Mounting"
-      (at 20 103 0)
+      (at 20 88 0)
       (effects (font (size 1.524 1.524)) (justify left bottom))
     )
     (property "Sheet file" "sheets/uno_q_mounting.kicad_sch"
-      (at 20 101 0)
+      (at 20 86 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
     )
-    (pin "SPI_MOSI" output
-      (at 90 115 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "2fa84b23-c34d-4264-928c-12c789ecf636")
-    )
-    (pin "SPI_MISO" input
-      (at 90 119 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "8f8ab6dc-1acb-42cf-b883-b5a131826fd2")
-    )
-    (pin "SPI_SCK" output
-      (at 90 123 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "e7e32e1e-cc60-4931-a3e5-04902911fa11")
-    )
-    (pin "CS_S3_MCU" output
-      (at 90 127 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "e1682a7f-1f42-4a4a-b069-0619217b5627")
-    )
-    (pin "CS_S3_MPU" output
-      (at 90 131 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "92121513-e24b-42cd-bc4b-6efd831bd942")
-    )
-    (pin "CS_C6_MCU" output
-      (at 90 135 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "68302fd4-dcf3-4ac3-825b-bcc306f5478f")
-    )
-    (pin "CS_C6_MPU" output
-      (at 90 139 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "aac77afa-93d3-4c93-8727-84f3e84cce58")
-    )
-    (pin "I2C_SDA" bidirectional
-      (at 90 143 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "1e3be151-75de-493b-adda-18093abd1797")
-    )
-    (pin "I2C_SCL" output
-      (at 90 147 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "abe85ab6-a8f0-44fd-9b5a-bd634963a8b3")
-    )
-    (pin "MPU_GPIO_1V8_BUS" output
-      (at 90 153 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "72e57dd3-6c2c-4978-8803-14df59fcbe4e")
-    )
-    (pin "MPU_1V8_REF" output
-      (at 90 157 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "55fbf054-a47e-493f-9286-55e6545725ee")
-    )
-    (pin "DSI_CLK_P" output
-      (at 90 163 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "176c0406-4778-456a-9703-d7986f0fb253")
-    )
-    (pin "DSI_CLK_N" output
-      (at 90 167 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "d94270ce-1548-4907-847e-1d57849936b5")
-    )
-    (pin "DSI_D0_P" output
-      (at 90 171 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "a975cdb9-64cc-4879-9ef7-1edcdd7f69ec")
-    )
-    (pin "DSI_D0_N" output
-      (at 90 175 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "5c455c44-6373-4f29-a83c-97b6970f6539")
-    )
-    (pin "DSI_D1_P" output
-      (at 90 179 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "6d2742b3-6741-4b35-ac79-ad3df9d8b1a5")
-    )
-    (pin "DSI_D1_N" output
-      (at 90 183 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "6b515557-bb4c-441a-8cfb-27ab8eea0b76")
-    )
-    (pin "CSI0_CLK_P" output
-      (at 90 189 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "b5935db2-cdca-4883-80bc-11fc03f42159")
-    )
-    (pin "CSI0_CLK_N" output
-      (at 90 193 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "ea0ba180-3f9e-471e-8c14-7c87b7295e3e")
-    )
-    (pin "CSI1_CLK_P" output
-      (at 90 197 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "80d7dd25-6670-49d1-b429-5d512ac5f31b")
-    )
-    (pin "CSI1_CLK_N" output
-      (at 90 201 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "3bac488c-d9b3-4d24-8439-6eaa5e07d4a7")
-    )
     (instances
-      (project "uno_q_super_carrier"
-        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a"
+      (project "uno_q_hub75_shield"
+        (path "/8ad7e29e-3d82-4dbf-a729-2eef62d90de2"
           (page "3")
         )
       )
     )
   )
+
   (sheet
-    (at 110 20)
-    (size 70 100)
+    (at 20 150)
+    (size 60 50)
     (stroke (width 0.254) (type default))
-    (fill (type color) (color 204 229 255 0.3))
-    (uuid "9e44c4c4-5eea-48c9-a68c-62b96dc476bb")
-    (property "Sheet name" "ESP32-S3"
-      (at 110 18 0)
+    (fill (type color) (color 255 255 204 0.3))
+    (uuid "64c1405b-2d28-4ee6-83d0-264e27eddf19")
+    (property "Sheet name" "ESP32-C6 Radio"
+      (at 20 148 0)
       (effects (font (size 1.524 1.524)) (justify left bottom))
     )
-    (property "Sheet file" "../shield/sheets/esp32s3.kicad_sch"
-      (at 110 16 0)
+    (property "Sheet file" "sheets/esp32c6_radio.kicad_sch"
+      (at 20 146 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
     )
     (pin "+3V3" power_in
-      (at 110 30 180)
+      (at 80 160 0)
       (effects (font (size 1.27 1.27)))
-      (uuid "8232635c-e0e7-4a9e-9ea9-d767e0784d6e")
+      (uuid "57f8f726-03b4-4e3e-8638-cb97ef576b14")
     )
-    (pin "DGND" power_in
-      (at 110 34 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "2b04adc1-78ff-4756-b0ec-cfce3151d6b8")
-    )
-    (pin "SPI_MOSI" input
-      (at 110 42 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "77b4597c-b216-4f86-8ec0-4efb9a03e13d")
-    )
-    (pin "SPI_MISO" output
-      (at 110 46 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "9820da02-804a-4407-82bc-0a013b832996")
-    )
-    (pin "SPI_SCK" input
-      (at 110 50 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "1e2bba72-c802-4597-a41d-e87143ea31c4")
-    )
-    (pin "CS_S3_MCU" input
-      (at 110 54 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "5022b049-2073-4793-923d-b0fe9a7be7ae")
-    )
-    (pin "CS_S3_MPU" input
-      (at 110 58 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "02fb24b1-f186-4937-95c9-0b70229af85d")
-    )
-    (pin "I2C_SDA" bidirectional
-      (at 110 64 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "68a80fba-0748-44c0-b1ca-b6f35ace674a")
-    )
-    (pin "I2C_SCL" output
-      (at 110 68 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "ffd5f6b1-5259-4545-a6df-e0601ebc276f")
-    )
-    (pin "S3_R1" output
-      (at 180 30 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "836d114d-cf17-4502-9460-156342afbd49")
-    )
-    (pin "S3_G1" output
-      (at 180 34 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "5528fb04-6f16-4192-afef-ad56abbbf20b")
-    )
-    (pin "S3_B1" output
-      (at 180 38 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "b6e0c342-eae6-4ead-b103-688b6b4f812c")
-    )
-    (pin "S3_R2" output
-      (at 180 42 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "ecec2f37-0cbb-4268-9538-5b56af8527c9")
-    )
-    (pin "S3_G2" output
-      (at 180 46 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "7e655209-538a-4c54-9944-ba4c95fcbf81")
-    )
-    (pin "S3_B2" output
-      (at 180 50 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "94f444de-7de2-4867-a260-28a0fa5318b9")
-    )
-    (pin "S3_HUB75_CLK" output
-      (at 180 54 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "c7dee755-4bd4-4cbd-8e4b-471ad5c9caa5")
-    )
-    (pin "S3_HUB75_LAT" output
-      (at 180 58 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "157abfcf-b7d1-40ec-8e10-8b178a25dc32")
-    )
-    (pin "S3_ADDR_A" output
-      (at 180 64 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "1018e529-e795-4d47-878d-7c43ef39fe31")
-    )
-    (pin "S3_ADDR_B" output
-      (at 180 68 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "e35c5926-d61e-4d1c-83c8-f9c785ab0d34")
-    )
-    (pin "S3_ADDR_C" output
-      (at 180 72 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "12722f09-94be-442b-9560-9e54412068ac")
-    )
-    (pin "S3_ADDR_D" output
-      (at 180 76 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "f3b8013f-8acd-44dc-9989-564809c0b5a7")
-    )
-    (pin "S3_ADDR_E" output
-      (at 180 80 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "9a0c2f3b-8214-4ef0-b947-daf7a7fdbc7d")
-    )
-    (pin "I2S_BCLK" output
-      (at 180 86 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "4d85ff74-8469-4cfb-bf4c-ad44656818df")
-    )
-    (pin "I2S_LRCLK" output
-      (at 180 90 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "ee44c1df-f303-47f5-9ba3-5a2aaa97bf3a")
-    )
-    (pin "I2S_DOUT" output
-      (at 180 94 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "5c8fd397-8574-40e1-a674-83607a6e928a")
-    )
-    (pin "I2S_DIN" input
-      (at 180 98 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "bd57bef1-b097-4ca5-96e6-2ff23ec38dcf")
-    )
-    (pin "CODEC_SDA" bidirectional
-      (at 180 104 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "5587bff8-2581-4728-91a5-2ef067fab7d8")
-    )
-    (pin "CODEC_SCL" output
-      (at 180 108 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "69fa6d0f-faba-445a-b2a2-a80a17f490ed")
-    )
-    (pin "S3_C6_TX" output
-      (at 110 80 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "e0d609b4-c1ec-4d85-8a02-245b5073b37e")
-    )
-    (pin "S3_C6_RX" input
-      (at 110 84 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "0763256d-96cb-4f09-805b-d94ad1a5ec5a")
-    )
-        (pin "LCD_CLK" output
-      (at 180 116 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "22e7c699-b65c-4175-9508-b0a5679ac997")
-    )
-    (pin "LCD_MOSI" output
-      (at 180 120 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "5820e118-954c-4e2c-95a5-132194e2e8af")
-    )
-    (pin "LCD_CS" output
-      (at 180 124 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "7dc5fc3b-96aa-48f1-a51b-3adfeb46a990")
-    )
-    (pin "LCD_DC" output
-      (at 180 128 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "9314ae54-125d-44d7-925a-7e95382b1dd2")
-    )
-    (pin "LCD_RST" output
-      (at 180 132 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "eabae0d7-fc63-49da-8108-64af4317b37a")
-    )
-    (pin "TOUCH_INT" input
-      (at 180 136 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "2aec201f-d5f3-4f57-aa82-b4888be15e07")
-    )
-    (pin "LCD_BL_PWM" output
-      (at 180 140 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "558d01c1-0bc4-4afa-be10-f25841770ad4")
-    )
-(instances
-      (project "uno_q_super_carrier"
-        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a"
+    (instances
+      (project "uno_q_hub75_shield"
+        (path "/8ad7e29e-3d82-4dbf-a729-2eef62d90de2"
           (page "4")
         )
       )
     )
   )
+
   (sheet
-    (at 110 135)
-    (size 70 60)
+    (at 20 210)
+    (size 60 50)
     (stroke (width 0.254) (type default))
-    (fill (type color) (color 255 204 204 0.3))
-    (uuid "7f51cdd9-8537-4087-ba96-4bd152b597b5")
-    (property "Sheet name" "ESP32-C6 Radio"
-      (at 110 133 0)
+    (fill (type color) (color 255 255 204 0.3))
+    (uuid "3cf2d112-afa4-4bc9-a481-446b078b78d0")
+    (property "Sheet name" "Display Chain"
+      (at 20 208 0)
       (effects (font (size 1.524 1.524)) (justify left bottom))
     )
-    (property "Sheet file" "sheets/esp32c6_radio.kicad_sch"
-      (at 110 131 0)
+    (property "Sheet file" "sheets/display_chain.kicad_sch"
+      (at 20 206 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
     )
-    (pin "+3V3" power_in
-      (at 110 145 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "5594f6eb-aa5c-4dac-a6b1-616f5b829715")
-    )
-    (pin "DGND" power_in
-      (at 110 149 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "83d2bbe2-1fb1-4275-b680-f1cec3f5cd4b")
-    )
-    (pin "SPI_MOSI" input
-      (at 110 155 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "f9f83cf0-7807-4392-9916-b6fce84438cc")
-    )
-    (pin "SPI_MISO" output
-      (at 110 159 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "76f97802-1f42-43e0-b20c-a6ecbe4d2cfd")
-    )
-    (pin "SPI_SCK" input
-      (at 110 163 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "e1c14f51-2f32-4d22-9496-1f5cbfea8d9b")
-    )
-    (pin "CS_C6_MCU" input
-      (at 110 167 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "86e2d502-9803-4892-a9e0-3d49a2171d11")
-    )
-    (pin "CS_C6_MPU" input
-      (at 110 171 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "1c014818-53c6-43e7-bc2d-4d617ca4c865")
-    )
-    (pin "S3_C6_TX" input
-      (at 110 177 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "249ab033-eda8-4726-9275-26b5e263d4b3")
-    )
-    (pin "S3_C6_RX" output
-      (at 110 181 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "65e4660d-c3a4-4fa3-b8a8-ef7fe12ddb34")
-    )
     (instances
-      (project "uno_q_super_carrier"
-        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a"
+      (project "uno_q_hub75_shield"
+        (path "/8ad7e29e-3d82-4dbf-a729-2eef62d90de2"
           (page "5")
         )
       )
     )
   )
+
   (sheet
-    (at 200 20)
-    (size 60 70)
+    (at 20 270)
+    (size 60 50)
     (stroke (width 0.254) (type default))
-    (fill (type color) (color 255 229 204 0.3))
-    (uuid "d93ab4a5-cee1-4b72-b5df-9808e8084cfd")
-    (property "Sheet name" "HUB75 Driver"
-      (at 200 18 0)
+    (fill (type color) (color 255 255 204 0.3))
+    (uuid "5282343d-bf0e-4f06-adca-83ee664a25e0")
+    (property "Sheet name" "RPi5 Interface"
+      (at 20 268 0)
       (effects (font (size 1.524 1.524)) (justify left bottom))
     )
-    (property "Sheet file" "../shield/sheets/hub75_driver.kicad_sch"
-      (at 200 16 0)
+    (property "Sheet file" "sheets/rpi5_interface.kicad_sch"
+      (at 20 266 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
     )
-    (pin "+5V_EXT_HUB75" power_in
-      (at 200 30 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "5fe0d974-eb83-4a70-9d51-2da44fb5b64a")
-    )
-    (pin "DGND" power_in
-      (at 200 34 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "c0cebc37-689f-4906-9ee6-feb4e34248a4")
-    )
-    (pin "S3_R1" input
-      (at 200 42 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "09f65a4e-1638-4dd1-8225-3e01c08b90be")
-    )
-    (pin "S3_G1" input
-      (at 200 46 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "c897646e-c84c-4623-9834-c5174dcc3c76")
-    )
-    (pin "S3_B1" input
-      (at 200 50 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "2ce5d165-f291-46b3-be14-3ee255c77933")
-    )
-    (pin "S3_R2" input
-      (at 200 54 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "e021baba-4383-4247-83e0-b39c7176b8a1")
-    )
-    (pin "S3_G2" input
-      (at 200 58 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "2c5b1617-4abd-48c9-91d9-e53180b7c21e")
-    )
-    (pin "S3_B2" input
-      (at 200 62 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "a56dcd14-e810-46ee-82ef-25a9bf25314f")
-    )
-    (pin "S3_HUB75_CLK" input
-      (at 200 66 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "14c52649-c688-4b09-982a-aa4f2b1c5994")
-    )
-    (pin "S3_HUB75_LAT" input
-      (at 200 70 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "e13e4445-afb0-42dc-8328-2e9fc07d16b3")
-    )
-    (pin "S3_ADDR_A" input
-      (at 200 76 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "4e1ab971-6a87-4a83-a4b1-e1800741f501")
-    )
-    (pin "S3_ADDR_B" input
-      (at 200 80 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "bf05d478-6419-410d-8bf5-29dc5a01f9be")
-    )
-    (pin "S3_ADDR_C" input
-      (at 200 84 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "7c265372-e926-4550-b986-60965bd68fe6")
-    )
-    (pin "S3_ADDR_D" input
-      (at 200 88 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "e9608cd7-cacb-40c9-9777-f99623901935")
-    )
-    (pin "S3_ADDR_E" input
-      (at 200 92 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "77bb591b-1275-409f-b0d9-f05a0bec9119")
-    )
     (instances
-      (project "uno_q_super_carrier"
-        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a"
+      (project "uno_q_hub75_shield"
+        (path "/8ad7e29e-3d82-4dbf-a729-2eef62d90de2"
           (page "6")
         )
       )
     )
   )
+
   (sheet
-    (at 200 105)
-    (size 60 60)
+    (at 20 330)
+    (size 60 50)
     (stroke (width 0.254) (type default))
-    (fill (type color) (color 229 204 255 0.3))
-    (uuid "6ee7a489-f31a-40a0-a102-e987896c3e2d")
-    (property "Sheet name" "Audio Codec"
-      (at 200 103 0)
+    (fill (type color) (color 255 255 204 0.3))
+    (uuid "33701fde-38b8-4c87-bfd7-174af518e269")
+    (property "Sheet name" "Level Shift"
+      (at 20 328 0)
       (effects (font (size 1.524 1.524)) (justify left bottom))
     )
-    (property "Sheet file" "../shield/sheets/audio_codec.kicad_sch"
-      (at 200 101 0)
+    (property "Sheet file" "sheets/level_shift.kicad_sch"
+      (at 20 326 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
     )
-    (pin "+3V3" power_in
-      (at 200 115 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "e2d07c7e-1a5c-4793-8c36-5b59f737c872")
-    )
-    (pin "AGND" power_in
-      (at 200 119 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "ccf44c70-c6d0-4146-b0af-742b550a369c")
-    )
-    (pin "DGND" power_in
-      (at 200 123 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "4d969a52-8df0-434e-8f36-fd8b1efb7389")
-    )
-    (pin "AVDD" power_in
-      (at 200 127 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "ab01e60e-fef2-47f0-b938-82d4a4521f6c")
-    )
-    (pin "I2S_BCLK" input
-      (at 200 134 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "898759d2-5938-45ca-9c7b-e767468057e4")
-    )
-    (pin "I2S_LRCLK" input
-      (at 200 138 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "47985595-9e8f-4562-81d7-6a91cef3c13d")
-    )
-    (pin "I2S_DOUT" input
-      (at 200 142 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "6db5770e-437f-4740-b957-35d8ad3d4378")
-    )
-    (pin "I2S_DIN" output
-      (at 200 146 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "597dc6fb-fdee-47f2-bc3d-54f7cfb056e1")
-    )
-    (pin "CODEC_SDA" bidirectional
-      (at 200 152 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "d82d02b3-7daf-495c-858c-8d2e13b71556")
-    )
-    (pin "CODEC_SCL" input
-      (at 200 156 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "66b0acfc-2c1a-4dbe-b7b8-10b3ea371b43")
-    )
     (instances
-      (project "uno_q_super_carrier"
-        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a"
+      (project "uno_q_hub75_shield"
+        (path "/8ad7e29e-3d82-4dbf-a729-2eef62d90de2"
           (page "7")
         )
       )
     )
   )
+
   (sheet
-    (at 290 20)
-    (size 70 80)
+    (at 20 390)
+    (size 60 50)
     (stroke (width 0.254) (type default))
-    (fill (type color) (color 204 255 255 0.3))
-    (uuid "d94230af-f0ea-49b7-bb71-25964163e46a")
-    (property "Sheet name" "Display Chain"
-      (at 290 18 0)
+    (fill (type color) (color 255 255 204 0.3))
+    (uuid "c07d9109-1ef6-48f9-98b2-8726ab3ccb65")
+    (property "Sheet name" "Expansion"
+      (at 20 388 0)
       (effects (font (size 1.524 1.524)) (justify left bottom))
     )
-    (property "Sheet file" "sheets/display_chain.kicad_sch"
-      (at 290 16 0)
+    (property "Sheet file" "sheets/expansion.kicad_sch"
+      (at 20 386 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
     )
-    (pin "+3V3" power_in
-      (at 290 30 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "b6e69934-318f-4498-b42f-dc0db87fe572")
-    )
-    (pin "+5V" power_in
-      (at 290 34 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "94cb1522-9e8a-4e2f-bd70-65b57f67eba1")
-    )
-    (pin "DGND" power_in
-      (at 290 38 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "c2a5253a-930d-4528-b7a2-1fe1a5a902ac")
-    )
-    (pin "DSI_CLK_P" input
-      (at 290 46 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "12da6292-6dfd-4049-aa61-ed838e6052b4")
-    )
-    (pin "DSI_CLK_N" input
-      (at 290 50 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "656a6b45-1537-4f7b-b2db-76a563aca93b")
-    )
-    (pin "DSI_D0_P" input
-      (at 290 54 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "e3c62bdd-45f0-4308-8018-18a7d1b2603d")
-    )
-    (pin "DSI_D0_N" input
-      (at 290 58 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "46c4e31b-ffb0-411a-a1b9-60fd2a46e1a4")
-    )
-    (pin "DSI_D1_P" input
-      (at 290 62 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "ca33ac43-54c1-4b4c-a006-cdc74b6b8081")
-    )
-    (pin "DSI_D1_N" input
-      (at 290 66 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "4fbfea1c-6b5d-4635-9067-8f3910417510")
-    )
-    (pin "DSI_SW_SEL" input
-      (at 290 72 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "68106f05-22cf-4fb4-a2ae-0a3455ec9c9b")
-    )
-    (pin "DSI_SW_OE" input
-      (at 290 76 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "24a3d231-f252-4fd4-98fc-92a28ef8722f")
-    )
-    (pin "HDMI_I2C_SCL" input
-      (at 290 82 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "b9898790-b82a-481c-b4b1-ec7df18101b4")
-    )
-    (pin "HDMI_I2C_SDA" bidirectional
-      (at 290 86 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "bccb8768-0647-492b-8274-5055b8cb0c55")
-    )
-    (pin "HDMI_RST" input
-      (at 290 90 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "264a3094-7c27-49a9-8c7e-a254660b53a5")
-    )
     (instances
-      (project "uno_q_super_carrier"
-        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a"
+      (project "uno_q_hub75_shield"
+        (path "/8ad7e29e-3d82-4dbf-a729-2eef62d90de2"
           (page "8")
         )
       )
     )
-  )
-  (sheet
-    (at 290 115)
-    (size 70 70)
-    (stroke (width 0.254) (type default))
-    (fill (type color) (color 255 229 204 0.3))
-    (uuid "ef54f871-8fd3-42ea-aa21-ecf8cc5a4c43")
-    (property "Sheet name" "RPi5 Interface"
-      (at 290 113 0)
-      (effects (font (size 1.524 1.524)) (justify left bottom))
-    )
-    (property "Sheet file" "sheets/rpi5_interface.kicad_sch"
-      (at 290 111 0)
-      (effects (font (size 1.27 1.27)) (justify left bottom))
-    )
-    (pin "+3V3" power_in
-      (at 290 125 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "9516682f-cdab-4dd4-9386-9831e4a9bb36")
-    )
-    (pin "+5V" power_in
-      (at 290 129 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "65bb3358-44a6-4968-a987-2f4729d044b9")
-    )
-    (pin "DGND" power_in
-      (at 290 133 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "b1979eb7-7025-4e7e-a22d-d7b1eea2fb4c")
-    )
-    (pin "I2C_SDA" bidirectional
-      (at 290 139 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "5f436733-4204-4525-9ade-19f84b5a6258")
-    )
-    (pin "I2C_SCL" output
-      (at 290 143 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "c2f1a598-b809-4545-aaad-4946c2eae1db")
-    )
-    (pin "MPU_GPIO_3V3_BUS" bidirectional
-      (at 290 149 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "c7570e81-3dbb-4d28-b5c3-ad04fcecd327")
-    )
-    (pin "CSI0_CLK_P" input
-      (at 290 155 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "7a089227-3592-4a9a-b9a5-bf05e95c09e3")
-    )
-    (pin "CSI0_CLK_N" input
-      (at 290 159 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "d3402917-8e76-4528-a6ff-bbddb9ed346c")
-    )
-    (pin "CSI1_CLK_P" input
-      (at 290 163 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "ebf3aeef-d8d7-4f0e-99fa-bdec98108f38")
-    )
-    (pin "CSI1_CLK_N" input
-      (at 290 167 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "98e1a466-4d86-4a17-a948-470de390cf16")
-    )
-    (instances
-      (project "uno_q_super_carrier"
-        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a"
-          (page "9")
-        )
-      )
-    )
-  )
-  (sheet
-    (at 200 190)
-    (size 70 50)
-    (stroke (width 0.254) (type default))
-    (fill (type color) (color 229 255 204 0.3))
-    (uuid "65dcfe2a-820b-49b1-9b79-f7da56a0646c")
-    (property "Sheet name" "Level Shifters"
-      (at 200 188 0)
-      (effects (font (size 1.524 1.524)) (justify left bottom))
-    )
-    (property "Sheet file" "sheets/level_shift.kicad_sch"
-      (at 200 186 0)
-      (effects (font (size 1.27 1.27)) (justify left bottom))
-    )
-    (pin "MPU_GPIO_1V8_BUS" input
-      (at 200 200 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "04fdb6d7-f7cc-4abb-9ad5-34a8eddc7f2f")
-    )
-    (pin "MPU_1V8_REF" power_in
-      (at 200 204 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "5b00c45d-c079-413f-aeb4-fd3deaca3a6b")
-    )
-    (pin "+3V3" power_in
-      (at 200 208 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "690ead01-6a05-4261-b8b5-61346399655e")
-    )
-    (pin "DGND" power_in
-      (at 200 212 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "bbf575ed-f369-44fb-8348-c47dc83b16d5")
-    )
-    (pin "DSI_SW_SEL" output
-      (at 200 218 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "3f5e09e9-dfed-4c17-bcf5-e5b74698a677")
-    )
-    (pin "MPU_GPIO_3V3_BUS" output
-      (at 270 200 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "70fa0aab-9d97-472b-871c-22adf7368c15")
-    )
-    (instances
-      (project "uno_q_super_carrier"
-        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a"
-          (page "10")
-        )
-      )
-    )
-  )
-  (sheet
-    (at 110 210)
-    (size 70 50)
-    (stroke (width 0.254) (type default))
-    (fill (type color) (color 255 204 229 0.3))
-    (uuid "378ee71f-2790-4029-90d1-3a8ff78a7520")
-    (property "Sheet name" "Expansion"
-      (at 110 208 0)
-      (effects (font (size 1.524 1.524)) (justify left bottom))
-    )
-    (property "Sheet file" "sheets/expansion.kicad_sch"
-      (at 110 206 0)
-      (effects (font (size 1.27 1.27)) (justify left bottom))
-    )
-    (pin "+3V3" power_in
-      (at 110 220 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "76b8788f-2ce4-4ed4-9865-b5e2e77f6897")
-    )
-    (pin "DGND" power_in
-      (at 110 224 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "0e2ba4bb-530c-444f-9101-77d2fc6fc42c")
-    )
-    (pin "I2C_SDA" bidirectional
-      (at 110 230 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "8f095090-73d3-4683-9941-b6c5fcf2ccac")
-    )
-    (pin "I2C_SCL" output
-      (at 110 234 180)
-      (effects (font (size 1.27 1.27)))
-      (uuid "86461298-d7bd-4025-8b09-bd0889eb94ca")
-    )
-    (instances
-      (project "uno_q_super_carrier"
-        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a"
-          (page "11")
-        )
-      )
-    )
-  )
-  (text "UNO Q SUPER CARRIER — Rev 0.1 — BLOCK DIAGRAM\\n\\nSignal flow (IEEE 315: left→right power top→bottom):\\n\\n  J_VIN(7-24V) → [POWER] → +5V(TPS54331) +3V3(AMS1117)\\n  J_HUB(5V) → [POWER] → +5V_HUB75 (panel direct)\\n  B1/B2(JMISC/JMEDIA) → [UNO Q MOUNTING] → SPI/I2C/MIPI/GPIO\\n  [MOUNTING] → SPI → [ESP32-S3] + [ESP32-C6]\\n  [ESP32-S3] → UART → [ESP32-C6] (direct independent of UNO Q)\\n  [ESP32-S3] → HUB75 GPIO → [HUB75 DRIVER] → panel IDC\\n  [ESP32-S3] → I2S → [AUDIO CODEC] → line-out/mic\\n  [MOUNTING] → MIPI DSI → [DISPLAY CHAIN]\\n    → CBTL04GP054 switch\\n    → LT8618SX → J_HDMI (micro-HDMI Type D RPi5 compatible)\\n    → J_DSI (22-pin FPC RPi5 DSI display)\\n  [MOUNTING] → MIPI CSI → [RPi5 INTERFACE]\\n    → J_CSI0/J_CSI1 (22-pin FPC RPi5 camera)\\n    → J_GPIO40 (40-pin RPi5 compatible)\\n    → U_EEPROM (24C32 HAT ID on pins 27/28)\\n  [MOUNTING] → MPU GPIO 1.8V → [LEVEL SHIFTERS] → 3.3V\\n  [MOUNTING] → I2C → [EXPANSION] → Qwiic×2 Grove×5\\n\\nMicro-HDMI Type D: Molex 47151-2001 (RPi4/5 cable compatible)\\nC6 antenna: R_ANT_PCB(0Ω default) / R_ANT_EXT(DNP) + J_ANT U.FL"
-    (at 20 270 0)
-    (effects (font (size 1.27 1.27)) (justify left top))
-    (uuid "945c953b-fb23-4afc-9ae7-2e0d9482e288")
   )
 
   (sheet_instances
