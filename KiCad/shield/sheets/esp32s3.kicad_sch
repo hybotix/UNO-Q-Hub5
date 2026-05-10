@@ -86,7 +86,7 @@
     )
   )
 
-  (symbol (lib_id "HybotixParts:USB_C_Receptacle")
+  (symbol (lib_id "Connector:USB_C_Receptacle_usb2.0")
     (at 60 30 0)
     (unit 1)
     (in_bom yes) (on_board yes)

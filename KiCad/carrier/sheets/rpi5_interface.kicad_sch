@@ -138,7 +138,7 @@
     )
   )
 
-  (symbol (lib_id "HybotixParts:FPC_CSI")
+  (symbol (lib_id "Connector:FPC_30pin")
     (at 70 35 0)
     (unit 1)
     (in_bom yes) (on_board yes)
@@ -164,7 +164,7 @@
     )
   )
 
-  (symbol (lib_id "HybotixParts:FPC_CSI")
+  (symbol (lib_id "Connector:FPC_30pin")
     (at 75 35 0)
     (unit 1)
     (in_bom yes) (on_board yes)
