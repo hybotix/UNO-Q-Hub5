@@ -27,7 +27,7 @@
     )
     (instances
       (project "uno_q_hub75_shield"
-        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/c1d2e3f4-5a6b-7c8d-9e0f-1a2b3c4d5e6f"
           (reference "U7") (unit 1)
         )
       )
@@ -53,7 +53,7 @@
     )
     (instances
       (project "uno_q_hub75_shield"
-        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/c1d2e3f4-5a6b-7c8d-9e0f-1a2b3c4d5e6f"
           (reference "C18") (unit 1)
         )
       )
@@ -79,7 +79,7 @@
     )
     (instances
       (project "uno_q_hub75_shield"
-        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/c1d2e3f4-5a6b-7c8d-9e0f-1a2b3c4d5e6f"
           (reference "C19") (unit 1)
         )
       )
@@ -105,7 +105,7 @@
     )
     (instances
       (project "uno_q_hub75_shield"
-        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/c1d2e3f4-5a6b-7c8d-9e0f-1a2b3c4d5e6f"
           (reference "C22") (unit 1)
         )
       )
@@ -131,7 +131,7 @@
     )
     (instances
       (project "uno_q_hub75_shield"
-        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/c1d2e3f4-5a6b-7c8d-9e0f-1a2b3c4d5e6f"
           (reference "C23") (unit 1)
         )
       )
@@ -157,7 +157,7 @@
     )
     (instances
       (project "uno_q_hub75_shield"
-        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/c1d2e3f4-5a6b-7c8d-9e0f-1a2b3c4d5e6f"
           (reference "R_P1") (unit 1)
         )
       )
@@ -183,7 +183,7 @@
     )
     (instances
       (project "uno_q_hub75_shield"
-        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/c1d2e3f4-5a6b-7c8d-9e0f-1a2b3c4d5e6f"
           (reference "R_P2") (unit 1)
         )
       )
@@ -209,7 +209,7 @@
     )
     (instances
       (project "uno_q_hub75_shield"
-        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/c1d2e3f4-5a6b-7c8d-9e0f-1a2b3c4d5e6f"
           (reference "C24") (unit 1)
         )
       )
@@ -235,7 +235,7 @@
     )
     (instances
       (project "uno_q_hub75_shield"
-        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/c1d2e3f4-5a6b-7c8d-9e0f-1a2b3c4d5e6f"
           (reference "U8") (unit 1)
         )
       )
@@ -261,7 +261,7 @@
     )
     (instances
       (project "uno_q_hub75_shield"
-        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/c1d2e3f4-5a6b-7c8d-9e0f-1a2b3c4d5e6f"
           (reference "C25") (unit 1)
         )
       )
@@ -287,7 +287,7 @@
     )
     (instances
       (project "uno_q_hub75_shield"
-        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/c1d2e3f4-5a6b-7c8d-9e0f-1a2b3c4d5e6f"
           (reference "C26") (unit 1)
         )
       )

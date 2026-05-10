@@ -27,7 +27,7 @@
     )
     (instances
       (project "uno_q_hub75_shield"
-        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/d2e3f4a5-6b7c-8d9e-0f1a-2b3c4d5e6f7a"
           (reference "B1") (unit 1)
         )
       )
@@ -53,7 +53,7 @@
     )
     (instances
       (project "uno_q_hub75_shield"
-        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/d2e3f4a5-6b7c-8d9e-0f1a-2b3c4d5e6f7a"
           (reference "B2") (unit 1)
         )
       )

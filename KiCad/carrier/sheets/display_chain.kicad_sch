@@ -27,7 +27,7 @@
     )
     (instances
       (project "uno_q_hub75_shield"
-        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/f4a5b6c7-8d9e-0f1a-2b3c-4d5e6f7a8b9c"
           (reference "U10") (unit 1)
         )
       )
@@ -53,7 +53,7 @@
     )
     (instances
       (project "uno_q_hub75_shield"
-        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/f4a5b6c7-8d9e-0f1a-2b3c-4d5e6f7a8b9c"
           (reference "U11") (unit 1)
         )
       )
@@ -79,7 +79,7 @@
     )
     (instances
       (project "uno_q_hub75_shield"
-        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/f4a5b6c7-8d9e-0f1a-2b3c-4d5e6f7a8b9c"
           (reference "C29") (unit 1)
         )
       )
@@ -105,7 +105,7 @@
     )
     (instances
       (project "uno_q_hub75_shield"
-        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/f4a5b6c7-8d9e-0f1a-2b3c-4d5e6f7a8b9c"
           (reference "C30") (unit 1)
         )
       )
@@ -131,7 +131,7 @@
     )
     (instances
       (project "uno_q_hub75_shield"
-        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/f4a5b6c7-8d9e-0f1a-2b3c-4d5e6f7a8b9c"
           (reference "J_HDMI") (unit 1)
         )
       )
@@ -157,7 +157,7 @@
     )
     (instances
       (project "uno_q_hub75_shield"
-        (path "/bc84562d-846a-4607-81a1-500b7991d137/SHEETUUID"
+        (path "/bc84562d-846a-4607-81a1-500b7991d137/f4a5b6c7-8d9e-0f1a-2b3c-4d5e6f7a8b9c"
           (reference "J_DSI") (unit 1)
         )
       )
