@@ -1,3 +1,8 @@
 (sym_lib_table
-  (lib (name "HybotixParts")(type "Legacy")(uri "${KIPRJMOD}/HybotixParts.kicad_sym")(options "")(descr "Custom HybX components for UNO Q Shield and Carrier"))
+  (lib (name "Device")(type "KiCad")(uri "/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols/Device.kicad_sym")(options "")(descr "Device"))
+  (lib (name "Connector")(type "KiCad")(uri "/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols/Connector.kicad_sym")(options "")(descr "Connector"))
+  (lib (name "Regulator_Linear")(type "KiCad")(uri "/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols/Regulator_Linear.kicad_sym")(options "")(descr "Linear Regulator"))
+  (lib (name "Regulator_Switching")(type "KiCad")(uri "/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols/Regulator_Switching.kicad_sym")(options "")(descr "Switching Regulator"))
+  (lib (name "Logic_Inverter")(type "KiCad")(uri "/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols/Logic_Inverter.kicad_sym")(options "")(descr "Logic Inverter"))
+  (lib (name "Audio")(type "KiCad")(uri "/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols/Audio.kicad_sym")(options "")(descr "Audio"))
 )
