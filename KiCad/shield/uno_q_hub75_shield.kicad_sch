@@ -17,7 +17,7 @@
 		(property "Sheet name" "Power"
 			(at 20 28 0)
 		)
-		(property "Sheet file" "power.kicad_sch"
+		(property "Sheet file" "sheets/power.kicad_sch"
 			(at 20 26 0)
 		)
 		(instances
@@ -35,7 +35,7 @@
 		(property "Sheet name" "ESP32-S3"
 			(at 20 88 0)
 		)
-		(property "Sheet file" "esp32s3.kicad_sch"
+		(property "Sheet file" "sheets/esp32s3.kicad_sch"
 			(at 20 86 0)
 		)
 		(instances
@@ -53,7 +53,7 @@
 		(property "Sheet name" "HUB75 Driver"
 			(at 20 148 0)
 		)
-		(property "Sheet file" "hub75_driver.kicad_sch"
+		(property "Sheet file" "sheets/hub75_driver.kicad_sch"
 			(at 20 146 0)
 		)
 		(instances
@@ -71,7 +71,7 @@
 		(property "Sheet name" "Audio Codec"
 			(at 20 208 0)
 		)
-		(property "Sheet file" "audio_codec.kicad_sch"
+		(property "Sheet file" "sheets/audio_codec.kicad_sch"
 			(at 20 206 0)
 		)
 		(instances
@@ -89,7 +89,7 @@
 		(property "Sheet name" "Display"
 			(at 20 268 0)
 		)
-		(property "Sheet file" "display.kicad_sch"
+		(property "Sheet file" "sheets/display.kicad_sch"
 			(at 20 266 0)
 		)
 		(instances
@@ -107,7 +107,7 @@
 		(property "Sheet name" "UNO Q Interface"
 			(at 20 328 0)
 		)
-		(property "Sheet file" "uno_q_interface.kicad_sch"
+		(property "Sheet file" "sheets/uno_q_interface.kicad_sch"
 			(at 20 326 0)
 		)
 		(instances
@@ -125,7 +125,7 @@
 		(property "Sheet name" "Connectivity"
 			(at 20 388 0)
 		)
-		(property "Sheet file" "connectivity.kicad_sch"
+		(property "Sheet file" "sheets/connectivity.kicad_sch"
 			(at 20 386 0)
 		)
 		(instances
