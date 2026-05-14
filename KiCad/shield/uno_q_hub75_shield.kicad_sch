@@ -1,17 +1,17 @@
 (kicad_sch
   (version 20231120)
-  (generator eeschema)
+  (generator "eeschema")
   (uuid "bc84562d-846a-4607-81a1-500b7991d137")
   (paper "A3")
-
-  (lib_symbols
+  (title_block
+    (title "UNO Q HUB75 Shield")
+    (company "Hybrid RobotiX")
+    (rev "0.3")
   )
-
+  (lib_symbols)
   (sheet
     (at 20 30)
     (size 60 50)
-    (stroke (width 0.254) (type default))
-    (fill (type color) (color 255 255 204 0.3))
     (uuid "efaa96f4-7a06-4df5-bf2b-8bbb82a448c8")
     (property "Sheet name" "Power" (at 20 28 0))
     (property "Sheet file" "power.kicad_sch" (at 20 26 0))
@@ -21,12 +21,9 @@
       )
     )
   )
-
   (sheet
     (at 20 90)
     (size 60 50)
-    (stroke (width 0.254) (type default))
-    (fill (type color) (color 255 255 204 0.3))
     (uuid "02ac644c-33d8-477e-a8a6-71ca0780d582")
     (property "Sheet name" "ESP32-S3" (at 20 88 0))
     (property "Sheet file" "esp32s3.kicad_sch" (at 20 86 0))
@@ -36,12 +33,9 @@
       )
     )
   )
-
   (sheet
     (at 20 150)
     (size 60 50)
-    (stroke (width 0.254) (type default))
-    (fill (type color) (color 255 255 204 0.3))
     (uuid "1f2c3d4e-5f6a-7b8c-9d0e-1f2a3b4c5d6e")
     (property "Sheet name" "HUB75 Driver" (at 20 148 0))
     (property "Sheet file" "hub75_driver.kicad_sch" (at 20 146 0))
@@ -51,12 +45,9 @@
       )
     )
   )
-
   (sheet
     (at 20 210)
     (size 60 50)
-    (stroke (width 0.254) (type default))
-    (fill (type color) (color 255 255 204 0.3))
     (uuid "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d")
     (property "Sheet name" "Audio Codec" (at 20 208 0))
     (property "Sheet file" "audio_codec.kicad_sch" (at 20 206 0))
@@ -66,12 +57,9 @@
       )
     )
   )
-
   (sheet
     (at 20 270)
     (size 60 50)
-    (stroke (width 0.254) (type default))
-    (fill (type color) (color 255 255 204 0.3))
     (uuid "3b4c5d6e-7f8a-9b0c-1d2e-3f4a5b6c7d8e")
     (property "Sheet name" "Display" (at 20 268 0))
     (property "Sheet file" "display.kicad_sch" (at 20 266 0))
@@ -81,12 +69,9 @@
       )
     )
   )
-
   (sheet
     (at 20 330)
     (size 60 50)
-    (stroke (width 0.254) (type default))
-    (fill (type color) (color 255 255 204 0.3))
     (uuid "4c5d6e7f-8a9b-0c1d-2e3f-4a5b6c7d8e9f")
     (property "Sheet name" "UNO Q Interface" (at 20 328 0))
     (property "Sheet file" "uno_q_interface.kicad_sch" (at 20 326 0))
@@ -96,12 +81,9 @@
       )
     )
   )
-
   (sheet
     (at 20 390)
     (size 60 50)
-    (stroke (width 0.254) (type default))
-    (fill (type color) (color 255 255 204 0.3))
     (uuid "5d6e7f8a-9b0c-1d2e-3f4a-5b6c7d8e9f0a")
     (property "Sheet name" "Connectivity" (at 20 388 0))
     (property "Sheet file" "connectivity.kicad_sch" (at 20 386 0))
@@ -111,7 +93,6 @@
       )
     )
   )
-
   (sheet_instances
     (path "/" (page "1"))
   )

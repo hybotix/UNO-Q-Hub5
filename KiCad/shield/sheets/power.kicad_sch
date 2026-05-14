@@ -1,19 +1,10 @@
 (kicad_sch
   (version 20231120)
-  (generator eeschema)
-  (generator_version "10.0.0")
-  (uuid "efaa96f4-7a06-4df5-bf2b-8bbb82a448c8")
+  (generator "eeschema")
+  (uuid "d853b677-0a92-47b9-8955-4777037344ab")
   (paper "A4")
-
-  (lib_symbols
-  )
-
-  (hierarchical_label "+5V_EXT" (shape output) (at 85 20 0) (effects (font (size 1.27 1.27)) (justify left)) (uuid "hl1"))
-  (hierarchical_label "+5V_HUB75" (shape output) (at 85 25 0) (effects (font (size 1.27 1.27)) (justify left)) (uuid "hl2"))
-  (hierarchical_label "+3V3" (shape output) (at 85 30 0) (effects (font (size 1.27 1.27)) (justify left)) (uuid "hl3"))
-  (hierarchical_label "DGND" (shape output) (at 85 35 0) (effects (font (size 1.27 1.27)) (justify left)) (uuid "hl4"))
-
+  (lib_symbols)
   (sheet_instances
-    (path "/" (page "2"))
+    (path "/" (page "1"))
   )
 )
