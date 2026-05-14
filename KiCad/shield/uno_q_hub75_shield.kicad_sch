@@ -6,8 +6,7 @@
 	(title_block
 		(title "UNO Q HUB75 Shield")
 	)
-	(lib_symbols
-	)
+	(lib_symbols)
 	(sheet_instances
 		(path "/"
 			(page "1")
