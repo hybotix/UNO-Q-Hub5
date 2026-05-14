@@ -1,7 +1,7 @@
 {
   "meta": {
-    "filename": "uno_q_hub75_shield.kicad_pro",
-    "version": 1
+    "version": 1,
+    "filename": "uno_q_hub75_shield.kicad_pro"
   },
   "net_settings": {
     "classes": [
@@ -25,20 +25,6 @@
     ],
     "net_colors": null,
     "nets": []
-  },
-  "pcbnew": {
-    "last_paths": {
-      "gencad": "",
-      "idf": "",
-      "netlist": "",
-      "plot": "",
-      "pos_files": "",
-      "specctra_dsn": "",
-      "step": "",
-      "svg": "",
-      "vrml": ""
-    },
-    "page_layout_descr_file": ""
   },
   "schematic": {
     "annotate_start_num": 0,
