@@ -1,155 +1,37 @@
 (kicad_sch
-  (version 20260101)
-  (generator eeschema)
-  (generator_version "10.0.0")
-  (uuid "b6c7d8e9-0f1a-2b3c-4d5e-6f7a8b9c0d1e")
-  (paper "A4")
-
-  (lib_symbols
-  (symbol "C" (pin_numbers hide) (pin_names (offset 0.254)) (property "Reference" "C" (id 0) (at 0.635 2.54 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "C" (id 1) (at 0.635 -2.413 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "C_0_1" (polyline (pts (xy -2.032 -0.762) (xy 2.032 -0.762)) (stroke (width 0.508)))) (symbol "C_1_1" (pin passive line (at 0 3.81 270) (length 3.048) (name "~" (effects (font (size 1.016 1.016) (thickness 0.1524)))) (number "1" (effects (font (size 1.016 1.016) (thickness 0.1524))))) (pin passive line (at 0 -3.81 90) (length 3.048) (name "~" (effects (font (size 1.016 1.016) (thickness 0.1524)))) (number "2" (effects (font (size 1.016 1.016) (thickness 0.1524)))))))
-  (symbol "R" (pin_numbers hide) (pin_names (offset 0.254)) (property "Reference" "R" (id 0) (at 2.032 0 90) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "R" (id 1) (at 0 0 90) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "R_0_1" (rectangle (start -1.016 -2.54) (end 1.016 2.54) (stroke (width 0.254)))) (symbol "R_1_1" (pin passive line (at 0 3.81 270) (length 1.27) (name "~" (effects (font (size 1.016 1.016) (thickness 0.1524)))) (number "1" (effects (font (size 1.016 1.016) (thickness 0.1524))))) (pin passive line (at 0 -3.81 90) (length 1.27) (name "~" (effects (font (size 1.016 1.016) (thickness 0.1524)))) (number "2" (effects (font (size 1.016 1.016) (thickness 0.1524)))))))
-  (symbol "LED" (pin_numbers hide) (pin_names (offset 1.016 -1.016)) (property "Reference" "D" (id 0) (at 0 2.54 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "LED" (id 1) (at 0 -2.54 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "LED_0_1" (polyline (pts (xy -1.27 -1.27) (xy -1.27 1.27)) (stroke (width 0.254))) (polyline (pts (xy -1.27 0) (xy 1.27 -1.27)) (stroke (width 0.254))) (polyline (pts (xy 0.762 -1.778) (xy 1.778 -2.794)) (stroke (width 0.254))) (polyline (pts (xy 1.27 -1.27) (xy 1.27 1.27)) (stroke (width 0.254)))) (symbol "LED_1_1" (pin passive line (at -3.81 0 0) (length 2.54) (name "K" (effects (font (size 1.016 1.016) (thickness 0.1524)))) (number "1" (effects (font (size 1.016 1.016) (thickness 0.1524))))) (pin passive line (at 3.81 0 180) (length 2.54) (name "A" (effects (font (size 1.016 1.016) (thickness 0.1524)))) (number "2" (effects (font (size 1.016 1.016) (thickness 0.1524)))))))
-  (symbol "Conn_01x02_Pin" (pin_names (offset 1.016) hide) (property "Reference" "J" (id 0) (at 0 2.54 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "Conn_01x02_Pin" (id 1) (at 0 -5.08 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "Conn_01x02_Pin_0_1" (rectangle (start -1.27 -2.413) (end 0 -2.667) (stroke (width 0.1524)))) (symbol "Conn_01x02_Pin_1_1" (pin passive line (at -5.08 0 0) (length 3.81) (name "Pin_1" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.15))))) (pin passive line (at -5.08 -2.54 0) (length 3.81) (name "Pin_2" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "2" (effects (font (size 1.27 1.27) (thickness 0.15)))))))
-  (symbol "Conn_01x04_Pin" (pin_names (offset 1.016) hide) (property "Reference" "J" (id 0) (at 0 5.08 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "Conn_01x04_Pin" (id 1) (at 0 -7.62 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "Conn_01x04_Pin_1_1" (pin passive line (at -5.08 0 0) (length 3.81) (name "Pin_1" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.15))))) (pin passive line (at -5.08 -2.54 0) (length 3.81) (name "Pin_2" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "2" (effects (font (size 1.27 1.27) (thickness 0.15))))) (pin passive line (at -5.08 -5.08 0) (length 3.81) (name "Pin_3" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "3" (effects (font (size 1.27 1.27) (thickness 0.15))))) (pin passive line (at -5.08 -7.62 0) (length 3.81) (name "Pin_4" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "4" (effects (font (size 1.27 1.27) (thickness 0.15)))))))
-  (symbol "Conn_02x08_Odd_Even" (pin_names (offset 1.016) hide) (property "Reference" "J" (id 0) (at 0 10.16 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "Conn_02x08_Odd_Even" (id 1) (at 0 -12.7 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "Conn_02x08_Odd_Even_1_1" (pin passive line (at -5.08 8.89 0) (length 3.81) (name "Pin_1" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.15)))))))
-  (symbol "Conn_02x20_Odd_Even" (pin_names (offset 1.016) hide) (property "Reference" "J" (id 0) (at 0 25.4 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "Conn_02x20_Odd_Even" (id 1) (at 0 -25.4 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "Conn_02x20_Odd_Even_1_1" (pin passive line (at -5.08 22.86 0) (length 3.81) (name "Pin_1" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.15)))))))
-  (symbol "Conn_02x30_Odd_Even" (pin_names (offset 1.016) hide) (property "Reference" "B" (id 0) (at 0 40.64 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "Conn_02x30_Odd_Even" (id 1) (at 0 -40.64 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "Conn_02x30_Odd_Even_1_1" (pin passive line (at -5.08 38.1 0) (length 3.81) (name "Pin_1" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.15)))))))
-  (symbol "USB_C_Receptacle_usb2.0" (pin_names (offset 1.016)) (property "Reference" "J" (id 0) (at 0 19.05 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "USB_C_Receptacle_usb2.0" (id 1) (at 0 -19.05 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "USB_C_Receptacle_usb2.0_0_1" (rectangle (start -10.16 17.78) (end 10.16 -17.78) (stroke (width 0.254)) (fill (type background)))) (symbol "USB_C_Receptacle_usb2.0_1_1" (pin passive line (at -12.7 15.24 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "A1" (effects (font (size 1.27 1.27) (thickness 0.15)))))))
-  (symbol "AMS1117-3.3" (pin_names (offset 0.254)) (property "Reference" "U" (id 0) (at 0 5.08 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "AMS1117-3.3" (id 1) (at 0 -5.08 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "AMS1117-3.3_0_1" (rectangle (start -5.08 3.81) (end 5.08 -3.81) (stroke (width 0.254)) (fill (type background)))) (symbol "AMS1117-3.3_1_1" (pin power_in line (at -7.62 2.54 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.15))))) (pin power_out line (at 7.62 2.54 180) (length 2.54) (name "OUT" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "2" (effects (font (size 1.27 1.27) (thickness 0.15))))) (pin power_in line (at -7.62 -2.54 0) (length 2.54) (name "IN" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "3" (effects (font (size 1.27 1.27) (thickness 0.15)))))))
-  (symbol "SN74HCT245" (pin_names (offset 0.254)) (property "Reference" "U" (id 0) (at 0 12.7 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "SN74HCT245" (id 1) (at 0 -12.7 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "SN74HCT245_0_1" (rectangle (start -7.62 11.43) (end 7.62 -11.43) (stroke (width 0.254)) (fill (type background)))) (symbol "SN74HCT245_1_1" (pin power_in line (at -10.16 8.89 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "10" (effects (font (size 1.27 1.27) (thickness 0.15))))) (pin power_in line (at 10.16 8.89 180) (length 2.54) (name "VCC" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "20" (effects (font (size 1.27 1.27) (thickness 0.15)))))))
-  (symbol "TPS54331" (pin_names (offset 0.254)) (property "Reference" "U" (id 0) (at 0 6.35 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "TPS54331" (id 1) (at 0 -6.35 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "TPS54331_0_1" (rectangle (start -5.08 5.08) (end 5.08 -5.08) (stroke (width 0.254)) (fill (type background)))) (symbol "TPS54331_1_1" (pin power_in line (at -7.62 3.81 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "4" (effects (font (size 1.27 1.27) (thickness 0.15))))) (pin power_out line (at 7.62 3.81 180) (length 2.54) (name "OUT" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "2" (effects (font (size 1.27 1.27) (thickness 0.15))))) (pin power_in line (at -7.62 -3.81 0) (length 2.54) (name "VIN" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.15)))))))
-  (symbol "AT24C32" (pin_names (offset 0.254)) (property "Reference" "U" (id 0) (at 0 5.08 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "AT24C32" (id 1) (at 0 -5.08 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "AT24C32_0_1" (rectangle (start -5.08 3.81) (end 5.08 -3.81) (stroke (width 0.254)) (fill (type background)))) (symbol "AT24C32_1_1" (pin power_in line (at -7.62 2.54 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "4" (effects (font (size 1.27 1.27) (thickness 0.15))))) (pin power_in line (at 7.62 2.54 180) (length 2.54) (name "VCC" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "8" (effects (font (size 1.27 1.27) (thickness 0.15)))))))
-  (symbol "ES8388" (in_bom yes) (on_board yes) (property "Reference" "U" (id 0) (at 0 30.48 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "ES8388" (id 1) (at 0 -30.48 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "ES8388_0_1" (rectangle (start -12.7 29.21) (end 12.7 -29.21) (stroke (width 0.254)) (fill (type background)))) (symbol "ES8388_1_1" (pin power_in line (at -15.24 26.67 0) (length 2.54) (name "AVDD" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.15))))) (pin power_in line (at -15.24 -26.67 0) (length 2.54) (name "AGND" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "2" (effects (font (size 1.27 1.27) (thickness 0.15)))))))
-  )
-
-  (symbol (lib_id "Converter_Level:TXS0108E")
-    (at 30 25 0)
-    (unit 1)
-    (in_bom yes) (on_board yes)
-    (uuid "16eec788-6aeb-4428-b6c0-69e8ef63db37")
-    (property "Reference" "U_LS1"
-      (at 30 23.5 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "TXS0108E"
-      (at 30 26.5 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm"
-      (at 30 25 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (instances
-      (project "uno_q_hub75_shield"
-        (path "/bc84562d-846a-4607-81a1-500b7991d137/b6c7d8e9-0f1a-2b3c-4d5e-6f7a8b9c0d1e"
-          (reference "U_LS1") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Converter_Level:TXS0108E")
-    (at 50 25 0)
-    (unit 1)
-    (in_bom yes) (on_board yes)
-    (uuid "f857568c-5fe2-4292-9ea7-846b23769365")
-    (property "Reference" "U_LS2"
-      (at 50 23.5 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "TXS0108E"
-      (at 50 26.5 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm"
-      (at 50 25 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (instances
-      (project "uno_q_hub75_shield"
-        (path "/bc84562d-846a-4607-81a1-500b7991d137/b6c7d8e9-0f1a-2b3c-4d5e-6f7a8b9c0d1e"
-          (reference "U_LS2") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:C")
-    (at 20 25 0)
-    (unit 1)
-    (in_bom yes) (on_board yes)
-    (uuid "07b54994-9db4-454b-a047-67a89c699ccf")
-    (property "Reference" "C32"
-      (at 20 23.5 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "100nF"
-      (at 20 26.5 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-      (at 20 25 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (instances
-      (project "uno_q_hub75_shield"
-        (path "/bc84562d-846a-4607-81a1-500b7991d137/b6c7d8e9-0f1a-2b3c-4d5e-6f7a8b9c0d1e"
-          (reference "C32") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:C")
-    (at 40 25 0)
-    (unit 1)
-    (in_bom yes) (on_board yes)
-    (uuid "7676bdb9-f242-4a03-9a22-3fdb3367984e")
-    (property "Reference" "C33"
-      (at 40 23.5 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "100nF"
-      (at 40 26.5 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-      (at 40 25 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (instances
-      (project "uno_q_hub75_shield"
-        (path "/bc84562d-846a-4607-81a1-500b7991d137/b6c7d8e9-0f1a-2b3c-4d5e-6f7a8b9c0d1e"
-          (reference "C33") (unit 1)
-        )
-      )
-    )
-  )
-
-  (hierarchical_label "VIN_1V8_REF"
-    (shape input)
-    (at 10 20 0)
-    (effects (font (size 1.27 1.27)) (justify left))
-    (uuid "3c0addb2-5e9f-4a33-9342-0a26d2f9e008")
-  )
-
-  (hierarchical_label "+3V3"
-    (shape input)
-    (at 10 30 0)
-    (effects (font (size 1.27 1.27)) (justify left))
-    (uuid "39b40906-ff32-4896-b8ea-4f4e75cdd20a")
-  )
-
-  (hierarchical_label "DGND"
-    (shape input)
-    (at 10 35 0)
-    (effects (font (size 1.27 1.27)) (justify left))
-    (uuid "c1e612d6-eece-4212-adaa-b7cf96bca5f0")
-  )
-
-  (sheet_instances
-    (path "/"
-      (page "1")
-    )
-  )
+	(version 20260101)
+	(generator "eeschema")
+	(generator_version "8.0")
+	(uuid "b6c7d8e9-0f1a-2b3c-4d5e-6f7a8b9c0d1e")
+	(paper "A4")
+	(lib_symbols)
+	(hierarchical_label "+3V3"
+		(shape input)
+		(at 10 25 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "b6c7d8e9-0f1a-2b3c-4d5e-6f7a8b9c0d1e-hl00")
+	)
+	(hierarchical_label "DGND"
+		(shape input)
+		(at 10 30 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "b6c7d8e9-0f1a-2b3c-4d5e-6f7a8b9c0d1e-hl01")
+	)
+	(sheet_instances
+		(path "/"
+			(page "7")
+		)
+	)
 )

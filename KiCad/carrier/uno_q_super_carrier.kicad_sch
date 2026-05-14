@@ -1,289 +1,284 @@
 (kicad_sch
-  (version 20260101)
-  (generator eeschema)
-  (generator_version "10.0.0")
-  (uuid "a7d62ed3-8e95-4e64-b6df-722c91664a1a")
-  (paper "A3")
-  (title_block
-    (title "UNO Q Super Carrier")
-    (date "2026-05-09")
-    (rev "0.3")
-    (company "Hybrid RobotiX")
-  )
-
-  (lib_symbols
-  (symbol "C" (pin_numbers hide) (pin_names (offset 0.254)) (property "Reference" "C" (id 0) (at 0.635 2.54 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "C" (id 1) (at 0.635 -2.413 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "C_0_1" (polyline (pts (xy -2.032 -0.762) (xy 2.032 -0.762)) (stroke (width 0.508)))) (symbol "C_1_1" (pin passive line (at 0 3.81 270) (length 3.048) (name "~" (effects (font (size 1.016 1.016) (thickness 0.1524)))) (number "1" (effects (font (size 1.016 1.016) (thickness 0.1524))))) (pin passive line (at 0 -3.81 90) (length 3.048) (name "~" (effects (font (size 1.016 1.016) (thickness 0.1524)))) (number "2" (effects (font (size 1.016 1.016) (thickness 0.1524)))))))
-  (symbol "R" (pin_numbers hide) (pin_names (offset 0.254)) (property "Reference" "R" (id 0) (at 2.032 0 90) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "R" (id 1) (at 0 0 90) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "R_0_1" (rectangle (start -1.016 -2.54) (end 1.016 2.54) (stroke (width 0.254)))) (symbol "R_1_1" (pin passive line (at 0 3.81 270) (length 1.27) (name "~" (effects (font (size 1.016 1.016) (thickness 0.1524)))) (number "1" (effects (font (size 1.016 1.016) (thickness 0.1524))))) (pin passive line (at 0 -3.81 90) (length 1.27) (name "~" (effects (font (size 1.016 1.016) (thickness 0.1524)))) (number "2" (effects (font (size 1.016 1.016) (thickness 0.1524)))))))
-  (symbol "LED" (pin_numbers hide) (pin_names (offset 1.016 -1.016)) (property "Reference" "D" (id 0) (at 0 2.54 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "LED" (id 1) (at 0 -2.54 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "LED_0_1" (polyline (pts (xy -1.27 -1.27) (xy -1.27 1.27)) (stroke (width 0.254))) (polyline (pts (xy -1.27 0) (xy 1.27 -1.27)) (stroke (width 0.254))) (polyline (pts (xy 0.762 -1.778) (xy 1.778 -2.794)) (stroke (width 0.254))) (polyline (pts (xy 1.27 -1.27) (xy 1.27 1.27)) (stroke (width 0.254)))) (symbol "LED_1_1" (pin passive line (at -3.81 0 0) (length 2.54) (name "K" (effects (font (size 1.016 1.016) (thickness 0.1524)))) (number "1" (effects (font (size 1.016 1.016) (thickness 0.1524))))) (pin passive line (at 3.81 0 180) (length 2.54) (name "A" (effects (font (size 1.016 1.016) (thickness 0.1524)))) (number "2" (effects (font (size 1.016 1.016) (thickness 0.1524)))))))
-  (symbol "Conn_01x02_Pin" (pin_names (offset 1.016) hide) (property "Reference" "J" (id 0) (at 0 2.54 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "Conn_01x02_Pin" (id 1) (at 0 -5.08 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "Conn_01x02_Pin_0_1" (rectangle (start -1.27 -2.413) (end 0 -2.667) (stroke (width 0.1524)))) (symbol "Conn_01x02_Pin_1_1" (pin passive line (at -5.08 0 0) (length 3.81) (name "Pin_1" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.15))))) (pin passive line (at -5.08 -2.54 0) (length 3.81) (name "Pin_2" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "2" (effects (font (size 1.27 1.27) (thickness 0.15)))))))
-  (symbol "Conn_01x04_Pin" (pin_names (offset 1.016) hide) (property "Reference" "J" (id 0) (at 0 5.08 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "Conn_01x04_Pin" (id 1) (at 0 -7.62 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "Conn_01x04_Pin_1_1" (pin passive line (at -5.08 0 0) (length 3.81) (name "Pin_1" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.15))))) (pin passive line (at -5.08 -2.54 0) (length 3.81) (name "Pin_2" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "2" (effects (font (size 1.27 1.27) (thickness 0.15))))) (pin passive line (at -5.08 -5.08 0) (length 3.81) (name "Pin_3" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "3" (effects (font (size 1.27 1.27) (thickness 0.15))))) (pin passive line (at -5.08 -7.62 0) (length 3.81) (name "Pin_4" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "4" (effects (font (size 1.27 1.27) (thickness 0.15)))))))
-  (symbol "Conn_02x08_Odd_Even" (pin_names (offset 1.016) hide) (property "Reference" "J" (id 0) (at 0 10.16 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "Conn_02x08_Odd_Even" (id 1) (at 0 -12.7 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "Conn_02x08_Odd_Even_1_1" (pin passive line (at -5.08 8.89 0) (length 3.81) (name "Pin_1" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.15)))))))
-  (symbol "Conn_02x20_Odd_Even" (pin_names (offset 1.016) hide) (property "Reference" "J" (id 0) (at 0 25.4 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "Conn_02x20_Odd_Even" (id 1) (at 0 -25.4 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "Conn_02x20_Odd_Even_1_1" (pin passive line (at -5.08 22.86 0) (length 3.81) (name "Pin_1" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.15)))))))
-  (symbol "Conn_02x30_Odd_Even" (pin_names (offset 1.016) hide) (property "Reference" "B" (id 0) (at 0 40.64 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "Conn_02x30_Odd_Even" (id 1) (at 0 -40.64 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "Conn_02x30_Odd_Even_1_1" (pin passive line (at -5.08 38.1 0) (length 3.81) (name "Pin_1" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.15)))))))
-  (symbol "USB_C_Receptacle_usb2.0" (pin_names (offset 1.016)) (property "Reference" "J" (id 0) (at 0 19.05 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "USB_C_Receptacle_usb2.0" (id 1) (at 0 -19.05 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "USB_C_Receptacle_usb2.0_0_1" (rectangle (start -10.16 17.78) (end 10.16 -17.78) (stroke (width 0.254)) (fill (type background)))) (symbol "USB_C_Receptacle_usb2.0_1_1" (pin passive line (at -12.7 15.24 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "A1" (effects (font (size 1.27 1.27) (thickness 0.15)))))))
-  (symbol "AMS1117-3.3" (pin_names (offset 0.254)) (property "Reference" "U" (id 0) (at 0 5.08 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "AMS1117-3.3" (id 1) (at 0 -5.08 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "AMS1117-3.3_0_1" (rectangle (start -5.08 3.81) (end 5.08 -3.81) (stroke (width 0.254)) (fill (type background)))) (symbol "AMS1117-3.3_1_1" (pin power_in line (at -7.62 2.54 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.15))))) (pin power_out line (at 7.62 2.54 180) (length 2.54) (name "OUT" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "2" (effects (font (size 1.27 1.27) (thickness 0.15))))) (pin power_in line (at -7.62 -2.54 0) (length 2.54) (name "IN" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "3" (effects (font (size 1.27 1.27) (thickness 0.15)))))))
-  (symbol "SN74HCT245" (pin_names (offset 0.254)) (property "Reference" "U" (id 0) (at 0 12.7 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "SN74HCT245" (id 1) (at 0 -12.7 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "SN74HCT245_0_1" (rectangle (start -7.62 11.43) (end 7.62 -11.43) (stroke (width 0.254)) (fill (type background)))) (symbol "SN74HCT245_1_1" (pin power_in line (at -10.16 8.89 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "10" (effects (font (size 1.27 1.27) (thickness 0.15))))) (pin power_in line (at 10.16 8.89 180) (length 2.54) (name "VCC" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "20" (effects (font (size 1.27 1.27) (thickness 0.15)))))))
-  (symbol "TPS54331" (pin_names (offset 0.254)) (property "Reference" "U" (id 0) (at 0 6.35 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "TPS54331" (id 1) (at 0 -6.35 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "TPS54331_0_1" (rectangle (start -5.08 5.08) (end 5.08 -5.08) (stroke (width 0.254)) (fill (type background)))) (symbol "TPS54331_1_1" (pin power_in line (at -7.62 3.81 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "4" (effects (font (size 1.27 1.27) (thickness 0.15))))) (pin power_out line (at 7.62 3.81 180) (length 2.54) (name "OUT" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "2" (effects (font (size 1.27 1.27) (thickness 0.15))))) (pin power_in line (at -7.62 -3.81 0) (length 2.54) (name "VIN" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.15)))))))
-  (symbol "AT24C32" (pin_names (offset 0.254)) (property "Reference" "U" (id 0) (at 0 5.08 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "AT24C32" (id 1) (at 0 -5.08 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "AT24C32_0_1" (rectangle (start -5.08 3.81) (end 5.08 -3.81) (stroke (width 0.254)) (fill (type background)))) (symbol "AT24C32_1_1" (pin power_in line (at -7.62 2.54 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "4" (effects (font (size 1.27 1.27) (thickness 0.15))))) (pin power_in line (at 7.62 2.54 180) (length 2.54) (name "VCC" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "8" (effects (font (size 1.27 1.27) (thickness 0.15)))))))
-  (symbol "ES8388" (in_bom yes) (on_board yes) (property "Reference" "U" (id 0) (at 0 30.48 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "ES8388" (id 1) (at 0 -30.48 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "ES8388_0_1" (rectangle (start -12.7 29.21) (end 12.7 -29.21) (stroke (width 0.254)) (fill (type background)))) (symbol "ES8388_1_1" (pin power_in line (at -15.24 26.67 0) (length 2.54) (name "AVDD" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.15))))) (pin power_in line (at -15.24 -26.67 0) (length 2.54) (name "AGND" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "2" (effects (font (size 1.27 1.27) (thickness 0.15)))))))
-  )
-
-  (sheet
-    (at 20 90)
-    (size 60 50)
-    (stroke (width 0.254) (type default))
-    (fill (type color) (color 255 255 204 0.3))
-    (uuid "d2e3f4a5-6b7c-8d9e-0f1a-2b3c4d5e6f7a")
-    (property "Sheet name" "UNO Q Mounting"
-      (at 20 88 0)
-      (effects (font (size 1.524 1.524)) (justify left bottom))
-    )
-    (property "Sheet file" "sheets/uno_q_mounting.kicad_sch"
-      (at 20 86 0)
-      (effects (font (size 1.27 1.27)) (justify left bottom))
-    )
-    (pin "+5V" power_in
-      (at 80 100 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "ce1d0fe9-dddb-4cdd-8b11-ef9079482ac6")
-    )
-    (pin "+3V3" power_in
-      (at 80 104 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "e405d2da-2e84-435d-b33d-fa5c7aa241a9")
-    )
-    (pin "DGND" power_in
-      (at 80 108 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "55af0e60-d6ca-4825-b466-483b1bb34417")
-    )
-    (pin "CS_S3_MPU" input
-      (at 80 112 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "5538a641-daac-49c3-8acd-9e54b1e6d5e2")
-    )
-    (pin "S3_C6_TX" output
-      (at 80 116 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "e62eb480-d7c1-4f32-9b89-16fb79e46c72")
-    )
-    (pin "S3_C6_RX" input
-      (at 80 120 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "b22e428b-f6c0-432a-80c2-88897fcf73e4")
-    )
-    (instances
-      (project "uno_q_super_carrier"
-        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a"
-          (page "3")
-        )
-      )
-    )
-  )
-
-  (sheet
-    (at 20 150)
-    (size 60 50)
-    (stroke (width 0.254) (type default))
-    (fill (type color) (color 255 255 204 0.3))
-    (uuid "e3f4a5b6-7c8d-9e0f-1a2b-3c4d5e6f7a8b")
-    (property "Sheet name" "ESP32-C6 Radio"
-      (at 20 148 0)
-      (effects (font (size 1.524 1.524)) (justify left bottom))
-    )
-    (property "Sheet file" "sheets/esp32c6_radio.kicad_sch"
-      (at 20 146 0)
-      (effects (font (size 1.27 1.27)) (justify left bottom))
-    )
-    (pin "+3V3" power_in
-      (at 80 160 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "31a0ba74-649f-407f-afe9-8e0825f17579")
-    )
-    (pin "DGND" power_in
-      (at 80 164 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "8dfccb7a-7695-4399-baec-a705bea3eff0")
-    )
-    (pin "S3_C6_TX" input
-      (at 80 168 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "e5cbe52f-cc98-408a-9602-d80aad74b8ee")
-    )
-    (pin "S3_C6_RX" output
-      (at 80 172 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "6818cfe9-2eec-41dc-b74d-93017ffa7509")
-    )
-    (instances
-      (project "uno_q_super_carrier"
-        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a"
-          (page "4")
-        )
-      )
-    )
-  )
-
-  (sheet
-    (at 20 210)
-    (size 60 50)
-    (stroke (width 0.254) (type default))
-    (fill (type color) (color 255 255 204 0.3))
-    (uuid "f4a5b6c7-8d9e-0f1a-2b3c-4d5e6f7a8b9c")
-    (property "Sheet name" "Display Chain"
-      (at 20 208 0)
-      (effects (font (size 1.524 1.524)) (justify left bottom))
-    )
-    (property "Sheet file" "sheets/display_chain.kicad_sch"
-      (at 20 206 0)
-      (effects (font (size 1.27 1.27)) (justify left bottom))
-    )
-    (pin "+5V" power_in
-      (at 80 220 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "efbd71ec-bf2c-4c74-9ec2-c95fadeb500c")
-    )
-    (pin "+3V3" power_in
-      (at 80 224 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "b94a8ce5-5ee0-46fd-a322-b011b580813a")
-    )
-    (pin "DGND" power_in
-      (at 80 228 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "0c0ffc6a-a3a1-486d-8705-8893c1e41564")
-    )
-    (instances
-      (project "uno_q_super_carrier"
-        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a"
-          (page "5")
-        )
-      )
-    )
-  )
-
-  (sheet
-    (at 20 270)
-    (size 60 50)
-    (stroke (width 0.254) (type default))
-    (fill (type color) (color 255 255 204 0.3))
-    (uuid "a5b6c7d8-9e0f-1a2b-3c4d-5e6f7a8b9c0d")
-    (property "Sheet name" "RPi5 Interface"
-      (at 20 268 0)
-      (effects (font (size 1.524 1.524)) (justify left bottom))
-    )
-    (property "Sheet file" "sheets/rpi5_interface.kicad_sch"
-      (at 20 266 0)
-      (effects (font (size 1.27 1.27)) (justify left bottom))
-    )
-    (pin "+5V" power_in
-      (at 80 280 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "ca6ee19e-ae11-488f-8b7e-5753093f0df7")
-    )
-    (pin "+3V3" power_in
-      (at 80 284 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "3acd0626-4325-4de9-9a5a-ec8499055533")
-    )
-    (pin "DGND" power_in
-      (at 80 288 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "a37bbcdd-5db9-4d0e-a5b7-093250ef9120")
-    )
-    (instances
-      (project "uno_q_super_carrier"
-        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a"
-          (page "6")
-        )
-      )
-    )
-  )
-
-  (sheet
-    (at 20 330)
-    (size 60 50)
-    (stroke (width 0.254) (type default))
-    (fill (type color) (color 255 255 204 0.3))
-    (uuid "b6c7d8e9-0f1a-2b3c-4d5e-6f7a8b9c0d1e")
-    (property "Sheet name" "Level Shift"
-      (at 20 328 0)
-      (effects (font (size 1.524 1.524)) (justify left bottom))
-    )
-    (property "Sheet file" "sheets/level_shift.kicad_sch"
-      (at 20 326 0)
-      (effects (font (size 1.27 1.27)) (justify left bottom))
-    )
-    (pin "VIN_1V8_REF" input
-      (at 80 340 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "46bf7250-493c-4ea1-8a0d-c21d6fbd5b50")
-    )
-    (pin "+3V3" power_in
-      (at 80 344 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "d87e333a-9323-4e53-83db-44b4977ebdbc")
-    )
-    (pin "DGND" power_in
-      (at 80 348 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "99313f58-12ac-418d-bfee-b126fe429237")
-    )
-    (instances
-      (project "uno_q_super_carrier"
-        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a"
-          (page "7")
-        )
-      )
-    )
-  )
-
-  (sheet
-    (at 20 390)
-    (size 60 50)
-    (stroke (width 0.254) (type default))
-    (fill (type color) (color 255 255 204 0.3))
-    (uuid "c7d8e9f0-1a2b-3c4d-5e6f-7a8b9c0d1e2f")
-    (property "Sheet name" "Expansion"
-      (at 20 388 0)
-      (effects (font (size 1.524 1.524)) (justify left bottom))
-    )
-    (property "Sheet file" "sheets/expansion.kicad_sch"
-      (at 20 386 0)
-      (effects (font (size 1.27 1.27)) (justify left bottom))
-    )
-    (pin "I2C_SDA" bidirectional
-      (at 80 400 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "4167644c-adaa-424b-8503-ba6b444dd98f")
-    )
-    (pin "I2C_SCL" bidirectional
-      (at 80 404 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "b01324dd-b8e4-4ee6-884f-39e8d52e4001")
-    )
-    (pin "+3V3" power_in
-      (at 80 408 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "eb8e1197-55de-4859-b6ad-304791dcf439")
-    )
-    (pin "DGND" power_in
-      (at 80 412 0)
-      (effects (font (size 1.27 1.27)))
-      (uuid "d3f75b39-3761-43ff-bfdd-7c3816828a19")
-    )
-    (instances
-      (project "uno_q_super_carrier"
-        (path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a"
-          (page "8")
-        )
-      )
-    )
-  )
-
-  (sheet_instances
-    (path "/"
-      (page "1")
-    )
-  )
+	(version 20260101)
+	(generator "eeschema")
+	(generator_version "8.0")
+	(uuid "a7d62ed3-8e95-4e64-b6df-722c91664a1a")
+	(paper "A3")
+	(title_block
+		(title "UNO Q Super Carrier")
+		(company "Hybrid RobotiX")
+		(rev "0.3")
+	)
+	(lib_symbols)
+	(sheet
+		(at 20 20)
+		(size 60 40)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "c1d2e3f4-5a6b-7c8d-9e0f-1a2b3c4d5e6f")
+		(property "Sheetname" "Power"
+			(at 20 18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "sheets/power.kicad_sch"
+			(at 20 62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "power"
+				(path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 90 20)
+		(size 60 40)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "d2e3f4a5-6b7c-8d9e-0f1a-2b3c4d5e6f7a")
+		(property "Sheetname" "UNO Q Mounting"
+			(at 90 18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "sheets/uno_q_mounting.kicad_sch"
+			(at 90 62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "uno-q-mounting"
+				(path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 160 20)
+		(size 60 40)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "e3f4a5b6-7c8d-9e0f-1a2b-3c4d5e6f7a8b")
+		(property "Sheetname" "ESP32-C6 Radio"
+			(at 160 18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "sheets/esp32c6_radio.kicad_sch"
+			(at 160 62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "esp32c6-radio"
+				(path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 20 80)
+		(size 60 40)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "f4a5b6c7-8d9e-0f1a-2b3c-4d5e6f7a8b9c")
+		(property "Sheetname" "Display Chain"
+			(at 20 78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "sheets/display_chain.kicad_sch"
+			(at 20 122 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "display-chain"
+				(path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a"
+					(page "5")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 90 80)
+		(size 60 40)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "a5b6c7d8-9e0f-1a2b-3c4d-5e6f7a8b9c0d")
+		(property "Sheetname" "RPi5 Interface"
+			(at 90 78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "sheets/rpi5_interface.kicad_sch"
+			(at 90 122 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "rpi5-interface"
+				(path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a"
+					(page "6")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 160 80)
+		(size 60 40)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "b6c7d8e9-0f1a-2b3c-4d5e-6f7a8b9c0d1e")
+		(property "Sheetname" "Level Shift"
+			(at 160 78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "sheets/level_shift.kicad_sch"
+			(at 160 122 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "level-shift"
+				(path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a"
+					(page "7")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 20 140)
+		(size 60 40)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "c7d8e9f0-1a2b-3c4d-5e6f-7a8b9c0d1e2f")
+		(property "Sheetname" "Expansion"
+			(at 20 138 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "sheets/expansion.kicad_sch"
+			(at 20 182 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "expansion"
+				(path "/a7d62ed3-8e95-4e64-b6df-722c91664a1a"
+					(page "8")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
 )

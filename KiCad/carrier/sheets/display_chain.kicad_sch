@@ -1,207 +1,61 @@
 (kicad_sch
-  (version 20260101)
-  (generator eeschema)
-  (generator_version "10.0.0")
-  (uuid "f4a5b6c7-8d9e-0f1a-2b3c-4d5e6f7a8b9c")
-  (paper "A4")
-
-  (lib_symbols
-  (symbol "C" (pin_numbers hide) (pin_names (offset 0.254)) (property "Reference" "C" (id 0) (at 0.635 2.54 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "C" (id 1) (at 0.635 -2.413 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "C_0_1" (polyline (pts (xy -2.032 -0.762) (xy 2.032 -0.762)) (stroke (width 0.508)))) (symbol "C_1_1" (pin passive line (at 0 3.81 270) (length 3.048) (name "~" (effects (font (size 1.016 1.016) (thickness 0.1524)))) (number "1" (effects (font (size 1.016 1.016) (thickness 0.1524))))) (pin passive line (at 0 -3.81 90) (length 3.048) (name "~" (effects (font (size 1.016 1.016) (thickness 0.1524)))) (number "2" (effects (font (size 1.016 1.016) (thickness 0.1524)))))))
-  (symbol "R" (pin_numbers hide) (pin_names (offset 0.254)) (property "Reference" "R" (id 0) (at 2.032 0 90) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "R" (id 1) (at 0 0 90) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "R_0_1" (rectangle (start -1.016 -2.54) (end 1.016 2.54) (stroke (width 0.254)))) (symbol "R_1_1" (pin passive line (at 0 3.81 270) (length 1.27) (name "~" (effects (font (size 1.016 1.016) (thickness 0.1524)))) (number "1" (effects (font (size 1.016 1.016) (thickness 0.1524))))) (pin passive line (at 0 -3.81 90) (length 1.27) (name "~" (effects (font (size 1.016 1.016) (thickness 0.1524)))) (number "2" (effects (font (size 1.016 1.016) (thickness 0.1524)))))))
-  (symbol "LED" (pin_numbers hide) (pin_names (offset 1.016 -1.016)) (property "Reference" "D" (id 0) (at 0 2.54 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "LED" (id 1) (at 0 -2.54 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "LED_0_1" (polyline (pts (xy -1.27 -1.27) (xy -1.27 1.27)) (stroke (width 0.254))) (polyline (pts (xy -1.27 0) (xy 1.27 -1.27)) (stroke (width 0.254))) (polyline (pts (xy 0.762 -1.778) (xy 1.778 -2.794)) (stroke (width 0.254))) (polyline (pts (xy 1.27 -1.27) (xy 1.27 1.27)) (stroke (width 0.254)))) (symbol "LED_1_1" (pin passive line (at -3.81 0 0) (length 2.54) (name "K" (effects (font (size 1.016 1.016) (thickness 0.1524)))) (number "1" (effects (font (size 1.016 1.016) (thickness 0.1524))))) (pin passive line (at 3.81 0 180) (length 2.54) (name "A" (effects (font (size 1.016 1.016) (thickness 0.1524)))) (number "2" (effects (font (size 1.016 1.016) (thickness 0.1524)))))))
-  (symbol "Conn_01x02_Pin" (pin_names (offset 1.016) hide) (property "Reference" "J" (id 0) (at 0 2.54 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "Conn_01x02_Pin" (id 1) (at 0 -5.08 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "Conn_01x02_Pin_0_1" (rectangle (start -1.27 -2.413) (end 0 -2.667) (stroke (width 0.1524)))) (symbol "Conn_01x02_Pin_1_1" (pin passive line (at -5.08 0 0) (length 3.81) (name "Pin_1" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.15))))) (pin passive line (at -5.08 -2.54 0) (length 3.81) (name "Pin_2" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "2" (effects (font (size 1.27 1.27) (thickness 0.15)))))))
-  (symbol "Conn_01x04_Pin" (pin_names (offset 1.016) hide) (property "Reference" "J" (id 0) (at 0 5.08 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "Conn_01x04_Pin" (id 1) (at 0 -7.62 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "Conn_01x04_Pin_1_1" (pin passive line (at -5.08 0 0) (length 3.81) (name "Pin_1" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.15))))) (pin passive line (at -5.08 -2.54 0) (length 3.81) (name "Pin_2" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "2" (effects (font (size 1.27 1.27) (thickness 0.15))))) (pin passive line (at -5.08 -5.08 0) (length 3.81) (name "Pin_3" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "3" (effects (font (size 1.27 1.27) (thickness 0.15))))) (pin passive line (at -5.08 -7.62 0) (length 3.81) (name "Pin_4" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "4" (effects (font (size 1.27 1.27) (thickness 0.15)))))))
-  (symbol "Conn_02x08_Odd_Even" (pin_names (offset 1.016) hide) (property "Reference" "J" (id 0) (at 0 10.16 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "Conn_02x08_Odd_Even" (id 1) (at 0 -12.7 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "Conn_02x08_Odd_Even_1_1" (pin passive line (at -5.08 8.89 0) (length 3.81) (name "Pin_1" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.15)))))))
-  (symbol "Conn_02x20_Odd_Even" (pin_names (offset 1.016) hide) (property "Reference" "J" (id 0) (at 0 25.4 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "Conn_02x20_Odd_Even" (id 1) (at 0 -25.4 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "Conn_02x20_Odd_Even_1_1" (pin passive line (at -5.08 22.86 0) (length 3.81) (name "Pin_1" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.15)))))))
-  (symbol "Conn_02x30_Odd_Even" (pin_names (offset 1.016) hide) (property "Reference" "B" (id 0) (at 0 40.64 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "Conn_02x30_Odd_Even" (id 1) (at 0 -40.64 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "Conn_02x30_Odd_Even_1_1" (pin passive line (at -5.08 38.1 0) (length 3.81) (name "Pin_1" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.15)))))))
-  (symbol "USB_C_Receptacle_usb2.0" (pin_names (offset 1.016)) (property "Reference" "J" (id 0) (at 0 19.05 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "USB_C_Receptacle_usb2.0" (id 1) (at 0 -19.05 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "USB_C_Receptacle_usb2.0_0_1" (rectangle (start -10.16 17.78) (end 10.16 -17.78) (stroke (width 0.254)) (fill (type background)))) (symbol "USB_C_Receptacle_usb2.0_1_1" (pin passive line (at -12.7 15.24 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "A1" (effects (font (size 1.27 1.27) (thickness 0.15)))))))
-  (symbol "AMS1117-3.3" (pin_names (offset 0.254)) (property "Reference" "U" (id 0) (at 0 5.08 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "AMS1117-3.3" (id 1) (at 0 -5.08 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "AMS1117-3.3_0_1" (rectangle (start -5.08 3.81) (end 5.08 -3.81) (stroke (width 0.254)) (fill (type background)))) (symbol "AMS1117-3.3_1_1" (pin power_in line (at -7.62 2.54 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.15))))) (pin power_out line (at 7.62 2.54 180) (length 2.54) (name "OUT" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "2" (effects (font (size 1.27 1.27) (thickness 0.15))))) (pin power_in line (at -7.62 -2.54 0) (length 2.54) (name "IN" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "3" (effects (font (size 1.27 1.27) (thickness 0.15)))))))
-  (symbol "SN74HCT245" (pin_names (offset 0.254)) (property "Reference" "U" (id 0) (at 0 12.7 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "SN74HCT245" (id 1) (at 0 -12.7 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "SN74HCT245_0_1" (rectangle (start -7.62 11.43) (end 7.62 -11.43) (stroke (width 0.254)) (fill (type background)))) (symbol "SN74HCT245_1_1" (pin power_in line (at -10.16 8.89 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "10" (effects (font (size 1.27 1.27) (thickness 0.15))))) (pin power_in line (at 10.16 8.89 180) (length 2.54) (name "VCC" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "20" (effects (font (size 1.27 1.27) (thickness 0.15)))))))
-  (symbol "TPS54331" (pin_names (offset 0.254)) (property "Reference" "U" (id 0) (at 0 6.35 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "TPS54331" (id 1) (at 0 -6.35 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "TPS54331_0_1" (rectangle (start -5.08 5.08) (end 5.08 -5.08) (stroke (width 0.254)) (fill (type background)))) (symbol "TPS54331_1_1" (pin power_in line (at -7.62 3.81 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "4" (effects (font (size 1.27 1.27) (thickness 0.15))))) (pin power_out line (at 7.62 3.81 180) (length 2.54) (name "OUT" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "2" (effects (font (size 1.27 1.27) (thickness 0.15))))) (pin power_in line (at -7.62 -3.81 0) (length 2.54) (name "VIN" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.15)))))))
-  (symbol "AT24C32" (pin_names (offset 0.254)) (property "Reference" "U" (id 0) (at 0 5.08 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "AT24C32" (id 1) (at 0 -5.08 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "AT24C32_0_1" (rectangle (start -5.08 3.81) (end 5.08 -3.81) (stroke (width 0.254)) (fill (type background)))) (symbol "AT24C32_1_1" (pin power_in line (at -7.62 2.54 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "4" (effects (font (size 1.27 1.27) (thickness 0.15))))) (pin power_in line (at 7.62 2.54 180) (length 2.54) (name "VCC" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "8" (effects (font (size 1.27 1.27) (thickness 0.15)))))))
-  (symbol "ES8388" (in_bom yes) (on_board yes) (property "Reference" "U" (id 0) (at 0 30.48 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (property "Value" "ES8388" (id 1) (at 0 -30.48 0) (effects (font (size 1.27 1.27) (thickness 0.15)))) (symbol "ES8388_0_1" (rectangle (start -12.7 29.21) (end 12.7 -29.21) (stroke (width 0.254)) (fill (type background)))) (symbol "ES8388_1_1" (pin power_in line (at -15.24 26.67 0) (length 2.54) (name "AVDD" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.15))))) (pin power_in line (at -15.24 -26.67 0) (length 2.54) (name "AGND" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "2" (effects (font (size 1.27 1.27) (thickness 0.15)))))))
-  )
-
-  (symbol (lib_id "Converter_DCDC:LT8618")
-    (at 30 30 0)
-    (unit 1)
-    (in_bom yes) (on_board yes)
-    (uuid "6dff28df-1953-4a91-92d2-e7925bf00d2e")
-    (property "Reference" "U10"
-      (at 30 28.5 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "LT8618SX"
-      (at 30 31.5 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "Package_QFP:LQFP-56_10x10mm_P0.5mm"
-      (at 30 30 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (instances
-      (project "uno_q_hub75_shield"
-        (path "/bc84562d-846a-4607-81a1-500b7991d137/f4a5b6c7-8d9e-0f1a-2b3c-4d5e6f7a8b9c"
-          (reference "U10") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Switch:CBTL04GP054")
-    (at 55 30 0)
-    (unit 1)
-    (in_bom yes) (on_board yes)
-    (uuid "9aa2b841-8481-49fe-a35d-b27fcd8e6ab6")
-    (property "Reference" "U11"
-      (at 55 28.5 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "CBTL04GP054"
-      (at 55 31.5 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "Package_DFN:DFN-16_3x3mm_P0.5mm"
-      (at 55 30 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (instances
-      (project "uno_q_hub75_shield"
-        (path "/bc84562d-846a-4607-81a1-500b7991d137/f4a5b6c7-8d9e-0f1a-2b3c-4d5e6f7a8b9c"
-          (reference "U11") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:C")
-    (at 20 25 0)
-    (unit 1)
-    (in_bom yes) (on_board yes)
-    (uuid "d3e9a43c-2625-4617-a6fd-442b0aec8462")
-    (property "Reference" "C29"
-      (at 20 23.5 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "100nF"
-      (at 20 26.5 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-      (at 20 25 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (instances
-      (project "uno_q_hub75_shield"
-        (path "/bc84562d-846a-4607-81a1-500b7991d137/f4a5b6c7-8d9e-0f1a-2b3c-4d5e6f7a8b9c"
-          (reference "C29") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:C")
-    (at 25 25 0)
-    (unit 1)
-    (in_bom yes) (on_board yes)
-    (uuid "7db89b36-abbe-4a03-bbad-81fb9984b7e7")
-    (property "Reference" "C30"
-      (at 25 23.5 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "10µF"
-      (at 25 26.5 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
-      (at 25 25 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (instances
-      (project "uno_q_hub75_shield"
-        (path "/bc84562d-846a-4607-81a1-500b7991d137/f4a5b6c7-8d9e-0f1a-2b3c-4d5e6f7a8b9c"
-          (reference "C30") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Connector:Micro_HDMI")
-    (at 75 30 0)
-    (unit 1)
-    (in_bom yes) (on_board yes)
-    (uuid "91dfc73f-bc35-45a5-aae9-fa3cdc7a1b7a")
-    (property "Reference" "J_HDMI"
-      (at 75 28.5 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "Micro-HDMI"
-      (at 75 31.5 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "Connector_HDMI:Molex_47151-2001_Micro-HDMI_Horizontal"
-      (at 75 30 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (instances
-      (project "uno_q_hub75_shield"
-        (path "/bc84562d-846a-4607-81a1-500b7991d137/f4a5b6c7-8d9e-0f1a-2b3c-4d5e6f7a8b9c"
-          (reference "J_HDMI") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Connector:FPC_40pin")
-    (at 75 40 0)
-    (unit 1)
-    (in_bom yes) (on_board yes)
-    (uuid "f47634b6-85dc-441b-b68b-629eeada76b8")
-    (property "Reference" "J_DSI"
-      (at 75 38.5 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "MIPI DSI"
-      (at 75 41.5 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "Connector_FPC:Molex_503480-40_40pin_P0.5mm_Vertical"
-      (at 75 40 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (instances
-      (project "uno_q_hub75_shield"
-        (path "/bc84562d-846a-4607-81a1-500b7991d137/f4a5b6c7-8d9e-0f1a-2b3c-4d5e6f7a8b9c"
-          (reference "J_DSI") (unit 1)
-        )
-      )
-    )
-  )
-
-  (hierarchical_label "+5V"
-    (shape input)
-    (at 10 20 0)
-    (effects (font (size 1.27 1.27)) (justify left))
-    (uuid "c39dfc93-06f3-4623-9de2-3a9244d268fa")
-  )
-
-  (hierarchical_label "+3V3"
-    (shape input)
-    (at 10 25 0)
-    (effects (font (size 1.27 1.27)) (justify left))
-    (uuid "9e04c8fc-dbad-4875-b2e7-78001cce1ae8")
-  )
-
-  (hierarchical_label "DGND"
-    (shape input)
-    (at 10 30 0)
-    (effects (font (size 1.27 1.27)) (justify left))
-    (uuid "ce3853e5-827e-4881-b7c5-95af6fa5fd02")
-  )
-
-  (sheet_instances
-    (path "/"
-      (page "1")
-    )
-  )
+	(version 20260101)
+	(generator "eeschema")
+	(generator_version "8.0")
+	(uuid "f4a5b6c7-8d9e-0f1a-2b3c-4d5e6f7a8b9c")
+	(paper "A4")
+	(lib_symbols)
+	(hierarchical_label "+3V3"
+		(shape input)
+		(at 10 25 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "f4a5b6c7-8d9e-0f1a-2b3c-4d5e6f7a8b9c-hl00")
+	)
+	(hierarchical_label "DGND"
+		(shape input)
+		(at 10 30 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "f4a5b6c7-8d9e-0f1a-2b3c-4d5e6f7a8b9c-hl01")
+	)
+	(hierarchical_label "MIPI_CLK"
+		(shape input)
+		(at 85 25 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "f4a5b6c7-8d9e-0f1a-2b3c-4d5e6f7a8b9c-hl02")
+	)
+	(hierarchical_label "MIPI_DATA"
+		(shape input)
+		(at 85 30 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "f4a5b6c7-8d9e-0f1a-2b3c-4d5e6f7a8b9c-hl03")
+	)
+	(sheet_instances
+		(path "/"
+			(page "5")
+		)
+	)
 )

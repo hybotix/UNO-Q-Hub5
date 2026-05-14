@@ -1,13 +1,61 @@
 (kicad_sch
 	(version 20260101)
 	(generator "eeschema")
-	(uuid "0edf2394-b82a-4cb0-bdc4-b7a49c06db42")
+	(generator_version "8.0")
+	(uuid "efaa96f4-7a06-4df5-bf2b-8bbb82a448c8")
 	(paper "A4")
-	(lib_symbols
+	(lib_symbols)
+	(hierarchical_label "+5V_EXT"
+		(shape output)
+		(at 85 20 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "efaa96f4-7a06-4df5-bf2b-8bbb82a448c8-hl00")
+	)
+	(hierarchical_label "+5V_HUB75"
+		(shape output)
+		(at 85 25 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "efaa96f4-7a06-4df5-bf2b-8bbb82a448c8-hl01")
+	)
+	(hierarchical_label "+3V3"
+		(shape output)
+		(at 85 30 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "efaa96f4-7a06-4df5-bf2b-8bbb82a448c8-hl02")
+	)
+	(hierarchical_label "DGND"
+		(shape output)
+		(at 85 35 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "efaa96f4-7a06-4df5-bf2b-8bbb82a448c8-hl03")
 	)
 	(sheet_instances
 		(path "/"
-			(page "1")
+			(page "2")
 		)
 	)
 )

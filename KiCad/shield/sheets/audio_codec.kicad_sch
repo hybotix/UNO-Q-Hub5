@@ -1,13 +1,97 @@
 (kicad_sch
 	(version 20260101)
 	(generator "eeschema")
-	(uuid "9ff29db9-ab5c-4aaa-8d49-8cae5c27b72c")
+	(generator_version "8.0")
+	(uuid "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d")
 	(paper "A4")
-	(lib_symbols
+	(lib_symbols)
+	(hierarchical_label "+3V3"
+		(shape input)
+		(at 10 25 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d-hl00")
+	)
+	(hierarchical_label "DGND"
+		(shape input)
+		(at 10 30 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d-hl01")
+	)
+	(hierarchical_label "I2S_BCLK"
+		(shape input)
+		(at 10 35 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d-hl02")
+	)
+	(hierarchical_label "I2S_LRCLK"
+		(shape input)
+		(at 10 40 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d-hl03")
+	)
+	(hierarchical_label "I2S_DOUT"
+		(shape input)
+		(at 10 45 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d-hl04")
+	)
+	(hierarchical_label "I2C_SDA"
+		(shape bidirectional)
+		(at 10 50 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d-hl05")
+	)
+	(hierarchical_label "I2C_SCL"
+		(shape bidirectional)
+		(at 10 55 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d-hl06")
 	)
 	(sheet_instances
 		(path "/"
-			(page "1")
+			(page "5")
 		)
 	)
 )

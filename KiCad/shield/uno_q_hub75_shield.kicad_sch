@@ -3,11 +3,279 @@
 	(generator "eeschema")
 	(generator_version "8.0")
 	(uuid "bc84562d-846a-4607-81a1-500b7991d137")
-	(paper "A4")
+	(paper "A3")
 	(title_block
 		(title "UNO Q HUB75 Shield")
+		(company "Hybrid RobotiX")
+		(rev "0.3")
 	)
 	(lib_symbols)
+	(sheet
+		(at 20 20)
+		(size 60 40)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "efaa96f4-7a06-4df5-bf2b-8bbb82a448c8")
+		(property "Sheetname" "Power"
+			(at 20 18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "sheets/power.kicad_sch"
+			(at 20 62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "power"
+				(path "/bc84562d-846a-4607-81a1-500b7991d137"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 90 20)
+		(size 60 40)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "02ac644c-33d8-477e-a8a6-71ca0780d582")
+		(property "Sheetname" "ESP32-S3"
+			(at 90 18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "sheets/esp32s3.kicad_sch"
+			(at 90 62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "esp32s3"
+				(path "/bc84562d-846a-4607-81a1-500b7991d137"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 160 20)
+		(size 60 40)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "1f2c3d4e-5f6a-7b8c-9d0e-1f2a3b4c5d6e")
+		(property "Sheetname" "HUB75 Driver"
+			(at 160 18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "sheets/hub75_driver.kicad_sch"
+			(at 160 62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "hub75-driver"
+				(path "/bc84562d-846a-4607-81a1-500b7991d137"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 20 80)
+		(size 60 40)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d")
+		(property "Sheetname" "Audio Codec"
+			(at 20 78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "sheets/audio_codec.kicad_sch"
+			(at 20 122 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "audio-codec"
+				(path "/bc84562d-846a-4607-81a1-500b7991d137"
+					(page "5")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 90 80)
+		(size 60 40)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "3b4c5d6e-7f8a-9b0c-1d2e-3f4a5b6c7d8e")
+		(property "Sheetname" "Display"
+			(at 90 78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "sheets/display.kicad_sch"
+			(at 90 122 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "display"
+				(path "/bc84562d-846a-4607-81a1-500b7991d137"
+					(page "6")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 160 80)
+		(size 60 40)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "4c5d6e7f-8a9b-0c1d-2e3f-4a5b6c7d8e9f")
+		(property "Sheetname" "UNO Q Interface"
+			(at 160 78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "sheets/uno_q_interface.kicad_sch"
+			(at 160 122 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "uno-q-interface"
+				(path "/bc84562d-846a-4607-81a1-500b7991d137"
+					(page "7")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 20 140)
+		(size 60 40)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "5d6e7f8a-9b0c-1d2e-3f4a-5b6c7d8e9f0a")
+		(property "Sheetname" "Connectivity"
+			(at 20 138 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "sheets/connectivity.kicad_sch"
+			(at 20 182 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "connectivity"
+				(path "/bc84562d-846a-4607-81a1-500b7991d137"
+					(page "8")
+				)
+			)
+		)
+	)
 	(sheet_instances
 		(path "/"
 			(page "1")

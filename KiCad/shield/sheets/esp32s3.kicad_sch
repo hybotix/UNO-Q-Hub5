@@ -1,13 +1,205 @@
 (kicad_sch
 	(version 20260101)
 	(generator "eeschema")
-	(uuid "3566f2d6-93c0-42f9-97d2-c0ab311ae606")
+	(generator_version "8.0")
+	(uuid "02ac644c-33d8-477e-a8a6-71ca0780d582")
 	(paper "A4")
-	(lib_symbols
+	(lib_symbols)
+	(hierarchical_label "+3V3"
+		(shape input)
+		(at 10 25 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "02ac644c-33d8-477e-a8a6-71ca0780d582-hl00")
+	)
+	(hierarchical_label "DGND"
+		(shape input)
+		(at 10 30 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "02ac644c-33d8-477e-a8a6-71ca0780d582-hl01")
+	)
+	(hierarchical_label "I2S_BCLK"
+		(shape output)
+		(at 85 25 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "02ac644c-33d8-477e-a8a6-71ca0780d582-hl02")
+	)
+	(hierarchical_label "I2S_LRCLK"
+		(shape output)
+		(at 85 30 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "02ac644c-33d8-477e-a8a6-71ca0780d582-hl03")
+	)
+	(hierarchical_label "I2S_DOUT"
+		(shape output)
+		(at 85 35 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "02ac644c-33d8-477e-a8a6-71ca0780d582-hl04")
+	)
+	(hierarchical_label "I2C_SDA"
+		(shape bidirectional)
+		(at 85 40 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "02ac644c-33d8-477e-a8a6-71ca0780d582-hl05")
+	)
+	(hierarchical_label "I2C_SCL"
+		(shape bidirectional)
+		(at 85 45 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "02ac644c-33d8-477e-a8a6-71ca0780d582-hl06")
+	)
+	(hierarchical_label "LCD_CLK"
+		(shape output)
+		(at 85 50 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "02ac644c-33d8-477e-a8a6-71ca0780d582-hl07")
+	)
+	(hierarchical_label "LCD_MOSI"
+		(shape output)
+		(at 85 55 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "02ac644c-33d8-477e-a8a6-71ca0780d582-hl08")
+	)
+	(hierarchical_label "LCD_CS"
+		(shape output)
+		(at 85 60 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "02ac644c-33d8-477e-a8a6-71ca0780d582-hl09")
+	)
+	(hierarchical_label "LCD_DC"
+		(shape output)
+		(at 85 65 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "02ac644c-33d8-477e-a8a6-71ca0780d582-hl10")
+	)
+	(hierarchical_label "LCD_RST"
+		(shape output)
+		(at 85 70 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "02ac644c-33d8-477e-a8a6-71ca0780d582-hl11")
+	)
+	(hierarchical_label "LCD_BL_PWM"
+		(shape output)
+		(at 85 75 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "02ac644c-33d8-477e-a8a6-71ca0780d582-hl12")
+	)
+	(hierarchical_label "TOUCH_INT"
+		(shape input)
+		(at 85 80 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "02ac644c-33d8-477e-a8a6-71ca0780d582-hl13")
+	)
+	(hierarchical_label "HUB75_RGB"
+		(shape output)
+		(at 85 85 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "02ac644c-33d8-477e-a8a6-71ca0780d582-hl14")
+	)
+	(hierarchical_label "HUB75_CTRL"
+		(shape output)
+		(at 85 90 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "02ac644c-33d8-477e-a8a6-71ca0780d582-hl15")
 	)
 	(sheet_instances
 		(path "/"
-			(page "1")
+			(page "3")
 		)
 	)
 )
