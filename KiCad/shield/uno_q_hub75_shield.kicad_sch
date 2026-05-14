@@ -1,15 +1,8 @@
 (kicad_sch
   (version 20231120)
   (generator eeschema)
-  (generator_version "10.0.0")
   (uuid "bc84562d-846a-4607-81a1-500b7991d137")
   (paper "A3")
-  (title_block
-    (title "UNO Q HUB75 Shield")
-    (date "2026-05-09")
-    (rev "0.3")
-    (company "Hybrid RobotiX")
-  )
 
   (lib_symbols
   )
@@ -22,10 +15,6 @@
     (uuid "efaa96f4-7a06-4df5-bf2b-8bbb82a448c8")
     (property "Sheet name" "Power" (at 20 28 0) (effects (font (size 1.524 1.524)) (justify left bottom)))
     (property "Sheet file" "sheets/power.kicad_sch" (at 20 26 0) (effects (font (size 1.27 1.27)) (justify left bottom)))
-    (pin "+5V_EXT" output (at 80 35 0) (effects (font (size 1.27 1.27)) (justify left)) (uuid "pin1"))
-    (pin "+5V_HUB75" output (at 80 40 0) (effects (font (size 1.27 1.27)) (justify left)) (uuid "pin2"))
-    (pin "+3V3" output (at 80 45 0) (effects (font (size 1.27 1.27)) (justify left)) (uuid "pin3"))
-    (pin "DGND" output (at 80 50 0) (effects (font (size 1.27 1.27)) (justify left)) (uuid "pin4"))
     (instances
       (project "uno_q_hub75_shield"
         (path "/bc84562d-846a-4607-81a1-500b7991d137" (page "2"))
@@ -41,8 +30,6 @@
     (uuid "02ac644c-33d8-477e-a8a6-71ca0780d582")
     (property "Sheet name" "ESP32-S3" (at 20 88 0) (effects (font (size 1.524 1.524)) (justify left bottom)))
     (property "Sheet file" "sheets/esp32s3.kicad_sch" (at 20 86 0) (effects (font (size 1.27 1.27)) (justify left bottom)))
-    (pin "+3V3" input (at 20 95 180) (effects (font (size 1.27 1.27)) (justify right)) (uuid "pin5"))
-    (pin "DGND" input (at 20 100 180) (effects (font (size 1.27 1.27)) (justify right)) (uuid "pin6"))
     (instances
       (project "uno_q_hub75_shield"
         (path "/bc84562d-846a-4607-81a1-500b7991d137" (page "3"))
@@ -58,7 +45,6 @@
     (uuid "1f2c3d4e-5f6a-7b8c-9d0e-1f2a3b4c5d6e")
     (property "Sheet name" "HUB75 Driver" (at 20 148 0) (effects (font (size 1.524 1.524)) (justify left bottom)))
     (property "Sheet file" "sheets/hub75_driver.kicad_sch" (at 20 146 0) (effects (font (size 1.27 1.27)) (justify left bottom)))
-    (pin "+5V_HUB75" input (at 20 155 180) (effects (font (size 1.27 1.27)) (justify right)) (uuid "pin7"))
     (instances
       (project "uno_q_hub75_shield"
         (path "/bc84562d-846a-4607-81a1-500b7991d137" (page "4"))
@@ -74,7 +60,6 @@
     (uuid "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d")
     (property "Sheet name" "Audio Codec" (at 20 208 0) (effects (font (size 1.524 1.524)) (justify left bottom)))
     (property "Sheet file" "sheets/audio_codec.kicad_sch" (at 20 206 0) (effects (font (size 1.27 1.27)) (justify left bottom)))
-    (pin "+3V3" input (at 20 215 180) (effects (font (size 1.27 1.27)) (justify right)) (uuid "pin8"))
     (instances
       (project "uno_q_hub75_shield"
         (path "/bc84562d-846a-4607-81a1-500b7991d137" (page "5"))
@@ -90,7 +75,6 @@
     (uuid "3b4c5d6e-7f8a-9b0c-1d2e-3f4a5b6c7d8e")
     (property "Sheet name" "Display" (at 20 268 0) (effects (font (size 1.524 1.524)) (justify left bottom)))
     (property "Sheet file" "sheets/display.kicad_sch" (at 20 266 0) (effects (font (size 1.27 1.27)) (justify left bottom)))
-    (pin "+3V3" input (at 20 275 180) (effects (font (size 1.27 1.27)) (justify right)) (uuid "pin9"))
     (instances
       (project "uno_q_hub75_shield"
         (path "/bc84562d-846a-4607-81a1-500b7991d137" (page "6"))
