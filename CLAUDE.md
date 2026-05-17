@@ -1,4 +1,4 @@
-# Hybrid RobotiX — UNO-Q HUB5 Coding Standards
+# Hybrid RobotiX — UNO-Q-Hub5 Coding Standards
 ## CLAUDE.md
 
 This file defines the coding standards and conventions for all code in the
@@ -9,6 +9,7 @@ standards without exception.
 ---
 
 ## General Principles
+- DO NOT GUESS at what needs to be done.
 
 - All changes must be recorded in CHANGELOG.md at the root of the repo
 
